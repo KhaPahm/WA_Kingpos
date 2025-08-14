@@ -34,10 +34,9 @@
                         <div class="d-flex justify-content-center mt-2 mb-2">
                             <!-- Take photo from camera -->
                             <div class="p-2" title="Chụp ảnh">
-                                <label class="btn btn-outline-info btn-md">
+                                <button class="btn btn-outline-info btn-md" onclick="">
                                     <i class="fa fa-camera"></i>
-                                    <input type="file" id="cameraInput" accept="image/*" capture="environment" class="d-none" />
-                                </label>
+                                </button>
                             </div>
 
                             <div class="p-2 align-self-center">
@@ -134,6 +133,31 @@
                     </div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                     <button type="button" class="btn btn-primary" id="btnCropUse">Dùng ảnh này</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Camera Modal -->
+    <div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h5 class="modal-title">Chụp ảnh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng" id="btnCloseCamera">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <video id="cameraVideo" autoplay playsinline style="max-width:100%; border:1px solid #ccc;"></video>
+                    <canvas id="cameraCanvas" width="300" height="300" style="display:none;"></canvas>
+                </div>
+
+                <div class="modal-footer py-2">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCancelCamera">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="btnTakePhoto">Chụp</button>
+                    <button type="button" class="btn btn-success d-none" id="btnUsePhoto">Dùng ảnh này</button>
                 </div>
             </div>
         </div>
