@@ -1,0 +1,1711 @@
+﻿---------------------------
+DATE: 05/06/2025 08:26:30
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:09efe85b-26b1-45e5-ae4c-a04f019bccae
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:30
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:68a33613-80f7-494e-89ff-dd1e09b3e122
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:31
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:0c98fc13-f57e-498f-906f-798b42ca277e
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:31
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:92e415d8-e9c9-4fb6-a18b-2be1564c3171
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:31
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:54691fcf-37ac-41be-ae7f-cc74e83602a5
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:32
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:e731884a-8914-4855-9270-27f3da449243
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:32
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:efbe9768-5bd5-44c9-82f3-ad1c4bd44d54
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:32
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:54f0b091-92bf-4429-98f2-0dc2b6b12990
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:33
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '2021'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:661af7db-739b-4212-ad92-67134fd7c8f3
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:46
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'GREENLINE05' , '1'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:8cd386c7-5ea9-4c08-8c0a-98b1474335bf
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:26:56
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'ADMIN' , '1'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:97e297c4-fb78-4a29-a24e-7ddf37760c0b
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:28:21
+Server=kingproserver.ddns.net,444;database=SuoiTien_17122024;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'ADMIN' , '1'-System.Data.SqlClient.SqlException (0x80131904): Cannot open database "SuoiTien_17122024" requested by the login. The login failed.
+Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 153
+ClientConnectionId:d9e3a15d-972d-440b-924d-3bee6cb536c9
+Error Number:4060,State:1,Class:11
+---------------------------
+DATE: 05/06/2025 08:30:34
+0
+DSHangHoa Get
+System.FormatException: The input string '' was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, ReadOnlySpan`1 value, TypeCode type)
+   at System.Convert.ToInt64(String value)
+   at WA_Kingpos.Pages.Baocao.DashboardDoanhThu.IndexModel.LoadData() in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\DashboardDoanhThu\Index.cshtml.cs:line 184
+   at WA_Kingpos.Pages.Baocao.DashboardDoanhThu.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\DashboardDoanhThu\Index.cshtml.cs:line 39
+---------------------------
+DATE: 05/06/2025 10:29:35
+0
+DSHangHoa Get
+System.FormatException: The input string '195.6' was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, ReadOnlySpan`1 value, TypeCode type)
+   at System.Convert.ToInt32(String value)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 543
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 63
+---------------------------
+DATE: 05/06/2025 10:36:40
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''04/08/2024 12:00 AM'', @DENNGAY=''04/08/2024 12:00 PM'',@DIEUKIEN=''87'',@TYPE='Q',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '04'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:f2abfb22-8f44-4659-a25c-8d3c4cdcb62a
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 10:37:27
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''04/08/2024 12:00 AM'', @DENNGAY=''04/08/2024 11:30 PM'',@DIEUKIEN='''',@TYPE='Q',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '04'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:4e8c27f3-2768-40d8-8d37-9ce5b2608625
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 10:37:43
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''04/08/2024 12:00 AM'', @DENNGAY=''04/08/2024 11:30 PM'',@DIEUKIEN=''63'',@TYPE='Q',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '04'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:6f4a735b-5008-4afc-af23-bd8289e0b1d2
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 10:38:00
+0
+DSHangHoa Get
+System.FormatException: The input string '5.7' was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, ReadOnlySpan`1 value, TypeCode type)
+   at System.Convert.ToInt32(String value)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 543
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 63
+---------------------------
+DATE: 05/06/2025 10:42:54
+0
+DSHangHoa Get
+System.FormatException: The input string '5.7' was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, ReadOnlySpan`1 value, TypeCode type)
+   at System.Convert.ToInt32(String value)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 543
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 63
+---------------------------
+DATE: 05/06/2025 11:02:59
+0
+DSHangHoa Get
+System.FormatException: The input string '5.7' was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, ReadOnlySpan`1 value, TypeCode type)
+   at System.Convert.ToInt32(String value)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 556
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 11:05:08
+0
+DSHangHoa Get
+System.FormatException: The input string '5.7' was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, ReadOnlySpan`1 value, TypeCode type)
+   at System.Convert.ToInt32(String value)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 556
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 11:08:01
+0
+DSHangHoa Get
+System.FormatException: The input string '5.7' was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, ReadOnlySpan`1 value, TypeCode type)
+   at System.Convert.ToInt32(String value)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 556
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 11:30:48
+0
+DSHangHoa Get
+System.FormatException: The input string '' was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, ReadOnlySpan`1 value, TypeCode type)
+   at System.Convert.ToInt64(String value)
+   at WA_Kingpos.Pages.Baocao.DashboardDoanhThu.IndexModel.LoadData() in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\DashboardDoanhThu\Index.cshtml.cs:line 184
+   at WA_Kingpos.Pages.Baocao.DashboardDoanhThu.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\DashboardDoanhThu\Index.cshtml.cs:line 39
+---------------------------
+DATE: 05/06/2025 14:21:12
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN='''',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:18617e9c-6c6b-4a83-94b5-b8b381b42958
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:22:22
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN='''',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:ab333d35-c12e-4639-be55-e8a7c4af16e8
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:33:20
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:fb24b968-cd81-482d-b5fc-431f901e5293
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:33:48
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20240804 00:00'', @DENNGAY=''20250606 23:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20240804'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:2ed8cedb-1402-4912-b063-4977398b1240
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:33:58
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20240804 00:00'', @DENNGAY=''20240804 23:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20240804'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:fb255030-49c5-4f7c-b6e0-2a8631d0caab
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:34:00
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20240804 00:00'', @DENNGAY=''20240804 23:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20240804'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:d53be2ea-4ccc-4341-90d5-3c2b5bc89643
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:35:09
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN=''18778'',@TYPE='NV',@USERLOGIN ='18778'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:0a174b2c-aea8-422d-8712-83e9e22bde94
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:38:14
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:b8396c7e-8746-4a0c-b33e-ae3ca03835d8
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:40:32
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250606 00:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:cdf6da3f-47eb-4136-b219-9769bd3ede39
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:40:43
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250606 23:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:3a38fb4a-7a6e-44f2-8ceb-80afa6dab4ff
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:40:53
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:9674f788-236a-49bb-8d57-9930bee642d8
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:41:45
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:5031a778-762f-46d8-8096-a269d7607e4b
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:41:47
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:22a45ea4-bde9-49ed-bed4-de1e6b50af82
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:41:50
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:77c314f4-9c7b-4862-997d-cf0773df64cc
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:44:21
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:0d86a5b2-9421-417d-b00d-b10b5dfe3e88
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:45:04
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250606 00:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:f531c64d-96f2-4165-8870-a30487e6368f
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:46:52
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY='20250605 00:00', @DENNGAY='20250605 23:59',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '18'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:fc996cf6-260d-4b86-a92e-045d01ae17e5
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:47:20
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY='20250605 00:00', @DENNGAY='20250606 00:00',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '18'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:4807a800-81ed-4c04-a49f-bd44756f8c11
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:48:45
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY='20250605 00:00', @DENNGAY='20250606 00:00',@DIEUKIEN='18',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:82470d89-d094-4a79-9fed-671b33f5a7fa
+Error Number:258,State:0,Class:20
+---------------------------
+DATE: 05/06/2025 14:49:04
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:5d8b0ee7-e1cc-4ed5-a856-24c52b084bd6
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:49:24
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:30'',@DIEUKIEN='''',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:9f437f0c-e76e-465d-89f3-43816788f605
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 14:49:32
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:30'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
+ClientConnectionId:ea747c38-0ca4-41bf-b658-88ebdb56e0ab
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:04:03
+0
+DSHangHoa Get
+System.ArgumentException: Column 'TEN_CUAHANG' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.LoadData(String id, String id1, String id3)
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnGet(String id, String id1, String id3)
+---------------------------
+DATE: 05/06/2025 15:05:42
+0
+DSHangHoa Get
+System.ArgumentException: Column 'TEN_CUAHANG' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.LoadData(String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 303
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnGet(String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 52
+---------------------------
+DATE: 05/06/2025 15:08:26
+0
+DSHangHoa Get
+System.ArgumentException: Column 'TEN_CUAHANG' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.LoadData(String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 303
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnGet(String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 52
+---------------------------
+DATE: 05/06/2025 15:19:50
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''05/06/2025 12:00 AM'', @DENNGAY=''05/06/2025 11:59 PM'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '05'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:197ffba2-3d75-4693-8c96-d34ed9eaf10f
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:19:57
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 123
+---------------------------
+DATE: 05/06/2025 15:22:57
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 123
+---------------------------
+DATE: 05/06/2025 15:25:58
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 123
+---------------------------
+DATE: 05/06/2025 15:27:55
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 123
+---------------------------
+DATE: 05/06/2025 15:29:17
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:847ac929-fd6b-4337-9fb5-c86b391b0f7c
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:29:33
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:30'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:a8d376e0-f765-435e-82f3-7f013d67e573
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:38:32
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250605 23:59'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:1315f8ea-7417-4188-a9d5-ce173cb4d44e
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:38:40
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250606 00:00'',@DIEUKIEN=''18'',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:44159279-2990-46da-b6c8-955c6e108666
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:39:02
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250606 00:00'',@DIEUKIEN='''',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:9b4faef0-6c83-4a08-b479-abdccccab4dc
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:39:47
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250605 00:00'', @DENNGAY=''20250606 00:00'',@DIEUKIEN='''',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250605'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:f57f6f61-0179-4b18-9b7b-eb32dc4737ce
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:39:47
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 209
+---------------------------
+DATE: 05/06/2025 15:42:48
+0
+DSHangHoa Get
+System.ArgumentException: Column 'TEN_CUAHANG' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 565
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 15:49:17
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 209
+---------------------------
+DATE: 05/06/2025 15:49:33
+0
+DSHangHoa Get
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 503
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 15:50:38
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''01/02/2025 12:00 AM'', @DENNGAY=''01/02/2025 11:00 PM'',@DIEUKIEN=''51'',@TYPE='CH',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '01'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:a118cf01-fb3a-4c43-95e9-6b54ae250de7
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:50:40
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 209
+---------------------------
+DATE: 05/06/2025 15:51:43
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''01/02/2025 12:00 AM'', @DENNGAY=''01/02/2025 11:00 PM'',@DIEUKIEN=''51'',@TYPE='CH',@USERLOGIN =''-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '01'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:c0544a0c-9f39-4724-8864-d156e48c8750
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:51:44
+0
+DSHangHoa Post : 
+System.ArgumentException: Column 'MAVACH' does not belong to underlying table ''.
+   at System.Data.DataView.ToTable(String tableName, Boolean distinct, String[] columnNames)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 311
+---------------------------
+DATE: 05/06/2025 15:52:27
+0
+DSHangHoa Get
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 503
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 15:52:49
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250201 00:00'', @DENNGAY=''20250201 23:00'',@DIEUKIEN=''87'',@TYPE='Q',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250201'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:d356f39d-91ab-431e-9bcb-f929a06541f3
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:53:02
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''20250201 00:00'', @DENNGAY=''20250201 23:00'',@DIEUKIEN=''60'',@TYPE='Q',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '20250201'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:7dd083bd-e4f4-47cb-b6d2-1a3aa67b0104
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:53:47
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''01/02/2025 12:00 AM'', @DENNGAY=''01/02/2025 11:00 PM'',@DIEUKIEN=''51'',@TYPE='CH',@USERLOGIN =''-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '01'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:7b3df1bf-e505-4871-bea8-e7a9c499defa
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 15:53:47
+0
+DSHangHoa Post : 
+System.ArgumentException: Column 'MAVACH' does not belong to underlying table ''.
+   at System.Data.DataView.ToTable(String tableName, Boolean distinct, String[] columnNames)
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 311
+---------------------------
+DATE: 05/06/2025 15:54:21
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG @TUNGAY=''01/02/2025 12:00 AM'', @DENNGAY=''01/02/2025 11:00 PM'',@DIEUKIEN=''51'',@TYPE='CH',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '01'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 155
+ClientConnectionId:dda3d509-b3b8-41d1-b496-cd023048dc60
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 05/06/2025 16:07:53
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 209
+---------------------------
+DATE: 05/06/2025 16:10:58
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 209
+---------------------------
+DATE: 05/06/2025 16:19:17
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell63): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell64): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell65): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell66): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.DSHoaDon.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\DSHoaDon\Index.cshtml.cs:line 207
+---------------------------
+DATE: 05/06/2025 16:21:47
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell63): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell64): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell65): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell66): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.DSHoaDon.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\DSHoaDon\Index.cshtml.cs:line 207
+---------------------------
+DATE: 05/06/2025 16:23:22
+0
+DSHangHoa Get
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 503
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 16:23:31
+0
+DSHangHoa Get
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 503
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 16:24:01
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 209
+---------------------------
+DATE: 05/06/2025 16:30:15
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 209
+---------------------------
+DATE: 05/06/2025 16:37:49
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3)
+---------------------------
+DATE: 05/06/2025 16:42:05
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell50): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell51): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell52): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell53): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell54): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell55): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell56): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell57): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell58): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell59): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell60): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+(Cell62): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 140
+---------------------------
+DATE: 05/06/2025 16:51:21
+0
+DSHangHoa Get
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 503
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 17:07:10
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 209
+---------------------------
+DATE: 05/06/2025 17:17:08
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 140
+---------------------------
+DATE: 05/06/2025 17:17:08
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 140
+---------------------------
+DATE: 05/06/2025 17:17:28
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 211
+---------------------------
+DATE: 05/06/2025 17:17:51
+0
+DSHangHoa Get
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.LoadData(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 505
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnGet(String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 64
+---------------------------
+DATE: 05/06/2025 17:18:25
+0
+DSHangHoa Post : 
+FastReport.Utils.CompilerException: (Cell61): Error CS0103: The name 'TableMain' does not exist in the current context
+
+   at FastReport.Code.AssemblyDescriptor.InternalCompile()
+   at FastReport.Code.AssemblyDescriptor.Compile()
+   at FastReport.Report.Compile()
+   at FastReport.Report.Prepare(Boolean append)
+   at FastReport.Report.Prepare()
+   at WA_Kingpos.Pages.Baocao.BCBanHang.IndexModel.OnPost(String submitButton, String id, String id1, String id2, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHang\Index.cshtml.cs:line 211
+---------------------------
+DATE: 05/06/2025 17:21:37
+0
+DSHangHoa Post : 
+System.ArgumentException: Column 'TEN_CUAHANG' does not belong to underlying table ''.
+   at System.Data.DataView.ToTable(String tableName, Boolean distinct, String[] columnNames)
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3)

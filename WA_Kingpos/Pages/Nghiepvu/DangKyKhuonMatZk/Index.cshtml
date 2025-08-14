@@ -1,0 +1,186 @@
+﻿@page
+@model WA_Kingpos.Pages.DangKyKhuonMatZk.IndexModel
+@{
+    ViewData["Title"] = "Danh sách khách hàng đăng ký khuôn mặt";
+    ViewData["Name"] = "dangkykhuonmatzk";
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+                <form method="post" id="form1">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <!-- tất cả hay filter chưa có face -->
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" asp-for="bOnlyNoFace">
+                                <label class="form-check-label" asp-for="bOnlyNoFace">Chưa có khuôn mặt</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem</button>
+                        @*<a class="btn btn-success" role="button" asp-page="import" asp-route-id1="@Model.bOnlyNoFace">Thêm</a>*@
+                        <button type="submit" name="submitButton" value="import" class="btn btn-success">Thêm</button>
+                    </div>
+
+                    <table id="tablefull" class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Mã khuôn mặt</th>
+                                <th>Tên phòng</th>
+                                <th>Tên khách hàng</th>
+                                <th>Ngày sinh</th>
+                                <th>Giới tính</th>
+                                <th>Địa chỉ</th>
+                                <th>Điện thoại</th>
+                                <th>Ngày bắt đầu</th>
+                                <th>Ngày kết thúc</th>
+                                @*<th>Email</th>
+                                    <th>Ghi chú</th>*@
+                                @*<th>Sử dụng</th>*@
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.listitem)
+                            {
+                                <tr>
+                                    <td>
+                                        @*<a class="btn btn-transparent btn-sm " role="button" asp-page="Create" asp-route-id1="@item.FACE_ID"><i style="color: #0d6efd;" class="fa fa-camera"></i></a>*@
+                                        @item.FACE_ID
+                                    </td>
+                                    <td>@item.TENPHONG</td>
+                                    <td>@item.TEN_KH</td>
+                                    <td>@item.NGAYSINH</td>
+                                    <td>@item.strGioiTinh</td>
+                                    <td>@item.DIACHI</td>
+                                    <td>@item.DIENTHOAI</td>
+                                    <td>@item.NGAYBATDAU.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>@item.NGAYKETTHUC.ToString("dd/MM/yyyy HH:mm")</td>
+                                    @*<td>@item.TEN_NGUOIQUANLY</td>*@
+                                    @*<td>@item.email</td>
+                                        <td>@item.ghichu</td>*@
+                                    @*@if (@item.sudung.ToString().ToLower() == "true")
+                                        {
+                                            <td><input type="checkbox" checked>@item.sudung</td>
+                                        }
+                                        else
+                                        {
+                                            <td><input type="checkbox">@item.sudung</td>
+                                        }*@
+                                    <td>
+                                        <a role="button" class="btn btn-sm create-btn @(string.IsNullOrEmpty(item.FACE_PHOTO) ? "btn-success" : "btn-warning")" asp-page="./Create" asp-route-id1="@item.FACE_ID" asp-route-id2="@Model.bOnlyNoFace" data-id="@item.FACE_ID" data-name="@item.TEN_KH" data-override="@(string.IsNullOrEmpty(item.FACE_PHOTO) ? "0" : "1")">Chụp</a>
+                                        @*@if (Model.bSua)
+                                            {
+                                                <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.manhanvien">Sửa</a>
+                                            }*@
+                                        @if (Model.bXoa)
+                                        {
+                                            <button type="submit" name="submitButton" value="delete" class="btn btn-danger btn-sm delete-btn" data-id="@item.FACE_ID" data-name="@item.TEN_KH">Xóa</button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            @*<div class="card-footer">
+                    @if (Model.bThem)
+                    {
+                        <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                    }
+                </div>*@
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+@section Scripts {
+    <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).ready(async function () {
+            $('.create-btn').on('click', function (event) {
+                event.preventDefault(); // Prevent the default action
+                var button = $(this);
+                var href = button.attr('href');// Get the page from data attribute
+                var ten_kh = button.data('name');
+                var override = button.data('override');
+                if (override == '1') {
+                    Swal.fire({
+                        title: `Khách hàng: ${ten_kh} đã có khuôn mặt, bạn có muốn cập nhật lại khuôn mặt cho khách hàng này?`,
+                        //text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#28a745', // Bootstrap success color
+                        cancelButtonColor: '#6c757d', // Bootstrap secondary color
+                        confirmButtonText: 'Cập nhật',
+                        cancelButtonText: 'Không'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = href;
+                        }
+                    });
+                } else {
+                    window.location.href = href;
+                }
+
+            });
+
+            $('.delete-btn').on('click', function (event) {
+                event.preventDefault();
+                var button = $(this);
+                var id = button.data('id');
+                var ten_kh = button.data('name');
+                var form = $('#form1');
+                //alert(`delete ${id}`);
+                Swal.fire({
+                    title: `Bạn có chắc chắn xóa đăng ký khuôn mặt khách hàng: ${ten_kh}?`,
+                    //text: `${ten_kh}`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Xóa',
+                    cancelButtonText: 'Không'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Create a hidden input with the button's name and value
+                        $('<input>').attr({
+                            type: 'hidden',
+                            name: button.attr('name'),
+                            value: button.attr('value')
+                        }).appendTo(form);
+                        $('<input>').attr({
+                            type: 'hidden',
+                            name: 'face_id',
+                            value: id
+                        }).appendTo(form);
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
+}

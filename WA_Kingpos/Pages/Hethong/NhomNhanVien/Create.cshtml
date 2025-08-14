@@ -1,0 +1,82 @@
+﻿@page
+@model WA_Kingpos.Pages.NhomNhanVien.CreateModel
+@{
+    ViewData["Title"] = "Thêm Nhóm Nhân Viên";
+    ViewData["Name"] = "nhomnhanvien";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.TENNHOM_NHANVIEN" class="control-label">Tên nhóm</label>
+                        <input type="text" asp-for="item.TENNHOM_NHANVIEN" class="form-control" />
+                        <span asp-validation-for="item.TENNHOM_NHANVIEN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.MA_NGUOIQUANLY" class="control-label">Người quản lý</label>
+                        <select asp-for="item.MA_NGUOIQUANLY" id="MA_NGUOIQUANLY" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" disabled>Chọn Người quản lý</option>
+                            @foreach (var ql in Model.listNhanVien)
+                            {
+                                if (Model.item.MA_NGUOIQUANLY?.ToString() == ql.manhanvien)
+                                {
+                                    <option value="@ql.manhanvien" selected>@ql.tennhanvien</option>
+                                }
+                                else
+                                {
+                                    <option value="@ql.manhanvien">@ql.tennhanvien</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="item.MA_NGUOIQUANLY" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.THEM_THANHVIEN" class="control-label">Thêm thành viên</label>
+                        <select asp-for="item.THEM_THANHVIEN" name="THEM_THANHVIEN" multiple="multiple" class="form-control cboMultiNhanVien" style="width: 100%;">
+                            @foreach (var ql in Model.listNhanVien)
+                            {
+                                <option value="@ql.manhanvien">@ql.tennhanvien</option>
+                            }
+                        </select>
+                        @*<span asp-validation-for="item.MA_NGUOIQUANLY" class="text-danger"></span>*@
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.GHICHU" class="control-label">Ghi chú</label>
+                        <input type="text" asp-for="item.GHICHU" class="form-control" />
+                        <span asp-validation-for="item.GHICHU" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-check">
+                            <input asp-for="item.sudung" type="checkbox" class="form-check-input" checked>
+                            <label asp-for="item.sudung" class="form-check-label">Sử dụng</label>
+                            <span asp-validation-for="item.sudung" class="text-danger"></span>
+                        </div>*@
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

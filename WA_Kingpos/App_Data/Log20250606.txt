@@ -1,0 +1,8 @@
+﻿---------------------------
+DATE: 06/06/2025 14:25:45
+0
+DSHangHoa Post : 
+System.ArgumentException: Column 'TENNHANVIEN' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Baocao.BCBanHangDaiLy.IndexModel.OnPost(String submitButton, String id, String id1, String id3) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Baocao\BCBanHangDaiLy\Index.cshtml.cs:line 88

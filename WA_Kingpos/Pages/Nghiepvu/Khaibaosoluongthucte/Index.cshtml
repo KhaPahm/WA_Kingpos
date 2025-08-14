@@ -1,0 +1,171 @@
+﻿@page
+@model WA_Kingpos.Pages.Thuyentruong.IndexModel
+@{
+    ViewData["Title"] = "Khai báo số lượng thực tế trên tàu";
+    ViewData["Name"] = "bangkhaisoluongtrentau";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">TUYẾN</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="MATUYEN">Tuyến</label>
+                                <select asp-for="MATUYEN" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control select2bs4" style="width: 100%;">
+                                    <option value="0" selected disabled hidden>Chọn tuyến...</option>
+                                    @foreach (var item in Model.listitem_tuyen)
+                                    {
+                                        <option value="@item.ID_Trip">@item.Name_Trip</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MATUYEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MALICHTRINH">Giờ khởi hành</label>
+                                <select asp-for="MALICHTRINH" class="form-control select2bs4" style="width: 100%;">
+                                    <option value="" selected disabled hidden>Chọn giờ khởi hành...</option>
+                                    @foreach (var item in Model.listitem)
+                                    {
+                                        <option value="@item.ID">@item.Note</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MALICHTRINH" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-success card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">HÀNH KHÁCH</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="TE">Trẻ em</label>
+                                <input asp-for="TE" type="text" class="form-control" />
+                                <span asp-validation-for="TE" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CT">Cao tuổi</label>
+                                <input asp-for="CT" type="text" class="form-control" />
+                                <span asp-validation-for="CT" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="VIP">VIP</label>
+                                <input asp-for="VIP" type="text" class="form-control" />
+                                <span asp-validation-for="VIP" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NL">Người lớn</label>
+                                <input asp-for="NL" type="text" class="form-control" />
+                                <span asp-validation-for="NL" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-warning card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">XE</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="GM">Gắn máy</label>
+                                <input asp-for="GM" type="text" class="form-control" />
+                                <span asp-validation-for="GM" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>4-5 Chổ (Biển số xe)</label>
+                                <div class="row">
+                                    @for (int i = 0; i < 24; i++)
+                                    {
+                                        <div class="col-sm-4 col-md-2">
+                                            <input asp-for="OTO4C[i]" type="text" class="form-control" placeholder="Nhập BS @(@i+1)" />
+                                        </div>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label>7-9 Chổ (Biển số xe)</label>
+                                <div class="row">
+                                    @for (int i = 0; i < 24; i++)
+                                    {
+                                        <div class="col-sm-4 col-md-2">
+                                            <input asp-for="OTO7C[i]" type="text" class="form-control" placeholder="Nhập BS @(@i+1)" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>10-16 Chổ (Biển số xe)</label>
+                                <div class="row">
+                                    @for (int i = 0; i < 12; i++)
+                                    {
+                                        <div class="col-sm-4 col-md-2">
+                                            <input asp-for="OTO16C[i]" type="text" class="form-control" placeholder="Nhập BS @(@i+1)" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>17-25 Chổ (Biển số xe)</label>
+                                <div class="row">
+                                    @for (int i = 0; i < 6; i++)
+                                    {
+                                        <div class="col-sm-4 col-md-2">
+                                            <input asp-for="OTO25C[i]" type="text" class="form-control" placeholder="Nhập BS @(@i+1)" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>26-50 Chổ (Biển số xe)</label>
+                                <div class="row">
+                                    @for (int i = 0; i < 6; i++)
+                                    {
+                                        <div class="col-sm-4 col-md-2">
+                                            <input asp-for="OTO50C[i]" type="text" class="form-control" placeholder="Nhập BS @(@i+1)" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Xe tải (Biển số xe)</label>
+                                <div class="row">
+                                    @for (int i = 0; i < 24 ; i++)
+                                    {
+                                        <div class="col-sm-4 col-md-2">
+                                            <input asp-for="XT[i]" type="text" class="form-control" placeholder="Nhập BS @(@i+1)" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="btn1ReLoad" class="btn btn-success" hidden>ReLoad</button>
+                        <button type="submit" name="submitButton" value="btn2Create" class="btn btn-success">Lưu Khai Báo</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

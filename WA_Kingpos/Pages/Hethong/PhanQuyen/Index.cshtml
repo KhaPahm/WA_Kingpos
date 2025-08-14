@@ -1,0 +1,552 @@
+﻿@page
+@model WA_Kingpos.Pages.PhanQuyen.ConfigModel
+@{
+    ViewData["Title"] = "Phân Quyền";
+    ViewData["Name"] = "phanquyen";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="MANHOMQUYEN">Nhóm quyền</label>
+                        <select asp-for="MANHOMQUYEN" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control select2bs4" style="width: 100%;">
+                            <option value="0" selected disabled hidden>Chọn nhóm quyền...</option>
+                            @foreach (var item in Model.ListNhomquyen)
+                            {
+                                <option value="@item.ma_nhomquyen">@item.ten_nhomquyen</option>
+                            }
+                        </select>
+                        <span asp-validation-for="MANHOMQUYEN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Phân quyền</label>
+                        <table id="tablelite" class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th hidden>Nhóm</th>
+                                    <th>ID</th>
+                                    <th>Quyền</th>
+                                    <th>Toàn quyền</th>
+                                    <th>Xem</th>
+                                    <th>Thêm</th>
+                                    <th>Sửa</th>
+                                    <th>Xóa</th>
+                                    <th>In</th>
+                                    <th>Nhập</th>
+                                    <th>Xuất</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="10"><b>Nhóm : Hệ thống</b></td>
+                                </tr>
+                                @for (int i = 0; i < Model.ListPhanquyen.Count; i++)
+                                {
+                                    if (Model.ListPhanquyen[i].nhomquyen == "Hệ thống")
+                                    {
+                                        <tr>
+                                            <td hidden><input asp-for="ListPhanquyen[i].nhomquyen" type="text" hidden>@Model.ListPhanquyen[i].nhomquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].maquyen" type="text" hidden>@Model.ListPhanquyen[i].maquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].quyen" type="text" hidden>@Model.ListPhanquyen[i].quyen</td>
+                                            @if (@Model.ListPhanquyen[i].toanquyen.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xem.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].them.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].sua.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xoa.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].print.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].import.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].export.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox"></td>
+                                            }
+                                        </tr>
+                                    }
+                                    
+                                }
+
+                                <tr>
+                                    <td colspan="10"><b>Nhóm : Cài đặt</b></td>
+                                </tr>
+                                @for (int i = 0; i < Model.ListPhanquyen.Count; i++)
+                                {
+                                    if (Model.ListPhanquyen[i].nhomquyen == "Cài đặt")
+                                    {
+                                        <tr>
+                                            <td hidden><input asp-for="ListPhanquyen[i].nhomquyen" type="text" hidden>@Model.ListPhanquyen[i].nhomquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].maquyen" type="text" hidden>@Model.ListPhanquyen[i].maquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].quyen" type="text" hidden>@Model.ListPhanquyen[i].quyen</td>
+                                            @if (@Model.ListPhanquyen[i].toanquyen.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xem.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].them.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].sua.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xoa.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].print.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].import.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].export.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox"></td>
+                                            }
+                                        </tr>
+                                    }
+
+                                }
+
+                                <tr>
+                                    <td colspan="10"><b>Nhóm : Cấu hình</b></td>
+                                </tr>
+                                @for (int i = 0; i < Model.ListPhanquyen.Count; i++)
+                                {
+                                    if (Model.ListPhanquyen[i].nhomquyen == "Cấu hình")
+                                    {
+                                        <tr>
+                                            <td hidden><input asp-for="ListPhanquyen[i].nhomquyen" type="text" hidden>@Model.ListPhanquyen[i].nhomquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].maquyen" type="text" hidden>@Model.ListPhanquyen[i].maquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].quyen" type="text" hidden>@Model.ListPhanquyen[i].quyen</td>
+                                            @if (@Model.ListPhanquyen[i].toanquyen.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xem.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].them.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].sua.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xoa.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].print.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].import.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].export.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox"></td>
+                                            }
+                                        </tr>
+                                    }
+
+                                }
+
+                                <tr>
+                                    <td colspan="10"><b>Nhóm : Nghiệp vụ</b></td>
+                                </tr>
+                                @for (int i = 0; i < Model.ListPhanquyen.Count; i++)
+                                {
+                                    if (Model.ListPhanquyen[i].nhomquyen == "Nghiệp vụ")
+                                    {
+                                        <tr>
+                                            <td hidden><input asp-for="ListPhanquyen[i].nhomquyen" type="text" hidden>@Model.ListPhanquyen[i].nhomquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].maquyen" type="text" hidden>@Model.ListPhanquyen[i].maquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].quyen" type="text" hidden>@Model.ListPhanquyen[i].quyen</td>
+                                            @if (@Model.ListPhanquyen[i].toanquyen.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xem.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].them.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].sua.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xoa.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].print.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].import.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].export.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox"></td>
+                                            }
+                                        </tr>
+                                    }
+
+                                }
+
+                                <tr>
+                                    <td colspan="10"><b>Nhóm : Báo cáo</b></td>
+                                </tr>
+                                @for (int i = 0; i < Model.ListPhanquyen.Count; i++)
+                                {
+                                    if (Model.ListPhanquyen[i].nhomquyen == "Báo cáo")
+                                    {
+                                        <tr>
+                                            <td hidden><input asp-for="ListPhanquyen[i].nhomquyen" type="text" hidden>@Model.ListPhanquyen[i].nhomquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].maquyen" type="text" hidden>@Model.ListPhanquyen[i].maquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].quyen" type="text" hidden>@Model.ListPhanquyen[i].quyen</td>
+                                            @if (@Model.ListPhanquyen[i].toanquyen.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xem.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].them.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].sua.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xoa.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].print.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].import.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].export.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox"></td>
+                                            }
+                                        </tr>
+                                    }
+
+                                }
+
+                                <tr>
+                                    <td colspan="10"><b>Nhóm : Khác</b></td>
+                                </tr>
+                                @for (int i = 0; i < Model.ListPhanquyen.Count; i++)
+                                {
+                                    if (Model.ListPhanquyen[i].nhomquyen != "Hệ thống" && Model.ListPhanquyen[i].nhomquyen != "Cài đặt" && Model.ListPhanquyen[i].nhomquyen != "Cấu hình" && Model.ListPhanquyen[i].nhomquyen != "Nghiệp vụ" && Model.ListPhanquyen[i].nhomquyen != "Báo cáo")
+                                    {
+                                        <tr>
+                                            <td hidden><input asp-for="ListPhanquyen[i].nhomquyen" type="text" hidden>@Model.ListPhanquyen[i].nhomquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].maquyen" type="text" hidden>@Model.ListPhanquyen[i].maquyen</td>
+                                            <td><input asp-for="ListPhanquyen[i].quyen" type="text" hidden>@Model.ListPhanquyen[i].quyen</td>
+                                            @if (@Model.ListPhanquyen[i].toanquyen.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].toanquyen" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xem.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xem" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].them.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].them" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].sua.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].sua" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].xoa.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].xoa" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].print.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].print" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].import.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].import" type="checkbox"></td>
+                                            }
+                                            @if (@Model.ListPhanquyen[i].export.ToString().ToLower() == "true")
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox" checked></td>
+                                            }
+                                            else
+                                            {
+                                                <td><input asp-for="ListPhanquyen[i].export" type="checkbox"></td>
+                                            }
+                                        </tr>
+                                    }
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="btn1ReLoad" class="btn btn-success" hidden>ReLoad</button>
+                        <button type="submit" name="submitButton" value="btn2Save" class="btn btn-success">Lưu</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

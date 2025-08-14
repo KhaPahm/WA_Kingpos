@@ -1,0 +1,235 @@
+﻿@page
+@model WA_Kingpos.Pages.DangKyKhuonMatZk_V2.IndexModel
+@{
+    ViewData["Title"] = "Danh sách khách hàng đăng ký khuôn mặt";
+    ViewData["Name"] = "dangkykhuonmatzk_v2";
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+                <form method="post" id="form1">
+                    <table id="tablefull" class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Mã khách hàng</th>
+                                <th>Tên khách hàng</th>
+                                <th>Ngày sinh</th>
+                                <th>Giới tính</th>
+                                <th>Địa chỉ</th>
+                                <th>Điện thoại</th>
+                                <th>CCCD</th>
+                                <th>Quốc tịch</th>
+                                <th>Email</th>
+                                <th>Ngày tạo</th>
+                                <th>Nhân viên tạo</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.listitem)
+                            {
+                                <tr>
+                                    <td>@item.MA_KH</td>
+                                    <td>@item.TEN</td>
+                                    <td>@item.NGAYSINH</td>
+                                    <td>@item.GIOITINH</td>
+                                    <td>@item.DIACHI</td>
+                                    <td>@item.DIENTHOAI</td>
+                                    <td>@item.CCCD</td>
+                                    <td>@item.QUOCTICH</td>
+                                    <td>@item.EMAIL</td>
+                                    <td>@item.NGAYTAO.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>@item.TENNHANVIEN</td>
+                                    <td>
+                                        @* <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.MA_KH">Xem</a> *@
+                                        @* <button type="button" class="btn btn-info btn-sm btn-view" data-url="@Url.Page("_KS_KhachHang", new { id = item.MA_KH })">Xem</button> *@ @* data-toggle="modal" data-target="#myModal" *@
+                                        <a asp-page="./_KS_KhachHang"
+                                           asp-route-id="@item.MA_KH"
+                                           asp-route-mode="view"
+                                           class="btn btn-info btn-sm btn-open-modal">
+                                            Xem
+                                        </a>
+                                        <a asp-page="./_KS_KhachHang"
+                                           asp-route-id="@item.MA_KH"
+                                           asp-route-mode="edit"
+                                           class="btn btn-warning btn-sm btn-open-modal">
+                                            Sửa
+                                        </a>
+                                        @if (Model.bXoa)
+                                        {
+                                            <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.MA_KH">Xóa</a>
+                                        }
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Config" asp-route-id="@item.MA_KH">Cấu hình</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @if (Model.bThem)
+                {
+                    <a class="btn btn-primary btn-open-modal" role="button" asp-page="./_KS_KhachHang" asp-route-mode="create">Thêm mới</a>
+                }
+            </div>
+
+
+            <!-- Bootstrap modal -->
+            <div class="modal fade" id="customerModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header py-2">
+                            <h5 class="modal-title" id="modalTitle">Thông tin khách hàng</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body"><!-- Will load via AJAX --></div>
+                        <div class="modal-footer py-2">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary d-none" id="btnSave">Lưu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+@section Scripts {
+    <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).on('click', '.btn-open-modal', function (e) {
+            e.preventDefault();
+            var url = this.href; // reliable
+            var $modal = $('#customerModal');
+            var $body  = $modal.find('.modal-body');
+            var $title = $modal.find('#modalTitle');
+            var $save  = $('#btnSave');
+
+                    $modal.find('.modal-body').html('<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only">Loading...</span></div>');
+            $modal.modal('show');
+
+            $modal.find('.modal-body').load(url, function (response, status) {
+                if (status === 'error') {
+                    $(this).html('<div class="text-danger p-3">Không tải được thông tin.</div>');
+                }
+
+                 // Read meta flags from loaded fragment
+                var meta = $body.find('[data-modal-title],[data-can-save]');
+                var title = meta.data('modal-title') || 'Thông tin';
+                var canSave = String(meta.data('can-save')).toUpperCase() === 'TRUE';
+
+
+                $title.text(title);
+                $save.toggleClass('d-none', !canSave);
+            });
+        });
+
+        $('#btnSave').on('click', function () {
+            var $modal = $('#customerModal');
+            var $form = $modal.find('#customerForm');
+            if ($form.length === 0) return;
+
+            $.ajax({
+                url: $form.attr('action') || window.location.href + '?handler=Save',
+                method: 'POST',
+                data: $form.serialize(),
+                success: function (json) {
+                    if (json && json.ok) {
+                        $modal.modal('hide');
+                        // Optional: reload the list or update row inline
+                        location.reload();
+                    } else {
+                        // If server returned HTML (validation errors), replace body
+                        $modal.find('.modal-body').html(json);
+                    }
+                },
+                error: function (xhr) {
+                    // If validation failed and Page() returned HTML, xhr.responseText is HTML
+                    var ct = xhr.getResponseHeader('Content-Type') || '';
+                    if (ct.indexOf('text/html') >= 0) {
+                        $modal.find('.modal-body').html(xhr.responseText);
+                    } else {
+                        alert('Lỗi khi lưu.');
+                    }
+                }
+            });
+            
+        });
+
+        //-------------------- Xử lý ảnh
+        function resizeImageTo300x300(file, callback) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = new Image();
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    const size = 300;
+
+                    canvas.width = size;
+                    canvas.height = size;
+
+                    // Fill with white background (optional, for JPG)
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillRect(0, 0, size, size);
+
+                    // Draw image scaled to fill 300x300
+                    ctx.drawImage(img, 0, 0, size, size);
+
+                    const resizedDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+                    callback(resizedDataUrl);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handleImageInput(input) {
+
+            if (input.files && input.files[0]) {
+                resizeImageTo300x300(input.files[0], function (base64) {
+                    var $photoReview = $('#photoReview');
+                    $photoReview.html('');
+                    var newPhoto = document.createElement('img');
+                    newPhoto.alt = "Customer photo";
+                    newPhoto.className = "img-thumbnail";
+                    newPhoto.style = "max-width:250px; max-height:250px; min-width:150px; min-height:150px";
+                    newPhoto.src = base64;
+                    // console.log(base64);
+                    console.log($photoReview);
+                    $photoReview.append(newPhoto);
+                    document.getElementById('photoBase64').value = base64.split(',')[1]; // store without prefix
+                });
+            }
+        }
+
+        function fileInputChange(element) {
+            handleImageInput(element);
+        }
+
+    </script>
+}

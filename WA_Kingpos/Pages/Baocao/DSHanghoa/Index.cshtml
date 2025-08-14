@@ -1,0 +1,229 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.DSHanghoa.IndexModel
+@{
+    ViewData["Title"] = "Báo Cáo Danh Sách Hàng Hóa";
+    ViewData["Name"] = "danhsachhanghoa";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!-- tonkho -->
+                            <div class="form-group">
+                                <label>Tồn kho</label>
+                                <select asp-for="sTonKho" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listtonkho)
+                                    {
+                                        if (Model.Listtonkho.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sTonKho" class="text-danger"></span>
+                                <div class="form-group">
+                                    @for (var i = 0; i < Model.Listtonkho.Count; i++)
+                                    {
+                                        <input type="hidden" asp-for="@Model.Listtonkho[i].MA" />
+                                        <input type="hidden" asp-for="@Model.Listtonkho[i].TEN" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <!-- kinhdoanh -->
+                            <div class="form-group">
+                                <label>Kinh doanh</label>
+                                <select asp-for="sKinhDoanh" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listkinhdoanh)
+                                    {
+                                        if (Model.Listkinhdoanh.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sKinhDoanh" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listkinhdoanh.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listkinhdoanh[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listkinhdoanh[i].TEN" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <!-- combo -->
+                            <div class="form-group">
+                                <label>Combo</label>
+                                <select asp-for="sCombo" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listcombo)
+                                    {
+                                        if (Model.Listcombo.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sCombo" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listcombo.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listcombo[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listcombo[i].TEN" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- nganh hang -->
+                            <div class="form-group">
+                                <label>Ngành hàng</label>
+                                <select asp-for="sNganhHang" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listnganhhang)
+                                    {
+                                        if (Model.Listnganhhang.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sNganhHang" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listnganhhang.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listnganhhang[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listnganhhang[i].TEN" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- nhom hang -->
+                            <div class="form-group">
+                                <label>Nhóm hàng</label>
+                                <select asp-for="sNhomHang" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listnhomhang)
+                                    {
+                                        if (Model.Listnhomhang.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sNhomHang" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listnhomhang.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listnhomhang[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listnhomhang[i].TEN" />
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                        <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất PDF</button>
+                        <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                    </div>
+
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">Mã hàng hóa</th>
+                            <th style="text-align:center ; vertical-align:middle">Mã nội bộ</th>
+                            <th style="text-align:center ; vertical-align:middle">Tên hàng hóa</th>
+                            <th style="text-align:center ; vertical-align:middle">Nhóm hàng</th>
+                            <th style="text-align:center ; vertical-align:middle">ĐVT</th>
+                            <th style="text-align:center ; vertical-align:middle">Thuế</th>
+                            <th style="text-align:center ; vertical-align:middle">Giá nhập</th>
+                            <th style="text-align:center ; vertical-align:middle">Giá bán 1</th>
+                            <th style="text-align:center ; vertical-align:middle">Giá bán 2</th>
+                            <th style="text-align:center ; vertical-align:middle">Tồn kho</th>
+                            <th style="text-align:center ; vertical-align:middle">Thực đơn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.MA</td>
+                                <td>@item.ID_HANGHOA</td>
+                                <td>@item.TEN</td>
+                                <td>@item.TEN_NHOMHANG</td>
+                                <td>@item.TEN_DONVITINH</td>
+                                <td>@item.THUE</td>
+                                <td>@item.GIANHAP</td>
+                                <td>@item.GIABAN1</td>
+                                <td>@item.GIABAN2</td>
+                                @if (@item.TONKHO.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.TONKHO</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.TONKHO</td>
+                                }
+                                @if (@item.THUCDON.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.THUCDON</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.THUCDON</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

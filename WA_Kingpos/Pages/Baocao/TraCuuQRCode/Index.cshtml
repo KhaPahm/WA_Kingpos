@@ -1,0 +1,114 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.TraCuuQRCode.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition">
+    <div class="row">
+        <div class="col-12">
+            @if (@Model.lstQr.Count()==0)
+            {
+                <div class="card-header" style="background-color:mediumaquamarine">
+                    <h3 class="text-center" style="margin-bottom:0px"><b>Thông Tin Vé Vào Cổng</b></h3>                       
+                </div>
+                <div class="card-body align-items-center">
+                    <b class="text-center" style="font-size:22px">Mã QR không tồn tại</b>
+                </div>
+                <div class="card-footer">
+                    <div class="row justify-content-center">
+                        <b><i>Chúc bạn tham quan vui vẻ!!!</i></b>
+                    </div>
+                </div>
+            }else
+            {
+                <div class="card card-primary">
+                    <div class="row justify-content-center">
+                        <img src="@Model.lstQr.Select(x => x.Logo).FirstOrDefault()" alt="Hinhanh" width="150" height="150" />
+                    </div>
+                    <div class="container">
+                        <div class=" text-center">
+                            <b style="font-size:18px">@Model.lstQr.Select(x => x.TenCuaHang).FirstOrDefault()</b>
+                            <p style="margin-bottom:0px">@Model.lstQr.Select(x => x.Header).FirstOrDefault().Split("Hotline")[0]</p>
+                            <p> Hotline @Model.lstQr.Select(x => x.Header).FirstOrDefault().Split("Hotline")[1] </p>
+                        </div>
+                    </div>
+                    <div style="background-color:mediumaquamarine">
+                            <h3 class="text-center" style="margin-bottom:0px"><b>@Model.lstQr.Select(x => x.TEXT7).FirstOrDefault()</b></h3>
+                        <h5 class="text-center" style="margin-bottom:0px"><b>Từ @Model.lstQr.Select(x => x.TUNGAY).FirstOrDefault().ToString("dd-MM-yyyy") đến  @Model.lstQr.Select(x => x.DENNGAY).FirstOrDefault().ToString("dd-MM-yyyy")</b></h5>
+                        <h5 class="text-center" style="margin-bottom:0px"><b>Đã dùng @Model.veDaDung/@Model.lstQr.Count</b></h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table ">
+                            @foreach (var item in Model.lstQr)
+                            {
+                                <tr style="padding-bottom:0px">
+                                    <td class="border-0" style="padding-bottom:0px">
+                                        @if (@item.SuDung.ToString().Trim() != null && @item.SuDung.ToString().Equals("1"))
+                                        {
+                                            <table class="table table-bordered" style="margin-bottom:0px">
+                                                <tr>
+                                                    <td style="border-color:red;">
+                                                        <b style="font-size:22px">
+                                                            @{
+                                                                @item.STT
+                                                            }. @item.TenHangHoa
+                                                        </b>
+                                                        <br><b>Cổng: @item.TenCong</b>
+                                                        <br /><b><i class="text-red">SD: @item.NgaySuDung</i></b>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        }
+                                        else
+                                        {
+                                            <table class="table table-bordered" style="margin-bottom:0px">
+                                                <tr>
+                                                    <td style="border-color:green; ">
+                                                        <b style="font-size:22px">
+                                                            @{
+                                                                @item.STT
+                                                            }. @item.TenHangHoa
+                                                        </b>
+                                                        <br><b>Cổng: @item.TenCong</b>
+                                                        <br><b><i class="text-green">Chưa sử dụng</i></b>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="row justify-content-center">
+                            <b><i> <p>@Model.lstQr.Select(x => x.Footer).FirstOrDefault()</p></i></b>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            
+
+
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿---------------------------
+DATE: 19/07/2025 10:16:40
+Server=kingproserver.ddns.net,444;database=20062025_suoitien;UID=kingpos;PWD=Kingpro@2024119;Pooling=False;
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG_DAILY @TUNGAY='20250701 00:00', @DENNGAY='20250701 23:00',@DIEUKIEN='18',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): The multi-part identifier "ct.MA_HOADON" could not be bound.
+The multi-part identifier "ct.NGAYTAO" could not be bound.
+The multi-part identifier "ct.MA_HOADON" could not be bound.
+The multi-part identifier "ct.NGAYTAO" could not be bound.
+  
+		SELECT ct.MA_HOADON, ct.NGAYTAO, ct.MA_HANGHOA,hh.TEN_HANGHOA,TEN_DONVITINH, 'NV' AS TYPE, (SELECT TENNHANVIEN FROM DM_NHANVIEN WHERE MANHANVIEN = '18') AS NAMETYPE,hh.MAVACH,  
+		SUM(CAST (CT_MONEYVISA AS BIGINT)) AS CT_MONEYVISA ,SUM(CT_MONEYINNERCARD) AS CT_MONEYINNERCARD,SUM(CT_MONEYVOUCHER) AS CT_MONEYVOUCHER, SUM(CT_MONEYCASH) AS CT_MONEYCASH ,SUM(CAST( CT_MONEYVNPAY AS BIGINT)) AS CT_MONEYVNPAY,
+		SUM(ct.SOLUONG) as SOLUONG , ct.GIABAN AS DONGIA, SUM((ct.SOLUONG * ct.GIABAN)) as THANHTIEN,ISNULL(ct.THUE,0) AS THUE , ISNULL(SUM((ct.GIABAN - (ct.GIABAN/(1 + ISNULL(ct.THUE,0)/100))) * ct.SOLUONG),0) AS TIENTHUE,  
+		ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*(PHIPHUCVU*100/(1+TONGTIEN+GIAMGIA-PHIPHUCVU))/100,0) AS TIENPHUTHU,  
+	 
+		CASE WHEN GIAMGIA<=100 THEN (ISNULL((SUM(ct.SOLUONG * ct.GIABAN) - (ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*ct.CHIETKHAU/100,0))) * GIAMGIA/100, 0))  
+		ELSE (ISNULL((SUM(ct.SOLUONG * ct.GIABAN) - (ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*ct.CHIETKHAU/100,0)))*(GIAMGIA*100/(1+TONGTIEN+GIAMGIA-PHIPHUCVU))/100,0)) END AS TIENCHIETKHAU,  
+	Case when CT.CHIETKHAU<=100 THEN (ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*ct.CHIETKHAU/100,0)) else ISNULL(SUM(CT.CHIETKHAU*CT.SOLUONG),0)  end AS TIENCHIETKHAU1,
+ 
+		Case when CT.CHIETKHAU<=100 THEN  SUM((ct.SOLUONG * ct.GIABAN))-(ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*ct.CHIETKHAU/100,0)) else SUM((ct.SOLUONG * ct.GIABAN))-ISNULL(SUM(CT.CHIETKHAU*CT.SOLUONG),0) end as TONGCONG    INTO #TEMP  
+		FROM #CT_HOADON_TEMP ct INNER JOIN HOADON  hd ON ct.MA_HOADON = hd.MA_HOADON  
+		LEFT JOIN HANGHOA hh ON ct.MA_HANGHOA = hh.MA_HANGHOA  
+		left join DONVITINH d on d.MA_DONVITINH= hh.MA_DONVITINH   
+		WHERE ISNULL(hd.GIORA,hd.NGAYTAO) >= '20250701 00:00' AND ISNULL(hd.GIORA,hd.NGAYTAO) <= '20250701 23:00'  
+		AND hd.NHANVIEN_RABILL = '18'  
+		AND ISPAYMENT = 1  
+		GROUP BY ct.MA_HOADON, ct.NGAYTAO, ct.MA_HANGHOA,hh.TEN_HANGHOA, TEN_DONVITINH, ct.GIABAN,ISNULL(ct.THUE,0),GIAMGIA,PHIPHUCVU,hd.TONGTIEN, hh.MAVACH ,CT.CHIETKHAU
+		ORDER BY ct.MA_HANGHOA  
+	   
+		SELECT ct.MA_HOADON, ct.NGAYTAO, MA_HANGHOA,TEN_HANGHOA,TEN_DONVITINH,TYPE,'18' AS IDTYPE,NAMETYPE,SUM(SOLUONG)AS SOLUONG,DONGIA,SUM(THANHTIEN) AS THANHTIEN,  
+		 THUE,SUM(TIENTHUE)AS TIENTHUE,SUM(TIENPHUTHU)AS TIENPHUTHU,SUM(TIENCHIETKHAU) + SUM(TIENCHIETKHAU1) AS TIENCHIETKHAU,SUM(THANHTIEN - TIENCHIETKHAU - TIENCHIETKHAU1)AS TONGCONG, MAVACH  ,
+		 SUM(CAST (CT_MONEYVISA AS BIGINT)) AS CT_MONEYVISA ,SUM(CT_MONEYINNERCARD) AS CT_MONEYINNERCARD,SUM(CT_MONEYVOUCHER) AS CT_MONEYVOUCHER, SUM(CT_MONEYCASH) AS CT_MONEYCASH,SUM(CAST( CT_MONEYVNPAY AS BIGINT)) AS CT_MONEYVNPAY,SUM(SOLUONG) AS SLBAN, 0 AS SLHUY 
+		FROM #TEMP  
+		GROUP BY ct.MA_HOADON, ct.NGAYTAO, MA_HANGHOA,TEN_HANGHOA,TEN_DONVITINH,TYPE,NAMETYPE,DONGIA,THUE,TIENPHUTHU,TIENCHIETKHAU, MAVACH
+		DROP TABLE #TEMP
+ 
+ 
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 156
+ClientConnectionId:157ce270-6dcd-4393-9d92-0f481743b3a6
+Error Number:4104,State:1,Class:16
+---------------------------
+DATE: 19/07/2025 10:16:55
+Server=kingproserver.ddns.net,444;database=20062025_suoitien;UID=kingpos;PWD=Kingpro@2024119;Pooling=False;
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC SP_BAOCAOBANHANG_DAILY @TUNGAY='20250701 00:00', @DENNGAY='20250701 23:00',@DIEUKIEN='18',@TYPE='NV',@USERLOGIN ='18'-System.Data.SqlClient.SqlException (0x80131904): The multi-part identifier "ct.MA_HOADON" could not be bound.
+The multi-part identifier "ct.NGAYTAO" could not be bound.
+The multi-part identifier "ct.MA_HOADON" could not be bound.
+The multi-part identifier "ct.NGAYTAO" could not be bound.
+  
+		SELECT ct.MA_HOADON, ct.NGAYTAO, ct.MA_HANGHOA,hh.TEN_HANGHOA,TEN_DONVITINH, 'NV' AS TYPE, (SELECT TENNHANVIEN FROM DM_NHANVIEN WHERE MANHANVIEN = '18') AS NAMETYPE,hh.MAVACH,  
+		SUM(CAST (CT_MONEYVISA AS BIGINT)) AS CT_MONEYVISA ,SUM(CT_MONEYINNERCARD) AS CT_MONEYINNERCARD,SUM(CT_MONEYVOUCHER) AS CT_MONEYVOUCHER, SUM(CT_MONEYCASH) AS CT_MONEYCASH ,SUM(CAST( CT_MONEYVNPAY AS BIGINT)) AS CT_MONEYVNPAY,
+		SUM(ct.SOLUONG) as SOLUONG , ct.GIABAN AS DONGIA, SUM((ct.SOLUONG * ct.GIABAN)) as THANHTIEN,ISNULL(ct.THUE,0) AS THUE , ISNULL(SUM((ct.GIABAN - (ct.GIABAN/(1 + ISNULL(ct.THUE,0)/100))) * ct.SOLUONG),0) AS TIENTHUE,  
+		ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*(PHIPHUCVU*100/(1+TONGTIEN+GIAMGIA-PHIPHUCVU))/100,0) AS TIENPHUTHU,  
+	 
+		CASE WHEN GIAMGIA<=100 THEN (ISNULL((SUM(ct.SOLUONG * ct.GIABAN) - (ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*ct.CHIETKHAU/100,0))) * GIAMGIA/100, 0))  
+		ELSE (ISNULL((SUM(ct.SOLUONG * ct.GIABAN) - (ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*ct.CHIETKHAU/100,0)))*(GIAMGIA*100/(1+TONGTIEN+GIAMGIA-PHIPHUCVU))/100,0)) END AS TIENCHIETKHAU,  
+	Case when CT.CHIETKHAU<=100 THEN (ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*ct.CHIETKHAU/100,0)) else ISNULL(SUM(CT.CHIETKHAU*CT.SOLUONG),0)  end AS TIENCHIETKHAU1,
+ 
+		Case when CT.CHIETKHAU<=100 THEN  SUM((ct.SOLUONG * ct.GIABAN))-(ISNULL(SUM(ct.SOLUONG * ct.GIABAN)*ct.CHIETKHAU/100,0)) else SUM((ct.SOLUONG * ct.GIABAN))-ISNULL(SUM(CT.CHIETKHAU*CT.SOLUONG),0) end as TONGCONG    INTO #TEMP  
+		FROM #CT_HOADON_TEMP ct INNER JOIN HOADON  hd ON ct.MA_HOADON = hd.MA_HOADON  
+		LEFT JOIN HANGHOA hh ON ct.MA_HANGHOA = hh.MA_HANGHOA  
+		left join DONVITINH d on d.MA_DONVITINH= hh.MA_DONVITINH   
+		WHERE ISNULL(hd.GIORA,hd.NGAYTAO) >= '20250701 00:00' AND ISNULL(hd.GIORA,hd.NGAYTAO) <= '20250701 23:00'  
+		AND hd.NHANVIEN_RABILL = '18'  
+		AND ISPAYMENT = 1  
+		GROUP BY ct.MA_HOADON, ct.NGAYTAO, ct.MA_HANGHOA,hh.TEN_HANGHOA, TEN_DONVITINH, ct.GIABAN,ISNULL(ct.THUE,0),GIAMGIA,PHIPHUCVU,hd.TONGTIEN, hh.MAVACH ,CT.CHIETKHAU
+		ORDER BY ct.MA_HANGHOA  
+	   
+		SELECT ct.MA_HOADON, ct.NGAYTAO, MA_HANGHOA,TEN_HANGHOA,TEN_DONVITINH,TYPE,'18' AS IDTYPE,NAMETYPE,SUM(SOLUONG)AS SOLUONG,DONGIA,SUM(THANHTIEN) AS THANHTIEN,  
+		 THUE,SUM(TIENTHUE)AS TIENTHUE,SUM(TIENPHUTHU)AS TIENPHUTHU,SUM(TIENCHIETKHAU) + SUM(TIENCHIETKHAU1) AS TIENCHIETKHAU,SUM(THANHTIEN - TIENCHIETKHAU - TIENCHIETKHAU1)AS TONGCONG, MAVACH  ,
+		 SUM(CAST (CT_MONEYVISA AS BIGINT)) AS CT_MONEYVISA ,SUM(CT_MONEYINNERCARD) AS CT_MONEYINNERCARD,SUM(CT_MONEYVOUCHER) AS CT_MONEYVOUCHER, SUM(CT_MONEYCASH) AS CT_MONEYCASH,SUM(CAST( CT_MONEYVNPAY AS BIGINT)) AS CT_MONEYVNPAY,SUM(SOLUONG) AS SLBAN, 0 AS SLHUY 
+		FROM #TEMP  
+		GROUP BY ct.MA_HOADON, ct.NGAYTAO, MA_HANGHOA,TEN_HANGHOA,TEN_DONVITINH,TYPE,NAMETYPE,DONGIA,THUE,TIENPHUTHU,TIENCHIETKHAU, MAVACH
+		DROP TABLE #TEMP
+ 
+ 
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 156
+ClientConnectionId:12a78035-a8d9-4566-8324-4cf75c0221bb
+Error Number:4104,State:1,Class:16

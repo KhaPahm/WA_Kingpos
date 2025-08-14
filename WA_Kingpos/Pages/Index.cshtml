@@ -1,0 +1,856 @@
+﻿@page
+@using WA_Kingpos.Data;
+@model IndexModel
+@{
+    ViewData["Title"] = "Trang Chủ";
+}
+<div class="row">
+    <div class="col-12">
+        <br>
+        <!-- truy cap nhanh box -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Truy cập nhanh</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @if (cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                    {
+                        @if (
+                       cls_UserManagement.AllowView("1", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("11", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("19", HttpContext.Session.GetString("Permission"))
+                       )
+                        {
+                            <div class="col-md-3">
+                                <div class="card card-primary card-outline">
+                                    <div class="card-body box-profile">
+                                        <h3 class="profile-username text-center">Nhân viên - Tài khoản</h3>
+                                        @if (cls_UserManagement.AllowView("1", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-warning btn-block" role="button" asp-page="/Hethong/Doimatkhau/Index">Đổi mật khẩu</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("11", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Hethong/Nhanvien/Create">Tạo nhân viên</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("19", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-info btn-block" role="button" asp-page="/Hethong/TaiKhoan/Create">Tạo tài khoản</a>
+                                            <br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (
+                       cls_UserManagement.AllowAdd("4", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("8", HttpContext.Session.GetString("Permission"))
+                       )
+                        {
+                            <div class="col-md-3">
+                                <div class="card card-success card-outline">
+                                    <div class="card-body box-profile">
+                                        <h3 class="profile-username text-center">Cửa hàng - Kho - Quầy</h3>
+                                        @if (cls_UserManagement.AllowAdd("4", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-info btn-block" role="button" asp-page="/Caidat/CuaHang/Create">Thêm cửa hàng</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("4", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Caidat/Kho/Create">Thêm kho</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("4", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-warning btn-block" role="button" asp-page="/Caidat/Quay/Create">Thêm quầy</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("8", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Caidat/Bep/Create">Thêm bếp</a>
+                                            <br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (
+                       cls_UserManagement.AllowAdd("6", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("7", HttpContext.Session.GetString("Permission"))
+                       )
+                        {
+                            <div class="col-md-3">
+                                <div class="card card-warning card-outline">
+                                    <div class="card-body box-profile">
+                                        <h3 class="profile-username text-center">Nhóm hàng - Hàng hóa</h3>
+                                        @if (cls_UserManagement.AllowAdd("6", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Caidat/Nhomhang/Create">Thêm nhóm hàng</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("6", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Caidat/Hanghoa/Create">Thêm Hàng hóa</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("7", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-warning btn-block" role="button" asp-page="/Caidat/Donvitinh/Create">Thêm đơn vị tính</a>
+                                            <br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (
+                       cls_UserManagement.AllowAdd("23120801", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("23120802", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("14102301", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("14102310", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("14102311", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("14102304", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("14102305", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("14102302", HttpContext.Session.GetString("Permission"))
+                       )
+                        {
+                            <div class="col-md-3">
+                                <div class="card card-danger card-outline">
+                                    <div class="card-body box-profile">
+                                        <h3 class="profile-username text-center">Nghiệp vụ</h3>
+                                        @if (cls_UserManagement.AllowAdd("23120801", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Caidat/KhachHangFina/Create">Thêm khách hàng</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("23120802", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-info btn-block" role="button" asp-page="/Caidat/TaiXeFina/Create">Thêm tài xế</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("14102301", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Nghiepvu/PhieuDatHangFina/Index">Thêm đơn đặt hàng</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("14102302", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-warning btn-block" role="button" asp-page="/Nghiepvu/DuyetPhieuDatHangFina/Index">Duyệt đơn đặt hàng</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("14102310", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-secondary btn-block" role="button" asp-page="/Nghiepvu/PhieuDatXeFina/Index">Thêm đơn đặt xe</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("14102311", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-danger btn-block" role="button" asp-page="/Nghiepvu/DuyetPhieuDatXeFina/Index">Duyệt đơn đặt xe</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("14102304", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Nghiepvu/ThanhToanCongNoFina/Index">Thanh toán công nợ</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("14102305", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Nghiepvu/DuyetCongNoFina/Index">Duyệt công nợ</a>
+                                            <br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                        @if (
+                       cls_UserManagement.AllowAdd("28", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("29", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("23120905", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("23120906", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("25050601", HttpContext.Session.GetString("Permission"))
+                       )
+                        {
+                            <div class="col-md-3">
+                                <div class="card card-info card-outline">
+                                    <div class="card-body box-profile">
+                                        <h3 class="profile-username text-center">Báo cáo</h3>
+                                        @if (cls_UserManagement.AllowAdd("28", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Baocao/DSHoaDon/Index">Danh sách hóa đơn</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("29", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Baocao/BCBanHang/Index">Báo cáo bán hàng</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("25050601", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Baocao/BCBanHangDaiLy/Index">Báo cáo bán hàng đại lý</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("23120905", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Baocao/DoanhSoFina/Index">Doanh số bán hàng</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("23120906", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Baocao/BangLuongFina/Index">Bảng lương nhân viên</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("28", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Baocao/DashboardDoanhThu/Index">Dashboard doanh thu</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("25030701", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Baocao/BCDoanhSoNhanVien/Index">Doanh số nhân viên</a>
+                                            <br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+
+
+                    @if (cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                    {
+                        @if (
+                       cls_UserManagement.AllowView("1", HttpContext.Session.GetString("Permission"))
+                       )
+                        {
+                            <div class="col-md-3">
+                                <div class="card card-primary card-outline">
+                                    <div class="card-body box-profile">
+                                        <h3 class="profile-username text-center">Nhân viên - Tài khoản</h3>
+                                        @if (cls_UserManagement.AllowView("1", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                        {
+                                            <a class="btn btn-warning btn-block" role="button" asp-page="/Hethong/Doimatkhau/Index">Đổi mật khẩu</a>
+                                            <br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (
+                       cls_UserManagement.AllowAdd("2023112201", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("2023121301", HttpContext.Session.GetString("Permission")) ||
+                       cls_UserManagement.AllowAdd("24030608", HttpContext.Session.GetString("Permission"))
+                       )
+                        {
+                            <div class="col-md-3">
+                                <div class="card card-danger card-outline">
+                                    <div class="card-body box-profile">
+                                        <h3 class="profile-username text-center">Nghiệp vụ</h3>
+                                        @if (cls_UserManagement.AllowAdd("2023112201", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Nghiepvu/Khaibaosoluongthucte/Index">Khai báo số lượng thực tế trên tàu</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("2023121301", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Nghiepvu/KhaibaosoluongthucteQC/Index">Khai báo số lượng thực tế trên tàu</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowAdd("24030608", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Nghiepvu/Khaibaonhienlieu/Index">Khai báo nhiên liệu thực tế</a>
+                                            <br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (
+                       cls_UserManagement.AllowView("38", HttpContext.Session.GetString("Permission"))
+                       )
+                        {
+                            <div class="col-md-3">
+                                <div class="card card-warning card-outline">
+                                    <div class="card-body box-profile">
+                                        <h3 class="profile-username text-center">Báo cáo</h3>
+                                        @if (cls_UserManagement.AllowView("38", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Baocao/BCBanVeBanTungChuyen/Index">Báo cáo bán vé từng chuyến</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowView("38", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Baocao/BCBanVeBanTrongNgay/Index">Báo cáo bán vé trong ngày</a>
+                                            <br>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /.card -->
+        <!-- Các phiếu khai báo gần đây box -->
+        @if (cls_UserManagement.AllowView("2023112201", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+        {
+            <!-- Các phiếu khai báo gần đây thạnh thới box -->
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Các phiếu khai báo gần đây</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.listitemSoluongthucte)
+                        {
+                            if (Model.listitemSoluongthucte.IndexOf(item) % 2 == 0)
+                            {
+                                <div class="col-md-2">
+                                    <div class="card card-widget widget-user-2">
+
+                                        <div class="widget-user-header bg-warning">
+                                            <h5>@item.TENTUYEN @item.NGAYDI <br /> @item.GIODI @item.TENDOITUONG</h5>
+                                        </div>
+                                        <div class="card-footer p-0">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Trẻ em <span class="float-right badge bg-primary">@item.TREEM</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Cao tuổi <span class="float-right badge bg-primary">@item.CAOTUOI</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        VIP <span class="float-right badge bg-primary">@item.VIP</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Người lớn <span class="float-right badge bg-primary">@item.NGUOILON</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Gắn máy <span class="float-right badge bg-warning">@item.GANMAY</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        4-5 Chổ <span class="float-right badge bg-success">@item.iOTO4C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        7-9 Chổ <span class="float-right badge bg-success">@item.iOTO7C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        10-16 Chổ <span class="float-right badge bg-success">@item.iOTO16C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        17-25 Chổ <span class="float-right badge bg-success">@item.iOTO25C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        26-50 Chổ <span class="float-right badge bg-success">@item.iOTO50C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải <span class="float-right badge bg-danger">@item.iXETAI</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="float-right badge">
+                                            <a class="btn btn-info btn-sm" role="button" asp-page="/Nghiepvu/Khaibaosoluongthucte/View" asp-route-id="@item.MALICHTRINH">Xem chi tiết</a>
+                                            <a class="btn btn-warning btn-sm" role="button" asp-page="/Nghiepvu/Khaibaosoluongthucte/Edit" asp-route-id="@item.MALICHTRINH">Chỉnh sửa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-2">
+                                    <div class="card card-widget widget-user-2">
+
+                                        <div class="widget-user-header bg-danger">
+                                            <h5>@item.TENTUYEN @item.NGAYDI <br /> @item.GIODI @item.TENDOITUONG</h5>
+                                        </div>
+                                        <div class="card-footer p-0">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Trẻ em <span class="float-right badge bg-primary">@item.TREEM</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Cao tuổi <span class="float-right badge bg-primary">@item.CAOTUOI</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        VIP <span class="float-right badge bg-primary">@item.VIP</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Người lớn <span class="float-right badge bg-primary">@item.NGUOILON</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Gắn máy <span class="float-right badge bg-warning">@item.GANMAY</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        4-5 Chổ <span class="float-right badge bg-success">@item.iOTO4C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        7-9 Chổ <span class="float-right badge bg-success">@item.iOTO7C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        10-16 Chổ <span class="float-right badge bg-success">@item.iOTO16C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        17-25 Chổ <span class="float-right badge bg-success">@item.iOTO25C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        26-50 Chổ <span class="float-right badge bg-success">@item.iOTO50C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải <span class="float-right badge bg-danger">@item.iXETAI</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="float-right badge">
+                                            <a class="btn btn-info btn-sm" role="button" asp-page="/Nghiepvu/Khaibaosoluongthucte/View" asp-route-id="@item.MALICHTRINH">Xem chi tiết</a>
+                                            <a class="btn btn-warning btn-sm" role="button" asp-page="/Nghiepvu/Khaibaosoluongthucte/Edit" asp-route-id="@item.MALICHTRINH">Chỉnh sửa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        }
+
+        @if (cls_UserManagement.AllowView("2023121301", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+        {
+            <!-- Các phiếu khai báo gần đây quốc chánh box -->
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Các phiếu khai báo gần đây</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.listitemSoluongthucte)
+                        {
+                            if (Model.listitemSoluongthucte.IndexOf(item) % 2 == 0)
+                            {
+                                <div class="col-md-2">
+                                    <div class="card card-widget widget-user-2">
+
+                                        <div class="widget-user-header bg-warning">
+                                            <h5>@item.TENTUYEN @item.NGAYDI <br /> @item.GIODI @item.TENDOITUONG</h5>
+                                        </div>
+                                        <div class="card-footer p-0">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item" hidden>
+                                                    <a href="#" class="nav-link">
+                                                        Trẻ em <span class="float-right badge bg-primary">@item.TREEM</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item" hidden>
+                                                    <a href="#" class="nav-link">
+                                                        Cao tuổi <span class="float-right badge bg-primary">@item.CAOTUOI</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item" hidden>
+                                                    <a href="#" class="nav-link">
+                                                        VIP <span class="float-right badge bg-primary">@item.VIP</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Vé mời <span class="float-right badge bg-primary">@item.VEMOI</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Người lớn <span class="float-right badge bg-primary">@item.NGUOILON</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Gắn máy <span class="float-right badge bg-warning">@item.GANMAY</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        4-5 Chổ <span class="float-right badge bg-success">@item.iOTO4C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        7-9 Chổ <span class="float-right badge bg-success">@item.iOTO7C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        10-16 Chổ <span class="float-right badge bg-success">@item.iOTO16C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        17-25 Chổ <span class="float-right badge bg-success">@item.iOTO25C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        26-50 Chổ <span class="float-right badge bg-success">@item.iOTO50C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item" hidden>
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải <span class="float-right badge bg-danger">@item.iXETAI</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải 0 - 3 Tấn <span class="float-right badge bg-info">@item.XETAIDUOI3T</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải 3 - 5 Tấn <span class="float-right badge bg-info">@item.XETAIDUOI5T</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải 5 - 8 Tấn <span class="float-right badge bg-info">@item.XETAIDUOI8T</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải trên 8 Tấn <span class="float-right badge bg-info">@item.XETAITREN8T</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Vé mời xe tải <span class="float-right badge bg-info">@item.XETAIVEMOI</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="float-right badge">
+                                            <a class="btn btn-info btn-sm" role="button" asp-page="/Nghiepvu/KhaibaosoluongthucteQC/View" asp-route-id="@item.MALICHTRINH">Xem chi tiết</a>
+                                            <a class="btn btn-warning btn-sm" role="button" asp-page="/Nghiepvu/KhaibaosoluongthucteQC/Edit" asp-route-id="@item.MALICHTRINH">Chỉnh sửa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-2">
+                                    <div class="card card-widget widget-user-2">
+
+                                        <div class="widget-user-header bg-danger">
+                                            <h5>@item.TENTUYEN @item.NGAYDI <br /> @item.GIODI @item.TENDOITUONG</h5>
+                                        </div>
+                                        <div class="card-footer p-0">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item" hidden>
+                                                    <a href="#" class="nav-link">
+                                                        Trẻ em <span class="float-right badge bg-primary">@item.TREEM</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item" hidden>
+                                                    <a href="#" class="nav-link">
+                                                        Cao tuổi <span class="float-right badge bg-primary">@item.CAOTUOI</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item" hidden>
+                                                    <a href="#" class="nav-link">
+                                                        VIP <span class="float-right badge bg-primary">@item.VIP</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Vé mời <span class="float-right badge bg-primary">@item.VEMOI</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Người lớn <span class="float-right badge bg-primary">@item.NGUOILON</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Gắn máy <span class="float-right badge bg-warning">@item.GANMAY</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        4-5 Chổ <span class="float-right badge bg-success">@item.iOTO4C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        7-9 Chổ <span class="float-right badge bg-success">@item.iOTO7C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        10-16 Chổ <span class="float-right badge bg-success">@item.iOTO16C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        17-25 Chổ <span class="float-right badge bg-success">@item.iOTO25C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        26-50 Chổ <span class="float-right badge bg-success">@item.iOTO50C</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item" hidden>
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải <span class="float-right badge bg-danger">@item.iXETAI</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải 0 - 3 Tấn <span class="float-right badge bg-info">@item.XETAIDUOI3T</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải 3 - 5 Tấn <span class="float-right badge bg-info">@item.XETAIDUOI5T</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải 5 - 8 Tấn <span class="float-right badge bg-info">@item.XETAIDUOI8T</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Xe tải trên 8 Tấn <span class="float-right badge bg-info">@item.XETAITREN8T</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Vé mời xe tải <span class="float-right badge bg-info">@item.XETAIVEMOI</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="float-right badge">
+                                            <a class="btn btn-info btn-sm" role="button" asp-page="/Nghiepvu/KhaibaosoluongthucteQC/View" asp-route-id="@item.MALICHTRINH">Xem chi tiết</a>
+                                            <a class="btn btn-warning btn-sm" role="button" asp-page="/Nghiepvu/KhaibaosoluongthucteQC/Edit" asp-route-id="@item.MALICHTRINH">Chỉnh sửa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        }
+
+        @if (cls_UserManagement.AllowView("24030608", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+        {
+            <!-- Các phiếu nhập nhiên liệu khai báo gần đây box -->
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Các phiếu khai báo nhiên liệu gần đây</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item_1 in Model.listitemNhienlieu)
+                        {
+                            if (Model.listitemNhienlieu.IndexOf(item_1) % 2 == 0)
+                            {
+                                <div class="col-md-2">
+                                    <div class="card card-widget widget-user-2">
+
+                                        <div class="widget-user-header bg-warning">
+                                            <h5><br />@item_1.NAME</h5>
+                                        </div>
+                                        <div class="card-footer p-0">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Số chuyến <span class="float-right badge bg-primary">@item_1.SOCHUYEN</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Dầu tồn <span class="float-right badge bg-primary">@item_1.DAUTON</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Cấp thêm <span class="float-right badge bg-primary">@item_1.CAPTHEM</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Tổng cộng <span class="float-right badge bg-primary">@item_1.TONGDAU</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Sử dụng <span class="float-right badge bg-warning">@item_1.TIEUTHU</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Còn lại <span class="float-right badge bg-success">@item_1.CONLAI</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="float-right badge">
+                                            <a class="btn btn-info btn-sm" role="button" asp-page="/Nghiepvu/Khaibaonhienlieu/View" asp-route-id="@item_1.ID">Xem chi tiết</a>
+                                            <a class="btn btn-warning btn-sm" role="button" asp-page="/Nghiepvu/Khaibaonhienlieu/Edit" asp-route-id="@item_1.ID">Chỉnh sửa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-2">
+                                    <div class="card card-widget widget-user-2">
+
+                                        <div class="widget-user-header bg-danger">
+                                            <h5><br />@item_1.NAME</h5>
+                                        </div>
+                                        <div class="card-footer p-0">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Số chuyến <span class="float-right badge bg-primary">@item_1.SOCHUYEN</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Dầu tồn <span class="float-right badge bg-primary">@item_1.DAUTON</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Cấp thêm <span class="float-right badge bg-primary">@item_1.CAPTHEM</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Tổng cộng <span class="float-right badge bg-primary">@item_1.TONGDAU</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Sử dụng <span class="float-right badge bg-warning">@item_1.TIEUTHU</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Còn lại <span class="float-right badge bg-success">@item_1.CONLAI</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="float-right badge">
+                                            <a class="btn btn-info btn-sm" role="button" asp-page="/Nghiepvu/Khaibaonhienlieu/View" asp-route-id="@item_1.ID">Xem chi tiết</a>
+                                            <a class="btn btn-warning btn-sm" role="button" asp-page="/Nghiepvu/Khaibaonhienlieu/Edit" asp-route-id="@item_1.ID">Chỉnh sửa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        }
+        <!-- /.card -->
+        <!-- Tro giup box -->
+       @*  <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">Hổ trợ</h3>
+            </div>
+            <div class="card-body row">
+                <div class="col-5 text-center d-flex align-items-center justify-content-center">
+                    <div class="">
+                        <h2><strong>KingPro Co., Ltd</strong></h2>
+                        <p class="lead mb-5">
+                            Số 14 Đường 14, Khu Phố 5, Phường Hiệp Bình Chánh, Quận Thủ Đức, TP. Hồ Chí Minh<br>
+                            Tel: 028.38.97.98.99<br>
+                            Hotline: 0933.886.119<br>
+                            Mail: sales@kingpro.vn<br>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="form-group">
+                        <label for="inputName">Tên</label>
+                        <input type="text" id="inputName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">E-Mail</label>
+                        <input type="email" id="inputEmail" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSubject">Tiều đề</label>
+                        <input type="text" id="inputSubject" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessage">Nội dung</label>
+                        <textarea id="inputMessage" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-info" value="Gửi yêu cầu hổ trợ">
+                    </div>
+                </div>
+            </div>
+        </div> *@
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

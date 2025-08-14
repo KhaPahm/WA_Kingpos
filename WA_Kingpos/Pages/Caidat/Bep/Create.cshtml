@@ -1,0 +1,75 @@
+﻿@page
+@model WA_Kingpos.Pages.Bep.CreateModel
+@{
+    ViewData["Title"] = "Thêm Bếp";
+    ViewData["Name"] = "bep";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.ten_bep" class="control-label">Tên</label>
+                        <input type="text" asp-for="item.ten_bep" class="form-control" />
+                        <span asp-validation-for="item.ten_bep" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Cửa hàng</label>
+                        <select asp-for="item.ma_cuahang" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" selected disabled hidden>Chọn cửa hàng</option>
+                            @foreach (var item in Model.ListCuahang)
+                            {
+                                <option value="@item.MA_CUAHANG">@item.TEN_CUAHANG</option>
+                            }
+                        </select>
+                        <span asp-validation-for="item.ma_cuahang" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.mayinbep" class="control-label">Máy in bếp</label>
+                        <input type="text" asp-for="item.mayinbep" class="form-control" />
+                        <span asp-validation-for="item.mayinbep" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.ip" class="control-label">IP máy in</label>
+                        <input type="text" asp-for="item.ip" class="form-control" />
+                        <span asp-validation-for="item.ip" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.ghichu" class="control-label">Ghi chú</label>
+                        <input type="text" asp-for="item.ghichu" class="form-control" />
+                        <span asp-validation-for="item.ghichu" class="text-danger"></span>
+                    </div>
+                    <div class="form-check">
+                        <input asp-for="item.sudung" type="checkbox" class="form-check-input" checked>
+                        <label asp-for="item.sudung" class="form-check-label">Sử dụng</label>
+                        <span asp-validation-for="item.sudung" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

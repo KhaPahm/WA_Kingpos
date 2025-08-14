@@ -1,0 +1,252 @@
+﻿@page
+@model WA_Kingpos.Pages.Hanghoa.ViewModel
+@using WA_Kingpos.Data
+@{
+    ViewData["Title"] = "Chi Tiết Hàng hóa";
+    ViewData["Name"] = "hanghoa";
+}
+
+@if (cls_AppSettings.AppId == AppId.fina)
+{
+    <partial name="View_fina" />
+}
+else
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">@ViewData["Title"]</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr>
+                                <th>STT :</th>
+                                <td>@Model.item.STT</td>
+                            </tr>
+                            <tr>
+                                <th>Mã :</th>
+                                <td>@Model.item.MA</td>
+                            </tr>
+                            <tr>
+                                <th>Mã nội bộ :</th>
+                                <td>@Model.item.ID_HANGHOA</td>
+                            </tr>
+                            <tr>
+                                <th>Mã vạch :</th>
+                                <td>@Model.item.MAVACH</td>
+                            </tr>
+                            <tr>
+                                <th>Tên :</th>
+                                <td>@Model.item.TEN</td>
+                            </tr>
+                            <tr>
+                                <th>ĐVT :</th>
+                                <td>@Model.item.TEN_DONVITINH</td>
+                            </tr>
+                            <tr>
+                                <th>Nhóm hàng :</th>
+                                <td>@Model.item.TEN_NHOMHANG</td>
+                            </tr>
+                            <tr>
+                                <th>Ghi chú :</th>
+                                <td>@Model.item.GHICHU</td>
+                            </tr>
+                            <tr>
+                                <th>Sử dụng :</th>
+                                @if (@Model.item.SUDUNG.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>Hình ảnh :</th>
+                                @if (@Model.item.HINHANH != null)
+                                {
+                                    var base64 = Convert.ToBase64String(@Model.item.HINHANH);
+                                    var userImage = String.Format("data:image/gif;base64,{0}", base64);
+                                    <td><img src="@userImage" alt="Hinhanh" width="200" height="200"></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><br /></td>
+                            </tr>
+                            <tr>
+                                <th>Thuế :</th>
+                                <td>@Model.item.THUE</td>
+                            </tr>
+                            <tr>
+                                <th>Giá nhập :</th>
+                                <td>@Model.item.GIANHAP</td>
+                            </tr>
+                            <tr>
+                                <th>Giá bán 1 :</th>
+                                <td>@Model.item.GIABAN1</td>
+                            </tr>
+                            <tr>
+                                <th>Giá bán 2 :</th>
+                                <td>@Model.item.GIABAN2</td>
+                            </tr>
+                            <tr>
+                                <th>Giá bán 3 :</th>
+                                <td>@Model.item.GIABAN3</td>
+                            </tr>
+                            <tr>
+                                <th>Giá bán 4 :</th>
+                                <td>@Model.item.GIABAN4</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><br /></td>
+                            </tr>
+                            <tr>
+                                <th>Thành phần :</th>
+                                <td>@Model.item.TEN_THANHPHAN</td>
+                            </tr>
+                            <tr>
+                                <th>Số lượng :</th>
+                                <td>@Model.item.SOLUONG</td>
+                            </tr>
+                            <tr>
+                                <th>Tồn kho :</th>
+                                @if (@Model.item.TONKHO.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>Tồn tối thiểu :</th>
+                                <td>@Model.item.TONTOITHIEU</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><br /></td>
+                            </tr>
+                            <tr>
+                                <th>Thực đơn :</th>
+                                @if (@Model.item.THUCDON.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>In bếp :</th>
+                                @if (@Model.item.IS_INBEP.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>Tên bếp :</th>
+                                <td>@Model.item.TEN_BEP</td>
+                            </tr>
+                            <tr>
+                                <th>Giá theo trọng lượng :</th>
+                                @if (@Model.item.GIATHEOTRONGLUONG.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>PLU :</th>
+                                <td>@Model.item.PLU</td>
+                            </tr>
+                            <tr>
+                                <th>HSD :</th>
+                                <td>@Model.item.HANSUDUNG</td>
+                            </tr>
+                            <tr>
+                                <th>Sửa định lượng :</th>
+                                @if (@Model.item.SUADINHLUONG.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>Giá theo thời vụ :</th>
+                                @if (@Model.item.SUAGIA.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>Món thêm :</th>
+                                @if (@Model.item.MONTHEM.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>In tem :</th>
+                                @if (@Model.item.INTEM.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+                    @if (Model.bSua)
+                    {
+                        <a class="btn btn-warning" role="button" asp-page="./Edit" asp-route-id="@Model.item.MA">Sửa</a>
+                    }
+                    @if (Model.bXoa)
+                    {
+                        <a class="btn btn-danger" role="button" asp-page="./Delete" asp-route-id="@Model.item.MA">Xóa</a>
+                    }
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+}
+

@@ -1,0 +1,127 @@
+﻿@model WA_Kingpos.Pages.Hanghoa.IndexModel
+
+@{
+    //ViewData["Title"] = "Hàng hóa Fina";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+                <div class="mb-3">
+                    @if (Model.bThem)
+                    {
+                        <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                        @*<a class="ml-2 btn btn-success" role="button" asp-page="./Create">Import từ Excel</a>*@
+                        <form id="uploadForm" method="post" enctype="multipart/form-data" style="display:inline;">
+                            <label class="btn btn-success ml-2 mt-2" title="Tải file">
+                                Thêm từ Excel
+                                <input type="file" name="UploadedFile" accept=".xls,.xlsx" onchange="document.getElementById('uploadForm').submit();" style="display: none;" />
+                            </label>
+                        </form>
+                    }
+                </div>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã</th>
+                            <th>Mã nội bộ</th>
+                            @*<th>Mã vạch</th>*@
+                            <th>Tên</th>
+                            <th>ĐVT</th>
+                            <th>SL đóng gói</th>
+                            <th>Nhóm hàng</th>
+                            <th>Nơi xuất</th>
+                            @*<th>Thuế</th>
+                                <th>Giá nhập</th>*@
+                            <th>Giá bán 1</th>
+                            <th>Giá bán 2</th>
+                            <th>Hệ số</th>
+                            @*<th>Giá bán 3</th>*@
+                            @*<th>Giá bán 4</th>*@
+                            <th>Ghi chú</th>
+                            <th>Sử dụng</th>
+                            <th>Hình ảnh</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.STT</td>
+                                <td>@item.MA</td>
+                                <td>@item.ID_HANGHOA</td>
+                                @*<td>@item.MAVACH</td>*@
+                                <td>@item.TEN</td>
+                                <td>@item.TEN_DONVITINH</td>
+                                <td>@item.GIABAN3</td>
+                                <td>@item.TEN_NHOMHANG</td>
+                                <td>@item.NOIXUAT</td>
+                                @*<td>@item.THUE</td>
+                                    <td>@item.GIANHAP</td>*@
+                                <td>@item.GIABAN1</td>
+                                <td>@item.GIABAN2</td>
+                                @*<td>@item.GIABAN3</td>*@
+                                <td>@item.GIABAN4</td>
+                                <td>@item.GHICHU</td>
+                                @if (@item.SUDUNG.ToString().ToLower() == "true")
+                                {
+                                    @*@item.SUDUNG*@
+                                    <td class="text-center check-sudung"><input type="checkbox" checked onclick="return false;"></td>
+
+                                }
+                                else
+                                {
+                                    <td class="text-center check-sudung"><input type="checkbox" onclick="return false;"></td>
+                                }
+                                @if (@item.HINHANH != null)
+                                {
+                                    var base64 = Convert.ToBase64String(@item.HINHANH);
+                                    var userImage = String.Format("data:image/gif;base64,{0}", base64);
+                                    <td><img src="@userImage" alt="Hinhanh" width="150" height="150"></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.MA">Xem</a>
+                                    @if (Model.bSua)
+                                    {
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.MA">Sửa</a>
+                                    }
+                                    @if (Model.bXoa)
+                                    {
+                                        <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.MA">Xóa</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            @*<div class="card-footer">
+                    @if (Model.bThem)
+                    {
+                        <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                    }
+                </div>*@
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

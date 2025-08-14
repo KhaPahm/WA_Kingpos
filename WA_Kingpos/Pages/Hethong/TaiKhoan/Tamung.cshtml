@@ -1,0 +1,43 @@
+﻿@page
+@model WA_Kingpos.Pages.TaiKhoan.TamungModel
+@{
+    ViewData["Title"] = "Tiền Tạm Ứng Tài Khoản";
+    ViewData["Name"] = "taikhoan";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.userid" class="control-label">Tài khoản</label>
+                        <input type="text" disabled asp-for="item.userid" class="form-control" />
+                        <span asp-validation-for="item.userid" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.tientamung" class="control-label">Tiền tạm ứng</label>
+                        <input type="number" asp-for="item.tientamung" class="form-control" />
+                        <span asp-validation-for="item.tientamung" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

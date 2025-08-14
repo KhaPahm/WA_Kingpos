@@ -1,0 +1,213 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.BCBanVeBanTrongNgay.IndexModel
+@{
+    ViewData["Title"] = "Báo Cáo Chi Tiết Bán Vé Trong Ngày Của Nhân Viên";
+    ViewData["Name"] = "BCBanVeBanTrongNgay";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="sTungay">Ngày</label>
+                                <div class="input-group date input-datepicker" data-target-input="nearest">
+                                    <input type="text" asp-for="sTungay" class=" form-control" id="sTungay" onchange="updateDanhSachChuyen()">
+                                    <div class="input-group-append" asp-validation-for="sTungay">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="sTungay" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="MANHANVIEN">Nhân viên</label>
+                                <select asp-for="MANHANVIEN" class="form-control select2bs4" style="width: 100%;">
+                                    <option value="0" selected disabled hidden>Chọn nhân viên...</option>
+                                    @foreach (var item in Model.listitem_NhanVien)
+                                    {
+                                        <option value="@item.MANHANVIEN">@item.TENNHANVIEN</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MANHANVIEN" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="MADOITUONG">Tàu</label>
+                                <select asp-for="MADOITUONG" class="form-control select2bs4" style="width: 100%;">
+                                    <option value="" selected disabled hidden>Chọn tàu...</option>
+                                    @foreach (var item in Model.listitem_Tau)
+                                    {
+                                        <option value="@item.MADOITUONG">@item.TENDOITUONG</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MADOITUONG" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                        <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất PDF</button>
+                        <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                    </div>
+
+                </form>
+                <div class="row">
+                    <div class="col-sm-4 col-md-2">
+                        <label>Tổng Thành tiền: @String.Format("{0:N0}", @Model.THUCTHU)</label>
+                    </div>
+                    @*  <div class="col-sm-4 col-md-2">
+                        <label>Phụ thu hủy vé: @String.Format("{0:N0}", @Model.TONG_PHUTHUHUYVE)</label>
+                    </div>
+                     <div class="col-sm-4 col-md-2">
+                        <label>Phụ thu in lại: @String.Format("{0:N0}", @Model.TONG_PHUTHUINLAI)</label>
+                    </div> *@
+                    <div class="col-sm-4 col-md-2">
+                        <label>Giảm giá: @String.Format("{0:N0}", @Model.TONG_CT_GIAMTRU)</label>
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <label>Hoa hồng: @String.Format("{0:N0}", @Model.TONG_CT_HOAHONG)</label>
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <label>Công nợ: @String.Format("{0:N0}", @Model.TONG_CT_CONGNO)</label>
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <label>Đặt cọc: @String.Format("{0:N0}", @Model.TONG_CT_DATCOC)</label>
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <label>Chuyển khoản: @String.Format("{0:N0}", @Model.TONG_CT_CUYENKHOAN)</label>
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <label>Tiền gửi: @String.Format("{0:N0}", @Model.TONG_CT_TIENGUI)</label>
+                    </div>
+                    @*  <div class="col-sm-4 col-md-2">
+                        <label>Đại lý: @String.Format("{0:N0}", @Model.TONG_CT_DAILY)</label>
+                    </div> *@
+                    <div class="col-sm-4 col-md-2">
+                        <label>Điểm: @String.Format("{0:N0}", @Model.TONG_CT_DIEM)</label>
+                    </div>
+                    @*   <div class="col-sm-4 col-md-2">
+                        <label>Online: @String.Format("{0:N0}", @Model.TONG_CT_WEB)</label>
+                    </div> *@
+                    <div class="col-sm-4 col-md-2">
+                        <label>Thực thu: @String.Format("{0:N0}", @Model.PHAINOP)</label>
+                    </div>
+                </div>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">STT</th>
+                            <th style="text-align:center ; vertical-align:middle">Tuyến</th>
+                            <th style="text-align:center ; vertical-align:middle">Ngày đi</th>
+                            <th style="text-align:center ; vertical-align:middle">Giờ đi</th>
+                            <th style="text-align:center ; vertical-align:middle">Vé</th>                             
+                            <th style="text-align:center ; vertical-align:middle">Loại</th>
+                            <th style="text-align:center ; vertical-align:middle">Số lượng</th>
+                            <th style="text-align:center ; vertical-align:middle">Đơn giá</th>
+                            <th style="text-align:center ; vertical-align:middle">Phụ thu</th>
+                            <th style="text-align:center ; vertical-align:middle">Thành tiền</th>
+@*                             <th style="text-align:center ; vertical-align:middle">Phụ thu trả vé</th>
+                            <th style="text-align:center ; vertical-align:middle">Phụ thu in lại</th> *@
+                            <th style="text-align:center ; vertical-align:middle">Giảm trừ</th>
+                            <th style="text-align:center ; vertical-align:middle">Hoa hồng</th>
+                            <th style="text-align:center ; vertical-align:middle">Công nợ</th>
+                            <th style="text-align:center ; vertical-align:middle">Đặt cọc</th>
+                            <th style="text-align:center ; vertical-align:middle">Chuyển khoản</th>
+                            <th style="text-align:center ; vertical-align:middle">Tiền gửi</th>
+                            <th style="text-align:center ; vertical-align:middle">Điểm</th>
+                            <th style="text-align:center ; vertical-align:middle">Thực thu</th>
+                            <th style="text-align:center ; vertical-align:middle">Diễn giải</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitemBC)
+                        {
+                            <tr>
+                                <td>@item.STT</td>
+                                <td>@item.TENTUYEN</td>
+                                <td>@item.NGAYDI</td>
+                                <td>@item.GIODI</td>
+                                <td>@item.LOAI</td>
+                                <td>@item.TENKHUVUC</td>
+                                <td class="text-right">@item.SOLUONG?.ToString("N0")</td>
+                                <td class="text-right">@item.DONGIA</td>
+                                <td class="text-right">@item.PHUTHU?.ToString("N0")</td>
+                                <td class="text-right">@item.THANHTIEN?.ToString("N0")</td>
+@*                                 <td>@item.PHUTHUHUYVE</td>
+                                <td>@item.PHUTHUINLAI</td>
+                            *@
+                                <td class="text-right">@item.CT_GIAMTRU?.ToString("N0")</td>
+                                <td class="text-right">@item.CT_HOAHONG?.ToString("N0")</td>
+                                <td class="text-right">@item.CT_CONGNO?.ToString("N0")</td>
+                                <td class="text-right">@item.CT_DATCOC?.ToString("N0")</td>
+                                <td class="text-right">@item.CT_CUYENKHOAN?.ToString("N0")</td>
+                                <td class="text-right">@item.CT_TIENGUI?.ToString("N0")</td>
+                                <td class="text-right">@item.CT_DIEM?.ToString("N0")</td>
+                                <td class="text-right">0</td>
+                                <td>@item.DIENGIAI</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="9" class="text-right">Tổng cộng: &nbsp;</th>
+                            @* <th></th> *@
+@*                             <th></th>
+ *@  @*                           <th></th> *@
+                            <th class="text-right">@Model.listitemBC.Sum(item => item.THANHTIEN)?.ToString("N0")</th>
+@*                             <th></th>
+                            <th></th>
+                            *@
+                            <th class="text-right">@Model.listitemBC.Sum(item => item.CT_GIAMTRU)?.ToString("N0")</th>
+                            <th class="text-right">@Model.listitemBC.Sum(item => item.CT_HOAHONG)?.ToString("N0")</th>
+                            <th class="text-right">@Model.listitemBC.Sum(item => item.CT_CONGNO)?.ToString("N0")</th>
+                            <th class="text-right">@Model.listitemBC.Sum(item => item.CT_DATCOC)?.ToString("N0")</th>
+                            <th class="text-right">@Model.listitemBC.Sum(item => item.CT_CUYENKHOAN)?.ToString("N0")</th>
+                            <th class="text-right">@Model.listitemBC.Sum(item => item.CT_TIENGUI)?.ToString("N0")</th>
+                            <th class="text-right">@Model.listitemBC.Sum(item => item.CT_DIEM)?.ToString("N0")</th>
+                            <th class="text-right">@String.Format("{0:N0}", @Model.PHAINOP)</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+
+<script>
+
+    async function updateDanhSachChuyen() {
+        console.log("ABC");
+        const selectedDate = document.getElementById('sTungay').value;
+        const response = await fetch(`/Baocao/BCBanVeBanTrongNgay?handler=DSChuyen&sTungay=${selectedDate}`);
+        const tauList = await response.json();
+		console.log(tauList);
+    }
+</script>  

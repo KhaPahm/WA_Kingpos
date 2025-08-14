@@ -1,0 +1,91 @@
+﻿@page
+@model WA_Kingpos.Pages.Nganhhang.IndexModel
+@{
+    ViewData["Title"] = "Ngành hàng";
+    ViewData["Name"] = "nganhhang";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Tên</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.OrderBy</td>
+                                <td>@item.VNValue</td>
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.ID">Xem</a>
+                                    @if (Model.bSua)
+                                    {
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.ID">Sửa</a>
+                                    }
+                                    @if (Model.bXoa)
+                                    {
+                                        <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.ID">Xóa</a>
+                                    }
+                                    @if (Model.bThem)
+                                    {
+                                        <a class="btn btn-success btn-sm" role="button" asp-page="./Config" asp-route-id="@item.ID">Cấu hình</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @if (Model.bThem)
+                {
+                    <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                    <form asp-page-handler="Import" method="post" enctype="multipart/form-data" class="d-inline">
+                        <label class="btn btn-success mb-0">
+                            Import File Excel
+                            <input type="file" name="ExcelFile" accept=".xlsx,.xls" onchange="this.form.submit()" hidden />
+                        </label>
+                    </form>
+                }
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+@section Scripts {
+    <script>
+        window.onload = function () {
+        @* Thông báo thành công *@
+        @if (TempData["Message"] != null)
+        {
+            <text>
+                        alert("@TempData["Message"]");
+                        window.location.href = "/Caidat/Nganhhang";
+            </text>
+        }
+
+        @* Thông báo lỗi *@
+        @if (TempData["Exception"] != null)
+        {
+            <text>
+                        alert("Lỗi import: @TempData["Exception"]");
+                        window.location.href = "/Caidat/Nganhhang";
+            </text>
+        }
+        };
+    </script>
+}

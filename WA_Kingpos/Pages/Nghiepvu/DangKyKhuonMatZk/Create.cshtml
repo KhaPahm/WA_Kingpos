@@ -1,0 +1,514 @@
+﻿@page
+@model WA_Kingpos.Pages.DangKyKhuonMatZk.CreateModel
+@using WA_Kingpos.Models
+@{
+    ViewData["Title"] = "Đăng ký khuôn mặt";
+    ViewData["Name"] = "dangkykhuonmatzk";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
+    <style>
+        #videoContainer {
+            width: 100%;
+            max-width: 500px;
+            height: 80%;
+            max-height: 500px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            display: flex;
+            margin-top: 10px;
+            align-items: center; /*  Centers video vertically  */
+            justify-content: center; /* Centers video horizontally */
+        }
+
+        .child-video-box {
+            position: absolute;
+            transform-origin: center;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            height: auto;
+            object-fit: cover;
+            margin: auto;
+        }
+    </style>
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Khách hàng :</th>
+                            <td>@Model.item.TEN_KH</td>
+                        </tr>
+                        <tr>
+                            <th>Mã khuôn mặt :</th>
+                            <td>@Model.item.FACE_ID</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="videoContainer">
+                    <video id="video1" class="child-video-box" autoplay></video>
+                    <canvas id="canvas1" class="child-video-box" style="display: none;"></canvas>
+                    @*<canvas id="overlay1" class="child-video-box" style="display: none;" width="600" height="600"></canvas>*@
+                </div>
+
+                <form method="post" id="form1">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <!--<div class="form-group">
+                    <label asp-for="item.TEN_KH" class="control-label">Tên</label>
+                    <input type="text" asp-for="item.TEN_KH" class="form-control" />-->
+                    @*<span asp-validation-for="item.tennhanvien" class="text-danger"></span>*@
+                    <!--</div>-->
+                    <br />
+                    <input type="hidden" asp-for="item.FACE_ID" name="FACE_ID" />
+                    <div>
+                        @*<input type="submit" value="Chụp" class="btn btn-success" />*@
+                        @*<input type="submit" value="Lưu" class="btn btn-success" />*@
+                        <button id="takePhoto" class="btn btn-success">
+                            <i class="fa fa-camera"></i> Chụp
+                        </button>
+                        <button id="savePhoto" class="btn btn-success" style="display:none;">
+                            <i class="fa fa-check"></i> Lưu
+                        </button>
+                        <button id="retryPhoto" class="btn btn-success" style="display:none;">
+                            <i class="fa fa-camera"></i> Chụp lại
+                        </button>
+                        <button id="switchCamera" class="btn btn-warning">
+                            <i class="fa fa-undo"></i> Xoay
+                        </button>
+                    </div>
+                    <input type="hidden" asp-for="bOnlyNoFace" />
+                    <input type="hidden" asp-for="item.FACE_PHOTO" name="FACE_PHOTO" id="FACE_PHOTO" />
+                    @*<textarea id="FACE_PHOTO" rows="10" cols="50"></textarea>*@
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index" asp-route-id1="@Model.bOnlyNoFace">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+@section Scripts {
+    <script src="/lib/face-api/face-api.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script> *@
+    <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
+
+    @* <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0/dist/tf.min.js"></script> *@
+    <!-- face-api -->
+    @* <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script> *@
+    <!-- SweetAlert2 -->
+    @* <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
+
+    <script>
+        $(document).ready(async function () {
+            let useFrontCamera = true;
+            let videoStream;
+            await loadFaceApi();
+            console.log("Kha testing....")
+
+            async function startCamera() {
+                stopCamera();
+                const constraints = {
+                    video: {
+                        facingMode: useFrontCamera ? 'user' : 'environment'
+                    }
+                };
+
+                try {
+                    console.log('starting camera...');
+                    videoStream = await navigator.mediaDevices.getUserMedia(constraints);
+                    const video = document.getElementById('video1');
+                    video.srcObject = videoStream;
+                    video.play();
+                    Swal.fire({
+                        toast: true,
+                        position: 'bottom',
+                        icon: 'info',
+                        title: 'Vui lòng không đeo mắt kính, khẩu trang, mũ nón khi chụp khuôn mặt',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    //overlayDetectFaces();
+                    console.log('Camera permission granted and video stream started');
+                    //// Access the video track
+                    //const videoTrack = videoStream.getVideoTracks()[0];
+
+                    //// Get the settings of the video track
+                    //const capabilities = videoTrack.getCapabilities();
+                    //const settings = videoTrack.getSettings();
+
+
+                    //// Check if zoom is supported
+                    //if (capabilities.zoom) {
+                    //    // Set the zoom level
+                    //    const desiredZoom = settings.zoom ? settings.zoom * 0.5 : capabilities.zoom.min; //  Zoom out to 50%
+                    //    videoTrack.applyConstraints({ advanced: [{ zoom: desiredZoom }] })
+                    //        .then(() => {
+                    //            console.log('Zoom level set to:', desiredZoom);
+                    //        })
+                    //        .catch(err => {
+                    //            console.error('Error setting zoom level:', err);
+                    //        });
+                    //} else {
+                    //    console.log('Zoom not supported');
+                    //    //Swal.fire({
+                    //    //    toast: true,
+                    //    //    position: 'bottom',
+                    //    //    icon: 'info',
+                    //    //    title: 'Camera không hỗ trợ Zoom',
+                    //    //    showConfirmButton: false,
+                    //    //    timer: 1000
+                    //    //});
+                    //}
+                } catch (err) {
+                    //console.error('Error accessing camera: ', err);
+                    alert("Không thể truy cập camera, vui lòng cho phép trang này truy cập camera");
+                    handleCameraError(err);
+                }
+            }
+
+            function stopCamera() {
+                if (videoStream) {
+                    videoStream.getTracks().forEach(track => track.stop());
+                }
+            }
+
+            $('#switchCamera').click(function (event) {
+                event.preventDefault(); // Prevent the form from submitting
+                useFrontCamera = !useFrontCamera;
+                startCamera();
+            });
+
+            $('#takePhoto').click(function (event) {
+                alert("1234")
+                event.preventDefault(); // Prevent the form from submitting
+                capturePhoto();
+
+            });
+
+            $('#retryPhoto').click(function (event) {
+                event.preventDefault(); // Prevent the form from submitting
+                $('#FACE_PHOTO').val("");
+                $('#FACE_PHOTO').trigger('input');
+                startCamera();
+            });
+
+            //$('#takephoto').click(function (event) {
+            //    //event.preventdefault(); // prevent the form from submitting
+            //    // submit
+            //    showWaitingDialog();
+            //});
+
+            $('#FACE_PHOTO').on('input', function () {
+                let img = $('#FACE_PHOTO').val();
+                if (img === '') {
+                    $('#video1').css('display', 'block');
+                    $('#switchCamera').css('display', 'inline');
+                    $('#takePhoto').css('display', 'inline');
+                    $('#canvas1').css('display', 'none');
+                    $('#retryPhoto').css('display', 'none');
+                    $('#savePhoto').css('display', 'none');
+                } else {
+                    stopCamera();
+                    $('#video1').css('display', 'none');
+                    $('#switchCamera').css('display', 'none');
+                    $('#takePhoto').css('display', 'none');
+                    $('#canvas1').css('display', 'block');
+                    $('#retryPhoto').css('display', 'inline');
+                    $('#savePhoto').css('display', 'inline');
+                }
+            });
+
+            //$('#form1').on('submit', function (event) {
+            //    event.preventDefault(); // Prevent default form submission
+
+            //    // Show a Swal dialog indicating the form is being submitted
+            //    Swal.fire({
+            //        title: 'Đang đăng ký khuôn mặt',
+            //        text: '',
+            //        allowOutsideClick: false,
+            //        didOpen: function () {
+            //            Swal.showLoading();
+            //        }
+            //    });
+
+            //    var formData = new FormData(this);
+
+            //    // Perform the async form submission using jQuery's AJAX method
+            //    $.ajax({
+            //        url: $(this).attr('action'),
+            //        type: 'POST',
+            //        data: formData,
+            //        processData: false,
+            //        contentType: false,
+            //        xhr: function () {
+            //            var xhr = new window.XMLHttpRequest();
+            //            xhr.onreadystatechange = function () {
+            //                if (xhr.readyState == 4) {
+            //                    Swal.close(); // Close the loading dialog
+            //                    console.log(`submit done with code: ${xhr.status}`);
+            //                    if (xhr.status == 200) {
+            //                        // Check if the response URL is different from the request URL
+            //                        if (xhr.responseURL) {
+            //                            console.log(`xhr.responseURL: ${xhr.responseURL}, current: ${window.location.href}`);
+            //                            if (xhr.responseURL !== window.location.href) {
+            //                                // Redirect to the response URL
+            //                                window.location.href = xhr.responseURL;
+            //                            } else {
+            //                                // Show success message (if no redirect happened)
+            //                                // api error
+            //                            }
+            //                        }
+            //                    } else {
+            //                        // Show error message
+            //                        console.log("submit done failed");
+            //                    }
+            //                }
+            //            };
+            //            return xhr;
+            //        },
+            //        error: function () {
+            //            Swal.close();
+            //            console.log("submit failed");
+            //        }
+            //    });
+            //});
+
+            $(window).on('beforeunload', function (event) {
+                stopCamera();
+            });
+            startCamera();
+
+        });
+
+        async function loadFaceApi() {
+            //await faceapi.nets.tinyFaceDetector.loadFromUri('/lib/face-api/models');
+            //let modelsUrl = "https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights/";
+            let modelDir = "/lib/face-api/models/";
+            await Promise.all([
+                faceapi.nets.tinyFaceDetector.loadFromUri(modelDir + 'tiny_face_detector_model-weights_manifest.json'),
+                //faceapi.nets.faceLandmark68Net.loadFromUri(modelsUrl + 'face_landmark_68_model-weights_manifest.json'),
+                //faceapi.nets.faceRecognitionNet.loadFromUri(modelsUrl + 'face_recognition_model-weights_manifest.json'),
+                //faceapi.nets.ssdMobilenetv1.loadFromUri(modelsUrl + 'ssd_mobilenetv1_model-weights_manifest.json'),
+            ]);
+        }
+
+        async function capturePhoto() {
+            alert("I'm here!")
+            const video = document.getElementById('video1');
+            const canvas = document.getElementById('canvas1');
+            // Get the computed size of the video element
+            const videoRect = video.getBoundingClientRect();
+            //const maxSize = videoRect.width;
+            console.log(`video size: ${video.videoWidth} x ${video.videoHeight}`);
+            const displaySize = { width: video.videoWidth, height: video.videoHeight };
+            faceapi.matchDimensions(canvas, displaySize);
+
+            const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
+            //const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+            //    .withFaceLandmarks()
+            //    .withFaceDescriptors();
+            alert(detections.length)
+            if (detections.length > 1) {
+                alert("Có nhiều người trong hình. Vui lòng thử lại");
+            }
+            else if (detections.length === 1) {
+
+                const lastDetection = detections[detections.length - 1];
+                const box = lastDetection.box;
+                // kích thước hình nhỏ nhất cho phép
+                const minSize = 300.0;
+                // kích thước hình lớn nhất cho phép
+                const maxSize = box.height * 2.5;
+
+                // tính vị trí tâm khung hình
+                const centerPos = {
+                    x: box.x + box.width / 2,
+                    // khung hình nhận diện khuôn mặt thường tính từ trán trở xuống,
+                    // như vậy cần trừ lùi trục Y khoảng 15% chiều cao box,
+                    // để cho hình khuôn mặt cân đối giữa tấm hình
+                    y: box.y + box.height / 2 - box.height / 15
+                };
+
+                // kiểm tra kích thước tối đa từ vị trí tâm box ra 4 cạnh của video
+                // Lúc này điểm (0,0) tính từ vị trí video
+                const maxEdgeSize = Math.min(
+                    // nửa cạnh trái
+                    centerPos.x,
+                    // nửa cạnh phải
+                    displaySize.width - centerPos.x,
+                    // nửa cạnh trên
+                    centerPos.y,
+                    // nửa cạnh dưới
+                    displaySize.height - centerPos.y,
+                    // nửa cạnh tối đa cho phép
+                    maxSize / 2
+                );
+                const targetSize = maxEdgeSize * 2;
+                console.log(`calc target image size: ${targetSize}`);
+                if (targetSize < minSize) {
+                    // kích thước hình quá nhỏ
+                    console.log(`target size too small, cannot save: ${targetSize}`);
+                    alert("Hình ảnh quá nhỏ. Vui lòng thử lại");
+                    return;
+                }
+
+                // phóng to vùng nhận diện focus khuôn mặt, sẽ là hình vuông tỉ lệ 1:1
+                const extendedBox = {
+                    x: centerPos.x - maxEdgeSize,
+                    y: centerPos.y - maxEdgeSize,
+                    width: targetSize,
+                    height: targetSize
+                };
+                // Vẽ tấm hình đúng kích thước chuẩn hình vuông từ video
+                let originalCanvas = document.createElement('canvas');
+                originalCanvas.width = extendedBox.width;
+                originalCanvas.height = extendedBox.height;
+                let originalContext = originalCanvas.getContext('2d');
+                originalContext.drawImage(video, extendedBox.x, extendedBox.y, extendedBox.width, extendedBox.height,// source rectangle
+                    // destination rectangle
+                    0, 0, originalCanvas.width, originalCanvas.height
+                );
+
+                // vẽ tấm hình kích thước như video để hiển thị lên UI
+                canvas.width = videoRect.width;
+                canvas.height = videoRect.height;
+                let context = canvas.getContext('2d');
+                context.drawImage(originalCanvas, 0, 0, originalCanvas.width, originalCanvas.height,// source rectangle
+                    // destination rectangle
+                    0, 0, canvas.width, canvas.height
+                );
+
+                // Vẽ tấm hình kích thước cố định 300 x 300 để gửi cho máy chấm công
+                let canvas300 = document.createElement('canvas');
+                canvas300.width = 300;
+                canvas300.height = 300;
+                let context300 = canvas300.getContext('2d');
+                context300.drawImage(originalCanvas, 0, 0, originalCanvas.width, originalCanvas.height,// source rectangle
+                    // destination rectangle
+                    0, 0, canvas300.width, canvas300.height
+                );
+
+                // Nén hình ảnh cho đến khi kích thước nhỏ hơn 30 kilobytes, chuyển về base64 để lưu máy chấm công
+                let base64String = compressCanvasImage(canvas300);
+
+                // Set the base64 string to the hidden input field
+                var inputData = document.getElementById('FACE_PHOTO');
+                inputData.value = base64String;
+                inputData.dispatchEvent(new Event('input'));
+                console.log(`x:${extendedBox.x}, y:${extendedBox.y}, wi:${extendedBox.width}, hei:${extendedBox.height}, video.width: ${videoRect.width}, video.height: ${videoRect.height}`);
+                // release
+                originalCanvas.width = 0;
+                originalCanvas.height = 0;
+                canvas300.width = 0;
+                canvas300.height = 0;
+                originalCanvas = null;
+                canvas300 = null;
+                originalContext = null;
+                context = null;
+                context300 = null;
+                base64String = null;
+
+            } else {
+                alert("Không tìm thấy khuôn mặt trong hình. Vui lòng thử lại");
+            }
+        }
+
+        // Nén hình ảnh cho đến khi kích thước nhỏ hơn 30 kilobytes
+        function compressCanvasImage(canvas) {
+            let quality = 1.0;
+            let dataURL;
+            let imageSize;
+            const maxSizeKB = 30;
+            let base64String;
+
+            do {
+                dataURL = canvas.toDataURL('image/jpeg', quality);
+                // Extract the base64 part of the data URL
+                base64String = dataURL.split(',')[1];
+                // Calculate the image size in bytes
+                const stringLength = base64String.length;
+                const sizeInBytes = 4 * Math.ceil(stringLength / 3) * 0.5624896334383812; // Rough approximation
+                imageSize = sizeInBytes / 1024; // Convert bytes to kilobytes
+
+                if (imageSize > maxSizeKB) {
+                    quality -= 0.05;
+                }
+            } while (imageSize > maxSizeKB && quality > 0);
+            console.log(`compress image percent: ${quality}, output size: ${imageSize}KB`);
+            return base64String;
+        }
+
+        //async function overlayDetectFaces() {
+        //    const video = document.getElementById('video1');
+        //    const overlay = document.getElementById('overlay1');
+        //    const overlayContext = overlay.getContext('2d');
+        //    var size = 600;
+        //    const displaySize = { width: size, height: size };
+        //    faceapi.matchDimensions(overlay, displaySize);
+
+        //    // Resize overlay canvas to match video size
+        //    overlay.width = size; // video.videoWidth
+        //    overlay.height = size; // video.videoHeight
+
+        //    setInterval(async () => {
+        //        const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
+        //        overlayContext.clearRect(0, 0, overlay.width, overlay.height); // Clear the overlay canvas
+
+        //        if (detections.length > 0) {
+        //            const resizedDetections = faceapi.resizeResults(detections, displaySize);
+        //            resizedDetections.forEach(detection => {
+        //                const { x, y, width, height } = detection.box;
+        //                overlayContext.strokeStyle = 'green';
+        //                overlayContext.lineWidth = 2;
+        //                overlayContext.strokeRect(x, y, width, height); // Draw rectangle around detected face
+        //            });
+        //        }
+        //    }, 300); // Adjust the interval as needed
+        //}
+
+        function handleCameraError(err) {
+            console.error('Error accessing camera: ', err);
+            alert('Error accessing camera: ' + err.name + ' - ' + err.message);
+            if (err.name === 'NotAllowedError') {
+                alert('Please allow camera access.');
+            } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+                alert('No camera device found.');
+            } else if (err.name === 'NotReadableError' || err.name === 'TrackStartError') {
+                alert('Cannot access camera. It might be already in use.');
+            } else if (err.name === 'OverconstrainedError' || err.name === 'ConstraintNotSatisfiedError') {
+                alert('No camera device that matches the constraints found.');
+            } else {
+                alert('Unknown error occurred: ' + err.message);
+            }
+        }
+
+
+    </script>
+}
+

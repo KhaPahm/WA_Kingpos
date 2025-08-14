@@ -1,0 +1,187 @@
+﻿@page
+@model WA_Kingpos.Pages.NhomNhanVien.EditModel
+@{
+    ViewData["Title"] = "Sửa Nhóm Nhân viên";
+    ViewData["Name"] = "nhomnhanvien";
+}
+<form method="post">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">@ViewData["Title"]</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    @*<form method="post">*@
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.TENNHOM_NHANVIEN" class="control-label">Tên nhóm</label>
+                        <input type="text" asp-for="item.TENNHOM_NHANVIEN" class="form-control" />
+                        <span asp-validation-for="item.TENNHOM_NHANVIEN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.MA_NGUOIQUANLY" class="control-label">Người quản lý</label>
+                        <select asp-for="item.MA_NGUOIQUANLY" id="MA_NGUOIQUANLY" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" disabled>Chọn Người quản lý</option>
+                            @foreach (var ql in Model.item.listThanhVien)
+                            {
+                                if (Model.item.MA_NGUOIQUANLY?.ToString() == ql.manhanvien)
+                                {
+                                    <option value="@ql.manhanvien" selected>@ql.tennhanvien</option>
+                                }
+                                else
+                                {
+                                    <option value="@ql.manhanvien">@ql.tennhanvien</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="item.MA_NGUOIQUANLY" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.GHICHU" class="control-label">Ghi chú</label>
+                        <input type="text" asp-for="item.GHICHU" class="form-control" />
+                        @*<span asp-validation-for="item.ghichu" class="text-danger"></span>*@
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.THEM_THANHVIEN" class="control-label">Thêm thành viên</label>
+                        <select asp-for="item.THEM_THANHVIEN" name="THEM_THANHVIEN" multiple="multiple" class="form-control cboMultiNhanVien" style="width: 100%;">
+                            @foreach (var ql in Model.listNhanVien)
+                            {
+                                <option value="@ql.manhanvien">@ql.tennhanvien</option>
+                            }
+                        </select>
+                        @*<span asp-validation-for="item.MA_NGUOIQUANLY" class="text-danger"></span>*@
+                    </div>
+                    <input type="hidden" asp-for="item.THANHVIEN" id="THANHVIEN" />
+                    <input type="hidden" asp-for="item.MANHOM" />
+                    @*<input type="hidden" asp-for="item.THEM_THANHVIEN" />*@
+                    @*<div class="form-check">
+                            @if (@Model.item.sudung.ToString().ToLower() == "true")
+                            {
+                                <input asp-for="item.sudung" type="checkbox" class="form-check-input" checked>
+                            }
+                            else
+                            {
+                                <input asp-for="item.sudung" type="checkbox" class="form-check-input">
+                            }
+                            <label asp-for="item.sudung" class="form-check-label">Sử dụng</label>
+                            <span asp-validation-for="item.sudung" class="text-danger"></span>
+                        </div>*@
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                        @*<button type="submit" name="submitButton" value="save" class="btn btn-primary">Lưu</button>*@
+                    </div>
+                    @*</form>*@
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Danh sách thành viên</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="tablefull" class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tên thành viên</th>
+                                <th>Phòng ban</th>
+                                <th>Ngày sinh</th>
+                                <th>Giới tính</th>
+                                <th>Địa chỉ</th>
+                                <th>Điện thoại</th>
+                                <th>Ngày nhận việc</th>
+                                <th>Hình thức</th>
+                                @if (Model.bXoa)
+                                {
+                                    <th>Thao tác</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.item.listThanhVien)
+                            {
+                                <tr data-id="@item.manhanvien">
+                                    <td>@item.manhanvien</td>
+                                    <td>@item.tennhanvien &nbsp;<i class="fa fa-key nav-icon icon-leader @(item.manhanvien == Model.item.MA_NGUOIQUANLY?.ToString() ? "" : "d-none")" style="color: #dc3545; " /></td>
+                                    <td>@item.TENCHUCVU</td>
+                                    <td>@item.ngaysinh</td>
+                                    <td>@item.strGioitinh</td>
+                                    <td>@item.diachi</td>
+                                    <td>@item.dienthoai</td>
+                                    <td>@item.NGAYNHANVIEC</td>
+                                    <td>@item.HINHTHUC</td>
+                                    <td>
+                                        @if (Model.bXoa)
+                                        {
+                                            <a class="btn btn-danger btn-sm btn-del-row" role="button">Xóa</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <br />
+
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function updateListRow() {
+                var remainingIds = [];
+                $('#tablefull tbody tr').each(function () {
+                    remainingIds.push($(this).data('id'));
+                });
+                $('#THANHVIEN').val(remainingIds.join(','));
+                console.log(`list thanhvien: ${$('#THANHVIEN').val()}`);
+            }
+
+            $('.btn-del-row').click(function () {
+                var row = $(this).closest('tr');
+                var dataId = row.data('id');
+                // không cho xóa người quản lý
+                if (dataId == $('#MA_NGUOIQUANLY').val()) {
+                    alert("Không thể xóa người quản lý ra khỏi nhóm");
+                    return;
+                }
+                $(this).closest('tr').remove();
+                updateListRow();
+            });
+
+            $('#MA_NGUOIQUANLY').on('input', function () {
+                $('#tablefull tbody tr').each(function () {
+                    var dataId = $(this).data('id');
+                    if (dataId == $('#MA_NGUOIQUANLY').val()) {
+                        $(this).find("i.icon-leader").removeClass('d-none');
+                    } else {
+                        $(this).find("i.icon-leader").addClass('d-none');
+                    }
+                });
+            });
+        });
+    </script>
+}

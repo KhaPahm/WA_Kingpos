@@ -1,0 +1,70 @@
+﻿@page
+@model WA_Kingpos.Pages.TaiXe.TaiXeCreateModel
+@{
+    ViewData["Title"] = "Thêm Tài Xế";
+    ViewData["Name"] = "finataixe";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group" hidden>
+                        <label asp-for="item.ID" class="control-label">ID</label>
+                        <input type="text" asp-for="item.ID" class="form-control" value=@Model.sID readonly="readonly" />
+                        <span asp-validation-for="item.ID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.TEN" class="control-label">Tên</label>
+                        <input type="text" asp-for="item.TEN" class="form-control"/>
+                        <span asp-validation-for="item.TEN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.DIENTHOAI" class="control-label">Điện thoại</label>
+                        <input type="tel" asp-for="item.DIENTHOAI" class="form-control" />
+                        <span asp-validation-for="item.DIENTHOAI" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.CMND" class="control-label">CMT/CCCD</label>
+                        <input type="text" asp-for="item.CMND" class="form-control" />
+                        <span asp-validation-for="item.CMND" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.WEBSITE" class="control-label">Biển số xe</label>
+                        <input type="text" asp-for="item.WEBSITE" class="form-control"/>
+                        <span asp-validation-for="item.WEBSITE" class="text-danger"></span>
+                    </div>
+                    <div class="form-check">
+                        <input asp-for="item.SUDUNG" type="checkbox" class="form-check-input" checked>
+                        <label asp-for="item.SUDUNG" class="form-check-label">Sử dụng</label>
+                        <span asp-validation-for="item.SUDUNG" class="text-danger" asp-page-handler="Luu"></span>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                   
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

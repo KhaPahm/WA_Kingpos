@@ -1,0 +1,90 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.DSPhieuthanhtoanFina.ViewModel
+@{
+    ViewData["Title"] = "Xem Chi Tiết Phiếu thanh toán";
+    ViewData["Name"] = "danhsachphieuthanhtoan";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Số phiếu :</th>
+                            <td class="font-weight-bold">@Model.item.maphieu</td>
+                        </tr>
+                        <tr>
+                            <th>Người lập phiếu :</th>
+                            <td class="font-weight-bold">@Model.item.nhanvien</td>
+                        </tr>
+                        <tr>
+                            <th>Ngày lập phiếu :</th>
+                            <td class="font-weight-bold">@Model.item.ngaylap</td>
+                        </tr>
+                        <tr>
+                            <th>Lý do :</th>
+                            <td class="font-weight-bold">@Model.item.email</td>
+                        </tr>
+                        <tr>
+                            <th>Tổng tiền :</th>
+                            <td class="font-weight-bold">@String.Format("{0:N0}", @Model.item.thanhtien)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="font-weight-bold">DANH SÁCH PHIẾU</p>
+                <table id="tablesimple" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã phiếu đặt hàng</th>
+                            <th>Nhân viên</th>
+                            <th>Ngày đặt</th>
+                            <th>Khách hàng</th>
+                            <th>Số tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.stt</td>
+                                <td>@item.tensanpham</td>
+                                <td>@item.bienso</td>
+                                <td>@item.ngaygiaohang</td>
+                                <td>@item.khachhang</td>
+                                <td>@item.sotien</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>@String.Format("{0:N0}", @Model.item.thanhtien)</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <br />
+                <div class="form-group">
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

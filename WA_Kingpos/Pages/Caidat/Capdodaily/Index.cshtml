@@ -1,0 +1,71 @@
+﻿@page
+@model WA_Kingpos.Pages.Capdodaily.IndexModel
+@{
+    ViewData["Title"] = "Cấp độ đại lý";
+    ViewData["Name"] = "capdodaily";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Tên</th>
+                            <th>Chiết khấu</th>
+                            <th>Ghi chú</th>
+                            <th>Sử dụng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.ma_donvitinh</td>
+                                <td>@item.ten_donvitinh</td>
+                                <td>@item.chietkhau</td>
+                                <td>@item.ghichu</td>
+                                @if (@item.sudung.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.sudung</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.sudung</td>
+                                }
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.ma_donvitinh">Xem</a>
+                                    @if (Model.bSua)
+                                    {
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.ma_donvitinh">Sửa</a>
+                                    }
+                                    @if (Model.bXoa)
+                                    {
+                                        <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.ma_donvitinh">Xóa</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @if (Model.bThem)
+                {
+                    <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                }
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

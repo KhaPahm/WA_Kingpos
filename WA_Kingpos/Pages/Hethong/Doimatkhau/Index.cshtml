@@ -1,0 +1,53 @@
+﻿@page
+@model WA_Kingpos.Pages.Doimatkhau.IndexModel
+@{
+    ViewData["Title"] = "Đổi mật khẩu";
+    ViewData["Name"] = "doimatkhau";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.matkhaucu" class="control-label">Mật khẩu cũ</label>
+                        <input type="password" asp-for="item.matkhaucu" class="form-control" />
+                        <span asp-validation-for="item.matkhaucu" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.matkhaumoi" class="control-label">Mật khẩu mới</label>
+                        <input type="password" asp-for="item.matkhaumoi" class="form-control" />
+                        <span asp-validation-for="item.matkhaumoi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.xacnhanmatkhau" class="control-label">Xác nhận mật khẩu mới</label>
+                        <input type="password" asp-for="item.xacnhanmatkhau" class="form-control" />
+                        <span asp-validation-for="item.xacnhanmatkhau" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

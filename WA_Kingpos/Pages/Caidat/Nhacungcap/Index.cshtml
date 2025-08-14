@@ -1,0 +1,106 @@
+﻿@page
+@model WA_Kingpos.Pages.Nhacungcap.IndexModel
+@{
+    ViewData["Title"] = "Nhà cung cấp";
+    ViewData["Name"] = "nhacungcap";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên</th>
+                            <th>Địa chỉ</th>
+                            <th>Điện thoại</th>
+                            <th>Mã số thuế</th>
+                            <th>Email</th>
+                            <th>Người liên hệ</th>
+                            <th>Ngày sinh</th>
+                            <th>Mã đại lý</th>
+                            <th>Loại đại lý</th>
+                            <th>Cấp đại lý</th>
+                            <th>Chiết khấu</th>
+                            <th>Hạn mức</th>
+                            <th>Hạn thanh toán</th>
+                            <th>Đặt cọc</th>
+                            <th>Tiền đặt cọc</th>
+                            <th>Ghi chú</th>
+                            <th>Sử dụng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.MA</td>
+                                <td>@item.TENLOAI</td>
+                                <td>@item.TEN</td>
+                                <td>@item.DIACHI</td>
+                                <td>@item.DIENTHOAI</td>
+                                <td>@item.FAX</td>
+                                <td>@item.EMAIL</td>
+                                <td>@item.NGUOILIENHE</td>
+                                <td>@item.NGAYSINH</td>
+                                <td>@item.ID</td>
+                                <td>@item.LOAIDAILY1</td>
+                                <td>@item.CAPDAILY</td>
+                                <td>@item.CHIETKHAU</td>
+                                <td>@item.HANMUC_CONGNO</td>
+                                <td>@item.HANTHANHTOAN</td>
+                                @if (@item.ISDATCOC.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.ISDATCOC</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.ISDATCOC</td>
+                                }
+                                <td>@item.TIENDATCOC</td>
+                                <td>@item.GHICHU</td>
+                                @if (@item.SUDUNG.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.SUDUNG</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.SUDUNG</td>
+                                }
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.MA">Xem</a>
+                                    @if (Model.bSua)
+                                    {
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.MA">Sửa</a>
+                                    }
+                                    @if (Model.bXoa)
+                                    {
+                                        <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.MA">Xóa</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @if (Model.bThem)
+                {
+                    <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                }
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

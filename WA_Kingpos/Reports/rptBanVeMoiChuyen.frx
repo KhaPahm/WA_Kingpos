@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/29/2024 11:23:45" ReportInfo.Modified="04/08/2025 04:00:16" ReportInfo.CreatorVersion="2025.1.0.0">
+  <Dictionary>
+    <CsvDataConnection Name="Connection" ConnectionString="rijcmlqDd03z9I7qu+NhHmz0DXyHWfVyUE9AQa7wl1iDX1Yu+2pXqOgabdA4bYkmJLfx104NIyfdocVSn0OaD1B7aWPLbwT4DHlqUA8o1ZcaJoT3Mu0bQRIqV3zEDf59Y5ycBRSUPQXAgoQYu8WEHxNoMK4Oc7HWzjZj3L0ZAS67RZgljiJ9+VUKwW7EbOqaW1nR44nHOamlg4Y0ympQNSbcXdTdYQRaiJgH4eljxTmdqOFp+tFkORj5U+hplqPs5cdf5phEDEKPSdNT7YkwaIAhujD9oMaaK7pmoppEi50tMYcvztuKjEtG9W7vXYMqa1+IPsV">
+      <TableDataSource Name="TableMain" DataType="System.Int32" Enabled="true" TableName="TableMain">
+        <Column Name="Field0" DataType="System.String"/>
+        <Column Name="Field1" DataType="System.String"/>
+      </TableDataSource>
+    </CsvDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="341.75">
+      <TextObject Name="Text1" Left="160.65" Top="83.05" Width="737.1" Height="49.14" Text="BÁO CÁO CHI TIẾT BÁN VÉ MỖI CHUYẾN CỦA NHÂN VIÊN" HorzAlign="Center" Font="Tahoma, 18pt, style=Bold"/>
+      <TextObject Name="Text4" Top="9.45" Width="784.35" Height="18.9" Text="[tencongty]" Font="Tahoma, 11pt, style=Bold"/>
+      <TextObject Name="Text5" Top="32.35" Width="75.6" Height="18.9" Text="Địa chỉ : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Top="56.7" Width="94.5" Height="18.9" Text="Điện thoại : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text41" Left="56.7" Top="32.35" Width="963.9" Height="18.9" Text="[diachi]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text42" Left="94.5" Top="56.7" Width="746.55" Height="18.9" Text="[dienthoai]" Font="Tahoma, 10pt, style=Bold"/>
+      <PictureObject Name="logo" Left="935.55" Width="75.6" Height="75.6" Visible="false"/>
+      <TextObject Name="Text59" Top="124.4" Width="56.7" Height="18.9" Text="Tuyến:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text60" Left="141.75" Top="124.4" Width="198.45" Height="18.9" Text="[TENTUYEN]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text61" Top="152.75" Width="56.7" Height="18.9" Text="Tàu:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text62" Left="141.75" Top="152.75" Width="198.45" Height="18.9" Text="[TENDOITUONG]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text67" Left="349.65" Top="181.1" Width="56.7" Height="18.9" Text="Giờ:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text63" Top="181.1" Width="56.7" Height="18.9" Text="Ngày:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text64" Left="141.75" Top="181.1" Width="198.45" Height="18.9" Text="[NGAYKHOIHANH]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text68" Left="491.4" Top="181.1" Width="198.45" Height="18.9" Text="[GIODI]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text65" Top="209.45" Width="85.05" Height="18.9" Text="Nhân viên:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text66" Left="141.75" Top="209.45" Width="198.45" Height="18.9" Text="[NHANVIEN]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text69" Top="236.25" Width="132.3" Height="18.9" Text="Tổng thành tiền:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text70" Left="141.75" Top="236.25" Width="198.45" Height="18.9" Text="[THUCTHU]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text71" Top="321.3" Width="85.05" Height="18.9" Text="Thực thu:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text72" Left="141.75" Top="321.3" Width="151.2" Height="18.9" Text="[PHAINOP]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text73" Left="349.65" Top="207.9" Width="132.3" Height="18.9" Text="Hoa hồng:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text74" Left="491.4" Top="207.9" Width="151.2" Height="18.9" Text="[TONG_CT_HOAHONG]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text75" Left="349.65" Top="236.25" Width="132.3" Height="18.9" Text="Đặt cọc:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text76" Left="491.4" Top="236.25" Width="151.2" Height="18.9" Text="[TONG_CT_DATCOC]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text77" Left="349.65" Top="264.6" Width="132.3" Height="18.9" Text="Tiền gửi:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text78" Left="491.4" Top="264.6" Width="151.2" Height="18.9" Text="[TONG_CT_TIENGUI]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text81" Left="680.4" Top="207.9" Width="113.4" Height="18.9" Text="Giảm giá:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text82" Left="822.15" Top="207.9" Width="151.2" Height="18.9" Text="[TONG_CT_GIAMTRU]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text83" Left="680.4" Top="236.25" Width="113.4" Height="18.9" Text="Công nợ:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text84" Left="822.15" Top="236.25" Width="151.2" Height="18.9" Text="[TONG_CT_CONGNO]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text85" Left="680.4" Top="264.6" Width="113.4" Height="18.9" Text="Chuyển khoản:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text86" Left="822.15" Top="264.6" Width="151.2" Height="18.9" Text="[TONG_CT_CUYENKHOAN]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text79" Left="680.4" Top="292.95" Width="113.4" Height="18.9" Text="Điểm:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text80" Left="822.15" Top="292.95" Width="151.2" Height="18.9" Text="[TONG_CT_DIEM]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text87" Left="349.65" Top="292.95" Width="132.3" Height="18.9" Text="Đại lý:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text88" Left="491.4" Top="292.95" Width="151.2" Height="18.9" Text="[TONG_CT_DAILY]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text89" Left="349.65" Top="321.3" Width="132.3" Height="18.9" Text="Online:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text90" Left="491.4" Top="321.3" Width="151.2" Height="18.9" Text="[TONG_CT_WEB]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text91" Top="264.6" Width="132.3" Height="18.9" Text="Phụ thu hủy vé:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text92" Left="141.75" Top="264.6" Width="198.45" Height="18.9" Text="[TONG_PHUTHUHUYVE]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text93" Top="292.95" Width="132.3" Height="18.9" Text="Phụ thu in lại:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text94" Left="141.75" Top="292.95" Width="198.45" Height="18.9" Text="[TONG_PHUTHUINLAI]" Font="Tahoma, 10pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="345.75" Width="1047.06" Height="37.8">
+      <TableObject Name="Table3" Width="1044.56" Height="37.8" Border.Lines="All">
+        <TableColumn Name="Column32" Width="37.8"/>
+        <TableColumn Name="Column19" Width="58.87"/>
+        <TableColumn Name="Column20" Width="66.43"/>
+        <TableColumn Name="Column21" Width="39.99"/>
+        <TableColumn Name="Column29" Width="58.89"/>
+        <TableColumn Name="Column22" Width="51.31"/>
+        <TableColumn Name="Column23" Width="71.77"/>
+        <TableColumn Name="Column24" Width="39.97"/>
+        <TableColumn Name="Column25" Width="39.97"/>
+        <TableColumn Name="Column26" Width="49.42"/>
+        <TableColumn Name="Column30" Width="48.19"/>
+        <TableColumn Name="Column34" Width="47.25"/>
+        <TableColumn Name="Column36" Width="47.25"/>
+        <TableColumn Name="Column40"/>
+        <TableColumn Name="Column41" Width="56.7"/>
+        <TableColumn Name="Column48"/>
+        <TableColumn Name="Column38" Width="37.8"/>
+        <TableColumn Name="Column50" Width="56.7"/>
+        <TableColumn Name="Column46" Width="103.95"/>
+        <TableRow Name="Row3" Height="37.8">
+          <TableCell Name="Cell43" Text="STT" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell19" Border.Lines="All" Text="Vé" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell20" Border.Lines="All" Text="Loại" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell21" Border.Lines="All" Text="Số lượng" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell29" Border.Lines="All" Text="Đơn giá" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell22" Border.Lines="All" Text="Phụ thu" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell23" Border.Lines="All" Text="Thành tiền" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell24" Border.Lines="All" Text="Phụ thu trả vé" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell25" Border.Lines="All" Text="Phụ thu in lại" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="Giảm trừ" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell41" Border.Lines="Right" Text="Hoa hồng" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell45" Border.Lines="Right" Text="Công nợ" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell47" Border.Lines="Right" Text="Đặt cọc" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell54" Border.Lines="Right" Text="Chuyển khoản" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell55" Border.Lines="Right" Text="Tiền gửi" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell65" Border.Lines="Right" Text="Đại lý" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8.25pt, style=Bold"/>
+          <TableCell Name="Cell49" Border.Lines="Right" Text="Điểm" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TableCell Name="Cell67" Border.Lines="Right" Text="ONLINE" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8.25pt, style=Bold"/>
+          <TableCell Name="Cell63" Text="Diễn giải" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="387.55" Width="1047.06" Height="22.68" CanGrow="true" DataSource="TableMain">
+      <TableObject Name="Table1" Width="1044.56" Height="22.68" Border.Lines="All" Layout="Wrapped">
+        <TableColumn Name="Column33" Width="37.8"/>
+        <TableColumn Name="Column1" Width="58.87"/>
+        <TableColumn Name="Column2" Width="66.43"/>
+        <TableColumn Name="Column3" Width="39.99"/>
+        <TableColumn Name="Column11" Width="58.89"/>
+        <TableColumn Name="Column4" Width="51.31"/>
+        <TableColumn Name="Column5" Width="71.77"/>
+        <TableColumn Name="Column6" Width="39.97"/>
+        <TableColumn Name="Column7" Width="39.97"/>
+        <TableColumn Name="Column8" Width="49.42"/>
+        <TableColumn Name="Column31" Width="48.19"/>
+        <TableColumn Name="Column35" Width="47.25"/>
+        <TableColumn Name="Column37" Width="47.25"/>
+        <TableColumn Name="Column39"/>
+        <TableColumn Name="Column42" Width="56.7"/>
+        <TableColumn Name="Column49"/>
+        <TableColumn Name="Column43" Width="37.8"/>
+        <TableColumn Name="Column51" Width="56.7"/>
+        <TableColumn Name="Column47" Width="103.95"/>
+        <TableRow Name="Row1" MinHeight="22.68" Height="22.68" AutoSize="true">
+          <TableCell Name="Cell44" Border.Lines="Right" Text="[TableMain.STT]" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell30" Border.Lines="Right" Text="[TableMain.LOAI]" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell31" Border.Lines="Right" Text="[TableMain.TENKHUVUC]" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell32" Border.Lines="Right" Text="[TableMain.SOLUONG]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell40" Border.Lines="All" Text="[TableMain.DONGIA]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell33" Border.Lines="All" Text="[TableMain.PHUTHU]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell34" Border.Lines="Right" Text="[TableMain.THANHTIEN]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell35" Border.Lines="Right" Text="[TableMain.PHUTHUHUYVE]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell36" Border.Lines="Right" Text="[TableMain.PHUTHUINLAI]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell37" Border.Lines="Right" Text="[TableMain.CT_GIAMTRU]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell42" Border.Lines="Right" Text="[TableMain.CT_HH]" Format="Custom" Format.Format="n0" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell51" Border.Lines="Right" Text="[TableMain.CT_CONGNO]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell52" Border.Lines="Right" Text="[TableMain.CT_DATCOC]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell53" Border.Lines="Right" Text="[TableMain.CT_CUYENKHOAN]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell60" Border.Lines="Right" Text="[TableMain.CT_TIENGUI]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell66" Border.Lines="Right" Text="[TableMain.CT_DAILY]" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8.25pt"/>
+          <TableCell Name="Cell61" Border.Lines="Right" Text="[TableMain.CT_DIEM]" Format="Custom" Format.Format="n0" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+          <TableCell Name="Cell68" Border.Lines="Right" Text="[TableMain.CT_WEB]" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8.25pt"/>
+          <TableCell Name="Cell64" Border.Lines="Right" Text="[TableMain.DIENGIAI]" VertAlign="Center" Font="Tahoma, 8pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="414.23" Width="1047.06" Height="75.6">
+      <TextObject Name="Text40" Left="916.65" Top="18.9" Width="113.4" Height="18.9" Text="Người lập" Font="Tahoma, 10pt, style=Bold"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="493.83" Width="1047.06" Height="18.9">
+      <TextObject Name="Text10" Left="973.35" Width="18.9" Height="18.9" Text="/" HorzAlign="Right" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="9.45" Width="170.1" Height="18.9" Text="[Date]" Format="Custom" Format.Format="dd/MM/yyyy HH:mm:ss" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text12" Left="926.1" Width="56.7" Height="18.9" Text="[Page#]" HorzAlign="Right" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="982.8" Width="56.7" Height="18.9" Text="[TotalPages#]" Font="Tahoma, 10pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

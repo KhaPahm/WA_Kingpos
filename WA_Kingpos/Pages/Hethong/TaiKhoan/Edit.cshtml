@@ -1,0 +1,89 @@
+﻿@page
+@model WA_Kingpos.Pages.TaiKhoan.EditModel
+@{
+    ViewData["Title"] = "Sửa Tài Khoản";
+    ViewData["Name"] = "taikhoan";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.userid" class="control-label">Tài khoản</label>
+                        <input type="text" asp-for="item.userid" class="form-control" readonly />
+                        <span asp-validation-for="item.userid" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.matkhau" class="control-label">Mật khẩu</label>
+                        <input type="password" asp-for="item.matkhau" value="@Model.item.matkhau" class="form-control" />
+                        <span asp-validation-for="item.matkhau" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Nhân viên</label>
+                        <select asp-for="item.nhanvien" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" selected disabled hidden>Chọn nhân viên</option>
+                            @foreach (var item in Model.Listnhanvien)
+                            {
+                                if(item.Macdinh=="1")
+                                {
+                                    <option value="@item.MANHANVIEN" selected>@item.TENNHANVIEN</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.MANHANVIEN">@item.TENNHANVIEN</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nhóm quyền</label>
+                        <select asp-for="item.nhomquyen" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" selected disabled hidden>Chọn nhóm quyền</option>
+                            @foreach (var item in Model.ListNhomquyen)
+                            {
+                                if (item.Macdinh == "1")
+                                {
+                                    <option value="@item.MA" selected>@item.TEN</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.MA">@item.TEN</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-check">
+                        @if (@Model.item.sudung.ToString().ToLower() == "true")
+                        {
+                            <input asp-for="item.sudung" type="checkbox" class="form-check-input" checked>
+                        }
+                        else
+                        {
+                            <input asp-for="item.sudung" type="checkbox" class="form-check-input">
+                        }
+                        <label asp-for="item.sudung" class="form-check-label">Sử dụng</label>
+                        <span asp-validation-for="item.sudung" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

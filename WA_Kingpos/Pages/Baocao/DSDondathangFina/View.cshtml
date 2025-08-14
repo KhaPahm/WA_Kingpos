@@ -1,0 +1,113 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.DSDondathangFina.ViewModel
+@{
+    ViewData["Title"] = "Xem Chi Tiết Đơn Đặt Hàng";
+    ViewData["Name"] = "danhsachdonhangfina";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Số phiếu :</th>
+                            <td class="font-weight-bold">@Model.item.maphieu</td>
+                        </tr>
+                        <tr>
+                            <th>Nhân viên :</th>
+                            <td class="font-weight-bold">@Model.item.nhanvien</td>
+                        </tr>
+                        <tr>
+                            <th>Ngày đặt :</th>
+                            <td class="font-weight-bold">@Model.item.ngaylap</td>
+                        </tr>
+                        <tr>
+                            <th>Kho :</th>
+                            <td class="font-weight-bold">@Model.item.kho</td>
+                        </tr>
+                        <tr>
+                            <th>Khách hàng :</th>
+                            <td class="font-weight-bold">@Model.item.khachhang</td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ :</th>
+                            <td>@Model.item.diachi</td>
+                        </tr>
+                        <tr>
+                            <th>Điện thoại :</th>
+                            <td>@Model.item.dienthoai</td>
+                        </tr>
+                        <tr>
+                            <th>Email :</th>
+                            <td>@Model.item.email</td>
+                        </tr>
+                        <tr>
+                            <th>Mã số thuế :</th>
+                            <td>@Model.item.masothue</td>
+                        </tr>
+                        <tr>
+                            <th>CMT/CCCD :</th>
+                            <td>@Model.item.cccd</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="font-weight-bold">DANH SÁCH SẢN PHẨM</p>
+                <table id="tablesimple" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Đơn vị tính</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.stt</td>
+                                <td>@item.masanpham</td>
+                                <td>@item.tensanpham</td>
+                                <td>@item.donvitinh</td>
+                                <td>@item.dongia</td>
+                                <td>@item.soluong</td>
+                                <td>@item.thanhtien</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>@String.Format("{0:N0}", @Model.tongsoluong)</th>
+                            <th>@String.Format("{0:N0}", @Model.tongthanhtien)</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <br />
+                <div class="form-group">
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>            
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

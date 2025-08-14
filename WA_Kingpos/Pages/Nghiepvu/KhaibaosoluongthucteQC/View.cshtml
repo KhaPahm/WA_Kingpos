@@ -1,0 +1,144 @@
+﻿@page
+@model WA_Kingpos.Pages.LaiTau.ViewModel
+@{
+    ViewData["Title"] = "Khai báo thành công";
+    ViewData["Name"] = "bangkhaisoluongtrentau";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th><br /></th>
+                            <td><h4>TUYẾN</h4></td>
+                        </tr>
+                        <tr>
+                            <th>Tuyến :</th>
+                            <td>@Model.item.TENTUYEN</td>
+                        </tr>
+                        <tr>
+                            <th>Ngày :</th>
+                            <td>@Model.item.NGAYDI</td>
+                        </tr>
+                        <tr>
+                            <th>Giờ :</th>
+                            <td>@Model.item.GIODI</td>
+                        </tr>
+                        <tr>
+                            <th>Tàu :</th>
+                            <td>@Model.item.TENDOITUONG</td>
+                        </tr>
+                        <tr>
+                            <th>Người khai báo :</th>
+                            <td>@Model.item.NGUOITAO</td>
+                        </tr>
+                        <tr>
+                            <th>Thời gian khai báo :</th>
+                            <td>@Model.item.NGAYTAO</td>
+                        </tr>
+                        <tr>
+                            <th><br /></th>
+                            <td><h4>HÀNH KHÁCH</h4></td>
+                        </tr>
+                        <tr hidden>
+                            <th>Trẻ em :</th>
+                            <td>@Model.item.TREEM</td>
+                        </tr>
+                        <tr hidden>
+                            <th>Cao tuổi :</th>
+                            <td>@Model.item.CAOTUOI</td>
+                        </tr>
+                        <tr hidden>
+                            <th>VIP :</th>
+                            <td>@Model.item.VIP</td>
+                        </tr>
+                        <tr>
+                            <th>Người lớn :</th>
+                            <td>@Model.item.NGUOILON</td>
+                        </tr>
+                        <tr>
+                            <th>Vé mời :</th>
+                            <td>@Model.item.VEMOI</td>
+                        </tr>
+                        <tr>
+                            <th>Ghi chú :</th>
+                            <td>@Model.item.GHICHU</td>
+                        </tr>
+                        <tr>
+                            <th><br /></th>
+                            <td><h4>XE</h4></td>
+                        </tr>
+                        <tr>
+                            <th>Gắn máy + mô tô :</th>
+                            <td>@Model.item.GANMAY</td>
+                        </tr>
+                        <tr>
+                            <th>4-5 chỗ :</th>
+                            <td>@Model.item.OT4C</td>
+                        </tr>
+                        <tr>
+                            <th>7-9 chỗ :</th>
+                            <td>@Model.item.OT7C</td>
+                        </tr>
+                        <tr>
+                            <th>10-16 chỗ :</th>
+                            <td>@Model.item.OT16C</td>
+                        </tr>
+                        <tr>
+                            <th>17-25 chỗ :</th>
+                            <td>@Model.item.OT25C</td>
+                        </tr>
+                        <tr>
+                            <th>26-50 chỗ :</th>
+                            <td>@Model.item.OT50C</td>
+                        </tr>
+                        <tr hidden>
+                            <th>Xe tải :</th>
+                            <td>@Model.item.SLXETAI</td>
+                        </tr>
+                        <tr>
+                            <th>Xe tải 0 - 3 Tấn :</th>
+                            <td>@Model.item.XETAIDUOI3T</td>
+                        </tr>
+                        <tr>
+                            <th>Xe tải 3 - 5 Tấn :</th>
+                            <td>@Model.item.XETAIDUOI5T</td>
+                        </tr>
+                        <tr>
+                            <th>Xe tải 5 - 8 Tấn :</th>
+                            <td>@Model.item.XETAIDUOI8T</td>
+                        </tr>
+                        <tr>
+                            <th>Xe tải trên 8 Tấn :</th>
+                            <td>@Model.item.XETAITREN8T</td>
+                        </tr>
+                        <tr>
+                            <th>Vé mời:</th>
+                            <td>@Model.item.XETAIVEMOI</td>
+                        </tr>
+                        <tr>
+                            <th>Ghi chú:</th>
+                            <td>@Model.item.XETAIGHICHU</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Khai báo chuyến khác</a>
+                <a class="btn btn-warning" role="button" asp-page="Edit" asp-route-id="@Model.item.MALICHTRINH">Chỉnh sửa khai báo chuyến này</a>
+                <a class="btn btn-danger" role="button" asp-page="Delete" asp-route-id="@Model.item.MALICHTRINH">Hủy khai báo chuyến này</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

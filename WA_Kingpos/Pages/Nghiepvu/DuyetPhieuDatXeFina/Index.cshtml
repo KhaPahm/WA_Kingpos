@@ -1,0 +1,151 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.DuyetPhieuDatXeFina.IndexModel
+@{
+    ViewData["Title"] = "Danh Sách Phiếu Đặt Xe";
+    ViewData["Name"] = "finaduyetdatxe";
+}
+<div class="row">
+    <div class="col-12">
+
+        <div class="align-items-end">
+            <div class="d-flex justify-content-end">
+                <div class="custom-control custom-radio d-inline-block m-1 align-self-end">
+                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios" onchange="HideOrUnhide()">
+                    <label class="custom-control-label" for="defaultUnchecked">Xem dưới dạng lưới</label>
+                </div>
+
+                <div class="custom-control custom-radio d-inline-block m-1 align-self-end">
+                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" onchange="HideOrUnhide()" checked>
+                    <label class="custom-control-label" for="defaultChecked">Xem dưới dạng thẻ</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="GridView" class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Số phiếu</th>
+                            <th>Kho</th>
+                            <th>Nhân viên</th>
+                            <th>Ngày đặt</th>
+                            <th>Ngày bốc hàng</th>
+                            <th>Tài xế</th>
+                            <th>Biến số xe</th>
+                            <th>Số lượng</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.maphieu</td>
+                                <td>@item.kho</td>
+                                <td>@item.nhanvien</td>
+                                <td>@item.ngaylap</td>
+                                <td>@item.ngaygiaohang</td>
+                                <td>@item.khachhang</td>
+                                <td>@item.bienso</td>
+                                <td>@item.tongsoluong</td>
+                                <td>@item.trangthai</td>
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./Detail" asp-route-id="@item.maphieu">Xem chi tiết</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+
+        <div id="CardView" class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var item in Model.listitem)
+                    {
+                        <div class="col-md-2">
+                            <div class="card card-widget widget-user-2">
+                                <div class="card-footer p-0">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Số phiếu <span class="float-right text-info">@item.maphieu</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Kho <span class="float-right text-info">@item.kho</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Nhân viên <span class="float-right text-info">@item.nhanvien</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Ngày lập <span class="float-right text-info">@item.ngaylap</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Ngày giao hàng <span class="float-right text-info">@item.ngaygiaohang</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Tài xế <span class="float-right text-info">@item.khachhang</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Biển số <span class="float-right text-info">@item.bienso</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Số lượng <span class="float-right text-info">@item.tongsoluong</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Trạng thái <span class="float-right text-info">@item.trangthai</span>
+                                            </a>
+                                        </li>
+                                        <li class="d-flex justify-content-center nav-item">
+                                            <a href="#" class="nav-link">
+                                                <a class="btn btn-info btn-sm m-1" role="button" asp-page="./Detail" asp-route-id="@item.maphieu">Xem chi tiết</a>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

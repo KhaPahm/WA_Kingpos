@@ -1,0 +1,232 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.Khaibaonhienlieu.IndexModel
+@{
+    ViewData["Title"] = "Khai báo nhiên liệu thực tế";
+    ViewData["Name"] = "bangkhainhienlieu";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">THÔNG TIN TÀU</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="TAU">Tàu</label>
+                                <select asp-for="TAU" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control select2bs4" style="width: 100%;">
+                                    <option value="" selected disabled hidden>Chọn tàu...</option>
+                                    @foreach (var item in Model.listitem)
+                                    {
+                                        <option value="@item.ID">@item.NAME</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="TAU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SOLUONG">Số chuyến</label>
+                                <input asp-for="SOLUONG" type="text" class="form-control" readonly />
+                                <span asp-validation-for="SOLUONG" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DAUTON">Dầu tồn trong két</label>
+                                <input asp-for="DAUTON" type="number" class="form-control" oninput="sumTONGDAU(this)" />
+                                <span asp-validation-for="DAUTON" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DAUTHEM">Dầu cấp thêm</label>
+                                <input asp-for="DAUTHEM" type="number" class="form-control" oninput="sumTONGDAU(this)" />
+                                <span asp-validation-for="DAUTHEM" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TONGDAU">Tổng dầu</label>
+                                <input asp-for="TONGDAU" type="text" class="form-control" readonly />
+                                <span asp-validation-for="TONGDAU" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-warning card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">DẦU TIÊU THỤ TRONG TỪNG CHUYẾN &nbsp;&nbsp;<span>@(Model.LIST_ITEM.Count > 0 ? $"({Model.LIST_ITEM.Count})" : "")</span></h5>
+                        </div>
+                        <div class="card-body">
+                            @if (Model.LIST_ITEM != null)
+                            {
+                                @for (int i = 0; i < Model.LIST_ITEM.Count; i++)
+                                {
+                                    <div class="card card-warning card-outline">
+                                        <div class="card-header">
+                                            <h5 class="card-title">GIỜ CHẠY: @Model.LIST_ITEM[i].GIODI</h5>
+                                        </div>
+                                        <div class="card-body">
+
+                                            <div class="form-group" hidden>
+                                                <label asp-for="LIST_ITEM[i].MALICHTRINH">Mã lịch trình</label>
+                                                <input asp-for="LIST_ITEM[i].MALICHTRINH" type="text" class="form-control" readonly="readonly" />
+                                                <span asp-validation-for="LIST_ITEM[i].MALICHTRINH" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group" hidden>
+                                                <label asp-for="LIST_ITEM[i].GIODI">Giờ khởi hành</label>
+                                                <input asp-for="LIST_ITEM[i].GIODI" type="text" class="form-control" readonly="readonly" />
+                                                <span asp-validation-for="LIST_ITEM[i].GIODI" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LIST_ITEM[i].VONGTUAMAY">Vòng tua máy</label>
+                                                <input asp-for="LIST_ITEM[i].VONGTUAMAY" type="number" class="form-control" />
+                                                <span asp-validation-for="LIST_ITEM[i].VONGTUAMAY" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LIST_ITEM[i].DINHMUC">Định mức</label>
+                                                <input asp-for="LIST_ITEM[i].DINHMUC" type="number" class="form-control" />
+                                                <span asp-validation-for="LIST_ITEM[i].DINHMUC" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LIST_ITEM[i].DAUMAYCHINH">Dầu máy chính</label>
+                                                <input asp-for="LIST_ITEM[i].DAUMAYCHINH" type="number" class="form-control" />
+                                                <span asp-validation-for="LIST_ITEM[i].DAUMAYCHINH" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LIST_ITEM[i].DAUMAYDEN">Dầu máy đèn</label>
+                                                <input asp-for="LIST_ITEM[i].DAUMAYDEN" type="number" class="form-control" />
+                                                <span asp-validation-for="LIST_ITEM[i].DAUMAYDEN" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LIST_ITEM[i].DAUPHATSINH">Dầu phát sinh</label>
+                                                <input asp-for="LIST_ITEM[i].DAUPHATSINH" type="number" class="form-control" />
+                                                <span asp-validation-for="LIST_ITEM[i].DAUPHATSINH" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LIST_ITEM[i].TONGTIEUTHU">Tổng tiêu thụ</label>
+                                                <input asp-for="LIST_ITEM[i].TONGTIEUTHU" type="number" class="form-control" oninput="onChangeTONGTIEUTHU(this, @i)" />
+                                                <span asp-validation-for="LIST_ITEM[i].TONGTIEUTHU" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LIST_ITEM[i].DAUTON">Dầu tồn</label>
+                                                <input asp-for="LIST_ITEM[i].DAUTON" type="number" class="form-control" readonly />
+                                                <span asp-validation-for="LIST_ITEM[i].DAUTON" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LIST_ITEM[i].GHICHU">Ghi chú</label>
+                                                <input asp-for="LIST_ITEM[i].GHICHU" type="text" class="form-control" />
+                                                <span asp-validation-for="LIST_ITEM[i].GHICHU" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                }
+                            }
+                        </div>
+                    </div>
+                   
+                    <div class="card card-danger card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">TỔNG TIÊU THỤ: <span id="SUM_TONGTIEUTHU" style="font-weight:bold;">0</span>&nbsp;&nbsp;&nbsp;CÒN LẠI: <span id="SUM_CONLAI" style="font-weight:bold;">0</span></h5>
+                        </div>
+                    </div>
+                    
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="btn1ReLoad" class="btn btn-success" hidden>ReLoad</button>
+                        <button type="submit" name="submitButton" value="btn2Create" class="btn btn-success">Lưu Khai Báo</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+<script>
+    window.onload = function () {
+        onChangeTONGTIEUTHU();
+    };
+    // tính tổng dầu gồm số tồn + dầu thêm mới
+    function sumTONGDAU(input) {
+        var DAUTON = document.getElementById('DAUTON');
+        var DAUTHEM = document.getElementById('DAUTHEM');
+        var TONGDAU = document.getElementById('TONGDAU');
+
+        var firstValue = parseFloat(DAUTON.value) || 0;
+        var secondValue = parseFloat(DAUTHEM.value) || 0;
+        var sum = firstValue + secondValue;
+        TONGDAU.value = sum;
+        calcCONLAI();
+        calcDAUTON();
+    }
+
+    function onChangeTONGTIEUTHU(input, index) {
+        var SUM_TONGTIEUTHU = sumTONGTIEUTHU();
+        // tính tổng tiêu thụ
+        var txt_SUM_TONGTIEUTHU = document.getElementById('SUM_TONGTIEUTHU');
+        txt_SUM_TONGTIEUTHU.textContent = "" + SUM_TONGTIEUTHU;
+        calcCONLAI();
+        calcDAUTON();
+    }
+
+
+    // tính tổng tiêu thụ của tất cả các chuyến trong ngày
+    // có truyền maxRow thì chỉ SUM đến dòng index maxRow
+    function sumTONGTIEUTHU(maxRow) {
+        //alert(input.name);
+        // Get all input elements with a name matching the pattern LIST_ITEM[i].TONGTIEUTHU
+        var inputs = document.querySelectorAll('input[name^="LIST_ITEM["][name$="].TONGTIEUTHU"]');
+
+        var sum = 0;
+
+        // Loop through each input and sum up their values
+        if (maxRow === null || maxRow === undefined) {
+            inputs.forEach(function (input) {
+                sum += parseInt(input.value) || 0;
+            });
+        } else {
+            for (var i = 0; i <= maxRow; i++) {
+                var element = inputs[i];
+                sum += parseInt(element.value) || 0;
+            }
+        }
+        return sum;
+    }
+
+    // tính lại dầu tồn lũy tiến trừ dần theo từng chuyến mỗi khi thay đổi tổng tiêu thụ
+    function calcDAUTON() {
+        var TONGDAU = document.getElementById('TONGDAU');
+        var TONGDAU_value = parseFloat(TONGDAU.value) || 0;
+        // Get all input elements with a name matching the pattern LIST_ITEM[i].DAUTON
+        var inputs = document.querySelectorAll('input[name^="LIST_ITEM["][name$="].DAUTON"]');
+        for (var i = 0; i < inputs.length; i++) {
+            var DAUTON = inputs[i];
+            // tính số tồn trừ dần theo từng chuyến
+            var sumUntilIndex = sumTONGTIEUTHU(i);
+            DAUTON.value = TONGDAU_value - sumUntilIndex;
+        }
+
+    }
+
+    // dầu còn lại là TONGDAU trừ đi tổng đã tiêu thụ trên các chuyến
+    function calcCONLAI() {
+        var SUM_TONGTIEUTHU = document.getElementById('SUM_TONGTIEUTHU');
+        var TONGDAU = document.getElementById('TONGDAU');
+        var SUM_CONLAI = document.getElementById('SUM_CONLAI');
+
+        var firstValue = parseFloat(TONGDAU.value) || 0;
+        var secondValue = parseFloat(SUM_TONGTIEUTHU.textContent) || 0;
+        var conlai = firstValue - secondValue;
+        SUM_CONLAI.textContent = "" + conlai;
+    }
+
+
+</script>

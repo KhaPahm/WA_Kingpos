@@ -1,0 +1,298 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.DSDondathangFina.IndexModel
+@{
+    ViewData["Title"] = "Báo Cáo Danh Sách Đơn Đặt Hàng";
+    ViewData["Name"] = "danhsachdonhangfina";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Từ ngày - Đến ngày</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" asp-for="sTungay" class="form-control float-right" id="reservation">
+                                    @* <input type="text" class="form-control float-right" id="reservation"> *@
+                                </div>
+                                <span asp-validation-for="sTungay" class="text-danger"></span>
+                            </div>
+                        </div>
+                       @*  <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Đến ngày</label>
+                                <div class="input-group date" id="reservationdate1" data-target-input="nearest">
+                                    <input type="text" asp-for="sDenngay" class="form-control datetimepicker-input" data-target="#reservationdate1">
+                                    <div class="input-group-append" data-target="#reservationdate1" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="sDenngay" class="text-danger"></span>
+                            </div>
+                        </div> *@
+                        <!-- nhanvien -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Nhân viên</label>
+                                <select asp-for="sNhanvien" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listnhanvien)
+                                    {
+                                        if (Model.Listnhanvien.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sNhanvien" class="text-danger"></span>
+                                <div class="form-group">
+                                    @for (var i = 0; i < Model.Listnhanvien.Count; i++)
+                                    {
+                                        <input type="hidden" asp-for="@Model.Listnhanvien[i].MA" />
+                                        <input type="hidden" asp-for="@Model.Listnhanvien[i].TEN" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Kho -->
+                            <div class="form-group">
+                                <label>Kho</label>
+                                <select asp-for="sKho" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listkho)
+                                    {
+                                        if (Model.Listkho.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sKho" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listkho.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listkho[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listkho[i].TEN" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Khachhang -->
+                            <div class="form-group">
+                                <label>Khách hàng</label>
+                                <select asp-for="sKhachhang" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listkhachhang)
+                                    {
+                                        if (Model.Listkhachhang.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sKhachhang" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listkhachhang.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listkhachhang[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listkhachhang[i].TEN" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- hanghoa -->
+                            <div class="form-group">
+                                <label>Hàng hóa</label>
+                                <select asp-for="sHanghoa" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listhanghoa)
+                                    {
+                                        if (Model.Listhanghoa.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sHanghoa" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listhanghoa.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listhanghoa[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listhanghoa[i].TEN" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- trang thai -->
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <select asp-for="sTrangthai" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listtrangthai)
+                                    {
+                                        if (Model.Listtrangthai.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sTrangthai" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listtrangthai.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listtrangthai[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listtrangthai[i].TEN" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- van chuyen -->
+                            <div class="form-group">
+                                <label>Vận chuyển</label>
+                                <select asp-for="sVanchuyen" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listvanchuyen)
+                                    {
+                                        if (Model.Listvanchuyen.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sVanchuyen" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listvanchuyen.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listvanchuyen[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listvanchuyen[i].TEN" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- thanh toan -->
+                            <div class="form-group">
+                                <label>Thanh toán</label>
+                                <select asp-for="sThanhtoan" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.Listthanhtoan)
+                                    {
+                                        if (Model.Listthanhtoan.IndexOf(item) == 0)
+                                        {
+                                            <option value="@item.MA" selected>@item.TEN</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.MA">@item.TEN</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="sThanhtoan" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                @for (var i = 0; i < Model.Listthanhtoan.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Listthanhtoan[i].MA" />
+                                    <input type="hidden" asp-for="@Model.Listthanhtoan[i].TEN" />
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                        <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất PDF</button>
+                        <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                    </div>
+
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">Số phiếu</th>
+                            <th style="text-align:center ; vertical-align:middle">Ngày tạo</th>
+                            <th style="text-align:center ; vertical-align:middle">Kho</th>
+                            <th style="text-align:center ; vertical-align:middle">Nhân viên</th>
+                            <th style="text-align:center ; vertical-align:middle">Khách hàng</th>
+                            <th style="text-align:center ; vertical-align:middle">Tổng tiền</th>
+                            <th style="text-align:center ; vertical-align:middle">Trạng thái</th>
+                            <th style="text-align:center ; vertical-align:middle">Người duyệt</th>
+                            <th style="text-align:center ; vertical-align:middle">Vận chuyển</th>
+                            <th style="text-align:center ; vertical-align:middle">Thanh toán</th>
+                            <th style="text-align:center ; vertical-align:middle">Xem chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.maphieu</td>
+                                <td>@item.ngaylap</td>
+                                <td>@item.kho</td>
+                                <td>@item.nhanvien</td>
+                                <td>@item.khachhang</td>
+                                <td>@item.thanhtien</td>
+                                <td>@item.trangthai</td>
+                                <td>@item.cccd</td>
+                                <td>@item.bienso</td>
+                                <td>@item.diachi</td>
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.maphieu">Xem</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

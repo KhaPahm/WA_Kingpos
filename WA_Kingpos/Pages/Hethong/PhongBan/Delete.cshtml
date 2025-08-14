@@ -1,0 +1,59 @@
+﻿@page
+@model WA_Kingpos.Pages.PhongBan.DeleteModel
+@{
+    ViewData["Title"] = "Xóa Phòng Ban";
+    ViewData["Name"] = "phongban";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Mã :</th>
+                            <td>@Model.item.ma_phongban</td>
+                        </tr>
+                        <tr>
+                            <th>Tên :</th>
+                            <td>@Model.item.ten_phongban</td>
+                        </tr>
+                        <tr>
+                            <th>Ghi chú :</th>
+                            <td>@Model.item.ghichu</td>
+                        </tr>
+                        <tr>
+                            <th>Sử dụng :</th>
+                            @if (@Model.item.sudung.ToString().ToLower() == "true")
+                            {
+                                <td><input type="checkbox" checked></td>
+                            }
+                            else
+                            {
+                                <td><input type="checkbox"></td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+                <form method="post">
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Xóa" class="btn btn-danger" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

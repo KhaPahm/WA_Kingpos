@@ -1,0 +1,193 @@
+﻿@page
+@model WA_Kingpos.Pages.Hanghoa.IndexModel
+@using WA_Kingpos.Data
+
+@{
+    ViewData["Title"] = "Hàng hóa";
+    ViewData["Name"] = "hanghoa";
+}
+
+@if (cls_AppSettings.AppId == AppId.fina)
+{
+    <partial name="Index_fina" />
+}
+else
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">@ViewData["Title"]</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="tablefull" class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã</th>
+                                <th>Mã nội bộ</th>
+                                <th>Mã vạch</th>
+                                <th>Tên</th>
+                                <th>ĐVT</th>
+                                <th>Nhóm hàng</th>
+                                <th>Thuế</th>
+                                <th>Giá nhập</th>
+                                <th>Giá bán 1</th>
+                                <th>Giá bán 2</th>
+                                <th>Giá bán 3</th>
+                                <th>Giá bán 4</th>
+                                <th>Thực đơn</th>
+                                <th>Tồn kho</th>
+                                <th>In bếp</th>
+                                <th>Tên bếp</th>
+                                <th>GTTL</th>
+                                <th>PLU</th>
+                                <th>Giá thời vụ</th>
+                                <th>Sửa định lượng</th>
+                                <th>Món thêm</th>
+                                <th>In tem</th>
+                                <th>Ghi chú</th>
+                                <th>Sử dụng</th>
+                                <th>Hình ảnh</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.listitem)
+                            {
+                                <tr>
+                                    <td>@item.STT</td>
+                                    <td>@item.MA</td>
+                                    <td>@item.ID_HANGHOA</td>
+                                    <td>@item.MAVACH</td>
+                                    <td>@item.TEN</td>
+                                    <td>@item.TEN_DONVITINH</td>
+                                    <td>@item.TEN_NHOMHANG</td>
+                                    <td>@item.THUE</td>
+                                    <td>@item.GIANHAP</td>
+                                    <td>@item.GIABAN1</td>
+                                    <td>@item.GIABAN2</td>
+                                    <td>@item.GIABAN3</td>
+                                    <td>@item.GIABAN4</td>
+                                    @if (@item.THUCDON.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.THUCDON</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.THUCDON</td>
+                                    }
+                                    @if (@item.TONKHO.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.TONKHO</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.TONKHO</td>
+                                    }
+                                    @if (@item.IS_INBEP.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.IS_INBEP</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.IS_INBEP</td>
+                                    }
+                                    <td>@item.TEN_BEP</td>
+                                    @if (@item.GIATHEOTRONGLUONG.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.GIATHEOTRONGLUONG</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.GIATHEOTRONGLUONG</td>
+                                    }
+                                    <td>@item.PLU</td>
+                                    @if (@item.SUAGIA.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.SUAGIA</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.SUAGIA</td>
+                                    }
+                                    @if (@item.SUADINHLUONG.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.SUADINHLUONG</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.SUADINHLUONG</td>
+                                    }
+                                    @if (@item.MONTHEM.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.MONTHEM</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.MONTHEM</td>
+                                    }
+                                    @if (@item.INTEM.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.INTEM</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.INTEM</td>
+                                    }
+                                    <td>@item.GHICHU</td>
+                                    @if (@item.SUDUNG.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.SUDUNG</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.SUDUNG</td>
+                                    }
+                                    @if (@item.HINHANH != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(@item.HINHANH);
+                                        var userImage = String.Format("data:image/gif;base64,{0}", base64);
+                                        <td><img src="@userImage" alt="Hinhanh" width="150" height="150"></td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                    <td>
+                                        <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.MA">Xem</a>
+                                        @if (Model.bSua)
+                                        {
+                                            <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.MA">Sửa</a>
+                                        }
+                                        @if (Model.bXoa)
+                                        {
+                                            <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.MA">Xóa</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    @if (Model.bThem)
+                    {
+                        <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                    }
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+}
+
+
+
+
+

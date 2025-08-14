@@ -1,0 +1,221 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.BangLuongFina.IndexModel
+@{
+    ViewData["Title"] = "Báo Cáo Bảng Lương";
+    ViewData["Name"] = "bangluongfina";
+}
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        @if (Model.listNhomNhanVien.Count > 0)
+                        {
+                            <div class="col-md-2">
+                                <!-- nhóm nhân viên -->
+                                <div class="form-group" style="width: 100%;">
+                                    <label for="strNhomNhanVien">Nhóm nhân viên</label>
+                                    <select asp-for="strNhomNhanVien" id="strNhomNhanVien" class="form-control select2bs4" style="width: 100%;">
+                                        @foreach (var item in Model.listNhomNhanVien)
+                                        {
+                                            if ($",{Model.strNhomNhanVien},".Contains($",{item.MANHOM},"))
+                                            {
+                                                <option value="@item.MANHOM" selected>@item.TENNHOM_NHANVIEN</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.MANHOM">@item.TENNHOM_NHANVIEN</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-md-3">
+                            <!-- nhân viên -->
+                            <div class="form-group">
+                                <label for="MaNhanVien">Nhân viên</label>
+                                <select asp-for="MaNhanVien" multiple="multiple" class="form-control cboMultiNhanVien" style="width: 100%;" title="">
+                                    @foreach (var item in Model.listNhanVien)
+                                    {
+                                        if ($",{Model.MaNhanVien},".Contains($",{item.manhanvien},"))
+                                        {
+                                            <option value="@item.manhanvien" selected>@item.tennhanvien</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.manhanvien">@item.tennhanvien</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Từ ngày - Đến ngày</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" asp-for="sNgay" class="form-control float-right" id="reservation99">
+                                    @* <input type="text" class="form-control float-right" id="reservation"> *@
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                        <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất PDF</button>
+                        <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                    </div>
+
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">Tên nhân viên</th>
+                            @*<th style="text-align:center ; vertical-align:middle">Địa chỉ</th>*@
+                            <th style="text-align:center ; vertical-align:middle">Tổng lương<br>[1]+[4]+[5]+[6]</th>
+                            <th style="text-align:center ; vertical-align:middle">Lương căn bản<br>[1]</th>
+                            <th style="text-align:center ; vertical-align:middle">SL tiêu chuẩn (kg)</th>
+                            <th style="text-align:center ; vertical-align:middle">SL quy đổi (kg)<br>[2]</th>
+                            <th style="text-align:center ; vertical-align:middle">Tỷ lệ %</th>
+                            <th style="text-align:center ; vertical-align:middle">Đơn vị HH (Đ/kg)<br>[3]</th>
+                            <th style="text-align:center ; vertical-align:middle">Hoa Hồng<br>[4]=[2]*[3]</th>
+                            <th style="text-align:center ; vertical-align:middle">Chênh lệch Tiền hàng<br>[5]</th>
+                            <th style="text-align:center ; vertical-align:middle">HH Quản lý<br>[6]</th>
+                            <th style="text-align:center ; vertical-align:middle">Hình thức</th>
+                            <th style="text-align:center ; vertical-align:middle">Khu vực</th>
+                            <th style="text-align:center ; vertical-align:middle">Ngày nhận việc</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>
+                                    @*asp-route-id1="2" asp-route-id2="4"*@
+                                    <a class="btn btn-transparent btn-sm " role="button" asp-page="Detail" asp-route-id1="@item.MANHANVIEN" asp-route-id2="@Model.sNgay" asp-route-id4="@Model.strNhomNhanVien"><i style="color: #0d6efd;" class="fas fa-eye"></i></a> @item.TENNHANVIEN
+                                </td>
+                                @*<td>@item.DIACHI</td>*@
+                                <td class="text-right"><strong>@item.TONGLUONG?.ToString("N0")</strong></td>
+                                <td class="text-right">@(((double)(item.LUONG_CANBAN! + item.LUONG_QUANLY!)).ToString("N0"))</td>
+                                <td class="text-right">@item.DOANHSO_TIEUCHUAN?.ToString("N0")</td>
+                                <td class="text-right">@item.DOANHSO_KPI?.ToString("N0")</td>
+                                <td class="text-right">@item.TYLE_HOANTHANH?.ToString("P0")</td>
+                                <td class="text-right">@item.DONVI_HH?.ToString("N0")</td>
+                                <td class="text-right">@item.HH_DOANHSO?.ToString("N0")</td>
+                                <td class="text-right">@item.CHENHLECH_BANHANG?.ToString("N0")</td>
+                                <td class="text-right">@item.HH_QUANLY?.ToString("N0")</td>
+                                <td>@item.TRANGTHAI_NHANVIEN</td>
+                                <td>@item.KHUVUC_KPI</td>
+                                <td>@item.NGAYNHANVIEC?.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                        }
+                    </tbody>
+                    @*<tfoot>
+                            <tr>
+                                <th>Tổng cộng</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th class="text-right">@Model.listitem.Sum(item => item.THANHTIEN)?.ToString("N0")</th>
+                                <th></th>
+                                <th class="text-right text-danger">@Model.listitem.Sum(item => item.CHENHLECH_THANHTIEN)?.ToString("N0")</th>
+                            </tr>
+                        </tfoot>*@
+                </table>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var format = 'DD/MM/YYYY';
+            var oldDate = $('#reservation99').val();
+
+            $('#reservation99').change(function () {
+                var newValue = $(this).val();
+                console.log(`New date: ${newValue}`);
+                if (!oldDate) {
+                    window.location = "?id2=" + newValue;
+                } else {
+                    console.log(`Not need reload, current date: ${oldDate}`);
+                }
+                oldDate = newValue;
+            });
+            var startDate, endDate;
+            if (!oldDate) {
+                // If empty, set startDate and endDate to current date
+                startDate = moment().startOf('month');
+                endDate = moment();
+            } else {
+                // If not empty, parse the date range
+                var dates = oldDate.split('-');
+                startDate = moment(dates[0].trim(), format);
+                endDate = moment(dates[1].trim(), format);
+            }
+
+            console.log(`init date range picker: ${startDate.format(format)} -> ${endDate.format(format)}`);
+            $('#reservation99').daterangepicker({
+                opens: 'left',
+                startDate: startDate,
+                endDate: endDate,
+                ranges: {
+                    'Tháng này': [moment().startOf('month'), moment().endOf('month')],
+                    'Tháng trước': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                    '2 Tháng trước': [moment().subtract(2, 'month').startOf('month'), moment().subtract(2, 'month').endOf('month')],
+                },
+                locale: {
+                    format: format,
+                    customRangeLabel: 'Tùy chỉnh'
+                }
+            });
+
+
+
+            $('#strNhomNhanVien').change(function () {
+                var newValue = $(this).val();
+                console.log(`New NhomNhanVien: ${newValue}`);
+                window.location = `?id4=${newValue}&id2=${$('#reservation99').val()}`;
+            });
+        });
+
+    </script>
+}
+
+

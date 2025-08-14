@@ -1,0 +1,100 @@
+﻿
+@model WA_Kingpos.Pages.Nhomhang.ViewModel
+@{
+    //ViewData["Title"] = "Chi Tiết Nhóm hàng";
+    //ViewData["Name"] = "nhomhang";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th>STT :</th>
+                            <td>@Model.item.STT</td>
+                        </tr>
+                        <tr>
+                            <th>Mã :</th>
+                            <td>@Model.item.MA</td>
+                        </tr>
+                        <tr>
+                            <th>Tên :</th>
+                            <td>@Model.item.TEN</td>
+                        </tr>
+                        <tr>
+                            <th>Ghi chú :</th>
+                            <td>@Model.item.GHICHU</td>
+                        </tr>
+                        <tr>
+                            <th>Sử dụng :</th>
+                            @if (@Model.item.SUDUNG.ToString().ToLower() == "true")
+                            {
+                                <td><input type="checkbox" checked></td>
+                            }
+                            else
+                            {
+                                <td><input type="checkbox"></td>
+                            }
+                        </tr>
+                        @*<tr>
+                                <th>Thực đơn :</th>
+                                @if (@Model.item.THUCDON.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>Món thêm :</th>
+                                @if (@Model.item.MONTHEM.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>*@
+                        <tr>
+                            <th>Hình ảnh :</th>
+                            @if (@Model.item.HINHANH != null)
+                            {
+                                var base64 = Convert.ToBase64String(@Model.item.HINHANH);
+                                var userImage = String.Format("data:image/gif;base64,{0}", base64);
+                                <td><img src="@userImage" alt="Hinhanh" width="200" height="200"></td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+                @if (Model.bSua)
+                {
+                    <a class="btn btn-warning" role="button" asp-page="./Edit" asp-route-id="@Model.item.MA">Sửa</a>
+                }
+                @if (Model.bXoa)
+                {
+                    <a class="btn btn-danger" role="button" asp-page="./Delete" asp-route-id="@Model.item.MA">Xóa</a>
+                }
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

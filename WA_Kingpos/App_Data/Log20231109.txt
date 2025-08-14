@@ -1,0 +1,96 @@
+﻿---------------------------
+DATE: 09/11/2023 08:12:43
+0
+DM_Donvitinh
+System.ArgumentException: Column 'TEN_DONVITIN5H' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 24
+---------------------------
+DATE: 09/11/2023 08:15:01
+0
+DM_Donvitinh
+System.ArgumentException: Column 'TEN_DONVITIN5H' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 24
+---------------------------
+DATE: 09/11/2023 08:17:54
+0
+DM_Donvitinh
+System.ArgumentException: Column 'TEN_DONVITIN5H' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 24
+---------------------------
+DATE: 09/11/2023 08:20:38
+0
+DM_Donvitinh Xem : 63
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.DetailsModel.OnGet(String id) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Details.cshtml.cs:line 24
+---------------------------
+DATE: 09/11/2023 08:20:53
+0
+DM_Donvitinh Xem : 59
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.DetailsModel.OnGet(String id) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Details.cshtml.cs:line 24
+---------------------------
+DATE: 09/11/2023 08:20:56
+0
+DM_Donvitinh Xem : 5
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.DetailsModel.OnGet(String id) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Details.cshtml.cs:line 24
+---------------------------
+DATE: 09/11/2023 10:46:47
+0
+DM_Donvitinh Add
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Data.cls_Main.SQLString(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 87
+   at WA_Kingpos.Data.cls_Main.SQLStringUnicode(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 98
+   at WA_Kingpos.Pages.Donvitinh.CreateModel.OnPost() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Create.cshtml.cs:line 23
+---------------------------
+DATE: 09/11/2023 13:54:42
+0
+DM_Donvitinh Add
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Data.cls_Main.SQLString(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 87
+   at WA_Kingpos.Data.cls_Main.SQLStringUnicode(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 98
+   at WA_Kingpos.Pages.Donvitinh.CreateModel.OnPost(clsDonvitinh it) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Create.cshtml.cs:line 23
+---------------------------
+DATE: 09/11/2023 14:56:09
+0
+DM_Donvitinh Add
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Data.cls_Main.SQLString(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 87
+   at WA_Kingpos.Data.cls_Main.SQLStringUnicode(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 98
+   at WA_Kingpos.Pages.Donvitinh.CreateModel.OnPost(clsDonvitinh item) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Create.cshtml.cs:line 24
+---------------------------
+DATE: 09/11/2023 15:30:22
+0
+DM_Donvitinh Add
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Data.cls_Main.SQLString(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 87
+   at WA_Kingpos.Data.cls_Main.SQLStringUnicode(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 98
+   at WA_Kingpos.Pages.Donvitinh.CreateModel.OnPost(clsDonvitinh item) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Create.cshtml.cs:line 23
+---------------------------
+DATE: 09/11/2023 16:24:16
+0
+DM_Donvitinh Add
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Data.cls_Main.SQLString(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 87
+   at WA_Kingpos.Data.cls_Main.SQLStringUnicode(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 98
+   at WA_Kingpos.Pages.Donvitinh.CreateModel.OnPost(clsDonvitinh item) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Create.cshtml.cs:line 23
+---------------------------
+DATE: 09/11/2023 16:27:30
+0
+DM_Donvitinh Add
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WA_Kingpos.Data.cls_Main.SQLString(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 87
+   at WA_Kingpos.Data.cls_Main.SQLStringUnicode(String Text) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 98
+   at WA_Kingpos.Pages.Donvitinh.CreateModel.OnPost(clsDonvitinh item) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Create.cshtml.cs:line 24

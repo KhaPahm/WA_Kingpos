@@ -1,0 +1,104 @@
+﻿@page
+@model WA_Kingpos.Pages.DSKhachhang.IndexModel
+@{
+    ViewData["Title"] = "Báo Cáo Danh Sách Khách Hàng";
+    ViewData["Name"] = "danhsachkhachhang";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label>Nhân viên phụ trách</label>
+                        <select asp-for="sMaNhanVien" class="form-control select2bs4" style="width: 100%;">
+                            @foreach (var item in Model.Listnhanvien)
+                            {
+                                if (Model.Listnhanvien.IndexOf(item) == 0)
+                                {
+                                   <option value="@item.MANHANVIEN" selected>@item.TENNHANVIEN</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.MANHANVIEN">@item.TENNHANVIEN</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="sMaNhanVien" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        @for (var i = 0; i < Model.Listnhanvien.Count; i++)
+                        {
+                            <input type="hidden" asp-for="@Model.Listnhanvien[i].MANHANVIEN" />
+                            <input type="hidden" asp-for="@Model.Listnhanvien[i].TENNHANVIEN" />
+                        }
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                        <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất PDF</button>
+                        <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                    </div>
+
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">Mã</th>
+                            <th style="text-align:center ; vertical-align:middle">Tên</th>
+                            <th style="text-align:center ; vertical-align:middle">Địa chỉ</th>
+                            <th style="text-align:center ; vertical-align:middle">Điện thoại</th>
+                            <th style="text-align:center ; vertical-align:middle">Email</th>
+                            <th style="text-align:center ; vertical-align:middle">MST</th>
+                            <th style="text-align:center ; vertical-align:middle">CMT/CCCD</th>
+                            <th style="text-align:center ; vertical-align:middle">Nhân viên</th>
+                            <th style="text-align:center ; vertical-align:middle">Sử dụng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.MA</td>
+                                <td>@item.TEN</td>
+                                <td>@item.DIACHI</td>
+                                <td>@item.DIENTHOAI</td>
+                                <td>@item.EMAIL</td>
+                                <td>@item.FAX</td>
+                                <td>@item.CMND</td>
+                                <td>@item.TENKHGIOITHIEU</td>
+                                @if (@item.SUDUNG.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.SUDUNG</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.SUDUNG</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+             
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

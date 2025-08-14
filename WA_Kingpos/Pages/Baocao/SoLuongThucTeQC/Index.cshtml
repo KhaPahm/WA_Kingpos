@@ -1,0 +1,125 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.SoLuongThucTeQC.IndexModel
+@{
+    ViewData["Title"] = "Báo Cáo Số Lượng Tực tế";
+    ViewData["Name"] = "soluongthucteQC";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                
+
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Ngày </label>
+                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                    <input type="text" asp-for="NGAY" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control datetimepicker-input" data-target="#reservationdate">
+                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="NGAY" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MATUYEN">Tuyến</label>
+                                <select asp-for="MATUYEN" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control select2bs4" style="width: 100%;">
+                                    <option value="0" selected disabled hidden>Chọn tuyến...</option>
+                                    @foreach (var item in Model.listitem_tuyen)
+                                    {
+                                        <option value="@item.ID_Trip">@item.Name_Trip</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MATUYEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MALICHTRINH">Giờ khởi hành</label>
+                                <select asp-for="MALICHTRINH" class="form-control select2bs4" style="width: 100%;">
+                                    <option value="" selected disabled hidden>Chọn giờ khởi hành...</option>
+                                    @foreach (var item in Model.listitem)
+                                    {
+                                        <option value="@item.ID">@item.Note</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MALICHTRINH" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="btn1ReLoad" class="btn btn-success" hidden>ReLoad</button>
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                        <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất Report</button>
+                        <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                    </div>
+
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">Trẻ em</th>
+                            <th style="text-align:center ; vertical-align:middle">Cao tuổi</th>
+                            <th style="text-align:center ; vertical-align:middle">Vip</th>
+                            <th style="text-align:center ; vertical-align:middle">Người lớn</th>
+                            <th style="text-align:center ; vertical-align:middle">Vé mời</th>
+                            <th style="text-align:center ; vertical-align:middle">Ghi chú</th>
+                            <th style="text-align:center ; vertical-align:middle">Tổng hành khách</th>
+                            <th style="text-align:center ; vertical-align:middle">Gắn máy</th>
+                            <th style="text-align:center ; vertical-align:middle">4-5 chỗ</th>
+                            <th style="text-align:center ; vertical-align:middle">7-9 chỗ</th>
+                            <th style="text-align:center ; vertical-align:middle">10-16 chỗ</th>
+                            <th style="text-align:center ; vertical-align:middle">17-25 chỗ</th>
+                            <th style="text-align:center ; vertical-align:middle">26-50 chỗ</th>
+                            <th style="text-align:center ; vertical-align:middle">Xe tải</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem_view)
+                        {
+                            <tr>
+                                <td>@item.TREEM</td>
+                                <td>@item.CAOTUOI</td>
+                                <td>@item.VIP</td>
+                                <td>@item.NGUOILON</td>
+                                <td>@item.VEMOI</td>
+                                <td>@item.GHICHU</td>
+                                <td>@item.TONGHANHKHACH</td>
+                                <td>@item.GANMAY</td>
+                                <td>@item.SLOTO4C</td>
+                                <td>@item.SLOTO7C</td>
+                                <td>@item.SLOTO16C</td>
+                                <td>@item.SLOTO25C</td>
+                                <td>@item.SLOTO50C</td>
+                                <td>@item.SLXETAI</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+             
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+
+
+<!-- /.row -->

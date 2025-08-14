@@ -1,0 +1,149 @@
+﻿@page
+@model WA_Kingpos.Pages.Nhacungcap.DeleteModel
+@{
+    ViewData["Title"] = "Xóa Nhà cung cấp";
+    ViewData["Name"] = "nhacungcap";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr>
+                                <th>Mã :</th>
+                                <td>@Model.item.MA</td>
+                            </tr>
+                            <tr>
+                                <th>Loại :</th>
+                                <td>@Model.item.TENLOAI</td>
+                            </tr>
+                            <tr>
+                                <th>Tên :</th>
+                                <td>@Model.item.TEN</td>
+                            </tr>
+                            <tr>
+                                <th>Địa chỉ :</th>
+                                <td>@Model.item.DIACHI</td>
+                            </tr>
+                            <tr>
+                                <th>Điện thoại :</th>
+                                <td>@Model.item.DIENTHOAI</td>
+                            </tr>
+                            <tr>
+                                <th>Website :</th>
+                                <td>@Model.item.WEBSITE</td>
+                            </tr>
+                            <tr>
+                                <th>Mã số thuế :</th>
+                                <td>@Model.item.FAX</td>
+                            </tr>
+                            <tr>
+                                <th>Email :</th>
+                                <td>@Model.item.EMAIL</td>
+                            </tr>
+                            <tr>
+                                <th>Người liên hệ :</th>
+                                <td>@Model.item.NGUOILIENHE</td>
+                            </tr>
+                            <tr>
+                                <th>CMND :</th>
+                                <td>@Model.item.CMND</td>
+                            </tr>
+                            <tr>
+                                <th>Ngày sinh :</th>
+                                <td>@Model.item.NGAYSINH</td>
+                            </tr>
+                            <tr>
+                                <th>Giới tính :</th>
+                                @if (@Model.item.GIOITINH.ToString().ToLower() == "true")
+                                {
+                                    <td>Nam</td>
+                                }
+                                else
+                                {
+                                    <td>Nữ</td>
+                                }
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><br /></td>
+                            </tr>
+                            <tr>
+                                <th>Mã đại lý :</th>
+                                <td><input type="hidden" asp-for="item.ID" class="form-control" />@Model.item.ID</td>
+                            </tr>
+                            <tr>
+                                <th>Loại đại lý :</th>
+                                <td>@Model.item.LOAIDAILY1</td>
+                            </tr>
+                            <tr>
+                                <th>Cấp đại lý :</th>
+                                <td>@Model.item.CAPDAILY</td>
+                            </tr>
+                            <tr>
+                                <th>Hạn mức công nợ :</th>
+                                <td>@Model.item.HANMUC_CONGNO</td>
+                            </tr>
+                            <tr>
+                                <th>Hạn thanh toán :</th>
+                                <td>@Model.item.HANTHANHTOAN</td>
+                            </tr>
+                            <tr>
+                                <th>Đặt cọc :</th>
+                                @if (@Model.item.ISDATCOC.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>Tiền đặt cọc :</th>
+                                <td>@Model.item.TIENDATCOC</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><br /></td>
+                            </tr>
+                            <tr>
+                                <th>Ghi chú :</th>
+                                <td>@Model.item.GHICHU</td>
+                            </tr>
+                            <tr>
+                                <th>Sử dụng :</th>
+                                @if (@Model.item.SUDUNG.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked></td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Xóa" class="btn btn-danger" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

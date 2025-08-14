@@ -1,0 +1,248 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.ThanhToanCongNoFina.EditModel
+@{
+    ViewData["Title"] = "Chỉnh Sửa Phiếu Thanh Toán";
+    ViewData["Name"] = "finathanhtoancongno";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="PHIEUDUYETTHU.SO_PHIEU" class="control-label">Số phiếu</label>
+                        <input type="text" asp-for="PHIEUDUYETTHU.SO_PHIEU" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="PHIEUDUYETTHU.SO_PHIEU" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PHIEUDUYETTHU.NGAYLAPPHIEU" class="control-label">Ngày lập</label>
+                        <input type="text" asp-for="PHIEUDUYETTHU.NGAYLAPPHIEU" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="PHIEUDUYETTHU.NGAYLAPPHIEU" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PHIEUDUYETTHU.LY_DO" class="control-label">Lý do</label>
+                        <input type="text" asp-for="PHIEUDUYETTHU.LY_DO" class="form-control" />
+                        <span asp-validation-for="PHIEUDUYETTHU.LY_DO" class="text-danger"></span>
+                    </div>
+                    @* <div class="form-group">
+                        <label class="control-label">Danh sách đơn hàng</label>
+                        <table id="tablesimple" class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center ; vertical-align:middle">Chọn</th>
+                                    <th style="text-align:center ; vertical-align:middle">Số phiếu</th>
+                                    <th style="text-align:center ; vertical-align:middle">Nhân viên</th>
+                                    <th style="text-align:center ; vertical-align:middle">Ngày lập</th>
+                                    <th style="text-align:center ; vertical-align:middle">Khách hàng</th>
+                                    <th style="text-align:center ; vertical-align:middle">Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (var i = 0; i < Model.ListDONDAT.Count; i++)
+                                {
+                                    <tr>
+                                        <td style="text-align:center ; vertical-align:middle"><input asp-for="ListDONDAT[i].CHON" type="checkbox" onchange='if(this.value != 0) { this.form.submit(); }'></td>
+                                        <td><input asp-for="ListDONDAT[i].PHIEUDATHANG" type="text" hidden>@Model.ListDONDAT[i].PHIEUDATHANG</td>
+                                        <td><input asp-for="ListDONDAT[i].NHANVIEN_DATHANG" type="text" hidden>@Model.ListDONDAT[i].NHANVIEN_DATHANG</td>
+                                        <td><input asp-for="ListDONDAT[i].NGAYLAP" type="text" hidden>@Model.ListDONDAT[i].NGAYLAP</td>
+                                        <td><input asp-for="ListDONDAT[i].KHACHHANG" type="text" hidden>@Model.ListDONDAT[i].KHACHHANG</td>
+                                        <td><input asp-for="ListDONDAT[i].THANHTIEN" type="text" hidden>@Model.ListDONDAT[i].THANHTIEN</td>
+                                    </tr>
+                                }
+                                @for (var i = 0; i < Model.PHIEUDUYETTHU.listDONDAT.Count; i++)
+                                {
+                                    <tr>
+                                        <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].PHIEUDATHANG" />
+                                        <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].NHANVIEN_DATHANG" />
+                                        <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].KHACHHANG" />
+                                        <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].THANHTIEN" />
+                                        <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].CHON" />
+                                        <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].STT" />
+                                        <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].NGAYLAP" />
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th style="text-align:right ; vertical-align:middle">Tổng tiền các phiếu đã chọn</th>
+                                    <th>@Model.PHIEUDUYETTHU.SOTIEN</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div> *@
+
+                    <div class="card card-success">
+                        <div class="card-header bg-secondary">
+                            <h3 class="card-title">Danh sách đơn hàng</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                @for (var i = 0; i < Model.ListDONDAT.Count; i++)
+                                {
+                                    <div class="col-md-2">
+                                        <div class="card card-widget widget-user-2">
+                                            <div class="card-footer p-0">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Phiếu đặt hàng
+                                                            <span class="float-right text-info">
+                                                                <input asp-for="ListDONDAT[i].PHIEUDATHANG" type="text" hidden>@Model.ListDONDAT[i].PHIEUDATHANG
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Nhân viên đặt hàng
+                                                            <span class="float-right text-info">
+                                                                <input asp-for="ListDONDAT[i].NHANVIEN_DATHANG" type="text" hidden>@Model.ListDONDAT[i].NHANVIEN_DATHANG
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Ngày lập
+                                                            <span class="float-right text-info">
+                                                                <input asp-for="ListDONDAT[i].NGAYLAP" type="text" hidden>@Model.ListDONDAT[i].NGAYLAP
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Khách hàng
+                                                            <span class="float-right text-info">
+                                                                <input asp-for="ListDONDAT[i].KHACHHANG" type="text" hidden>@Model.ListDONDAT[i].KHACHHANG
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Tổng tiền
+                                                            <span class="float-right text-info">
+                                                                <input asp-for="ListDONDAT[i].THANHTIEN" type="text" hidden>@Model.ListDONDAT[i].THANHTIEN
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Đã trả
+                                                            <span class="float-right text-info">
+                                                                <input asp-for="ListDONDAT[i].DATRA" type="text" hidden>@Model.ListDONDAT[i].DATRA
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Còn lại
+                                                            <span class="float-right text-info">
+                                                                <input asp-for="ListDONDAT[i].CONLAI" type="text" hidden>@Model.ListDONDAT[i].CONLAI
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link">
+                                                            <div class="d-flex flex-row">
+                                                                <p>Số tiền nộp: </p>
+                                                                <p class="float-right">
+                                                                    <td><input type="text" pattern="[0-9,]*" title="Vui lòng nhập số" class="form-control" asp-for="@Model.ListDONDAT[i].NHAPTHANHTOAN" /></td>
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            <div class="d-flex justify-content-center">
+                                                                <span>
+                                                                    <button type="submit" name="submitButton" value="btn1ReLoad" class="btn btn-warning btn-sm">Xác nhận</button>
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            <div class="d-flex justify-content-center">
+                                                                <span>
+                                                                    <input asp-for="ListDONDAT[i].CHON" type="checkbox" onchange='if(this.value != 0) { this.form.submit(); }'>
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @for (var i = 0; i < Model.PHIEUDUYETTHU.listDONDAT.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].PHIEUDATHANG" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].NHANVIEN_DATHANG" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].KHACHHANG" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].THANHTIEN" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].CHON" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].STT" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].NGAYLAP" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].DATRA" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].NHAPTHANHTOAN" />
+                                    <input type="hidden" asp-for="PHIEUDUYETTHU .listDONDAT [i].CONLAI" />
+                                }
+                            </div>
+                        </div>
+                        <div class="card-footer font-weight-bold text-info">
+                            Tổng tiền các phiếu đã chọn: @String.Format("{0:N0}", @Model.PHIEUDUYETTHU.SOTIEN)
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmModal">
+                            Lưu Phiếu Thanh Toán
+                        </button>
+                        <div class="modal" id="confirmModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Thông báo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Xác nhận bạn muốn tạo phiếu thanh toán này không?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                                        <button type="submit" name="submitButton" value="btn3Create" class="btn btn-success">Xác nhận</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Lists">Danh sách phiếu đã tạo</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

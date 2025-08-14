@@ -1,0 +1,117 @@
+﻿@page
+@model WA_Kingpos.Pages.Nhanvien.IndexModel
+@{
+    ViewData["Title"] = "Nhân viên";
+    ViewData["Name"] = "nhanvien";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Tên</th>
+                            <th>Phòng ban</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th>Địa chỉ</th>
+                            <th>Điện thoại</th>
+                            <th>Ngày nhận việc</th>
+                            <th>Hình thức</th>
+                            @*<th>Người quản lý</th>*@
+                            <th>Email</th>
+                            <th>Ghi chú</th>
+                            <th>Sử dụng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.manhanvien</td>
+                                <td>@item.tennhanvien</td>
+                                <td>@item.phongban</td>
+                                <td>@item.ngaysinh</td>
+                                <td>@item.gioitinh</td>
+                                <td>@item.diachi</td>
+                                <td>@item.dienthoai</td>
+                                <td>@item.NGAYNHANVIEC</td>
+                                <td>@item.HINHTHUC</td>
+                                @*<td>@item.TEN_NGUOIQUANLY</td>*@
+                                <td>@item.email</td>
+                                <td>@item.ghichu</td>
+                                @if (@item.sudung.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.sudung</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.sudung</td>
+                                }
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.manhanvien">Xem</a>
+                                    @if (Model.bSua)
+                                    {
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.manhanvien">Sửa</a>
+                                    }
+                                    @if (Model.bXoa)
+                                    {
+                                        <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.manhanvien">Xóa</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @if (Model.bThem)
+                {
+                    <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                    <form asp-page-handler="Import" method="post" enctype="multipart/form-data" class="d-inline">
+                        <label class="btn btn-success mb-0">
+                            Import File Excel
+                            <input type="file" name="ExcelFile" accept=".xlsx,.xls" onchange="this.form.submit()" hidden />
+                        </label>
+                    </form>
+                }
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+@section Scripts {
+    <script>
+        window.onload = function () {
+        @* Thông báo thành công *@
+        @if (TempData["Message"] != null)
+        {
+            <text>
+                        alert("@TempData["Message"]");
+                        window.location.href = "/Hethong/Nhanvien";
+            </text>
+        }
+
+        @* Thông báo lỗi *@
+        @if (TempData["Exception"] != null)
+        {
+            <text>
+                        alert("Lỗi import: @TempData["Exception"]");
+                        window.location.href = "/Hethong/Nhanvien";
+            </text>
+        }
+     };
+    </script>
+}
+

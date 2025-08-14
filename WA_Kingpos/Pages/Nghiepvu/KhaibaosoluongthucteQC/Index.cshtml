@@ -1,0 +1,169 @@
+﻿@page
+@model WA_Kingpos.Pages.LaiTau.IndexModel
+@{
+    ViewData["Title"] = "Khai báo số lượng thực tế trên tàu";
+    ViewData["Name"] = "bangkhaisoluongtrentau";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">TUYẾN</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="MATUYEN">Tuyến</label>
+                                <select asp-for="MATUYEN" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control select2bs4" style="width: 100%;">
+                                    <option value="0" selected disabled hidden>Chọn tuyến...</option>
+                                    @foreach (var item in Model.listitem_tuyen)
+                                    {
+                                        <option value="@item.ID_Trip">@item.Name_Trip</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MATUYEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MALICHTRINH">Giờ khởi hành</label>
+                                <select asp-for="MALICHTRINH" class="form-control select2bs4" style="width: 100%;">
+                                    <option value="" selected disabled hidden>Chọn giờ khởi hành...</option>
+                                    @foreach (var item in Model.listitem)
+                                    {
+                                        <option value="@item.ID">@item.Note</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="MALICHTRINH" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-success card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">HÀNH KHÁCH</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group" hidden>
+                                <label asp-for="TE">Trẻ em</label>
+                                <input asp-for="TE" type="text" class="form-control" />
+                                <span asp-validation-for="TE" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" hidden>
+                                <label asp-for="CT">Cao tuổi</label>
+                                <input asp-for="CT" type="text" class="form-control" />
+                                <span asp-validation-for="CT" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" hidden>
+                                <label asp-for="VIP">VIP</label>
+                                <input asp-for="VIP" type="text" class="form-control" />
+                                <span asp-validation-for="VIP" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NL">Người lớn</label>
+                                <input asp-for="NL" type="text" class="form-control" />
+                                <span asp-validation-for="NL" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="VEMOI">Vé mời</label>
+                                <input asp-for="VEMOI" type="text" class="form-control" />
+                                <span asp-validation-for="VEMOI" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="GHICHU" class="control-label">Ghi chú</label>
+                                <input type="text" asp-for="GHICHU" class="form-control" />
+                                <span asp-validation-for="GHICHU" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-warning card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">XE</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="GM">Gắn máy + Mô tô</label>
+                                <input asp-for="GM" type="text" class="form-control" />
+                                <span asp-validation-for="GM" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="OT4C">4-5 Chỗ</label>
+                                <input asp-for="OT4C" type="text" class="form-control" />
+                                <span asp-validation-for="OT4C" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="OT7C">7-9 Chỗ</label>
+                                <input asp-for="OT7C" type="text" class="form-control" />
+                                <span asp-validation-for="OT7C" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="OT16C">10-16 Chỗ</label>
+                                <input asp-for="OT16C" type="text" class="form-control" />
+                                <span asp-validation-for="OT16C" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="OT25C">17-25 Chỗ</label>
+                                <input asp-for="OT25C" type="text" class="form-control" />
+                                <span asp-validation-for="OT25C" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="OT50C">26-50 Chỗ</label>
+                                <input asp-for="OT50C" type="text" class="form-control" />
+                                <span asp-validation-for="OT50C" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="XETAIDUOI3T">Xe tải 0 - dưới 3T </label>
+                                <input asp-for="XETAIDUOI3T" type="text" class="form-control" />
+                                <span asp-validation-for="XETAIDUOI3T" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="XETAIDUOI5T">3 - dưới 5T </label>
+                                <input asp-for="XETAIDUOI5T" type="text" class="form-control" />
+                                <span asp-validation-for="XETAIDUOI5T" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="XETAIDUOI8T">5 - dưới 8T </label>
+                                <input asp-for="XETAIDUOI8T" type="text" class="form-control" />
+                                <span asp-validation-for="XETAIDUOI8T" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="XETAITREN8T">Trên 8T </label>
+                                <input asp-for="XETAITREN8T" type="text" class="form-control" />
+                                <span asp-validation-for="XETAITREN8T" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="XETAIVEMOI">Vé mời </label>
+                                <input asp-for="XETAIVEMOI" type="text" class="form-control" />
+                                <span asp-validation-for="XETAIVEMOI" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="XETAIGHICHU">Ghi chú </label>
+                                <input asp-for="XETAIGHICHU" type="text" class="form-control" />
+                                <span asp-validation-for="XETAIGHICHU" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" name="submitButton"  value="btn1ReLoad" class="btn btn-success" hidden>ReLoad</button>
+                        <button type="submit" name="submitButton"  value="btn2Create" class="btn btn-success">Lưu Khai Báo</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

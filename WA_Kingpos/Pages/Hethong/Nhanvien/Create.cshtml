@@ -1,0 +1,128 @@
+﻿@page
+@model WA_Kingpos.Pages.Nhanvien.CreateModel
+@using WA_Kingpos.Models
+@{
+    ViewData["Title"] = "Thêm Nhân Viên";
+    ViewData["Name"] = "nhanvien";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.tennhanvien" class="control-label">Tên</label>
+                        <input type="text" asp-for="item.tennhanvien" class="form-control" />
+                        <span asp-validation-for="item.tennhanvien" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Bộ phận</label>
+                        <select asp-for="item.phongban" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" selected disabled hidden>Chọn bộ phận</option>
+                            @foreach (var item in Model.ListChucvu)
+                            {
+                                <option value="@item.MACHUCVU">@item.TENCHUCVU</option>
+                            }
+                        </select>
+                        <span asp-validation-for="item.phongban" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày sinh</label>
+                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                            <input type="text" asp-for="item.ngaysinh" class="form-control datetimepicker-input" data-target="#reservationdate">
+                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="item.ngaysinh" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Giới tính</label>
+                        <select asp-for="item.gioitinh" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" selected disabled hidden>Chọn giới tính</option>
+                            <option value="true">Nam</option>
+                            <option value="false">Nữ</option>
+                        </select>
+                        <span asp-validation-for="item.gioitinh" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.diachi" class="control-label">Địa chỉ</label>
+                        <input type="text" asp-for="item.diachi" class="form-control" />
+                        <span asp-validation-for="item.diachi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.dienthoai" class="control-label">Điện thoại</label>
+                        <input type="text" asp-for="item.dienthoai" class="form-control" />
+                        <span asp-validation-for="item.dienthoai" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.email" class="control-label">Email</label>
+                        <input type="text" asp-for="item.email" class="form-control" />
+                        <span asp-validation-for="item.email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.NGAYNHANVIEC">Ngày nhận việc</label>
+                        <div class="input-group date input-datepicker" data-target-input="nearest">
+                            <input type="text" asp-for="item.NGAYNHANVIEC" class="form-control" id="NGAYNHANVIEC">
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="item.NGAYNHANVIEC" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Hình thức</label>
+                        <select asp-for="item.TRANGTHAI" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" disabled>Chọn Hình thức</option>
+                            @foreach (var ht in clsNhanvien.listHinhThucNhanVien)
+                            {
+                                if (Model.item.TRANGTHAI == ht.Key)
+                                {
+                                    <option value="@ht.Key" selected>@ht.Value</option>
+                                }
+                                else
+                                {
+                                    <option value="@ht.Key">@ht.Value</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="item.TRANGTHAI" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.ghichu" class="control-label">Ghi chú</label>
+                        <input type="text" asp-for="item.ghichu" class="form-control" />
+                        <span asp-validation-for="item.ghichu" class="text-danger"></span>
+                    </div>
+                    <div class="form-check">
+                        <input asp-for="item.sudung" type="checkbox" class="form-check-input" checked>
+                        <label asp-for="item.sudung" class="form-check-label">Sử dụng</label>
+                        <span asp-validation-for="item.sudung" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

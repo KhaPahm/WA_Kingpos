@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/29/2024 11:23:45" ReportInfo.Modified="08/17/2024 09:22:55" ReportInfo.CreatorVersion="2023.3.0.0">
+  <Dictionary>
+    <CsvDataConnection Name="Connection" ConnectionString="rijcmlqDd03z9I7qu+NhHmz0DXyHWfVyUE9AQa7wl1iDX1Yu+2pXqOgabdA4bYkmJLfx104NIyfdocVSn0OaD1B7aWPLbwT4DHlqUA8o1ZcaJoT3Mu0bQRIqV3zEDf59Y5ycBRSUPQXAgoQYu8WEHxNoMK4Oc7HWzjZj3L0ZAS67RZgljiJ9+VUKwW7EbOqaW1nR44nHOamlg4Y0ympQNSbcXdTdYQRaiJgH4eljxTmdqOFp+tFkORj5U+hplqPs5cdf5phEDEKPSdNT7YkwaIAhujD9oMaaK7pmoppEi50tMYcvzv1GxES99GMS5n6zbvcWRyt">
+      <TableDataSource Name="TableMain" DataType="System.Int32" Enabled="true" TableName="TableMain">
+        <Column Name="Field0" DataType="System.String"/>
+        <Column Name="Field1" DataType="System.String"/>
+      </TableDataSource>
+    </CsvDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="141.75">
+      <TextObject Name="Text1" Left="311.85" Top="56.7" Width="444.15" Height="30.24" Text="BÁO CÁO BÁN HÀNG" HorzAlign="Center" Font="Tahoma, 16pt, style=Bold"/>
+      <TextObject Name="Text4" Width="784.35" Height="18.9" Text="[tencongty]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Top="18.9" Width="75.6" Height="18.9" Text="Địa chỉ : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Top="37.8" Width="94.5" Height="18.9" Text="Điện thoại : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text41" Left="75.6" Top="18.9" Width="963.9" Height="18.9" Text="[diachi]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text42" Left="94.5" Top="37.8" Width="746.55" Height="18.9" Text="[dienthoai]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text44" Left="321.3" Top="113.4" Width="198.45" Height="18.9" Text="[selectedValue]" HorzAlign="Right" Font="Arial, 10pt"/>
+      <TextObject Name="Text49" Left="519.75" Top="113.4" Width="198.45" Height="18.9" Text="[scomboBox]" Font="Arial, 10pt"/>
+      <TextObject Name="Text59" Left="406.35" Top="94.5" Width="85.05" Height="18.9" Text="Thời gian:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text60" Left="491.4" Top="94.5" Width="198.45" Height="18.9" Text="[sTungay]" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="145.75" Width="1047.06" Height="37.8">
+      <TableObject Name="Table3" Width="1039.4" Height="37.8" Border.Lines="All">
+        <!--<TableColumn Name="Column19" Width="59.2"/>-->
+        <TableColumn Name="Column20" Width="95.11"/>
+        <TableColumn Name="Column21" Width="125.37"/>
+        <TableColumn Name="Column29" Width="68.67"/>
+        <TableColumn Name="Column22" Width="61.09"/>
+        <TableColumn Name="Column23" Width="81.55"/>
+        <TableColumn Name="Column24" Width="87.55"/>
+        <TableColumn Name="Column25" Width="59.2"/>
+        <TableColumn Name="Column26" Width="87.55"/>
+        <TableColumn Name="Column30" Width="67.42"/>
+        <TableColumn Name="Column32" Width="85.38"/>
+        <TableColumn Name="Column33" Width="85.38"/>
+        <TableColumn Name="Column34" Width="75.93"/>
+        <TableRow Name="Row3" Height="37.8">
+          <!--<TableCell Name="Cell19" Border.Lines="All" Text="STT" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>-->
+          <TableCell Name="Cell20" Border.Lines="All" Text="Mã hàng hóa" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell21" Border.Lines="All" Text="Tên hàng hóa" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell29" Border.Lines="All" Text="ĐVT" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell22" Border.Lines="All" Text="SL" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell23" Border.Lines="All" Text="Đơn giá" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell24" Border.Lines="All" Text="Thành tiền" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell25" Border.Lines="All" Text="VAT" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="Tiền VAT" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell41" Border.Lines="All" Text="Phụ thu" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell43" Border.Lines="All" Text="Chiết khấu" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell44" Border.Lines="All" Text="Tổng cộng" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell45" Border.Lines="All" Text="Cửa hàng" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="187.55" Width="1047.06" Height="28.35" CanGrow="true" DataSource="TableMain">
+      <TableObject Name="Table4" Width="1039.4" Height="28.35" Border.Lines="All">
+        <!--<TableColumn Name="Column39" Width="59.2"/>-->
+        <TableColumn Name="Column40" Width="95.11"/>
+        <TableColumn Name="Column41" Width="125.37"/>
+        <TableColumn Name="Column42" Width="68.67"/>
+        <TableColumn Name="Column43" Width="61.09"/>
+        <TableColumn Name="Column44" Width="81.55"/>
+        <TableColumn Name="Column45" Width="87.55"/>
+        <TableColumn Name="Column46" Width="59.2"/>
+        <TableColumn Name="Column47" Width="87.55"/>
+        <TableColumn Name="Column48" Width="67.42"/>
+        <TableColumn Name="Column49" Width="85.38"/>
+        <TableColumn Name="Column50" Width="85.38"/>
+        <TableColumn Name="Column51" Width="75.93"/>
+        <TableRow Name="Row4" Height="28.35">
+		    <TableCell Name="Cell50" Border.Lines="All" Text="[TableMain.MA_HANGHOA]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell51" Border.Lines="All" Text="[TableMain.TEN_HANGHOA]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell52" Border.Lines="All" Text="[TableMain.TEN_DONVITINH]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell53" Border.Lines="All" Text="[TableMain.SOLUONG]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell54" Border.Lines="All" Text="[TableMain.DONGIA]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell55" Border.Lines="All" Text="[TableMain.THANHTIEN]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell56" Border.Lines="All" Text="[TableMain.THUE]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell57" Border.Lines="All" Text="[TableMain.TIENTHUE]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell58" Border.Lines="All" Text="[TableMain.TIENPHUTHU]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell59" Border.Lines="All" Text="[TableMain.TIENCHIETKHAU]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+            <TableCell Name="Cell60" Border.Lines="All" Text="[TableMain.TONGCONG]" Font="Arial, 10pt"/>
+            <TableCell Name="Cell61" Border.Lines="All" Text="[TableMain.TEN_CUAHANG]" Font="Arial, 10pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="219.9" Width="1047.06" Height="75.6">
+      <TextObject Name="Text40" Left="916.65" Top="18.9" Width="113.4" Height="18.9" Text="Người lập" Font="Tahoma, 10pt, style=Bold"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="299.5" Width="1047.06" Height="18.9">
+      <TextObject Name="Text10" Left="973.35" Width="18.9" Height="18.9" Text="/" HorzAlign="Right" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="9.45" Width="170.1" Height="18.9" Text="[Date]" Format="Custom" Format.Format="dd/MM/yyyy HH:mm:ss" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text12" Left="926.1" Width="56.7" Height="18.9" Text="[Page#]" HorzAlign="Right" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="982.8" Width="56.7" Height="18.9" Text="[TotalPages#]" Font="Tahoma, 10pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

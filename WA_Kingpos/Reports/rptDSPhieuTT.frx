@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/29/2024 09:51:59" ReportInfo.Modified="05/30/2024 16:36:48" ReportInfo.CreatorVersion="2023.3.0.0">
+  <Dictionary>
+    <CsvDataConnection Name="Connection" ConnectionString="rijcmlqDd03z9I7qu+NhHmz0DXyHWfVyUE9AQa7wl1iDX1Yu+2pXqOgabdA4bYkmJLfx104NIyfdocVSn0OaD1B7aWPLbwT4DHlqUA8o1ZcaJoT3Mu0bQRIqV3zEDf59Y5ycBRSUPQXAgoQYu8WEHxNoMK4Oc7HWzjZj3L0ZAS67RZgljiJ9+VUKwW7EbOqaW1nR44nHOamlg4Y0ympQNSbcXdTdYQRaiJgH4eljxTmdqOFp+tFkORj5U+hplqPs5cdf5phEDEKPSdNT7YkwaIAhujD9oMaaK7pmoppEi50tMYcvzvhbb58WGYQLvM/bF0u3eax">
+      <TableDataSource Name="TableMain" DataType="System.Int32" Enabled="true" TableName="TableMain">
+        <Column Name="Field0" DataType="System.String"/>
+        <Column Name="Field1" DataType="System.String"/>
+      </TableDataSource>
+    </CsvDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="122.85">
+      <TextObject Name="Text1" Left="-9138.15" Top="-9393.3" Width="444.15" Height="30.24" Text="DANH SÁCH ĐƠN ĐẶT HÀNG" HorzAlign="Center" Font="Tahoma, 16pt, style=Bold"/>
+      <TextObject Name="Text2" Left="-9450" Top="-9364.95" Width="103.95" Height="18.9" Text="Nhân viên:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="-9450" Top="-9450" Width="784.35" Height="18.9" Text="[tencongty]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="-9450" Top="-9431.1" Width="75.6" Height="18.9" Text="Địa chỉ : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Left="-9450" Top="-9412.2" Width="94.5" Height="18.9" Text="Điện thoại : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text41" Left="-9374.4" Top="-9431.1" Width="963.9" Height="18.9" Text="[diachi]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text42" Left="-9355.5" Top="-9412.2" Width="746.55" Height="18.9" Text="[dienthoai]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text44" Left="-9346.05" Top="-9364.95" Width="198.45" Height="18.9" Text="[nhanvien]" Font="Arial, 10pt"/>
+      <TextObject Name="Text45" Left="-9138.15" Top="-9364.95" Width="103.95" Height="18.9" Text="Đơn hàng: " Font="Tahoma, 9.75pt, style=Bold"/>
+      <TextObject Name="Text48" Left="-8826.3" Top="-9364.95" Width="103.95" Height="18.9" Text="Trạng thái:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text49" Left="-9034.2" Top="-9364.95" Width="198.45" Height="18.9" Text="[donhang]" Font="Arial, 10pt"/>
+      <TextObject Name="Text52" Left="-8722.35" Top="-9364.95" Width="198.45" Height="18.9" Text="[trangthai]" Font="Arial, 10pt"/>
+      <TextObject Name="Text53" Left="311.85" Top="56.7" Width="444.15" Height="30.24" Text="DANH SÁCH PHIẾU THANH TOÁN" HorzAlign="Center" Font="Tahoma, 16pt, style=Bold"/>
+      <TextObject Name="Text55" Width="784.35" Height="18.9" Text="[tencongty]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text56" Top="18.9" Width="75.6" Height="18.9" Text="Địa chỉ : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text57" Top="37.8" Width="94.5" Height="18.9" Text="Điện thoại : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text58" Left="75.6" Top="18.9" Width="963.9" Height="18.9" Text="[diachi]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text59" Left="94.5" Top="37.8" Width="746.55" Height="18.9" Text="[dienthoai]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text54" Top="103.95" Width="103.95" Height="18.9" Text="Nhân viên:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text60" Left="103.95" Top="103.95" Width="198.45" Height="18.9" Text="[nhanvien]" Font="Arial, 10pt"/>
+      <TextObject Name="Text61" Left="311.85" Top="103.95" Width="103.95" Height="18.9" Text="Đơn hàng: " Font="Tahoma, 9.75pt, style=Bold"/>
+      <TextObject Name="Text62" Left="623.7" Top="103.95" Width="103.95" Height="18.9" Text="Trạng thái:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text63" Left="415.8" Top="103.95" Width="198.45" Height="18.9" Text="[donhang]" Font="Arial, 10pt"/>
+      <TextObject Name="Text64" Left="727.65" Top="103.95" Width="198.45" Height="18.9" Text="[trangthai]" Font="Arial, 10pt"/>
+      <TextObject Name="Text65" Left="387.45" Top="85.05" Width="85.05" Height="18.9" Text="Thời gian:" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text66" Left="472.5" Top="85.05" Width="207.9" Height="18.9" Text="[thoigian]" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="126.85" Width="1047.06" Height="37.8">
+      <TableObject Name="Table3" Width="1043.2" Height="37.8" Border.Lines="All">
+        <TableColumn Name="Column19" Width="129.63"/>
+        <TableColumn Name="Column20" Width="156.09"/>
+        <TableColumn Name="Column21" Width="148.55"/>
+        <TableColumn Name="Column29" Width="129.65"/>
+        <TableColumn Name="Column22" Width="216.57"/>
+        <TableColumn Name="Column23" Width="123.63"/>
+        <TableColumn Name="Column24" Width="139.08"/>
+        <TableRow Name="Row3" Height="37.8">
+          <TableCell Name="Cell19" Border.Lines="All" Text="Số phiếu" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell20" Border.Lines="All" Text="Người lập&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell21" Border.Lines="All" Text="Ngày lập phiếu" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell29" Border.Lines="All" Text="Tổng tiền" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell22" Border.Lines="All" Text="Lý do" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell23" Border.Lines="All" Text="Trạng thái" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell24" Border.Lines="All" Text="Người duyệt" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="168.65" Width="1047.06" Height="22.68" CanGrow="true" DataSource="TableMain">
+      <TableObject Name="Table1" Width="1043.2" Height="22.68" Border.Lines="All" PrintOnParent="true" Layout="Wrapped">
+        <TableColumn Name="Column1" Width="129.63"/>
+        <TableColumn Name="Column2" Width="156.09"/>
+        <TableColumn Name="Column3" Width="148.55"/>
+        <TableColumn Name="Column11" Width="129.65"/>
+        <TableColumn Name="Column4" Width="216.57"/>
+        <TableColumn Name="Column5" Width="123.63"/>
+        <TableColumn Name="Column6" Width="139.08"/>
+        <TableRow Name="Row1" MinHeight="22.68" Height="22.68" AutoSize="true">
+          <TableCell Name="Cell30" Border.Lines="Right" Text="[TableMain.MAPDNDT]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell31" Border.Lines="Right" Text="[TableMain.NGUOILAP]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell32" Border.Lines="Right" Text="[TableMain.NGAYLAPPHIEU]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell40" Border.Lines="All" Text="[TableMain.TONGTIEN]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell33" Border.Lines="All" Text="[TableMain.LYDO]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell34" Border.Lines="Right" Text="[TableMain.TRANGTHAI]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell35" Border.Lines="Right" Text="[TableMain.NGUOIDUYET]" Font="Arial, 10pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="195.33" Width="1047.06" Height="85.05">
+      <TextObject Name="Text40" Left="850.5" Top="9.45" Width="113.4" Height="18.9" Text="Người lập" Font="Tahoma, 10pt, style=Bold"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="284.38" Width="1047.06" Height="18.9">
+      <TextObject Name="Text11" Left="18.9" Width="170.1" Height="18.9" Text="[Date]" Format="Custom" Format.Format="dd/MM/yyyy HH:mm:ss" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text10" Left="963.9" Width="18.9" Height="18.9" Text="/" HorzAlign="Right" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text12" Left="916.65" Width="56.7" Height="18.9" Text="[Page#]" HorzAlign="Right" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="973.35" Width="56.7" Height="18.9" Text="[TotalPages#]" Font="Tahoma, 10pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

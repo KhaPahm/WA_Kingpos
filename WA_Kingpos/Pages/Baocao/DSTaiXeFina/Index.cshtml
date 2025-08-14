@@ -1,0 +1,68 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.DSTaiXeFina.IndexModel
+@{
+    ViewData["Title"] = "Báo Cáo Danh Sách Tài Xế";
+    ViewData["Name"] = "danhsachtaixe";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->         
+            <div class="card-body">
+                <form method="post">
+                <div class="form-group">
+                    <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                    <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất PDF</button>
+                    <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                </div>
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">Mã</th>
+                            <th style="text-align:center ; vertical-align:middle">Tên</th>
+                            <th style="text-align:center ; vertical-align:middle">Điện thoại</th>
+                            <th style="text-align:center ; vertical-align:middle">CMT/CCCD</th>
+                            <th style="text-align:center ; vertical-align:middle">Biển số xe</th>
+                            <th style="text-align:center ; vertical-align:middle">Sử dụng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.MA</td>
+                                <td>@item.TEN</td>
+                                <td>@item.DIENTHOAI</td>
+                                <td>@item.CMND</td>
+                                <td>@item.WEBSITE</td>
+                                @if (@item.SUDUNG.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.SUDUNG</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.SUDUNG</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @if (Model.bThem)
+                {
+                    <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                }
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

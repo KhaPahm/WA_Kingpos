@@ -1,0 +1,76 @@
+# Build directories
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Visual Studio specific
+.vs/
+.idea/
+
+# Rider specific
+.idea/
+*.sln.iml
+*.sln
+
+# Auto-generated files
+*.generated.cs
+*.designer.cs
+
+# Packages
+packages/
+*.nupkg
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+*.bak
+
+# Configuration files
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Local.json
+secrets.json
+
+# Publish output
+publish/
+*.PublishProfiles/
+
+# NuGet
+*.nuget/
+project.lock.json
+project.fragment.lock.json
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.swp
+
+# Entity Framework migrations
+*.db
+*.mdf
+*.ldf
+Migrations/
+
+# IDE-specific
+.vscode/
+*.code-workspace
+
+# Resharper
+_ReSharper*
+
+.fake
+
+*.sql

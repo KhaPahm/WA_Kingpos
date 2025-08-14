@@ -1,0 +1,311 @@
+﻿---------------------------
+DATE: 18/07/2025 15:43:37
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'DAILY' , '123'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:8a709350-8836-4f27-aa80-0442b47bb57e
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:43:41
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'DAILY' , '1'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:30a8caf5-a21e-45a2-a5f0-03e216962431
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:43:54
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily' , '123'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:16caa2ee-6aac-4b06-a576-65a4c3da3d85
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:44:12
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily' , '123'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:d800b988-0a68-42b5-8be3-4dd7e7de8734
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:44:21
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily1' , '1'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:b81b4809-5150-4e0c-9034-906a5e4b0e1a
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:44:36
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'it' , '1'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:8b445d03-fd49-454f-b3e5-a4c51073d48f
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:46:24
+0
+Login
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+   at WA_Kingpos.Pages.LoginModel.OnPost(User item) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Login.cshtml.cs:line 36
+---------------------------
+DATE: 18/07/2025 15:46:48
+0
+Login
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+   at WA_Kingpos.Pages.LoginModel.OnPost(User item) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\Login.cshtml.cs:line 36
+---------------------------
+DATE: 18/07/2025 15:48:59
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily' , '123'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:f6970909-f7eb-471f-bcf6-8d82eeba95ae
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:50:50
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily' , '123'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:3b9ea11c-08f1-4a0e-9e9c-aec6881db61d
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:53:35
+Server=kingproserver.ddns.net,444;database=suoitien07022025;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily' , '123'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:7e34095c-6d1c-4915-9687-dbe3a842921d
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 15:54:15
+Server=kingproserver.ddns.net,444;database=suoitien070220256;UID=king4;PWD=kingpro@20194;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily' , '123'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:4b8b8ee1-3c54-4448-9943-cc42175a5990
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 16:01:03
+Server=kingproserver.ddns.net,444;database=20062025_suoitien;UID=king4;PWD=kingpro@20194;Pooling=False; TrustServerCertificate=True
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily' , '123'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:d8cb8858-36d8-458b-b662-5c314f6cf589
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 16:02:57
+Server=kingproserver.ddns.net,444;database=20062025_suoitien;UID=king4;PWD=kingpro@20194;Pooling=False; TrustServerCertificate=True
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily1' , '1'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'king4'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:7757b037-cf00-4692-865a-204fc6fcab19
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 16:04:04
+Server=kingproserver.ddns.net,444;database=20062025_suoitien;UID=kingpos;PWD=kingpro@20194;Pooling=False; TrustServerCertificate=True
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily1' , '1'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'kingpos'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:2888d6a3-3c94-46f1-bec5-a2fadfe41a03
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 16:04:29
+Server=kingproserver.ddns.net,444;database=20062025_suoitien;UID=kingpos;PWD=kingpro@20194;Pooling=False;
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily1' , '1'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'kingpos'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:97d3b8f8-3be5-4952-9527-86b89f2340a1
+Error Number:18456,State:1,Class:14
+---------------------------
+DATE: 18/07/2025 16:05:09
+Server=kingproserver.ddns.net,444;database=20062025_suoitien;UID=kingpos;PWD=kingpro@20194;Pooling=False;
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'daily1' , '1'-System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'kingpos'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\Projects\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 154
+ClientConnectionId:2fb4ad42-b06f-4368-82b9-599c0568f207
+Error Number:18456,State:1,Class:14

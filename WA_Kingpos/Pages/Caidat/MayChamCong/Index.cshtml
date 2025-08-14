@@ -1,0 +1,59 @@
+﻿@page
+@model WA_Kingpos.Pages.MayChamCong.IndexModel
+@{
+    ViewData["Title"] = "Danh sách máy quét khuôn mặt";
+    ViewData["Name"] = "maychamcong";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            @*style="text-align:center ; vertical-align:middle"*@
+                            <th>Địa chỉ IP</th>
+                            <th>Số Serial</th>
+                            <th>Tên máy</th>
+                            <th>Thời gian kết nối</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.IPAddress</td>
+                                <td>@item.SerialNumber</td>
+                                <td>@item.DeviceName</td>
+                                <td>@item.LastConnected?.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.SerialNumber">Xem</a>
+                                    @if (Model.bSua)
+                                    {
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.SerialNumber">Sửa</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

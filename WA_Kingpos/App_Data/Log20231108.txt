@@ -1,0 +1,72 @@
+﻿---------------------------
+DATE: 08/11/2023 20:32:09
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25
+---------------------------
+DATE: 08/11/2023 20:33:15
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25
+---------------------------
+DATE: 08/11/2023 20:35:01
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25
+---------------------------
+DATE: 08/11/2023 20:35:09
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25
+---------------------------
+DATE: 08/11/2023 20:35:20
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25
+---------------------------
+DATE: 08/11/2023 20:36:00
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25
+---------------------------
+DATE: 08/11/2023 20:45:30
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG1' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25
+---------------------------
+DATE: 08/11/2023 20:52:24
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG7' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25
+---------------------------
+DATE: 08/11/2023 20:52:47
+0
+DM_Donvitinh
+System.ArgumentException: Column 'SUDUNG7' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at WA_Kingpos.Pages.Donvitinh.IndexModel.OnGet() in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Pages\Donvitinh\Index.cshtml.cs:line 25

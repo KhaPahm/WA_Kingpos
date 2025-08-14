@@ -1,0 +1,146 @@
+﻿@page "{id:int?}"
+@model WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2._KS_KhachHangModel
+@{
+    Layout = null; // return only the fragment (no layout)
+}
+
+<div data-modal-title="@Model.Title" data-can-save="@(!Model.IsReadOnly)"></div>
+
+<form id="customerForm" method="post" asp-page-handler="Save">
+    <input type="hidden" name="Mode" value="@Model.Mode" />
+    <input type="hidden" asp-for="KS_KhachHang.MA_KH" />
+     
+
+    <div class="container-fluid">
+        <div class="form-row mb-0">
+            <div class="col-xl-12">
+                <div class="text-center mb-3">
+                    <div id="photoReview">
+                        @if (string.IsNullOrEmpty(@Model.KS_KhachHang.FACE_PHOTO))
+                        {
+                            <div>KHÁCH HÀNG CHƯA CẬP NHẬT ẢNH</div>
+                        }
+                        else
+                        {
+                            <img src="data:image/jpeg;base64,@Model.KS_KhachHang.FACE_PHOTO"
+                                 alt="Customer photo"
+                                 class="img-thumbnail"
+                                 style="max-width:250px; max-height:250px; min-width:150px; min-height:150px" />
+                        }
+                    </div>
+
+                    @if (!Model.IsReadOnly)
+                    {
+                        <div class="d-flex justify-content-center mt-2 mb-2">
+                            <!-- Take photo from camera -->
+                            <div class="p-2" title="Chụp ảnh">
+                                <label class="btn btn-outline-info btn-md">
+                                    <i class="fa fa-camera"></i>
+                                    <input type="file" id="cameraInput" accept="image/*" capture="environment" class="d-none" />
+                                </label>
+                            </div>
+
+                            <div class="p-2 align-self-center">
+                                hoặc
+                            </div>
+
+                            <!-- Choose from PC -->
+                            <div class="p-2" title="Chọn ảnh từ máy">
+                                <label class="btn btn-outline-secondary btn-md mb-1">
+                                    <i class="fa fa-image"></i>
+                                    <input type="file" id="fileInput" accept="image/*" class="d-none" onchange="fileInputChange(this)" />
+                                </label>
+                            </div>
+                        </div> 
+                    }
+                    
+                    <!-- Hidden field to store base64 string -->
+                    <input type="hidden" asp-for="KS_KhachHang.FACE_PHOTO" id="photoBase64" />
+
+                </div>
+            </div>
+
+            <div class="form-group col-xl-6">
+                <label>Mã khách hàng</label>
+                <input asp-for="KS_KhachHang.MA_KH" class="form-control" readonly />
+            </div>
+
+            <div class="form-group col-xl-6">
+                <label>Tên khách hàng</label>
+                <input type="text" asp-for="KS_KhachHang.TEN" class="form-control" readonly="@Model.IsReadOnly" />
+            </div>
+
+            <div class="form-group col-xl-6">
+                <label>Ngày sinh</label>
+                <input type="text" asp-for="KS_KhachHang.NGAYSINH" class="form-control" readonly="@Model.IsReadOnly" />
+            </div>
+
+            <div class="form-group col-xl-6">
+                <label>Giới tính</label>
+                <input type="text" asp-for="KS_KhachHang.GIOITINH" class="form-control" readonly="@Model.IsReadOnly" />
+            </div>
+
+            <div class="form-group col-xl-6">
+                <label>Điện thoại</label>
+                <input type="tel" asp-for="KS_KhachHang.DIENTHOAI" class="form-control" readonly="@Model.IsReadOnly" />
+            </div>
+
+            <div class="form-group col-xl-6">
+                <label>Email</label>
+                <input type="email" asp-for="KS_KhachHang.EMAIL" class="form-control" readonly="@Model.IsReadOnly" />
+            </div>
+
+            <div class="form-group col-xl-12">
+                <label>Địa chỉ</label>
+                <textarea class="form-control" rows="3" readonly="@Model.IsReadOnly" asp-for="KS_KhachHang.DIACHI"></textarea>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Cropper Modal -->
+    <div class="modal fade" id="cropperModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h5 class="modal-title">Cắt ảnh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="w-100">
+                        <!-- Image to crop -->
+                        <img id="cropperImage" alt="Ảnh cần cắt" style="max-width:100%; display:block;">
+                    </div>
+                    <small class="text-muted d-block mt-2">
+                        Kéo để chọn vùng, dùng con lăn/nhúm (pinch) để phóng to/thu nhỏ.
+                    </small>
+                </div>
+
+                <div class="modal-footer py-2">
+                    <div class="btn-group mr-auto" role="group">
+                        <button type="button" class="btn btn-light" id="btnZoomIn">+</button>
+                        <button type="button" class="btn btn-light" id="btnZoomOut">−</button>
+                        <button type="button" class="btn btn-light" id="btnMoveLeft">←</button>
+                        <button type="button" class="btn btn-light" id="btnMoveRight">→</button>
+                        <button type="button" class="btn btn-light" id="btnMoveUp">↑</button>
+                        <button type="button" class="btn btn-light" id="btnMoveDown">↓</button>
+                        <!-- optional rotate
+                        <button type="button" class="btn btn-light" id="btnRotateLeft">⟲</button>
+                        <button type="button" class="btn btn-light" id="btnRotateRight">⟳</button>
+                        -->
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="btnCropUse">Dùng ảnh này</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+
+

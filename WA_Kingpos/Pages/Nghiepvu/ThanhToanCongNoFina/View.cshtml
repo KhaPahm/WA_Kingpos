@@ -1,0 +1,149 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.ThanhToanCongNoFina.ViewModel
+@{
+    ViewData["Title"] = "Tạo Phiếu Thanh Toán Thành Công";
+    ViewData["Name"] = "finathanhtoancongno";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Số phiếu :</th>
+                            <td class="font-weight-bold">@Model.PHIEUDUYETTHU.SO_PHIEU</td>
+                        </tr>
+                        <tr>
+                            <th>Người lập :</th>
+                            <td class="font-weight-bold">@Model.PHIEUDUYETTHU.NHAN_VIEN</td>
+                        </tr>
+                        <tr>
+                            <th>Ngày lập :</th>
+                            <td class="font-weight-bold">@Model.PHIEUDUYETTHU.NGAYLAPPHIEU</td>
+                        </tr>
+                        <tr>
+                            <th>Số tiền :</th>
+                            <td class="font-weight-bold">@String.Format("{0:N0}", Model.PHIEUDUYETTHU.SOTIEN)</td>
+                        </tr>
+                        <tr>
+                            <th>Lý do :</th>
+                            <td class="font-weight-bold">@Model.PHIEUDUYETTHU.LY_DO</td>
+                        </tr>
+                    </tbody>
+                </table>
+                @* <p class="font-weight-bold">DANH SÁCH ĐƠN HÀNG</p> *@
+                @* <table id="tablesimple" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Số phiếu</th>
+                            <th>Nhân viên</th>
+                            <th>Ngày đặt</th>
+                            <th>Khách hàng</th>
+                            <th>Số tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListDONDAT)
+                        {
+                            <tr>
+                                <td>@item.STT</td>
+                                <td>@item.PHIEUDATHANG</td>
+                                <td>@item.NHANVIEN_DATHANG</td>
+                                <td>@item.NGAYLAP</td>
+                                <td>@item.KHACHHANG</td>
+                                <td>@String.Format("{0:N0}", item.THANHTIEN)</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>@String.Format("{0:N0}", @Model.PHIEUDUYETTHU.SOTIEN)</th>
+                        </tr>
+                    </tfoot>
+                </table> *@
+
+                <div class="card card-success">
+                    <div class="card-header bg-secondary">
+                        <h3 class="card-title">DANH SÁCH ĐƠN HÀNG</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach (var item in Model.ListDONDAT)
+                            {
+                                <div class="col-md-2">
+                                    <div class="card card-widget widget-user-2">
+                                        <div class="card-footer p-0">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        STT <span class="float-right text-info">@item.STT</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Số phiếu <span class="float-right text-info">@item.PHIEUDATHANG</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Nhân viên <span class="float-right text-info">@item.NHANVIEN_DATHANG</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Ngày đặt <span class="float-right text-info">@item.NGAYLAP</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Khách hàng <span class="float-right text-info">@item.KHACHHANG</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        Số tiền <span class="float-right text-info">@String.Format("{0:N0}", item.THANHTIEN)</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer font-weight-bold text-info">
+                        Tổng tiền: @String.Format("{0:N0}", @Model.PHIEUDUYETTHU.SOTIEN)
+                    </div>
+                </div>
+
+                <br />
+                <div class="form-group">
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Thêm phiếu mới</a>
+                @if (@Model.PHIEUDUYETTHU.TRANG_THAI == "0")
+                {
+                    <a class="btn btn-warning" role="button" asp-page="Edit" asp-route-id="@Model.PHIEUDUYETTHU.SO_PHIEU">Chỉnh sửa phiếu này</a>
+                }
+                <a class="btn btn-info" role="button" asp-page="Lists">Danh sách phiếu đã tạo</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

@@ -1,0 +1,64 @@
+﻿@page
+@model WA_Kingpos.Pages.MayChamCong.EditModel
+@{
+    ViewData["Title"] = "Cài đặt máy quét khuôn mặt";
+    ViewData["Name"] = "maychamcong";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.SerialNumber" class="control-label">Số Serial</label>
+                        <input type="text" asp-for="item.SerialNumber" class="form-control" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.DeviceName" class="control-label">Tên máy</label>
+                        <input type="text" asp-for="item.DeviceName" class="form-control" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.IPAddress" class="control-label">Địa chỉ IP</label>
+                        <input type="text" asp-for="item.IPAddress" class="form-control" />
+                        <span asp-validation-for="item.IPAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.GATEIPAddress" class="control-label">Gateway</label>
+                        <input type="text" asp-for="item.GATEIPAddress" class="form-control" />
+                        <span asp-validation-for="item.GATEIPAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.NetMask" class="control-label">Subnet Mask</label>
+                        <input type="text" asp-for="item.NetMask" class="form-control" />
+                        <span asp-validation-for="item.NetMask" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                        <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+                    </div>
+                    <input type="hidden" asp-for="SerialNumber" class="form-control" />
+                </form>
+            </div>
+            <!-- /.card-body -->
+            @*<div class="card-footer">
+                    <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+                </div>*@
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

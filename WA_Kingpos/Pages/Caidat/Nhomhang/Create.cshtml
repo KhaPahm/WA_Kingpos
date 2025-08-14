@@ -1,0 +1,81 @@
+﻿@page
+@model WA_Kingpos.Pages.Nhomhang.CreateModel
+@{
+    ViewData["Title"] = "Thêm Nhóm hàng";
+    ViewData["Name"] = "nhomhang";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.STT" class="control-label">STT</label>
+                        <input type="number" asp-for="item.STT" class="form-control" value="1"/>
+                        <span asp-validation-for="item.STT" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.TEN" class="control-label">Tên</label>
+                        <input type="text" asp-for="item.TEN" class="form-control" />
+                        <span asp-validation-for="item.TEN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.GHICHU" class="control-label">Ghi chú</label>
+                        <input type="text" asp-for="item.GHICHU" class="form-control" />
+                        <span asp-validation-for="item.GHICHU" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.HINHANH_UPLOAD" class="control-label">Hình ảnh</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" asp-for="item.HINHANH_UPLOAD" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Chọn file ảnh</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input asp-for="item.SUDUNG" type="checkbox" class="form-check-input" checked>
+                        <label asp-for="item.SUDUNG" class="form-check-label">Sử dụng</label>
+                        <span asp-validation-for="item.SUDUNG" class="text-danger"></span>
+                    </div>
+                    <div class="form-check">
+                        <input asp-for="item.THUCDON" type="checkbox" class="form-check-input">
+                        <label asp-for="item.THUCDON" class="form-check-label">Thực đơn</label>
+                        <span asp-validation-for="item.THUCDON" class="text-danger"></span>
+                    </div>
+                    <div class="form-check">
+                        <input asp-for="item.MONTHEM" type="checkbox" class="form-check-input">
+                        <label asp-for="item.MONTHEM" class="form-check-label">Món thêm</label>
+                        <span asp-validation-for="item.MONTHEM" class="text-danger"></span>
+                    </div>
+
+                   
+
+                    <br/>
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

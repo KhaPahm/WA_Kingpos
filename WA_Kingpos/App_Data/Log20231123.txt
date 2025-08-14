@@ -1,0 +1,14 @@
+﻿---------------------------
+DATE: 23/11/2023 11:40:08
+0
+DM_KhachHang Add
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.Int32.Parse(String s)
+   at WA_Kingpos.Pages.KHACHANG.KhachHangCreateModel.OnPostLuu(KhachHangModels KHTT) in D:\OneDrive\CongTy\WEB_FINA\WEB_FINA_20231123\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\KhachHang\KhachHangCreate.cshtml.cs:line 288
+---------------------------
+DATE: 23/11/2023 11:56:18
+0
+DM_KhachHang Add
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.Int32.Parse(String s)
+   at WA_Kingpos.Pages.KHACHANG.KhachHangCreateModel.OnPostLuu(KhachHangModels KHTT) in D:\OneDrive\CongTy\WEB_FINA\WEB_FINA_20231123\Web_App_RazorPages\WA_Kingpos\WA_Kingpos\Pages\KhachHang\KhachHangCreate.cshtml.cs:line 287

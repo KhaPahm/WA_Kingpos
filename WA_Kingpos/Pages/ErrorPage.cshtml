@@ -1,0 +1,26 @@
+﻿@page
+@model WA_Kingpos.Pages.ErrorPageModel
+@{
+    ViewData["Title"] = "500 Error Page";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="error-page">
+            <h2 class="headline text-danger">500</h2>
+            <div class="error-content">
+                <h3><i class="fas fa-exclamation-triangle text-danger"></i> Ối! Đã xảy ra lỗi.</h3>
+                <p>
+                    Vui lòng thông báo cho đội ngủ phát triển <a href="https://kingpro.vn/" target="_blank">Kingpro.vn</a>. Chúng tôi sẽ nỗ lực kiểm tra điều này ngay lập tức.
+                    Trong thời gian chờ đợi, bạn có thể quay lại <a href="Index">Trang chủ</a>,sử dụng chức năng khác, hoặc thử lại lần nữa.
+                </p>
+                <h3><i class="fas fa-info-circle text-info"></i> Thông tin chi tiết.</h3>
+                <p class="font-weight-light">
+                    @Model.RequestId
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+

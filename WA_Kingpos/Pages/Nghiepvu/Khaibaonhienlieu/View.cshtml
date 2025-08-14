@@ -1,0 +1,108 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.Khaibaonhienlieu.ViewModel
+@{
+    ViewData["Title"] = "Khai báo thành công";
+    ViewData["Name"] = "bangkhainhienlieu";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th><br /></th>
+                            <td><h4>THÔNG TIN TÀU</h4></td>
+                        </tr>
+                        <tr>
+                            <th>Tàu :</th>
+                            <td>@Model.DT.NAME</td>
+                        </tr>
+                        <tr>
+                            <th>Số chuyến :</th>
+                            <td>@Model.DT.SOCHUYEN</td>
+                        </tr>
+                        <tr>
+                            <th>Dầu tồn :</th>
+                            <td>@Model.DT.DAUTON</td>
+                        </tr>
+                        <tr>
+                            <th>Dầu thêm :</th>
+                            <td>@Model.DT.CAPTHEM</td>
+                        </tr>
+                        <tr>
+                            <th>Tổng dầu :</th>
+                            <td>@Model.DT.TONGDAU</td>
+                        </tr>
+                        <tr>
+                            <th>Tổng tiêu thụ :</th>
+                            <td>@(Model.LIST_ITEM.Sum(r => r.TONGTIEUTHU))</td>
+                        </tr>
+                        <tr>
+                            <th>Còn lại :</th>
+                            <td>@(Model.DT.TONGDAU - Model.LIST_ITEM.Sum(r => r.TONGTIEUTHU))</td>
+                        </tr>
+                        <tr>
+                            <th><br /></th>
+                            <td><h4>DẦU TIÊU THỤ TRONG TỪNG CHUYẾN</h4></td>
+                        </tr>
+                        @for (int i = 0; i < Model.LIST_ITEM.Count; i++)
+                        {
+                            <tr>
+                                <th><br />Giờ chạy :</th>
+                                <td><br />@Model.LIST_ITEM[i].GIODI</td>
+                            </tr>
+                            <tr>
+                                <th>Vòng tua :</th>
+                                <td>@Model.LIST_ITEM[i].VONGTUAMAY</td>
+                            </tr>
+                            <tr>
+                                <th>Định mức :</th>
+                                <td>@Model.LIST_ITEM[i].DINHMUC</td>
+                            </tr>
+                            <tr>
+                                <th>Dầu máy chính :</th>
+                                <td>@Model.LIST_ITEM[i].DAUMAYCHINH</td>
+                            </tr>
+                            <tr>
+                                <th>Dầu máy đèn :</th>
+                                <td>@Model.LIST_ITEM[i].DAUMAYDEN</td>
+                            </tr>
+                            <tr>
+                                <th>Dầu phát sinh :</th>
+                                <td>@Model.LIST_ITEM[i].DAUPHATSINH</td>
+                            </tr>
+                            <tr>
+                                <th>Tổng tiêu thụ :</th>
+                                <td>@Model.LIST_ITEM[i].TONGTIEUTHU</td>
+                            </tr>
+                            <tr>
+                                <th>Dầu tồn :</th>
+                                <td>@Model.LIST_ITEM[i].DAUTON</td>
+                            </tr>
+                            <tr>
+                                <th>Ghi chú :</th>
+                                <td>@Model.LIST_ITEM[i].GHICHU</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Khai báo khác</a>
+                <a class="btn btn-warning" role="button" asp-page="Edit" asp-route-id="@Model.DT.ID">Chỉnh sửa khai báo</a>
+                <a class="btn btn-danger" role="button" asp-page="Delete" asp-route-id="@Model.DT.ID">Hủy khai báo</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

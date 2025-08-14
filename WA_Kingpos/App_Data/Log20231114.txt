@@ -1,0 +1,178 @@
+﻿---------------------------
+DATE: 14/11/2023 08:21:25
+Server=kingproserver.ddns.net,333;database=suoitienNH;UID=king3;PWD=kingpro@20193;Pooling=False
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+Delete From DONVITINH
+Where MA_DONVITINH='5'
+-System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_HANGHOA_DONVITINH". The conflict occurred in database "suoitienNH", table "dbo.HANGHOA", column 'MA_DONVITINH'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 253
+ClientConnectionId:30d57ab1-4557-428e-87fb-756069c1fde6
+Error Number:547,State:0,Class:16
+---------------------------
+DATE: 14/11/2023 08:22:03
+Server=kingproserver.ddns.net,333;database=suoitienNH;UID=king3;PWD=kingpro@20193;Pooling=False
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+Delete From DONVITINH
+Where MA_DONVITINH='5'
+-System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_HANGHOA_DONVITINH". The conflict occurred in database "suoitienNH", table "dbo.HANGHOA", column 'MA_DONVITINH'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 253
+ClientConnectionId:1a450ac9-84cf-472c-9b82-cdc56305ec4d
+Error Number:547,State:0,Class:16
+---------------------------
+DATE: 14/11/2023 08:24:33
+Server=kingproserver.ddns.net,333;database=suoitienNH;UID=king3;PWD=kingpro@20193;Pooling=False
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+Delete From DONVITINH
+Where MA_DONVITINH='5'
+-System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_HANGHOA_DONVITINH". The conflict occurred in database "suoitienNH", table "dbo.HANGHOA", column 'MA_DONVITINH'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 253
+ClientConnectionId:4db36ce7-99d2-403d-8938-3cd49d5a26e1
+Error Number:547,State:0,Class:16
+---------------------------
+DATE: 14/11/2023 08:25:40
+Server=kingproserver.ddns.net,333;database=suoitienNH;UID=king3;PWD=kingpro@20193;Pooling=False
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+Delete From DONVITINH
+Where MA_DONVITINH='5'
+-System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_HANGHOA_DONVITINH". The conflict occurred in database "suoitienNH", table "dbo.HANGHOA", column 'MA_DONVITINH'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 253
+ClientConnectionId:9707bc6b-1da5-430e-a370-415de2eb8bc1
+Error Number:547,State:0,Class:16
+---------------------------
+DATE: 14/11/2023 08:29:39
+Server=kingproserver.ddns.net,333;database=suoitienNH;UID=king3;PWD=kingpro@20193;Pooling=False
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+Delete From DONVITINH
+Where MA_DONVITINH='5'
+-System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_HANGHOA_DONVITINH". The conflict occurred in database "suoitienNH", table "dbo.HANGHOA", column 'MA_DONVITINH'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 253
+ClientConnectionId:344951b5-81f2-4a33-a85f-ed1a232ab028
+Error Number:547,State:0,Class:16
+---------------------------
+DATE: 14/11/2023 08:30:59
+Server=kingproserver.ddns.net,333;database=suoitienNH;UID=king3;PWD=kingpro@20193;Pooling=False
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+Delete From DONVITINH
+Where MA_DONVITINH='5'
+-System.Data.SqlClient.SqlException (0x80131904): The DELETE statement conflicted with the REFERENCE constraint "FK_HANGHOA_DONVITINH". The conflict occurred in database "suoitienNH", table "dbo.HANGHOA", column 'MA_DONVITINH'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 253
+ClientConnectionId:edb75ef3-f371-4d10-8ec0-c8170784214c
+Error Number:547,State:0,Class:16
+---------------------------
+DATE: 14/11/2023 09:47:03
+Server=kingproserver.ddns.net,333;database=suoitienNH;UID=king3;PWD=kingpro@20193;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'ds' , '54554'-System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetUser'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 138
+ClientConnectionId:2c845c0c-a4b0-48a5-bcd5-95535daf2636
+Error Number:2812,State:62,Class:16
+---------------------------
+DATE: 14/11/2023 09:47:20
+Server=kingproserver.ddns.net,333;database=suoitienNH;UID=king3;PWD=kingpro@20193;Pooling=False
+ReturnDataTable_NoLock
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY; 
+;SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+EXEC GetUser 'admin' , '123'-System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'GetUser'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live) in E:\New folder (56)\WA_Kingpos\WA_Kingpos\Data\cls_Main.cs:line 138
+ClientConnectionId:05aa404f-76f7-4fc4-8fef-660b3f1ea626
+Error Number:2812,State:62,Class:16

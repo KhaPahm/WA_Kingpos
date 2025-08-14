@@ -1,0 +1,166 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.TraCuuKHTT.IndexModel
+@{
+    Layout = null;
+    var ckeckLs = string.Empty;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition">
+    <div class="Row">
+        <div class="col-12">
+            <div class="card card-primary">
+                @if(@Model.lstKHTT.Count()!=0)
+                {
+                    <div class="row justify-content-center">
+                        <img src="@Model.lstKHTT.Select(x => x.Logo).LastOrDefault()" alt="Hinhanh" width="150" height="150" />
+                    </div>
+                    <div class="container">
+                        <div class=" text-center">
+                            <b style="font-size:18px">@Model.lstKHTT.Select(x => x.TEN_CUAHANG).LastOrDefault()</b>
+                            <p style="margin-bottom:0px">@Model.lstKHTT.Select(x => x.Header).LastOrDefault().Split("Hotline")[0]</p>
+                            <p> Hotline @Model.lstKHTT.Select(x => x.Header).LastOrDefault().Split("Hotline")[1] </p>
+                        </div>
+                    </div>
+                }
+             
+                <div class="card-body">
+                    @if (@Model.lstKHTT.Count() == 0)
+                    {
+                        <div class="card-header" style="background-color:mediumaquamarine">
+                            <h3 class="text-center" style="margin-bottom:0px"><b>Thông Tin Lịch Sử Thẻ Thanh Toán</b></h3>
+                        </div>
+                        <div class="card-body align-items-center">
+                            <b class="text-center" style="font-size:22px">Mã thẻ không tồn tại</b>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row justify-content-center">
+                                <b><i>Chúc bạn tham quan vui vẻ!!!</i></b>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <h3 class="text-center"><b>Thông Tin Lịch Sử Thẻ Thanh Toán Nội Bộ</b></h3>
+                        </div>
+                       
+                        <p class="text-right" style=" font-size:25px">
+                            Số dư hiện tại: <b class="text-green" >@decimal.Parse(@Model.lstKHTT.Select(s => s.TongSoDu).FirstOrDefault()).ToString("N0").Replace(",", ".")</b>
+                        </p>
+                        <table class="table table-bordered table-hover table-responsive">
+
+                            <tr style="background-color:mediumaquamarine; font-size:20px">
+                                <th style="width:12%">Thời gian</th>
+                                <th style="width:15%">Quầy</th>
+                                <th style="width:30%">Dịch Vụ</th>
+                                <th class="text-center" style="width:5%">Số Lượng</th>
+                                <th class="text-center" style="width:15%">Tổng Tiền</th>
+                                <th class="text-center" style="width:15%">Số Dư</th>
+                            </tr>
+
+
+                            @foreach (var item in Model.lstKHTT)
+                            {
+                                if (item.FLAG.Equals("0"))
+                                {
+                                    <tr>
+                                        <td>@item.NgayNop</td>
+                                        <td>@item.TEN_QUAY</td>
+                                        <td colspan="2" class="text-green align-content-center"><b> @item.TEN_HANGHOA</b></td>
+                                       @*  <td></td> *@
+                                        <td class="text-green text-center align-content-center"><b>+@decimal.Parse(@item.SoTien).ToString("N0").Replace(",", ".")</b></td>
+                                        <td class="text-center text-green align-content-center"><b>@decimal.Parse(@item.SoDu).ToString("N0").Replace(",", ".")</b></td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    var sumLst = Model.lstKHTT.Where(x=>x.MaHD==item.MaHD).Sum(s => int.Parse(s.SOLUONG));
+                                    var lst = Model.lstKHTT.Count(s => s.MaHD == item.MaHD);
+                                    var tongTien = int.Parse(@item.GIABAN_THAT) * int.Parse(item.SOLUONG);
+                                    if (lst == 1)
+                                    {
+                                        <tr >
+                                            <td>@item.NgayNop</td>
+                                            <td>@item.TEN_QUAY</td>
+                                            <td><b>@item.TenHD</b></td>
+                                            <td class="text-center align-content-center"><b style="font-size:20px">@sumLst</b> </td>
+                                            <td colspan="2" class="text-center text-red align-content-center"><b>-@decimal.Parse(@item.SoTien).ToString("N0").Replace(",", ".")</b></td>
+                                           @*  <td></td> *@                                         
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"></td>
+                                           @*  <td></td> *@
+                                            <td>@item.TEN_HANGHOA</td>
+                                            <td class="text-center align-content-center">@item.SOLUONG</td>
+                                            <td class="text-red text-center align-content-center">-@tongTien.ToString("N0").Replace(",", ".")</td>
+                                            <td class="text-center text-green align-content-center"><b> @decimal.Parse(@item.SoDu).ToString("N0").Replace(",", ".")</b></td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        if (!item.MaHD.Equals(ckeckLs))
+                                        {
+                                            <tr>
+                                                <td>@item.NgayNop</td>
+                                                <td >@item.TEN_QUAY</td>
+                                                <td class="align-content-center"><b>@item.TenHD</b></td>
+                                                <td class="text-center align-content-center"><b style="font-size:20px">@sumLst</b> </td>
+                                                <td colspan="2" class="text-center text-red align-content-center"><b>-@decimal.Parse(@item.SoTien).ToString("N0").Replace(",", ".")</b></td>
+                                                @*  <td></td> *@
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"></td>
+                                                @* <td></td> *@
+                                                <td>@item.TEN_HANGHOA</td>
+                                                <td class="text-center align-content-center">@item.SOLUONG</td>
+                                                <td class="text-red text-center align-content-center">-@tongTien.ToString("N0").Replace(",", ".")</td>
+                                                <td class="text-center text-green align-content-center"><b> @decimal.Parse(@item.SoDu).ToString("N0").Replace(",", ".")</b></td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="2"></td>
+                                                @* <td></td> *@
+                                                <td>@item.TEN_HANGHOA</td>
+                                                <td class="text-center align-content-center">@item.SOLUONG</td>
+                                                <td class="text-red text-center align-content-center">-@tongTien.ToString("N0").Replace(",", ".")</td>
+                                                <td class="text-center text-green align-content-center"><b>@decimal.Parse(@item.SoDu).ToString("N0").Replace(",", ".")</b></td>
+                                            </tr>
+                                        }
+
+                                        ckeckLs = item.MaHD;
+                                    }
+                                }
+                            }
+
+                        </table>
+
+                    }
+
+                </div>
+                <div class="card-footer">
+                    <div class="row justify-content-center">
+                        <b><i> <p>@Model.lstKHTT.Select(x => x.Footer).LastOrDefault()</p></i></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

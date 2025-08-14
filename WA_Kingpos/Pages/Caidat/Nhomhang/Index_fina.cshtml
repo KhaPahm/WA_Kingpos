@@ -1,0 +1,134 @@
+﻿
+@model WA_Kingpos.Pages.Nhomhang.IndexModel
+@{
+    //ViewData["Title"] = "Nhóm hàng";
+    //ViewData["Name"] = "nhomhang";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã</th>
+                            <th>Tên</th>
+                            <th>Ghi chú</th>
+                            <th>Sử dụng</th>
+                            @*
+                                <th>Thực đơn</th>
+                                <th>Món thêm</th>*@
+                            <th>Hình ảnh</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.STT</td>
+                                <td>@item.MA</td>
+                                <td>@item.TEN</td>
+                                <td>@item.GHICHU</td>
+                                @if (@item.SUDUNG.ToString().ToLower() == "true")
+                                {
+                                    <td><input type="checkbox" checked>@item.SUDUNG</td>
+                                }
+                                else
+                                {
+                                    <td><input type="checkbox">@item.SUDUNG</td>
+                                }
+                                @*@if (@item.THUCDON.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.THUCDON</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.THUCDON</td>
+                                    }
+                                    @if (@item.MONTHEM.ToString().ToLower() == "true")
+                                    {
+                                        <td><input type="checkbox" checked>@item.MONTHEM</td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox">@item.MONTHEM</td>
+                                    }*@
+                                @if (@item.HINHANH != null)
+                                {
+                                    var base64 = Convert.ToBase64String(@item.HINHANH);
+                                    var userImage = String.Format("data:image/gif;base64,{0}", base64);
+                                    <td><img src="@userImage" alt="Hinhanh" width="150" height="150"></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                                <td>
+                                    <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.MA">Xem</a>
+                                    @if (Model.bSua)
+                                    {
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.MA">Sửa</a>
+                                    }
+                                    @if (Model.bXoa)
+                                    {
+                                        <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.MA">Xóa</a>
+                                    }
+                                    @*@if (Model.bSua)
+                                        {
+                                            <a class="btn btn-success btn-sm" role="button" asp-page="./EditInbep" asp-route-id="@item.MA">Sửa in bếp</a>
+                                        }*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @if (Model.bThem)
+                {
+                    <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                    <form asp-page-handler="Import" method="post" enctype="multipart/form-data" class="d-inline">
+                        <label class="btn btn-success mb-0">
+                            Import File Excel
+                            <input type="file" name="ExcelFile" accept=".xlsx,.xls" onchange="this.form.submit()" hidden />
+                        </label>
+                    </form>
+                }
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+@section Scripts {
+    <script>
+        window.onload = function () {
+        @* Thông báo thành công *@
+        @if (TempData["Message"] != null)
+        {
+            <text>
+                        alert("@TempData["Message"]");
+                        window.location.href = "/Caidat/Nhomhang";
+            </text>
+        }
+
+        @* Thông báo lỗi *@
+        @if (TempData["Exception"] != null)
+        {
+            <text>
+                        alert("Lỗi import: @TempData["Exception"]");
+                        window.location.href = "/Caidat/Nhomhang";
+            </text>
+        }
+                                                    };
+    </script>
+}

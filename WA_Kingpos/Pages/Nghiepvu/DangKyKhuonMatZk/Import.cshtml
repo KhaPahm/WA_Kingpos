@@ -1,0 +1,233 @@
+﻿@page
+@model WA_Kingpos.Pages.DangKyKhuonMatZk.ImportModel
+@{
+    ViewData["Title"] = "Danh sách khách hàng thuê phòng";
+    ViewData["Name"] = "dangkykhuonmatzk";
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+                <form method="post" id="form1">
+                    <div class="row">
+                        @*cổng*@
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="sCong">Chọn cổng</label>
+                                <select asp-for="sCong" multiple="multiple" id="sCong" class="form-control cboMultiNhanVien">
+                                    @for (int i = 0; i < Model.listGateDevice.Count; i++)
+                                    {
+                                        if ($",{Model.sCong},".Contains($",{Model.listGateDevice[i].ID},"))
+                                        {
+                                            <option value="@Model.listGateDevice[i].ID" selected>@Model.listGateDevice[i].NAME_FULL</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@Model.listGateDevice[i].ID">@Model.listGateDevice[i].NAME_FULL</option>
+                                        }
+                                    }
+
+                                </select>
+                                @for (int i = 0; i < Model.listGateDevice.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="listGateDevice[i].ID" />
+                                    <input type="hidden" asp-for="listGateDevice[i].GATE_NO" />
+                                    <input type="hidden" asp-for="listGateDevice[i].NAME_FULL" />
+                                }
+                            </div>
+                        </div>
+
+
+                        @*<div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="sPhong">Chọn phòng</label>
+                                    <select asp-for="sPhong" multiple="multiple" id="sPhong" class="form-control cboMultiNhanVien">
+                                        @foreach (var kvp in Model.listPhong)
+                                        {
+                                            if ($",{Model.sPhong},".Contains($",{kvp.Key},"))
+                                            {
+                                                <option value="@kvp.Key" selected>@kvp.Value</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@kvp.Key">@kvp.Value</option>
+                                            }
+                                        }
+                                    </select>
+                                    @foreach (var kvp in Model.listPhong)
+                                    {
+                                        <input type="hidden" name="listPhong[@kvp.Key]" value="@kvp.Value" />
+                                    }
+                                </div>
+                            </div>*@
+                    </div>
+                    @*<div class="form-group">
+                            <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem</button>
+                            <button type="submit" name="submitButton" value="add" class="btn btn-info">Thêm</button>
+                        </div>*@
+
+                    <table id="tablefull1" class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <div>Chọn</div>
+                                    <div>
+                                        <input type="checkbox" id="checkAll" checked>
+                                    </div>
+                                </th>
+                                <th>Mã Đặt Phòng</th>
+                                @*<th>Mã Phòng</th>*@
+                                <th>Tên Phòng</th>
+                                <th>Tên khách hàng</th>
+                                <th>Ngày sinh</th>
+                                <th>Giới tính</th>
+                                <th>Địa chỉ</th>
+                                <th>Điện thoại</th>
+                                <th>Ngày nhận phòng</th>
+                                <th>Ngày trả phòng</th>
+                                @*<th>Đoàn</th>*@
+                                <th>Dùng 1 lần</th>
+                                @*<th>Email</th>
+                                    <th>Ghi chú</th>*@
+                                @*<th>Sử dụng</th>*@
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.listitem.Count; i++)
+                            {
+                                var item = Model.listitem[i];
+                                <tr>
+                                    @if (Model.listitem[i].SUDUNG)
+                                    {
+                                        <td class="text-center">
+                                            <input asp-for="listitem[i].SUDUNG" class="itemCheckbox" type="checkbox" checked>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center">
+                                            <input asp-for="listitem[i].SUDUNG" class="itemCheckbox" type="checkbox">
+                                        </td>
+                                    }
+                                    <td>
+                                        @item.MADATPHONG
+                                        <input type="hidden" asp-for="listitem[i].MADATPHONG">
+                                    </td>
+                                    @*<td>@item.MAPHONG</td>*@
+                                    <td>@item.TENPHONG</td>
+                                    <td>
+                                        <input type="hidden" asp-for="listitem[i].MA_KH">@item.TEN
+                                    </td>
+                                    <td>@item.NGAYSINH</td>
+                                    <td>@item.strGioiTinh</td>
+                                    <td>@item.DIACHI</td>
+                                    <td>@item.DIENTHOAI</td>
+                                    <td>
+                                        <input type="hidden" asp-for="listitem[i].NGAYNHANPHONG" value="@item.NGAYNHANPHONG?.ToString(" dd /MM/yyyy HH:mm")">
+                                        @item.NGAYNHANPHONG?.ToString("dd/MM/yyyy HH:mm")
+                                    </td>
+                                    <td>
+                                        <input type="hidden" asp-for="listitem[i].NGAYTRAPHONG" value="@item.NGAYTRAPHONG?.ToString(" dd /MM/yyyy HH:mm")">
+                                        @item.NGAYTRAPHONG?.ToString("dd/MM/yyyy HH:mm")
+                                    </td>
+                                    @*
+                                        <td>@item.TEN_DAILY</td>*@
+                                    @if (Model.listitem[i].ONLY_1)
+                                    {
+                                        <td><input asp-for="listitem[i].ONLY_1" type="checkbox" checked></td>
+                                    }
+                                    else
+                                    {
+                                        <td><input asp-for="listitem[i].ONLY_1" type="checkbox"></td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <input type="hidden" asp-for="@Model.bOnlyNoFace">
+                    <div class="card-footer">
+                        <button type="submit" name="submitButton" value="save" id="save" class="btn btn-success">Lưu</button>
+                        <a class="btn btn-primary" role="button" asp-page="Index" asp-route-id1="@Model.bOnlyNoFace">Trở lại</a>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            @*<div class="card-footer">
+                    @if (Model.bThem)
+                    {
+                    <a class="btn btn-primary" role="button" asp-page="./Create">Thêm mới</a>
+                    }
+                </div>*@
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+@section Scripts {
+    <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).ready(async function () {
+            $("#tablefull1").DataTable(createTableProp({
+                showCmdButtons: false, columnDefs: [{ orderable: false, targets: 0 }]
+            }));
+
+            $('#sCong').change(function () {
+                var newValue = $(this).val();
+                console.log(`gate id: ${newValue}`);
+            });
+            $('#sPhong').change(function () {
+                var newValue = $(this).val();
+                console.log(`Phong id: ${newValue}`);
+            });
+
+            $('#checkAll').click(function () {
+                $('.itemCheckbox').prop('checked', this.checked);
+            });
+
+            // If all checkboxes are checked, check the 'checkAll' checkbox, else uncheck it
+            $('.itemCheckbox').click(function () {
+                if ($('.itemCheckbox').length == $('.itemCheckbox:checked').length) {
+                    $('#checkAll').prop('checked', true);
+                } else {
+                    $('#checkAll').prop('checked', false);
+                }
+            });
+
+            $('#form1').on('submit', function (e) {
+                // kiểm tra có chọn khách hàng
+                let isChecked = $('.itemCheckbox:checked').length > 0;
+                if (!isChecked) {
+                    alert('Chưa chọn khách hàng');
+                    e.preventDefault(); // Prevent form submission
+                }
+                // kiểm tra có chọn cổng
+                let isGate = $('#sCong').val();
+                console.log(`sCong: ${isGate}`);
+                if (!isGate || isGate == '') {
+                    alert('Chưa chọn cổng');
+                    e.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+
+    </script>
+}

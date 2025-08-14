@@ -1,0 +1,222 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.PhieuDatXeFina.IndexModel
+@{
+    ViewData["Title"] = "Thêm Phiếu Đặt Xe";
+    ViewData["Name"] = "PhieuDatXe";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group" hidden>
+                        <label asp-for="PHIEUDATXE.MAPDNDC" class="control-label">Số phiếu</label>
+                        <input type="text" asp-for="PHIEUDATXE.MAPDNDC" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="PHIEUDATXE.MAPDNDC" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" hidden>
+                        <label asp-for="PHIEUDATXE.NGAYLAPPHIEU" class="control-label">Ngày đặt</label>
+                        <input type="text" asp-for="PHIEUDATXE.NGAYLAPPHIEU" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="PHIEUDATXE.NGAYLAPPHIEU" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PHIEUDATXE.MA_KHO">Kho hàng</label>
+                        <select asp-for="PHIEUDATXE.MA_KHO" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control select2bs4" style="width: 100%;">
+                            <option value="0" selected disabled hidden>Chọn kho hàng</option>
+                            @foreach (var item in Model.ListKho)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                        <span asp-validation-for="PHIEUDATXE.MA_KHO" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày bốc hàng</label>
+                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                            <input type="text" asp-for="PHIEUDATXE.NGAYGIAOHANG" class="form-control datetimepicker-input" data-target="#reservationdate">
+                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="PHIEUDATXE.NGAYGIAOHANG" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PHIEUDATXE.MADOITUONG">Tài xế</label>
+                        <select asp-for="PHIEUDATXE.MADOITUONG" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control select2bs4" style="width: 100%;">
+                            <option value="0" selected disabled hidden>Chọn tài xế</option>
+                            @foreach (var item in Model.ListTaixe)
+                            {
+                                <option value="@item.MA">@item.TEN</option>
+                            }
+                        </select>
+                        <span asp-validation-for="PHIEUDATXE.MADOITUONG" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PHIEUDATXE.CMND_TAIXE" class="control-label">CMND</label>
+                        <input type="text" asp-for="PHIEUDATXE.CMND_TAIXE" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="PHIEUDATXE.CMND_TAIXE" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PHIEUDATXE.DIENTHOAI" class="control-label">Điện thoại</label>
+                        <input type="text" asp-for="PHIEUDATXE.DIENTHOAI" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="PHIEUDATXE.DIENTHOAI" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PHIEUDATXE.BIENSOXE" class="control-label">Biển số xe</label>
+                        <input type="text" asp-for="PHIEUDATXE.BIENSOXE" class="form-control" />
+                        <span asp-validation-for="PHIEUDATXE.BIENSOXE" class="text-danger"></span>
+                    </div>
+                    @* <div class="form-group">
+                        <label class="control-label">Danh sách đơn hàng</label>
+                        <table id="tablesimple" class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Chọn</th>
+                                    <th>Số phiếu</th>
+                                    <th>Nhân viên</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Khách hàng</th>
+                                    <th>Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (var i = 0; i < Model.ListPhieudathang.Count; i++)
+                                {
+                                    <tr>
+                                        <td><input asp-for="ListPhieudathang[i].chon" type="checkbox"></td>
+                                        <td><input asp-for="ListPhieudathang[i].maphieu" type="text" hidden>@Model.ListPhieudathang[i].maphieu</td>
+                                        <td><input asp-for="ListPhieudathang[i].nhanvien" type="text" hidden>@Model.ListPhieudathang[i].nhanvien</td>
+                                        <td><input asp-for="ListPhieudathang[i].ngaylap" type="text" hidden>@Model.ListPhieudathang[i].ngaylap</td>
+                                        <td><input asp-for="ListPhieudathang[i].khachhang" type="text" hidden>@Model.ListPhieudathang[i].khachhang</td>
+                                        <td><input asp-for="ListPhieudathang[i].sotien" type="text" hidden>@Model.ListPhieudathang[i].sotien</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div> *@
+
+                    <div class="card card-success">
+                        <div class="card-header bg-secondary">
+                            <h3 class="card-title">DANH SÁCH ĐƠN HÀNG</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                @for (var i = 0; i < Model.ListPhieudathang.Count; i++)
+                                {
+                                    <div class="col-md-2">
+                                        <div class="card card-widget widget-user-2">
+                                            <div class="card-footer p-0">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Mã phiếu
+                                                            <input asp-for="ListPhieudathang[i].maphieu" type="text" hidden>
+                                                            <span class="float-right text-info">
+                                                                @Model.ListPhieudathang[i].maphieu
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Nhân viên
+                                                            <input asp-for="ListPhieudathang[i].nhanvien" type="text" hidden>
+                                                            <span class="float-right text-info">
+                                                                @Model.ListPhieudathang[i].nhanvien
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Ngày lập
+                                                            <input asp-for="ListPhieudathang[i].ngaylap" type="text" hidden>
+                                                            <span class="float-right text-info">
+                                                                @Model.ListPhieudathang[i].ngaylap
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Khách hàng
+                                                            <input asp-for="ListPhieudathang[i].khachhang" type="text" hidden>
+                                                            <span class="float-right text-info">
+                                                                @Model.ListPhieudathang[i].khachhang
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            Số lượng
+                                                            <input asp-for="ListPhieudathang[i].soluong" type="text" hidden>
+                                                            <span class="float-right text-info">
+                                                                @Model.ListPhieudathang[i].soluong
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <div class="d-flex justify-content-center">
+                                                            <a href="#" class="nav-link">
+                                                                <input asp-for="ListPhieudathang[i].chon" type="checkbox">
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmModal">
+                                Lưu Phiếu Đặt Xe
+                            </button>
+                            <div class="modal" id="confirmModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Thông báo</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Xác nhận bạn muốn tạo phiếu đặt xe này không?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                                            <button type="submit" name="submitButton" value="btn3Create" class="btn btn-success">Xác nhận</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Lists">Danh sách phiếu đặt xe đã tạo</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

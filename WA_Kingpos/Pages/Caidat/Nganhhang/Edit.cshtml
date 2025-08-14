@@ -1,0 +1,43 @@
+﻿@page
+@model WA_Kingpos.Pages.Nganhhang.EditModel
+@{
+    ViewData["Title"] = "Sửa Ngành hàng";
+    ViewData["Name"] = "nganhhang";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.OrderBy" class="control-label">Mã</label>
+                        <input type="number" asp-for="item.OrderBy" class="form-control" />
+                        <span asp-validation-for="item.OrderBy" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.VNValue" class="control-label">Tên</label>
+                        <input type="text" asp-for="item.VNValue" class="form-control" />
+                        <span asp-validation-for="item.VNValue" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Trở lại danh sách</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

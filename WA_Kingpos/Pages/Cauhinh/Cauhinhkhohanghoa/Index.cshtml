@@ -1,0 +1,84 @@
+﻿@page
+@model WA_Kingpos.Pages.Cauhinh.Cauhinhkhohanghoa.ConfigModel
+@{
+    ViewData["Title"] = "Cấu Hình Kho - Hàng hóa";
+    ViewData["Name"] = "cauhinhkhohanghoa";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="MAKHO">Kho</label>
+                        <select asp-for="MAKHO" onchange='if(this.value != 0) { this.form.submit(); }' class="form-control select2bs4" style="width: 100%;">
+                            <option value="0" selected disabled hidden>Chọn kho...</option>
+                            @foreach (var item in Model.listKho)
+                            {
+                                <option value="@item.ma_kho">@item.ten_kho</option>
+                            }
+                        </select>
+                        <span asp-validation-for="MAKHO" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Danh sách sản phẩm</label>
+                        <table id="tablelite tablesortqc" class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th hidden>Kho</th>
+                                    <th>ID</th>
+                                    <th>Mã hàng hóa</th>
+                                    <th>Tên hàng hóa</th>
+                                    <th>Sử dụng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.listHanghoa.Count; i++)
+                                {
+                                    <tr>
+                                        <td hidden><input asp-for="listHanghoa[i].KHO" type="text" hidden>@Model.listHanghoa[i].KHO</td>
+                                        <td><input asp-for="listHanghoa[i].STT" type="text" hidden>@Model.listHanghoa[i].STT</td>
+                                        <td><input asp-for="listHanghoa[i].MA_HANGHOA" type="text" hidden>@Model.listHanghoa[i].MA_HANGHOA</td>
+                                        <td><input asp-for="listHanghoa[i].TEN_HANGHOA" type="text" hidden>@Model.listHanghoa[i].TEN_HANGHOA</td>
+                                        @if (@Model.listHanghoa[i].SUDUNG.ToString().ToLower() == "true")
+                                        {
+                                            <td><input asp-for="listHanghoa[i].SUDUNG" type="checkbox" checked></td>
+                                        }
+                                        else
+                                        {
+                                            <td><input asp-for="listHanghoa[i].SUDUNG" type="checkbox"></td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="btn1ReLoad" class="btn btn-success" hidden>ReLoad</button>
+                        <button type="submit" name="submitButton" value="btn2Save" class="btn btn-success">Lưu</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

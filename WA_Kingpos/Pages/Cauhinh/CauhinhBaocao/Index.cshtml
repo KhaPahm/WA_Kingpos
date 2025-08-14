@@ -1,0 +1,147 @@
+﻿@page
+@model WA_Kingpos.Pages.ConfigReport.IndexModel
+@{
+    ViewData["Title"] = "Cấu Hình Báo Cáo";
+    ViewData["Name"] = "cauhinhbaocao";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="item.tencongty" class="control-label">Tên Công Ty</label>
+                        <input type="text" asp-for="item.tencongty" class="form-control" />
+                        <span asp-validation-for="item.tencongty" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.diachi" class="control-label">Địa Chỉ</label>
+                        <input type="text" asp-for="item.diachi" class="form-control" />
+                        <span asp-validation-for="item.diachi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.dienthoai" class="control-label">Điện Thoại</label>
+                        <input type="number" asp-for="item.dienthoai" class="form-control" />
+                        <span asp-validation-for="item.dienthoai" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.fax" class="control-label">Fax</label>
+                        <input type="number" asp-for="item.fax" class="form-control" />
+                        <span asp-validation-for="item.fax" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.email" class="control-label">Email</label>
+                        <input type="email" asp-for="item.email" class="form-control" />
+                        <span asp-validation-for="item.email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.sotaikhoan" class="control-label">Số Tài Khoản</label>
+                        <input type="number" asp-for="item.sotaikhoan" class="form-control" />
+                        <span asp-validation-for="item.sotaikhoan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.masothue" class="control-label">Mã Số Thuế</label>
+                        <input type="number" asp-for="item.masothue" class="form-control" />
+                        <span asp-validation-for="item.masothue" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.mausohd" class="control-label">Mẫu Số HĐ</label>
+                        <input type="text" asp-for="item.mausohd" class="form-control" />
+                        <span asp-validation-for="item.mausohd" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.nguoigiao" class="control-label">Người Giao Hàng</label>
+                        <input type="text" asp-for="item.nguoigiao" class="form-control" />
+                        <span asp-validation-for="item.nguoigiao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.ketoan" class="control-label">Kế Toán</label>
+                        <input type="text" asp-for="item.ketoan" class="form-control" />
+                        <span asp-validation-for="item.ketoan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.truongphong" class="control-label">Trưởng Phòng</label>
+                        <input type="text" asp-for="item.truongphong" class="form-control" />
+                        <span asp-validation-for="item.truongphong" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.kyhieu" class="control-label">Ký Hiệu</label>
+                        <input type="text" asp-for="item.kyhieu" class="form-control" />
+                        <span asp-validation-for="item.kyhieu" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.nguoinhan" class="control-label">Người Nhận</label>
+                        <input type="text" asp-for="item.nguoinhan" class="form-control" />
+                        <span asp-validation-for="item.nguoinhan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.thukho" class="control-label">Thủ Kho</label>
+                        <input type="text" asp-for="item.thukho" class="form-control" />
+                        <span asp-validation-for="item.thukho" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.giamdoc" class="control-label">Giám Đốc</label>
+                        <input type="text" asp-for="item.giamdoc" class="form-control" />
+                        <span asp-validation-for="item.giamdoc" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.logo1_UPLOAD" class="control-label">Logo 1</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" asp-for="item.logo1_UPLOAD" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Chọn file ảnh</label>
+                            </div>
+                        </div>
+                        @if (@Model.item.logo1 != null)
+                        {
+                            var base64 = Convert.ToBase64String(@Model.item.logo1);
+                            var userImage = String.Format("data:image/gif;base64,{0}", base64);
+                            <input asp-for="item.logo1_STRING" type="hidden" />
+                            <br />
+                            <img src="@userImage" alt="Hinhanh" width="200" height="200">
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="item.logo2_UPLOAD" class="control-label">Logo 2</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" asp-for="item.logo2_UPLOAD" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Chọn file ảnh</label>
+                            </div>
+                        </div>
+                        @if (@Model.item.logo2 != null)
+                        {
+                            var base64 = Convert.ToBase64String(@Model.item.logo2);
+                            var userImage = String.Format("data:image/gif;base64,{0}", base64);
+                            <input asp-for="item.logo2_STRING" type="hidden" />
+                            <br />
+                            <img src="@userImage" alt="Hinhanh" width="200" height="200">
+                        }
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="12/09/2023 12:53:46" ReportInfo.Modified="12/12/2023 16:02:22" ReportInfo.CreatorVersion="2023.3.0.0">
+  <Dictionary>
+    <CsvDataConnection Name="Connection" ConnectionString="rijcmlqGCL5gK7qcyT9XhiO4NWL8QB6xIh7BFvz516m0PHG6291I2q1mVQcQDrqsfzEa6MSOljM9IixiQG1Ph1N+hnpO6TpepsoLcjeJhTSqz9TL96+331VxCx9zg7j9Dh0hqNSVExzXMt+B/K5vZ3mft0ef9ia04IfbjMo4E1oVPVbcz8Kz0RnAJChqq+3s1AA1SzIABN0adjJbcL+nI/XansHBH+HuG564HEwlzKkZekQI0XvZyDX4zxNTouiNJ/x4wjr2ZFckELIYPM860bBN4KNS/WXgZDC94ex7z4VraYSBEDNypuGl9D1KQTFZ4PvW0zGGFi7vzpfu+aEmjnTglkmEw==">
+      <TableDataSource Name="TableMain" DataType="System.Int32" Enabled="true" TableName="TableMain">
+        <Column Name="MA" DataType="System.Int32"/>
+        <Column Name="TEN" DataType="System.String"/>
+        <Column Name="DIACHI" DataType="System.String" PropName="Column"/>
+        <Column Name="DIENTHOAI" DataType="System.String" PropName="Column1"/>
+        <Column Name="EMAIL" DataType="System.String" PropName="Column2"/>
+        <Column Name="FAX" DataType="System.String" PropName="Column3"/>
+        <Column Name="CMND" DataType="System.String" PropName="Column4"/>
+        <Column Name="TENNHANVIEN" DataType="System.String" PropName="Column5"/>
+        <Column Name="SUDUNG" DataType="System.String" PropName="Column6"/>
+      </TableDataSource>
+    </CsvDataConnection>
+    <Parameter Name="nhanvien" DataType="System.String" AsString=""/>
+    <Parameter Name="tencongty" DataType="System.String" AsString=""/>
+    <Parameter Name="diachi" DataType="System.String" AsString=""/>
+    <Parameter Name="dienthoai" DataType="System.String" AsString=""/>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" LeftMargin="5" TopMargin="5" RightMargin="5" BottomMargin="5" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1084.86" Height="132.3">
+      <TextObject Name="Text1" Left="321.3" Top="66.15" Width="444.15" Height="30.24" Text="DANH SÁCH KHÁCH HÀNG" HorzAlign="Center" Font="Tahoma, 16pt, style=Bold"/>
+      <TextObject Name="Text2" Left="9.45" Top="94.5" Width="179.55" Height="18.9" Text="Nhân viên phụ trách  :" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="9.45" Top="9.45" Width="784.35" Height="18.9" Text="[tencongty]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="9.45" Top="28.35" Width="75.6" Height="18.9" Text="Địa chỉ : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Left="9.45" Top="47.25" Width="94.5" Height="18.9" Text="Điện thoại : " Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="170.1" Top="94.5" Width="387.45" Height="18.9" CanGrow="true" CanShrink="true" Text="[nhanvien]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text41" Left="85.05" Top="28.35" Width="963.9" Height="18.9" Text="[diachi]" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text42" Left="103.95" Top="47.25" Width="746.55" Height="18.9" Text="[dienthoai]" Font="Tahoma, 10pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="136.3" Width="1084.86" Height="37.8">
+      <TableObject Name="Table3" Left="9.45" Width="1058.4" Height="37.8" Border.Lines="All">
+        <TableColumn Name="Column19" Width="56.7"/>
+        <TableColumn Name="Column20" Width="189"/>
+        <TableColumn Name="Column21" Width="207.9"/>
+        <TableColumn Name="Column22" Width="94.5"/>
+        <TableColumn Name="Column23" Width="151.2"/>
+        <TableColumn Name="Column24" Width="94.5"/>
+        <TableColumn Name="Column25" Width="94.5"/>
+        <TableColumn Name="Column26" Width="113.4"/>
+        <TableColumn Name="Column27" Width="56.7"/>
+        <TableRow Name="Row3" Height="37.8">
+          <TableCell Name="Cell19" Border.Lines="All" Text="Mã" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell20" Border.Lines="All" Text="Tên" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell21" Border.Lines="All" Text="Địa chỉ" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell22" Border.Lines="All" Text="Điện thoại" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell23" Border.Lines="All" Text="Email" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell24" Border.Lines="All" Text="Mã số thuế" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell25" Border.Lines="All" Text="CMND" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="Nhân viên" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+          <TableCell Name="Cell27" Border.Lines="All" Text="Sử dụng" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="178.1" Width="1084.86" Height="22.68" CanGrow="true" DataSource="TableMain">
+      <TableObject Name="Table1" Left="9.45" Width="1058.4" Height="22.68" Border.Lines="All" Layout="Wrapped">
+        <TableColumn Name="Column1" Width="56.7"/>
+        <TableColumn Name="Column2" Width="189"/>
+        <TableColumn Name="Column28" Width="207.9"/>
+        <TableColumn Name="Column29" Width="94.5"/>
+        <TableColumn Name="Column30" Width="151.2"/>
+        <TableColumn Name="Column31" Width="94.5"/>
+        <TableColumn Name="Column32" Width="94.5"/>
+        <TableColumn Name="Column33" Width="113.4"/>
+        <TableColumn Name="Column34" Width="56.7"/>
+        <TableRow Name="Row1" MinHeight="22.68" Height="22.68" AutoSize="true">
+          <TableCell Name="Cell1" Border.Lines="All" Text="[TableMain.MA]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="[TableMain.TEN]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell28" Border.Lines="All" Text="[TableMain.DIACHI]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell29" Border.Lines="All" Text="[TableMain.DIENTHOAI]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell30" Border.Lines="All" Text="[TableMain.EMAIL]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell31" Border.Lines="All" Text="[TableMain.FAX]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell32" Border.Lines="All" Text="[TableMain.CMND]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell33" Border.Lines="All" Text="[TableMain.TENNHANVIEN]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell34" Border.Lines="All" Font="Arial, 10pt">
+            <CheckBoxObject Name="CheckBox1" Left="18.9" Top="3.78" Width="15.12" Height="15.12" DataColumn="TableMain.SUDUNG"/>
+          </TableCell>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="204.78" Width="1084.86" Height="66.15">
+      <TextObject Name="Text40" Left="954.45" Top="18.9" Width="113.4" Height="18.9" Text="Người lập" Font="Tahoma, 10pt, style=Bold"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="274.93" Width="1084.86" Height="28.35">
+      <TextObject Name="Text10" Left="1001.7" Top="9.45" Width="18.9" Height="18.9" Text="/" HorzAlign="Right" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="9.45" Top="9.45" Width="170.1" Height="18.9" Text="[Date]" Format="Custom" Format.Format="dd/MM/yyyy HH:mm:ss" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text12" Left="954.45" Top="9.45" Width="56.7" Height="18.9" Text="[Page#]" HorzAlign="Right" Font="Tahoma, 10pt, style=Bold"/>
+      <TextObject Name="Text13" Left="1011.15" Top="9.45" Width="56.7" Height="18.9" Text="[TotalPages#]" Font="Tahoma, 10pt, style=Bold"/>
+    </PageFooterBand>
+    <OverlayBand Name="Overlay1" Top="307.28" Width="1084.86" Height="18.9"/>
+  </ReportPage>
+</Report>

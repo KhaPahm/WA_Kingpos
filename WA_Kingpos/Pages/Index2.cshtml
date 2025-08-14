@@ -1,0 +1,47 @@
+﻿@page
+@model WA_Kingpos.Pages.Index2Model
+@{
+    ViewData["Title"] = "Tiêu đề ở đâyTrang mẫu";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label>Nhân viên</label>
+                        <select asp-for="MANHANVIEN_CHON" class="form-control select2bs4" style="width: 100%;">
+                            <option value="" selected disabled hidden>Chọn nhân viên</option>
+                            @foreach (var item in Model.ListNhanvien)
+                            {
+                                <option value="@item.MANHANVIEN">@item.TENNHANVIEN</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-success" />
+                    </div>
+                    <br />
+
+                </form>
+
+
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="/Privacy">Nút chức năng quay lại , đi tới trang ở đây</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

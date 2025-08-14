@@ -1,0 +1,252 @@
+﻿
+@page
+@using WA_Kingpos.Data
+@model WA_Kingpos.Pages.Baocao.DoanhSoFina.IndexModel
+
+@{
+    ViewData["Title"] = "Báo Cáo Doanh Số";
+    ViewData["Name"] = "doanhsofina";
+}
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        @if (Model.listNhomNhanVien.Count > 0)
+                        {
+                            <div class="col-md-2">
+                                <!-- nhóm nhân viên -->
+                                <div class="form-group" style="width: 100%;">
+                                    <label for="strNhomNhanVien">Nhóm nhân viên</label>
+                                    @*form-control select2bs4*@
+                                    <select asp-for="strNhomNhanVien" id="strNhomNhanVien" class="form-control select2bs4" style="width: 100%;">
+                                        @foreach (var item in Model.listNhomNhanVien)
+                                        {
+                                            if ($",{Model.strNhomNhanVien},".Contains($",{item.MANHOM},"))
+                                            {
+                                                <option value="@item.MANHOM" selected>@item.TENNHOM_NHANVIEN</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.MANHOM">@item.TENNHOM_NHANVIEN</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="col-md-3">
+                            <!-- nhân viên -->
+                            <div class="form-group" style="width: 100%;">
+                                <label for="MaNhanVien">Nhân viên</label>
+                                @*form-control select2bs4*@
+                                <select asp-for="MaNhanVien" class="form-control cboMultiNhanVien" multiple style="width: 100%;">
+                                    @foreach (var item in Model.listNhanVien)
+                                    {
+                                        if ($",{Model.MaNhanVien},".Contains($",{item.manhanvien},"))
+                                        {
+                                            <option value="@item.manhanvien" selected>@item.tennhanvien</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.manhanvien">@item.tennhanvien</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Từ ngày - Đến ngày</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" asp-for="sNgay" class="form-control float-right" id="reservation99">
+                                    @* <input type="text" class="form-control float-right" id="reservation"> *@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <!-- kho -->
+                            <div class="form-group">
+                                <label>Kho</label>
+                                <select asp-for="sKho" id="sKho" class="form-control select2bs4" style="width: 100%;">
+                                    @foreach (var item in Model.listKho)
+                                    {
+                                        if (item.ma_kho == Model.sKho)
+                                        {
+                                            <option value="@item.ma_kho" selected>@item.ten_kho @(string.IsNullOrEmpty(item.ghichu) ? "" : $"({item.ghichu})")</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.ma_kho">@item.ten_kho @(string.IsNullOrEmpty(item.ghichu) ? "" : $"({item.ghichu})")</option>
+                                        }
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                        <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất PDF</button>
+                        <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                    </div>
+
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">Tên đại lý</th>
+                            <th style="text-align:center ; vertical-align:middle">Phiếu đặt hàng</th>
+                            <th style="text-align:center ; vertical-align:middle">Ngày thanh toán</th>
+                            <th style="text-align:center ; vertical-align:middle">Mặt hàng</th>
+                            <th style="text-align:center ; vertical-align:middle">ĐVT</th>
+                            <th style="text-align:center ; vertical-align:middle">Số lượng</th>
+                            <th style="text-align:center ; vertical-align:middle">Đơn giá</th>
+                            <th style="text-align:center ; vertical-align:middle">Thành tiền</th>
+                            <th style="text-align:center ; vertical-align:middle">Giá bảng kê</th>
+                            <th style="text-align:center ; vertical-align:middle">Chênh lệch Thành tiền</th>
+                            <th style="text-align:center ; vertical-align:middle">Kho</th>
+                            <th style="text-align:center ; vertical-align:middle">HS quy đổi</th>
+                            <th style="text-align:center ; vertical-align:middle">SL quy đổi (Kg)</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listitem)
+                        {
+                            <tr>
+                                <td>@item.TENKHACHHANG</td>
+                                <td>@item.PHIEUDENGHI</td>
+                                <td>@item.NGAYTHANHTOAN?.ToString("dd/MM/yyyy")</td>
+                                <td>@item.TEN_HANGHOA</td>
+                                <td>@item.TEN_DONVITINH</td>
+                                <td>@item.SOLUONG?.ToString("N0")</td>
+                                <td class="text-right">@item.DONGIA?.ToString("N0")</td>
+                                <td class="text-right">@item.THANHTIEN?.ToString("N0")</td>
+                                <td class="text-right @(item.DONGIA != item.DONGIA_BANGKE ? "text-danger" : "")">@item.DONGIA_BANGKE?.ToString("N0")</td>
+                                <td class="text-right @(ExtensionObject.zeroOnNull(item.CHENHLECH_THANHTIEN) != 0 ? "text-danger" : "")">@(ExtensionObject.zeroOnNull(item.CHENHLECH_THANHTIEN) != 0 ? item.CHENHLECH_THANHTIEN?.ToString("N0") : "")</td>
+                                <td>@item.TEN_KHO</td>
+                                <td class="text-right">@item.HESOKPI</td>
+                                <td class="text-right">@item.DOANHSO_KPI?.ToString("N0")</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            @*colspan="7" class="text-right"*@
+                            <th colspan="7" class="text-right">Tổng cộng: &nbsp;</th>
+                            @*<th class="d-none"></th>
+                                <th class="d-none"></th>
+                                <th class="d-none"></th>
+                                <th class="d-none"></th>
+                                <th class="d-none"></th>
+                                <th class="d-none"></th>*@
+                            <th class="text-right">@Model.listitem.Sum(item => item.THANHTIEN)?.ToString("N0")</th>
+                            <th></th>
+                            <th class="text-right text-danger">@Model.listitem.Sum(item => item.CHENHLECH_THANHTIEN)?.ToString("N0")</th>
+                            @*<th></th>
+                                <th></th>*@
+                            <th colspan="3" class="text-right">@Model.listitem.Sum(item => item.DOANHSO_KPI)?.ToString("N0")</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let tablefull;
+            setTimeout(function () {
+                tablefull = dataTableInstances['tablefull'];
+                console.log('redraw table');
+                // datatable vẽ lệch cột khi có dùng colspan, cần vẽ lại 1 lần để căn chính xác
+                tablefull.draw();
+            }, 200);
+
+            var format = 'DD/MM/YYYY';
+            var oldDate = $('#reservation99').val();
+
+            $('#reservation99').change(function () {
+                var newValue = $(this).val();
+                console.log(`New date: ${newValue}`);
+                if (!oldDate) {
+                    window.location = "?id2=" + newValue;
+                } else {
+                    console.log(`Not need reload, current date: ${oldDate}`);
+                }
+                oldDate = newValue;
+            });
+            var startDate, endDate;
+            if (!oldDate) {
+                // If empty, set startDate and endDate to current date
+                startDate = moment().startOf('month');
+                endDate = moment();
+            } else {
+                // If not empty, parse the date range
+                var dates = oldDate.split('-');
+                startDate = moment(dates[0].trim(), format);
+                endDate = moment(dates[1].trim(), format);
+            }
+
+            console.log(`init date range picker: ${startDate.format(format)} -> ${endDate.format(format)}`);
+            $('#reservation99').daterangepicker({
+                opens: 'left',
+                startDate: startDate,
+                endDate: endDate,
+                ranges: {
+                    'Tuần này': [moment().startOf('week'), moment().endOf('week')],
+                    'Tháng này': [moment().startOf('month'), moment().endOf('month')],
+                    'Tuần trước': [moment().subtract(1, 'week').startOf('week'), moment().subtract(1, 'week').endOf('week')],
+                    'Tháng trước': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                },
+                locale: {
+                    format: format,
+                    customRangeLabel: 'Tùy chỉnh'
+                }
+            });
+
+            $('#strNhomNhanVien').change(function () {
+                var newValue = $(this).val();
+                console.log(`New NhomNhanVien: ${newValue}`);
+                window.location = `?id4=${newValue}&id2=${$('#reservation99').val()}&id3=${$('#sKho').val()}`;
+            });
+        });
+
+    </script>
+}
+
