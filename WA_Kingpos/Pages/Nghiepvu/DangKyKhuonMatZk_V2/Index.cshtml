@@ -95,7 +95,7 @@
 
             <!-- Bootstrap modal -->
             <div class="modal fade" id="customerModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable" " role="document">
                     <div class="modal-content">
                         <div class="modal-header py-2">
                             <h5 class="modal-title" id="modalTitle">Thông tin khách hàng</h5>
@@ -110,6 +110,44 @@
                 </div>
             </div>
 
+
+            <!-- Camera Modal -->
+            <div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header py-2">
+                            <h5 class="modal-title">Chụp ảnh</h5>
+                            <button type="button" class="close" aria-label="Đóng" id="btnCloseCamera" onclick="closeCameraModalClick()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body text-center">
+                            <video id="cameraVideo" autoplay playsinline style="max-width:100%; border:1px solid #ccc;"></video>
+                            <canvas id="cameraCanvas" width="300" height="300" style="display:none;"></canvas>
+                        </div>
+
+                        <div class="modal-footer py-2 d-flex justify-content-center">
+                            <button type="button" class="btn btn-outline-danger btn-md align-self-center" id="btnCancelCamera" onclick="closeCameraModalClick()">
+                                Hủy
+                            </button>
+
+                            <button type="button" class=" btn btn-outline-info btn-lg rounded-circle" id="btnTakePhoto" onclick="takePhotoClick()">
+                                <i class="fa fa-camera"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-outline-secondary btn-md align-self-center" id="btnSwitchCamera" onclick="switchCameraClick()">
+                                Xoay
+                            </button>
+
+                            <button type="button" class="btn btn-outline-secondary d-none" id="btnRetake" onclick="reTakePhotoClick()">Chụp lại</button>
+                            <button type="button" class="btn btn-success d-none" id="btnUsePhoto" onclick="usePhotoClick()">Dùng ảnh này</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!-- /.card-footer -->
         </div>
         <!-- /.card -->
@@ -122,6 +160,21 @@
     <script src="/lib/face-api/face-api.min.js"></script>
     <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
     <script>
+        $(document).ready(async function () {
+            await loadFaceApi();
+        })
+
+        var stream;
+        let currentFacing = 'environment';
+        let hiddenBase64;
+        const video = document.getElementById('cameraVideo');
+        const canvas = document.getElementById('cameraCanvas');
+        const previewImg = document.getElementById('photoPreview');
+        const btnUsePhoto = document.getElementById('btnUsePhoto');
+        const btnRetake     = document.getElementById('btnRetake');
+        const btnTakePhoto  = document.getElementById('btnTakePhoto');
+        const btnSwitchCamera = document.getElementById('btnSwitchCamera');
+
         $(document).on('click', '.btn-open-modal', function (e) {
             e.preventDefault();
             var url = this.href; // reliable
@@ -130,7 +183,7 @@
             var $title = $modal.find('#modalTitle');
             var $save  = $('#btnSave');
 
-                    $modal.find('.modal-body').html('<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only">Loading...</span></div>');
+            $modal.find('.modal-body').html('<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only">Loading...</span></div>');
             $modal.modal('show');
 
             $modal.find('.modal-body').load(url, function (response, status) {
@@ -142,7 +195,6 @@
                 var meta = $body.find('[data-modal-title],[data-can-save]');
                 var title = meta.data('modal-title') || 'Thông tin';
                 var canSave = String(meta.data('can-save')).toUpperCase() === 'TRUE';
-
 
                 $title.text(title);
                 $save.toggleClass('d-none', !canSave);
@@ -209,12 +261,114 @@
             reader.readAsDataURL(file);
         }
 
+        // Nén hình ảnh cho đến khi kích thước nhỏ hơn 30 kilobytes
+        function compressCanvasImage(canvas) {
+            let quality = 1.0;
+            let dataURL;
+            let imageSize;
+            const maxSizeKB = 30;
+            let base64String;
+
+            do {
+                dataURL = canvas.toDataURL('image/jpeg', quality);
+                // Extract the base64 part of the data URL
+                base64String = dataURL.split(',')[1];
+                // Calculate the image size in bytes
+                const stringLength = base64String.length;
+                const sizeInBytes = 4 * Math.ceil(stringLength / 3) * 0.5624896334383812; // Rough approximation
+                imageSize = sizeInBytes / 1024; // Convert bytes to kilobytes
+
+                if (imageSize > maxSizeKB) {
+                    quality -= 0.05;
+                }
+            } while (imageSize > maxSizeKB && quality > 0);
+            console.log(`compress image percent: ${quality}, output size: ${imageSize}KB`);
+            return base64String;
+        }
+
         async function dectionFace(img) {
             var $photoReview = $('#photoReview');
             
             const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions());
             if (detections.length == 1) {
-                document.getElementById('photoBase64').value = img.src.split(',')[1];
+
+                const lastDetection = detections[detections.length - 1];
+                const box = lastDetection.box;
+                // kích thước hình nhỏ nhất cho phép
+                const minSize = 300.0;
+                // kích thước hình lớn nhất cho phép
+                const maxSize = box.height * 2.5;
+
+                // tính vị trí tâm khung hình
+                const centerPos = {
+                    x: box.x + box.width / 2,
+                    // khung hình nhận diện khuôn mặt thường tính từ trán trở xuống,
+                    // như vậy cần trừ lùi trục Y khoảng 15% chiều cao box,
+                    // để cho hình khuôn mặt cân đối giữa tấm hình
+                    y: box.y + box.height / 2 - box.height / 15
+                };
+
+                // kiểm tra kích thước tối đa từ vị trí tâm box ra 4 cạnh của video
+                // Lúc này điểm (0,0) tính từ vị trí video
+                const maxEdgeSize = Math.min(
+                    // nửa cạnh trái
+                    centerPos.x,
+                    // nửa cạnh phải
+                    displaySize.width - centerPos.x,
+                    // nửa cạnh trên
+                    centerPos.y,
+                    // nửa cạnh dưới
+                    displaySize.height - centerPos.y,
+                    // nửa cạnh tối đa cho phép
+                    maxSize / 2
+                );
+                const targetSize = maxEdgeSize * 2;
+                console.log(`calc target image size: ${targetSize}`);
+                if (targetSize < minSize) {
+                    $photoReview.html('<div class="text-danger">HÌNH ẢNH QUÁ NHỎ VUI LÒNG THỬ LẠI</div>');
+                    return;
+                }
+
+                // phóng to vùng nhận diện focus khuôn mặt, sẽ là hình vuông tỉ lệ 1:1
+                const extendedBox = {
+                    x: centerPos.x - maxEdgeSize,
+                    y: centerPos.y - maxEdgeSize,
+                    width: targetSize,
+                    height: targetSize
+                };
+
+                // Vẽ tấm hình đúng kích thước chuẩn hình vuông từ video
+                let originalCanvas = document.createElement('canvas');
+                originalCanvas.width = extendedBox.width;
+                originalCanvas.height = extendedBox.height;
+                let originalContext = originalCanvas.getContext('2d');
+                originalContext.drawImage(video, extendedBox.x, extendedBox.y, extendedBox.width, extendedBox.height,// source rectangle
+                    // destination rectangle
+                    0, 0, originalCanvas.width, originalCanvas.height
+                );
+
+                // vẽ tấm hình kích thước như video để hiển thị lên UI
+                canvas.width = videoRect.width;
+                canvas.height = videoRect.height;
+                let context = canvas.getContext('2d');
+                context.drawImage(originalCanvas, 0, 0, originalCanvas.width, originalCanvas.height,// source rectangle
+                    // destination rectangle
+                    0, 0, canvas.width, canvas.height
+                );
+
+                // Vẽ tấm hình kích thước cố định 300 x 300 để gửi cho máy chấm công
+                let canvas300 = document.createElement('canvas');
+                canvas300.width = 300;
+                canvas300.height = 300;
+                let context300 = canvas300.getContext('2d');
+                context300.drawImage(originalCanvas, 0, 0, originalCanvas.width, originalCanvas.height,// source rectangle
+                    // destination rectangle
+                    0, 0, canvas300.width, canvas300.height
+                );
+
+                let base64String = compressCanvasImage(canvas300);
+
+                document.getElementById('photoBase64').value = base64String;
             }
             else if (detections.length <= 0) {
                 $photoReview.html('<div class="text-danger">KHÔNG PHÁT HIỆN KHUÔN MẶT TRONG ẢNH</div>');
@@ -224,21 +378,23 @@
             }
         }
 
+        function createImageReview(src) {
+            var newPhoto = document.createElement('img');
+            newPhoto.alt = "Customer photo";
+            newPhoto.className = "img-thumbnail";
+            newPhoto.style = "max-width:250px; max-height:250px; min-width:150px; min-height:150px";
+            newPhoto.src = src;
+            newPhoto.onload = () => dectionFace(newPhoto);
+
+            var $photoReview = $('#photoReview');
+            $photoReview.html('');
+            $photoReview.append(newPhoto);
+        }
+
         function handleImageInput(input) {
 
             if (input.files && input.files[0]) {
-                resizeImageTo300x300(input.files[0], function (base64) {
-                    var $photoReview = $('#photoReview');
-                    $photoReview.html('');
-                    var newPhoto = document.createElement('img');
-                    newPhoto.alt = "Customer photo";
-                    newPhoto.className = "img-thumbnail";
-                    newPhoto.style = "max-width:250px; max-height:250px; min-width:150px; min-height:150px";
-                    newPhoto.src = base64;
-                    newPhoto.onload = () => dectionFace(newPhoto);
-                    // console.log(base64);
-                    $photoReview.append(newPhoto);
-                });
+                resizeImageTo300x300(input.files[0], (base64) => createImageReview(base64));
             }
         }
 
@@ -246,8 +402,91 @@
             handleImageInput(element);
         }
 
-        function cameraClick(event) {
-            $('#')
+        
+
+        function stopStream() {
+            if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+        }
+
+        async function startCamera() {
+          // Stop any existing stream before starting a new one
+          stopStream();
+
+          try {
+            stream = await navigator.mediaDevices.getUserMedia({
+              video: { facingMode: { exact: currentFacing } }
+            });
+          } catch {
+            // Fallback: try without exact constraint if device doesn't support it
+            stream = await navigator.mediaDevices.getUserMedia({
+              video: { facingMode: currentFacing }
+            });
+          }
+          video.srcObject = stream;
+        }
+
+
+        async function openCameraClick() {
+            hiddenBase64 = document.getElementById('photoBase64');
+            try {
+                await startCamera();
+                btnTakePhoto.classList.remove('d-none');
+                btnSwitchCamera.classList.remove('d-none');
+                btnUsePhoto.classList.add('d-none');
+                btnRetake.classList.add('d-none');
+                canvas.style.display = 'none';
+                video.style.display = 'block';
+                $('#customerModal').modal('hide');
+                $('#cameraModal').modal('show');
+            } catch (err) {
+                alert('Không thể truy cập camera: ' + err.message);
+            }
+        }
+
+        function takePhotoClick() {
+            
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw video frame into canvas, resize to 300x300
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Hide video, show canvas
+            video.style.display = 'none';
+            canvas.style.display = 'block';
+
+            // Show "Use photo" button
+            btnTakePhoto.classList.add('d-none');
+            btnSwitchCamera.classList.add('d-none');
+            btnRetake.classList.remove('d-none');
+            btnUsePhoto.classList.remove('d-none');
+        }
+
+        function reTakePhotoClick() {
+            video.style.display = 'block';
+            canvas.style.display = 'none';
+
+            btnTakePhoto.classList.remove('d-none');
+            btnRetake.classList.add('d-none');
+            btnUsePhoto.classList.add('d-none');
+        }
+
+        function usePhotoClick() {
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+            $('#cameraModal').modal('hide');
+            $('#customerModal').modal('show');
+            createImageReview(dataUrl);
+            stopStream();
+        }
+
+        async function switchCameraClick() {
+            currentFacing = currentFacing === 'user' ? 'environment' : 'user';
+            await startCamera();
+        }
+
+
+        function closeCameraModalClick() {
+            $('#cameraModal').modal('hide');
         }
 
         async function loadFaceApi() {
@@ -257,8 +496,6 @@
             ]);
         }
 
-        $(document).ready(async function () { 
-            await loadFaceApi();
-        })
+        
     </script>
 }
