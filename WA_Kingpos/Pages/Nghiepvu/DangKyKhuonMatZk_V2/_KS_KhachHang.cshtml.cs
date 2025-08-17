@@ -49,6 +49,7 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
             string sSql = "";
             if(string.Equals(Mode, "create", StringComparison.OrdinalIgnoreCase))
             {
+                string manhanvien = User.FindFirst("UserId")?.Value;
                 sSql = "INSERT INTO KS_KHACHHANG (TEN, NGAYSINH, GIOITINH, DIACHI, DIENTHOAI, EMAIL, CMND, QUOCTICH, NGAYTAO, NGUOITAO, FACE_PHOTO) " +
                     $"VALUES (" +
                     $"{cls_Main.SQLStringUnicode(KS_KhachHang.TEN)}, " +
@@ -60,8 +61,7 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
                     $"{cls_Main.SQLString(KS_KhachHang.CCCD)}," +
                     $"{cls_Main.SQLString(KS_KhachHang.QUOCTICH)}, " +
                     $"GETDATE(), " +
-                    //$"{cls_Global.gsMaNVOfUserLogin == null;l;? 18 : cls_Global.gsMaNVOfUserLogin}, " +
-                    $"116, " +
+                    $"{(string.IsNullOrEmpty(manhanvien) ? "116" : manhanvien)}, " +
                     $"{cls_Main.SQLString(KS_KhachHang.FACE_PHOTO)})";
 
             }

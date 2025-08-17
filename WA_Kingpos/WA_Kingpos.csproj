@@ -29,7 +29,7 @@
 
 	<ItemGroup>
 	  <Reference Include="KingproServer">
-	    <HintPath>C:\Users\PC1\Documents\KingproServer.dll</HintPath>
+	    <HintPath>..\..\Dll\KingproServer.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

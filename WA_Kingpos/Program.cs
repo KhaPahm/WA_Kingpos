@@ -65,10 +65,10 @@ builder.Services.Configure<FormOptions>(options =>
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(5000); // Lắng nghe cổng 5000
-    //options.ListenAnyIP(5001, listenOptions =>
-    //{
-    //    listenOptions.UseHttps(); // Enable HTTPS
-    //});
+    options.ListenAnyIP(5001, listenOptions =>
+    {
+        listenOptions.UseHttps(); // Enable HTTPS
+    });
 });
 
 builder.Services.AddAuthorization();

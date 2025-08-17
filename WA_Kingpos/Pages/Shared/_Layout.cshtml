@@ -15,7 +15,7 @@
     {
         Group = "cauhinh";
     }
-    else if (ViewData["Name"] == "PhieuDatHang" || ViewData["Name"] == "duyetdondathang" || ViewData["Name"] == "PhieuDatXe" || ViewData["Name"] == "finaduyetdatxe" || ViewData["Name"] == "finathanhtoancongno" || ViewData["Name"] == "finaduyetthanhtoancongno" || ViewData["Name"] == "bangkhaisoluongtrentau" || ViewData["Name"] == "bangkhainhienlieu" || ViewData["Name"] == "dangkykhuonmatzk")
+    else if (ViewData["Name"] == "PhieuDatHang" || ViewData["Name"] == "duyetdondathang" || ViewData["Name"] == "PhieuDatXe" || ViewData["Name"] == "finaduyetdatxe" || ViewData["Name"] == "finathanhtoancongno" || ViewData["Name"] == "finaduyetthanhtoancongno" || ViewData["Name"] == "bangkhaisoluongtrentau" || ViewData["Name"] == "bangkhainhienlieu" || ViewData["Name"] == "dangkykhuonmatzk" || ViewData["Name"] == "dangkykhuonmatzk_v2")
     {
         Group = "nghiepvu";
     }
@@ -25,6 +25,7 @@
     }
 
     ViewData["Group"] = Group;
+
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/table.css">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
@@ -406,7 +409,7 @@
                                 </ul>
                             </li>
 
-                            <li class="nav-item @(ViewData["Group"]== "nghiepvu" ?" menu-open":"")">
+                            <li class="nav-item @(ViewData["Group"]== "nghiepvu" ?"menu-open":"")">
                                 <a asp-area="" asp-page="" class="nav-link">
                                     <i class="nav-icon fas fa-edit"></i>
                                     <p>
@@ -478,10 +481,10 @@
                                             </a>
                                         </li>
                                     }
-                                    @if (cls_UserManagement.AllowView(DangKyKhuonMatZk.IndexModel.Perm_DangKyKhuonMatZk, Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                    @if (cls_UserManagement.AllowView("2025081601", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
                                     {
                                         <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/DangKyKhuonMatZk_V2/Index" class="nav-link @(ViewData["Name"]== "dangkykhuonmatzk_v2" ?" active":"")">
+                                            <a asp-area="" asp-page="/Nghiepvu/dangkykhuonmatzk_v2/Index" class="nav-link @(ViewData["Name"]== "dangkykhuonmatzk_v2" ?" active":"")">
                                                 <i class="nav-icon fa fa-user-plus"></i>
                                                 <p>Đăng ký khuôn mặt - V2</p>
                                             </a>
@@ -773,14 +776,83 @@
     <!-- Page specific script for table -->
     <script>
         const dataTableInstances = {};
+        function addMobileDropdown(dt, label = 'Xuất / In') {
+          const $wrap = $(dt.table().container());              // the DataTable wrapper
+          if ($wrap.find('[data-role="dt-mobile-dropdown"]').length) return; // avoid duplicates
+
+          const dropdown = `
+            <div class="dropdown d-inline-block d-md-none d-flex justify-content-center align-self-center" data-role="dt-mobile-dropdown">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                ${label}
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" data-dt="copy">Sao chép dữ liệu</a>
+                <a class="dropdown-item" href="#" data-dt="csv">Xuất CSV</a>
+                <a class="dropdown-item" href="#" data-dt="excel">Xuất Excel</a>
+                <a class="dropdown-item" href="#" data-dt="pdf">Xuất PDF</a>
+                <a class="dropdown-item" href="#" data-dt="print">In</a>
+              </div>
+            </div>`;
+
+          // Put it right after the Buttons container (still present but hidden on mobile)
+          const $filter = $wrap.find('.dataTables_filter').first();
+          if ($filter.length) {
+            $filter.after(dropdown);
+            //align-self-center
+            $filter.addClass("align-self-center");//align-items-center
+            $filter.addClass("pt-2");
+            $filter.addClass("mr-2");
+          } else {
+            // fallback: put it before the filter on the same top row
+            $wrap.find('.dt-buttons').first().before(dropdown);
+          }
+
+          const $btns = $wrap.find('.dt-buttons').first();
+          if($btns.length) {
+              $btns.addClass("d-none");
+              $btns.addClass("d-md-inline-block");
+          }
+
+          // Wire actions
+          $wrap.on('click', '[data-role="dt-mobile-dropdown"] [data-dt]', function (e) {
+            e.preventDefault();
+            dt.button('.buttons-' + $(this).data('dt')).trigger();
+          });
+        }
+
+
         function createTableProp({ pageLength, order, ordering, showCmdButtons = true, columnDefs } = {}) {
             // full layout: '<"row"<"col-md-7"lB><"col-md-5"f>>r<"row mb-2"<"col"t>><"row mb-1"<"col-md-7"i><"col-md-5"p>>'
-            let domLayout = '<"row"<"col-md-7 overflow-auto"l';
+            // let domLayout = '<"row"<"col-md-7"l';
+            // if (showCmdButtons) {
+            //     // có dùng cmd buttons
+            //     domLayout += 'B';
+            // }
+            // domLayout += '><"col-md-5"f>>r<"row mb-2"<"col"t>><"row mb-1"<"col-md-7"i><"col-md-5"p>>';
+
+            let domLayout =
+              // top toolbar
+              '<"row align-items-center mb-2"' +
+                  // left: length + buttons (stack on xs, inline >= md)
+                  '<"col-12 col-md-7 d-flex flex-wrap align-items-start overflow-auto" l >' +
+                  // right: search
+                  '<"col-12 col-md-5 flex-wrap d-flex justify-content-md-end align-items-center" f >' +
+              '>';
             if (showCmdButtons) {
-                // có dùng cmd buttons
-                domLayout += 'B';
+                domLayout += '<"row align-items-center mb-2"' +
+                                  // left: length + buttons (stack on xs, inline >= md)
+                                  '<"col-12 d-flex flex-wrap align-items-start overflow-auto" B >' +
+                              '>'
             }
-            domLayout += '><"col-md-5 overflow-auto"f>>r<"row mb-2"<"col"t>><"row mb-1"<"col-md-7"i><"col-md-5"p>>';
+               
+              // processing + table
+            domLayout +='r<"row mb-2"<"col" t >>' +
+              // bottom info + pagination
+              '<"row mb-1 align-items-center"' +
+                  '<"col-12 col-md-7" i >' +
+                  '<"col-12 col-md-5 d-flex justify-content-md-end" p >' +
+              '>';
+
 
             return {
                 //"responsive": true,
@@ -798,32 +870,13 @@
                 // layout
                 dom: domLayout,
                 columnDefs: columnDefs,
-                "buttons": [
-                    {
-                        extend: 'copy',
-                        text: 'Sao chép dữ liệu'
-                    },
-                    {
-                        extend: 'csv',
-                        text: 'Xuất CSV'
-                    },
-                    {
-                        extend: 'excel',
-                        text: 'Xuất Excel'
-                    },
-                    {
-                        extend: 'pdf',
-                        text: 'Xuất PDF'
-                    },
-                    {
-                        extend: 'print',
-                        text: 'In'
-                    }
-                    // ,
-                    // {
-                    //     extend: 'colvis',
-                    //     text: 'Ẩn/ hiện cột'
-                    // }
+                buttons: [
+                    // Desktop / tablet: show as individual buttons
+                    { extend: 'copy',  text: 'Sao chép dữ liệu', className: 'd-none d-md-inline-block' },
+                    { extend: 'csv',   text: 'Xuất CSV',         className: 'd-none d-md-inline-block' },
+                    { extend: 'excel', text: 'Xuất Excel',       className: 'd-none d-md-inline-block' },
+                    { extend: 'pdf',   text: 'Xuất PDF',         className: 'd-none d-md-inline-block' },
+                    { extend: 'print', text: 'In',               className: 'd-none d-md-inline-block' },
                 ],
                 "language": {
                     "lengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
@@ -877,6 +930,7 @@
             });
 
             /* $(".table-nth").DataTable(createTableProp());*/
+            addMobileDropdown(dataTableInstances['tablefull']);
         });
 
     </script>
@@ -891,7 +945,6 @@
     }
     <!-- Page specific script for form -->
     <script>
-        
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()
@@ -932,6 +985,7 @@
 
             }, function (start, end) {
                 if ($('.input-datepicker > input').length) {
+                    console.log("Kha test")
                     $('.input-datepicker > input').val(start.format('DD/MM/YYYY'));
                 }
                 // Tự động gửi biểu mẫu
@@ -1088,6 +1142,11 @@
             bsCustomFileInput.init();
         });
     </script>
+
+    <!-- Load các file Js có liên quan đến page đang xem -->
+    @if (File.Exists($"{Directory.GetCurrentDirectory()}/wwwroot/js/views/{ViewData["Group"]}/{ViewData["Name"]}.js")){ 
+        <script src="~/js/views/@(ViewData["Group"])/@(ViewData["Name"]).js"></script>
+    }
 
 </body>
 </html>

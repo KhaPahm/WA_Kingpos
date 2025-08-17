@@ -1,0 +1,11 @@
+﻿.table-middle th,
+.table-middle td {
+    vertical-align: middle;
+}
+
+.table-fixed th,
+.table-fixed td {
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add "..." for overflow text */
+}

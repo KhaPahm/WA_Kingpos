@@ -6,13 +6,19 @@ namespace WA_Kingpos.Models
     {
         [AllowNull]
         public int MA_KH { get; set; } = 0;
+        [AllowNull]
         public string TEN { get; set; }
+        [AllowNull]
         public string NGAYSINH { get; set; }
+        [AllowNull]
         public string GIOITINH { get; set; }
+        [AllowNull]
         public string DIACHI { get; set; }
+        [AllowNull]
         public string DIENTHOAI { get; set; }
         [AllowNull]
         public string CCCD { get; set; }
+        [AllowNull]
         public string EMAIL { get; set; }
         [AllowNull]
         public string QUOCTICH { get; set; }
