@@ -15,7 +15,7 @@
     {
         Group = "cauhinh";
     }
-    else if (ViewData["Name"] == "PhieuDatHang" || ViewData["Name"] == "duyetdondathang" || ViewData["Name"] == "PhieuDatXe" || ViewData["Name"] == "finaduyetdatxe" || ViewData["Name"] == "finathanhtoancongno" || ViewData["Name"] == "finaduyetthanhtoancongno" || ViewData["Name"] == "bangkhaisoluongtrentau" || ViewData["Name"] == "bangkhainhienlieu" || ViewData["Name"] == "dangkykhuonmatzk" || ViewData["Name"] == "dangkykhuonmatzk_v2")
+    else if (ViewData["Name"] == "PhieuDatHang" || ViewData["Name"] == "duyetdondathang" || ViewData["Name"] == "PhieuDatXe" || ViewData["Name"] == "finaduyetdatxe" || ViewData["Name"] == "finathanhtoancongno" || ViewData["Name"] == "finaduyetthanhtoancongno" || ViewData["Name"] == "bangkhaisoluongtrentau" || ViewData["Name"] == "bangkhainhienlieu" || ViewData["Name"] == "dangkykhuonmatzk" || ViewData["Name"] == "dangkykhuonmatzk_v2" || ViewData["Name"] == "dangkykhuonmatzk_v2_create")
     {
         Group = "nghiepvu";
     }
@@ -485,6 +485,15 @@
                                     {
                                         <li class="nav-item">
                                             <a asp-area="" asp-page="/Nghiepvu/dangkykhuonmatzk_v2/Index" class="nav-link @(ViewData["Name"]== "dangkykhuonmatzk_v2" ?" active":"")">
+                                                <i class="nav-icon fa fa-user-plus"></i>
+                                                <p>Đăng ký khuôn mặt - V2</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (cls_UserManagement.AllowView("2025081601", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                    {
+                                        <li class="nav-item">
+                                            <a asp-area="" asp-page="/Nghiepvu/dangkykhuonmatzk_v2/create" class="nav-link @(ViewData["Name"]== "dangkykhuonmatzk_v2_create" ?" active":"")">
                                                 <i class="nav-icon fa fa-user-plus"></i>
                                                 <p>Đăng ký khuôn mặt - V2</p>
                                             </a>

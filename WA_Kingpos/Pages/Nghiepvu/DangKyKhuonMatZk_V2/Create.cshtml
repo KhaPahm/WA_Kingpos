@@ -1,0 +1,30 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2.CreateModel
+@{
+    ViewData["Title"] = "Đăng ký khuôn mặt mới";
+    ViewData["Name"] = "dangkykhuonmatzk_v2_create";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary" id="customer-create-face-card">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body overflow-auto">
+                <a id="btn-create" class="btn btn-primary btn-open-modal hide" role="button" asp-page="./_KS_KhachHang" asp-route-mode="create">Thêm mới</a>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                Test
+            </div>
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
