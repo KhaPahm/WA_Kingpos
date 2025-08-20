@@ -15,10 +15,11 @@ let btnTakePhoto;
 let btnSwitchCamera;
 
 $('#btnSave').on('click', function () {
+    alert("Kha testing")
     var $modal = $('#customerModal');
-    var $form = $modal.find('#customerForm');
-    if ($form.length === 0) return;
-
+    //var $form = $modal.find('#customerForm');
+    //if ($form.length === 0) return;
+    $form = $('#customerForm')
     var form = document.getElementById('customerForm')
     if (form.checkValidity() === false) {
         form.classList.add('was-validated');
@@ -32,12 +33,16 @@ $('#btnSave').on('click', function () {
         data: $form.serialize(),
         success: function (json) {
             if (json && json.ok) {
-                $modal.modal('hide');
+                if ($modal.length != 0) {
+                    $modal.modal('hide');
+                }
                 // Optional: reload the list or update row inline
                 location.reload();
             } else {
+                if ($modal.length != 0) {
+                    $modal.find('.modal-body').html(json);
+                }
                 // If server returned HTML (validation errors), replace body
-                $modal.find('.modal-body').html(json);
             }
         },
         error: function (xhr) {
@@ -110,7 +115,6 @@ async function dectionFace(img) {
     
     var $photoReview = $('#photoReview');
     const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions());
-    console.log("a")
     if (detections.length == 1) {
         document.getElementById('photoBase64').value = img.src.split(',')[1];
     }
@@ -128,14 +132,12 @@ function createImageReview(src) {
     newPhoto.className = "img-thumbnail";
     newPhoto.style = "max-width:250px; max-height:250px; min-width:150px; min-height:150px";
     newPhoto.src = src;
-    newPhoto.onload = async () => await dectionFace(newPhoto);
-    console.log("a1")
+    //newPhoto.onload = async () => await dectionFace(newPhoto);
+    document.getElementById('photoBase64').value = src.split(',')[1];
 
     var $photoReview = $('#photoReview');
     $photoReview.html('');
     $photoReview.append(newPhoto);
-    console.log("a2")
-
 }
 
 function handleImageInput(input) {

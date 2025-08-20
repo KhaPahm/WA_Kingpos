@@ -28,5 +28,19 @@ namespace WA_Kingpos.Models
         public string TENNHANVIEN { get; set; }
         [AllowNull]
         public string FACE_PHOTO { get; set; }
+        public DateTime TUNGAY { get; set; } = DateTime.Now;
+        public DateTime DENNGAY { get; set; } = DateTime.Now;
+        public string CONG { get; set; } = ""; //Danh sách cổng
+
+        public List<int> GetCongSelected()
+        {
+            if(string.IsNullOrEmpty(CONG))
+            {
+                return new List<int>();
+            }
+            var lsString = CONG.Split(',').ToList();
+            return lsString.Select(x => int.Parse(x)).ToList();
+        }
+
     }
 }

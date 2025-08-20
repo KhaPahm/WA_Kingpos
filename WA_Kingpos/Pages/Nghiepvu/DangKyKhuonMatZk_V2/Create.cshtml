@@ -20,11 +20,17 @@
                 <a id="btn-create" class="btn btn-primary btn-open-modal hide" role="button" asp-page="./_KS_KhachHang" asp-route-mode="create">Thêm mới</a>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-                Test
+            <div class="card-footer d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" id="btnSave">Lưu</button>
             </div>
         </div>
         <!-- /.card -->
     </div>
     <!-- /.col -->
 </div>
+
+@section Scripts {
+    <script src="/lib/face-api/face-api.min.js"></script>
+    <script src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="/js/views/nghiepvu/_ks_khachhang.js"></script>
+}
