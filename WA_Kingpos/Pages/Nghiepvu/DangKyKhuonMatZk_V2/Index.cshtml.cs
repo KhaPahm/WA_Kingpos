@@ -43,43 +43,10 @@ namespace WA_Kingpos.Pages.DangKyKhuonMatZk_V2
             }
         }
 
-        public IActionResult OnPost(string submitButton, [FromForm] string? face_id)
+        public IActionResult OnPostDel(int id)
         {
-            ////check quyen
-            //var quyen = CheckQuyen();
-            //if (quyen != null)
-            //{
-            //    return quyen;
-            //}
-            //var paramRedirect = new { id1 = bOnlyNoFace };
-            //if (submitButton == "view")
-            //{
-            //    return RedirectToPage("Index", paramRedirect);
-            //}
-            //if (submitButton == "import")
-            //{
-            //    return RedirectToPage("Import", paramRedirect);
-            //}
-            //else if (submitButton == "delete")
-            //{
-            //    string sConnectionString_live = cls_ConnectDB.GetConnect("0");
-            //    var Username = User.Claims.FirstOrDefault(c => c.Type == "Username")?.Value;
-            //    string sSQL = $"UPDATE dbo.DISPLAY_ORDER_FACE SET TRANGTHAI = 0, NGUOISUA = {ExtensionObject.toSqlPar(Username)}, NGAYSUA = GETDATE() WHERE FACE_ID = {ExtensionObject.toSqlPar(face_id)}";
-            //    bool bRunSQL = cls_Main.ExecuteSQL(sSQL, sConnectionString_live);
-            //    if (bRunSQL)
-            //    {
-
-            //        TempData["AlertMessage"] = "Xóa thành công";
-            //        TempData["AlertType"] = "alert-success";
-            //    }
-            //    else
-            //    {
-            //        TempData["AlertMessage"] = $"Xóa không thành công";
-            //        TempData["AlertType"] = "alert-danger";
-            //    }
-            //    return RedirectToPage("Index", paramRedirect);
-            //}
-            return RedirectToPage("/AccessDenied");
+            // delete...
+            return new JsonResult(new { ok = true, id });
         }
 
         private IActionResult? CheckQuyen()

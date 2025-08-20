@@ -21,21 +21,25 @@ $('#btn-confirm-delete').on('click', function () {
 })
 
 function deleteCustomer(id) {
-    console.log(`/Nghiepvu/DangKyKhuonMatZk_V2/_KS_KhachHang/${id}?handler=Del`)
+    console.log(`?handler=Del`)
+    const token = $('input[name="__RequestVerificationToken"]').val();
     $.ajax({
-        url: `/Nghiepvu/DangKyKhuonMatZk_V2/_KS_KhachHang/${id}?handler=Del`,
-        method: "POST",
+        url: `/Nghiepvu/DangKyKhuonMatZk_V2/_KS_KhachHang?handler=Del`,          // calls OnPostDel
+        type: 'POST',
+        headers: { 'RequestVerificationToken': token }, // <-- critical
+        data: { id },                 // form-encoded binds to int id
         success: function (json) {
             if (json && json.ok) {
-
+                
                 alert("Lưu thành công!");
+                // Optional: reload the list or update row inline
                 location.reload();
+            } else {
+                
+                // If server returned HTML (validation errors), replace body
             }
         },
-        error: function (xhr) {
-            var ct = xhr.getResponseHeader('Content-Type') || '';
-            alert('Lỗi khi lưu.');
-        }
+        error: xhr => console.log('Lỗi')
     })
 }
 

@@ -119,6 +119,11 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
 
         public IActionResult OnPostDel(int id)
         {
+            // delete...
+            string sSql = $"UPDATE KS_KHACHHANG SET TRANGTHAI = 0 WHERE MA_KH = {id}";
+            string sConnectionString_live = cls_ConnectDB.GetConnect("0");
+            cls_Main.ExecuteSQL(sSql, sConnectionString_live);
+
             return new JsonResult(new { ok = true });
         }
     }

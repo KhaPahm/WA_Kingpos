@@ -53,3 +53,111 @@ Select * From CAUHINH-System.Data.SqlClient.SqlException (0x80131904): A network
    at WA_Kingpos.Data.cls_Main.ReturnDataTable_NoLock(String sSQL, String sConnectionString_live)
 ClientConnectionId:00000000-0000-0000-0000-000000000000
 Error Number:10060,State:0,Class:20
+---------------------------
+DATE: 20/08/2025 23:12:37
+Server=116.96.206.130,6632;database=sontienNH;UID=kingpos;PWD=Kingpro@2024119;Pooling=False;
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+UPDATA KS_KHACHHANG SET ACTIVE = O WHERE MA_KH = 18-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'UPDATA'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live)
+ClientConnectionId:d5518966-30e1-47d1-bfb7-77a6148fe696
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 20/08/2025 23:12:49
+Server=116.96.206.130,6632;database=sontienNH;UID=kingpos;PWD=Kingpro@2024119;Pooling=False;
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+UPDATA KS_KHACHHANG SET ACTIVE = O WHERE MA_KH = 18-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'UPDATA'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live)
+ClientConnectionId:90b60265-b792-47e9-9fca-5d4d32cffaa5
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 20/08/2025 23:13:15
+Server=116.96.206.130,6632;database=sontienNH;UID=kingpos;PWD=Kingpro@2024119;Pooling=False;
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+UPDATA KS_KHACHHANG SET ACTIVE = 0 WHERE MA_KH = 18-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'UPDATA'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live)
+ClientConnectionId:a174be2a-d112-4c0f-afe7-56a854c270a0
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 20/08/2025 23:13:30
+Server=116.96.206.130,6632;database=sontienNH;UID=kingpos;PWD=Kingpro@2024119;Pooling=False;
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+UPDATA KS_KHACHHANG SET ACTIVE = 0 WHERE MA_KH = 18-System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'UPDATA'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live)
+ClientConnectionId:143adb09-0689-4af5-b05a-de88a1c95d5e
+Error Number:102,State:1,Class:15
+---------------------------
+DATE: 20/08/2025 23:14:07
+Server=116.96.206.130,6632;database=sontienNH;UID=kingpos;PWD=Kingpro@2024119;Pooling=False;
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+UPDATE KS_KHACHHANG SET ACTIVE = 0 WHERE MA_KH = 18-System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ACTIVE'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live)
+ClientConnectionId:7e809de8-d553-4cd3-8dbb-d3c58dfd5226
+Error Number:207,State:1,Class:16
+---------------------------
+DATE: 20/08/2025 23:14:29
+Server=116.96.206.130,6632;database=sontienNH;UID=kingpos;PWD=Kingpro@2024119;Pooling=False;
+ExecuteSQL
+;SET ANSI_WARNINGS OFF; 
+;SET DATEFORMAT DMY ;
+;SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+UPDATE KS_KHACHHANG SET ACTIVE = 0 WHERE MA_KH = 18-System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ACTIVE'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at WA_Kingpos.Data.cls_Main.ExecuteSQL(String sSQL, String sConnectionString_live)
+ClientConnectionId:ebc36947-ec4c-473a-a004-68bab9f16e24
+Error Number:207,State:1,Class:16
