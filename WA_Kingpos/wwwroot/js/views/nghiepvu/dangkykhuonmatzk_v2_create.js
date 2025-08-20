@@ -4,7 +4,7 @@
 
 })
 
-$(document).on('click', '#btn-create', function(e) {
+$(document).on('click', '#btn-create', function (e) {
     e.preventDefault();
     var url = this.href;
     var $card = $('#customer-create-face-card');
@@ -22,32 +22,35 @@ $(document).on('click', '#btn-create', function(e) {
         var title = meta.data('modal-title') || 'Thông tin';
         var canSave = String(meta.data('can-save')).toUpperCase() === 'TRUE';
 
-        $title.text(title);
-        $save.toggleClass('d-none', !canSave);
-
         //Gắn sự kiện chọn ngày cho modal
         // single datepicker
-        $('.input-datepicker').daterangepicker({
-            singleDatePicker: true,
-            showDropdowns: true,
-            autoApply: true,
-            autoUpdateInput: true,
-            minYear: 1901,
-            maxYear: 2099,
-            locale: {
-                format: 'DD/MM/YYYY',
-                daysOfWeek: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
-                "monthNames": ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
-                    "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
-            },
+        //$('.input-datepicker').daterangepicker({
+        //    singleDatePicker: true,
+        //    showDropdowns: true,
+        //    autoApply: true,
+        //    autoUpdateInput: true,
+        //    minYear: 1901,
+        //    maxYear: 2099,
+        //    locale: {
+        //        format: 'DD/MM/YYYY',
+        //        daysOfWeek: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+        //        "monthNames": ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        //            "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        //    },
 
-        }, function (start, end) {
-            if ($('.input-datepicker > input').length) {
-                $('.input-datepicker > input').val(start.format('DD/MM/YYYY'));
-            }
-            // Tự động gửi biểu mẫu
-            //$('.input-datepicker').closest('form').submit();
-        });
+        //}, function (start, end) {
+        //    if ($('.input-datepicker > input').length) {
+        //        $('.input-datepicker > input').val(start.format('DD/MM/YYYY'));
+        //    }
+        //    // Tự động gửi biểu mẫu
+        //    //$('.input-datepicker').closest('form').submit();
+        //});
+        //console.log("1")
+        $('#reservationdatetime_NgaySinh').datetimepicker({ format: "DD/MM/YYYY" });
+        $('#reservationdatetime_TuNgay').datetimepicker({ format: "DD/MM/YYYY HH:mm:ss", icons: { time: 'far fa-clock' } });
+        $('#reservationdatetime_DenNgay').datetimepicker({ format: "DD/MM/YYYY HH:mm:ss", icons: { time: 'far fa-clock' } });
+        //console.log("2")
+
     });
 })
 

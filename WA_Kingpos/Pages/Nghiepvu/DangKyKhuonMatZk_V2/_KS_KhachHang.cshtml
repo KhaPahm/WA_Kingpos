@@ -9,7 +9,7 @@
 <form id="customerForm" class="needs-validation" method="post" asp-page-handler="Save">
     <input type="hidden" name="Mode" value="@Model.Mode" />
     <input type="hidden" asp-for="KS_KhachHang.MA_KH" />
-     
+
 
     <div class="container-fluid">
         <div class="form-row mb-0">
@@ -23,9 +23,9 @@
                         else
                         {
                             <img src="data:image/jpeg;base64,@Model.KS_KhachHang.FACE_PHOTO"
-                                 alt="Customer photo"
-                                 class="img-thumbnail"
-                                 style="max-width:250px; max-height:250px; min-width:150px; min-height:150px" />
+                            alt="Customer photo"
+                            class="img-thumbnail"
+                            style="max-width:250px; max-height:250px; min-width:150px; min-height:150px" />
                         }
                     </div>
 
@@ -52,7 +52,7 @@
                             </div>
                         </div> 
                     }
-                    
+
                     <!-- Hidden field to store base64 string -->
                     <input type="hidden" asp-for="KS_KhachHang.FACE_PHOTO" id="photoBase64" />
 
@@ -76,20 +76,34 @@
 
             <div class="form-group col-xl-6">
                 <label asp-for="KS_KhachHang.NGAYSINH">Ngày sinh </label>
-                <div class="input-group date @(Model.IsReadOnly ? "" : "input-datepicker")" data-target-input="nearest">
-                    <input type="text" asp-for="KS_KhachHang.NGAYSINH" class="form-control">
-                    <div class="input-group-append">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                @if (Model.IsReadOnly)
+                {
+                    <input type="text" asp-for="KS_KhachHang.NGAYSINH" class="form-control" readonly />
+
+                }
+                else
+                {
+                    @* <div class="input-group date input-datepicker" data-target-input="nearest">
+                        <input type="text" asp-for="KS_KhachHang.NGAYSINH" class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div> *@
+                    <div class="input-group date" id="reservationdatetime_NgaySinh" data-target-input="nearest">
+                        <input asp-for="KS_KhachHang.NGAYSINH" type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime_NgaySinh" />
+                        <div class="input-group-append" data-target="#reservationdatetime_NgaySinh" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
 
             <div class="form-group col-xl-6">
                 <label asp-for="KS_KhachHang.GIOITINH">Giới tính</label>
                 <select asp-for="KS_KhachHang.GIOITINH"
-                        class="form-control"
-                        readonly="@Model.IsReadOnly"
-                        disabled="@Model.IsReadOnly">
+                class="form-control"
+                readonly="@Model.IsReadOnly"
+                disabled="@Model.IsReadOnly">
                     <option value="Nam">Nam</option>
                     <option value="Nu">Nữ</option>
                 </select>
@@ -106,38 +120,57 @@
             </div>
 
             <div class="form-group col-xl-6">
-                <label asp-for="KS_KhachHang.TUNGAY">Từ ngày <span class="text-danger">*</span></label>
-                <input type="datetime-local" asp-for="KS_KhachHang.TUNGAY" class="form-control" readonly="@Model.IsReadOnly" required />
+                <label asp-for="sTuNgay">Từ ngày <span class="text-danger">*</span></label>
+                @if (Model.IsReadOnly)
+                {
+                    <input type="text" asp-for="sTuNgay" class="form-control" readonly />
+
+                }
+                else
+                {
+                    <div class="input-group date" id="reservationdatetime_TuNgay" data-target-input="nearest">
+                        <input asp-for="sTuNgay" type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime_TuNgay" required />
+                        <div class="input-group-append" data-target="#reservationdatetime_TuNgay" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                }
             </div>
 
             <div class="form-group col-xl-6">
-                <label asp-for="KS_KhachHang.DENNGAY">Đến ngày <span class="text-danger">*</span></label>
-                <input type="datetime-local" asp-for="KS_KhachHang.DENNGAY" class="form-control" readonly="@Model.IsReadOnly" required />
+                <label asp-for="sDenNgay">Đến ngày <span class="text-danger">*</span></label>
+                @if (Model.IsReadOnly)
+                {
+                    <input type="text" asp-for="sDenNgay" class="form-control" readonly />
+
+                } 
+                else
+                {
+                    <div class="input-group date" id="reservationdatetime_DenNgay" data-target-input="nearest">
+                        <input asp-for="sDenNgay" type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime_DenNgay" required />
+                        <div class="input-group-append" data-target="#reservationdatetime_DenNgay" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                }
+                
             </div>
 
             <div class="form-group col-xl-12">
                 <label asp-for="SelectedCongIds">Cổng</label>
-                @* <select asp-for="SelectedCongIds" class="form-control select2" multiple="multiple" readonly="@Model.IsReadOnly" disabled="@Model.IsReadOnly">
-                    @foreach (var cong in Model.lsCong)
-                    {
-                        <option value="@cong.ID" selected="@(Model.SelectedCongIds.Contains(cong.ID))">@cong.NAME</option>
-                    }
-                </select> *@
-
                 @foreach (var cong in Model.lsCong)
                 {
                     <div class="form-check ml-4 mt-1">
                         <input class="form-check-input" type="checkbox"
                                name="SelectedCongIds"
-                               value="@cong.ID" id="option_@cong.ID" 
-                               checked="@Model.SelectedCongIds.Contains(@cong.ID)"/>
+                               value="@cong.ID" id="option_@cong.ID"
+                               checked="@Model.SelectedCongIds.Contains(@cong.ID)" disabled="@Model.IsReadOnly" />
                         <label class="form-check-label" for="option_@cong.ID">
                             @cong.NAME
                         </label>
                     </div>
                 }
             </div>
-
         </div>
     </div>
 

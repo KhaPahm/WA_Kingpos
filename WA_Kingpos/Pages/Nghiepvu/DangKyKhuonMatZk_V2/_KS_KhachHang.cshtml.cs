@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WA_Kingpos.Data;
@@ -13,11 +14,15 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
         [BindProperty(SupportsGet = true)] public string Mode { get; set; } // view | edit | create
         [BindProperty(SupportsGet = true)] public int? Id { get; set; }
 
+        [BindProperty] public string sTuNgay { get; set; } = "";
+        [BindProperty] public string sDenNgay { get; set; } = "";
+
         public List<cls_DISPLAY_ORDER_QRCODE_SN> lsCong { get; set; }
         public string SelectedCongIdsString { get; set; }
         public bool IsReadOnly => string.Equals(Mode, "view", StringComparison.OrdinalIgnoreCase);
         public bool IsCreate => string.Equals(Mode, "create", StringComparison.OrdinalIgnoreCase);
         public string Title   => IsCreate ? "Thêm thông tin khách hàng" : IsReadOnly ? "Xem thông tin khách hàng" : "Sửa thông tin khách hàng";
+
 
 
         public IActionResult OnGet()
@@ -32,6 +37,8 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
 
             if (IsCreate) {
                 KS_KhachHang = new();
+                sTuNgay = KS_KhachHang.TUNGAY.ToString("dd/MM/yyyy HH:mm:ss");
+                sDenNgay = KS_KhachHang.DENNGAY.ToString("dd/MM/yyyy HH:mm:ss");
                 return Page();
             }
 
@@ -48,20 +55,22 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
             }
 
             SelectedCongIds = KS_KhachHang.GetCongSelected();
-
+            sTuNgay = KS_KhachHang.TUNGAY.ToString("dd/MM/yyyy HH:mm:ss");
+            sDenNgay = KS_KhachHang.DENNGAY.ToString("dd/MM/yyyy HH:mm:ss");
             return Page();
         }
 
         public IActionResult OnPostSave()
         {
-            //if(!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
-
             string sSql = "";
 
             SelectedCongIdsString = string.Join(",", SelectedCongIds);
+            DateTime dTuNgay;
+            DateTime dDenNgay;
+            DateTime.TryParseExact(sTuNgay, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out dTuNgay);
+            DateTime.TryParseExact(sDenNgay, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out dDenNgay);
+            KS_KhachHang.TUNGAY = dTuNgay;
+            KS_KhachHang.DENNGAY = dDenNgay;
 
             if (string.Equals(Mode, "create", StringComparison.OrdinalIgnoreCase))
             {
@@ -79,8 +88,8 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
                     $"GETDATE(), " +
                     $"{(string.IsNullOrEmpty(manhanvien) ? "116" : manhanvien)}, " +
                     $"{cls_Main.SQLString(KS_KhachHang.FACE_PHOTO)}, " +
-                    $"{cls_Main.SQLString(KS_KhachHang.TUNGAY.ToString("yyyy-MM-dd HH:mm:ss"))}, " +
-                    $"{cls_Main.SQLString(KS_KhachHang.DENNGAY.ToString("yyyy-MM-dd HH:mm:ss"))}, " +
+                    $"{cls_Main.SQLString(KS_KhachHang.TUNGAY.ToString("dd/MM/yyyy HH:mm:ss"))}, " +
+                    $"{cls_Main.SQLString(KS_KhachHang.DENNGAY.ToString("dd/MM/yyyy HH:mm:ss"))}, " +
                     $"{cls_Main.SQLString(SelectedCongIdsString)})";
 
             }
@@ -96,15 +105,20 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
                     $"CMND = {cls_Main.SQLString(KS_KhachHang.CCCD)}," +
                     $"QUOCTICH = {cls_Main.SQLString(KS_KhachHang.QUOCTICH)}, " +
                     $"FACE_PHOTO = {cls_Main.SQLString(KS_KhachHang.FACE_PHOTO)}, " +
-                    $"TUNGAY = {cls_Main.SQLString(KS_KhachHang.TUNGAY.ToString("yyyy-MM-dd HH:mm:ss"))}, " +
-                    $"DENNGAY = {cls_Main.SQLString(KS_KhachHang.DENNGAY.ToString("yyyy-MM-dd HH:mm:ss"))}, " +
-                    $"CONG = {cls_Main.SQLString(SelectedCongIdsString)})" +
+                    $"TUNGAY = {cls_Main.SQLString(KS_KhachHang.TUNGAY.ToString("dd/MM/yyyy HH:mm:ss"))}, " +
+                    $"DENNGAY = {cls_Main.SQLString(KS_KhachHang.DENNGAY.ToString("dd/MM/yyyy HH:mm:ss"))}, " +
+                    $"CONG = {cls_Main.SQLString(SelectedCongIdsString)} " +
                 $"WHERE MA_KH = {Id}"; 
             }
 
             string sConnectionString_live = cls_ConnectDB.GetConnect("0");
             cls_Main.ExecuteSQL(sSql, sConnectionString_live);
 
+            return new JsonResult(new { ok = true });
+        }
+
+        public IActionResult OnPostDel(int id)
+        {
             return new JsonResult(new { ok = true });
         }
     }

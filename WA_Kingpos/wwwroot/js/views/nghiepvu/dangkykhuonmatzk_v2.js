@@ -8,6 +8,36 @@
 //const btnTakePhoto = document.getElementById('btnTakePhoto');
 //const btnSwitchCamera = document.getElementById('btnSwitchCamera');
 
+function showDeleteCustomer(id) {
+    $("#btn-confirm-delete").attr('data', id);
+    var $modal = $('#confirmDeleteModal');
+    $modal.modal('show');
+    $("#btn-confirm-delete").attr("data", id);
+}
+
+$('#btn-confirm-delete').on('click', function () {
+    var id = $("#btn-confirm-delete").attr("data");
+    deleteCustomer(id)
+})
+
+function deleteCustomer(id) {
+    console.log(`/Nghiepvu/DangKyKhuonMatZk_V2/_KS_KhachHang/${id}?handler=Del`)
+    $.ajax({
+        url: `/Nghiepvu/DangKyKhuonMatZk_V2/_KS_KhachHang/${id}?handler=Del`,
+        method: "POST",
+        success: function (json) {
+            if (json && json.ok) {
+
+                alert("Lưu thành công!");
+                location.reload();
+            }
+        },
+        error: function (xhr) {
+            var ct = xhr.getResponseHeader('Content-Type') || '';
+            alert('Lỗi khi lưu.');
+        }
+    })
+}
 
 $(document).on('click', '.btn-open-modal', function (e) {
     e.preventDefault();
@@ -35,27 +65,33 @@ $(document).on('click', '.btn-open-modal', function (e) {
 
         //Gắn sự kiện chọn ngày cho modal
         // single datepicker
-        $('.input-datepicker').daterangepicker({
-            singleDatePicker: true,
-            showDropdowns: true,
-            autoApply: true,
-            autoUpdateInput: true,
-            minYear: 1901,
-            maxYear: 2099,
-            locale: {
-                format: 'DD/MM/YYYY',
-                daysOfWeek: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
-                "monthNames": ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
-                    "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
-            },
+        //$('.input-datepicker').daterangepicker({
+        //    singleDatePicker: true,
+        //    showDropdowns: true,
+        //    autoApply: true,
+        //    autoUpdateInput: true,
+        //    minYear: 1901,
+        //    maxYear: 2099,
+        //    locale: {
+        //        format: 'DD/MM/YYYY',
+        //        daysOfWeek: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+        //        "monthNames": ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        //            "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        //    },
 
-        }, function (start, end) {
-            if ($('.input-datepicker > input').length) {
-                $('.input-datepicker > input').val(start.format('DD/MM/YYYY'));
-            }
-            // Tự động gửi biểu mẫu
-            //$('.input-datepicker').closest('form').submit();
-        });
+        //}, function (start, end) {
+        //    if ($('.input-datepicker > input').length) {
+        //        $('.input-datepicker > input').val(start.format('DD/MM/YYYY'));
+        //    }
+        //    // Tự động gửi biểu mẫu
+        //    //$('.input-datepicker').closest('form').submit();
+        //});
+
+        //$('#reservationdatetime').datetimepicker({ format: "DD/MM/YYYY HH:mm:ss", icons: { time: 'far fa-clock' } });
+
+        $('#reservationdatetime_NgaySinh').datetimepicker({ format: "DD/MM/YYYY" });
+        $('#reservationdatetime_TuNgay').datetimepicker({ format: "DD/MM/YYYY HH:mm:ss", icons: { time: 'far fa-clock' } });
+        $('#reservationdatetime_DenNgay').datetimepicker({ format: "DD/MM/YYYY HH:mm:ss", icons: { time: 'far fa-clock' } });
     });
 });
 

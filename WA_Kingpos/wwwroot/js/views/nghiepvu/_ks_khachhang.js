@@ -3,6 +3,7 @@
 $(document).ready(async function () {
     await loadFaceApi();
 })
+
 var stream;
 let currentFacing = 'environment';
 let hiddenBase64;
@@ -15,7 +16,7 @@ let btnTakePhoto;
 let btnSwitchCamera;
 
 $('#btnSave').on('click', function () {
-    alert("Kha testing")
+    
     var $modal = $('#customerModal');
     //var $form = $modal.find('#customerForm');
     //if ($form.length === 0) return;
@@ -36,6 +37,7 @@ $('#btnSave').on('click', function () {
                 if ($modal.length != 0) {
                     $modal.modal('hide');
                 }
+                alert("Lưu thành công!");
                 // Optional: reload the list or update row inline
                 location.reload();
             } else {

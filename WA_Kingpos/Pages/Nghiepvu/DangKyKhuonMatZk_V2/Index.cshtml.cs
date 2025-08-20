@@ -15,6 +15,7 @@ namespace WA_Kingpos.Pages.DangKyKhuonMatZk_V2
 
         public List<cls_KS_KhachHang> listitem = new();
         public bool bThem { get; set; }
+        public bool bSua { get; set; }
         public bool bXoa { get; set; }
 
         [BindProperty]
@@ -83,15 +84,15 @@ namespace WA_Kingpos.Pages.DangKyKhuonMatZk_V2
 
         private IActionResult? CheckQuyen()
         {
-            if (!cls_UserManagement.AllowView(Perm_DangKyKhuonMatZk, HttpContext.Session.GetString("Permission")))
+            if (!cls_UserManagement.AllowView("2025081601", HttpContext.Session.GetString("Permission")))
             {
                 return RedirectToPage("/AccessDenied");
             }
             else
             {
-                bThem = cls_UserManagement.AllowAdd(Perm_DangKyKhuonMatZk, HttpContext.Session.GetString("Permission"));
-                //bSua = cls_UserManagement.AllowEdit(Perm_DangKyKhuonMatZk, HttpContext.Session.GetString("Permission"));
-                bXoa = cls_UserManagement.AllowDelete(Perm_DangKyKhuonMatZk, HttpContext.Session.GetString("Permission"));
+                bThem = cls_UserManagement.AllowAdd("2025081601", HttpContext.Session.GetString("Permission"));
+                bSua = cls_UserManagement.AllowEdit("2025081601", HttpContext.Session.GetString("Permission"));
+                bXoa = cls_UserManagement.AllowDelete("2025081601", HttpContext.Session.GetString("Permission"));
             }
             return null;
         }
