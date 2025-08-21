@@ -19,19 +19,11 @@ namespace WA_Kingpos.Pages
                 {
                     //xu ly trang
                     //Load cau hinh chung
-                    if (cls_AppSettings.RunMode == ConfRunMode.DkKhuonMat)
-                    {
-                        return RedirectToPage("/Nghiepvu/DangKyKhuonMatZk/Index");
-                    }
-                    else
-                    {
-                        cls_ConfigCashier.LoadCauHinh();
-                        LoadData_ConfigReport();
-                        LoadData_Thanhthoi();
-                        // Home Page.
-                        return Page();
-                    }
-
+                    cls_ConfigCashier.LoadCauHinh();
+                    LoadData_ConfigReport();
+                    LoadData_Thanhthoi();
+                    // Home Page.
+                    return Page();
                 }
                 else
                 {

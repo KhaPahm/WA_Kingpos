@@ -139,553 +139,538 @@
                         }
                     </div>
                 </div>
-
-                @if (cls_AppSettings.RunMode != ConfRunMode.DkKhuonMat)
-                {
-                    <!-- SidebarSearch Form -->
-                    <div class="form-inline">
-                        <div class="input-group" data-widget="sidebar-search">
-                            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-sidebar">
-                                    <i class="fas fa-search fa-fw"></i>
-                                </button>
-                            </div>
+                
+                <!-- SidebarSearch Form -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
                         </div>
                     </div>
-                }
+                </div>
 
-                @if (cls_AppSettings.RunMode != ConfRunMode.DkKhuonMat)
-                {
-                    <!-- Sidebar Menu -->
-                    <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <!-- Add icons to the links using the .nav-icon class
-                            with font-awesome or any other icon font library -->
-                            <li class="nav-item @(ViewData["Group"]== "hethong" ?" menu-open":"")">
-                                <a asp-area="" asp-page="" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Hệ thống
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    @if (cls_UserManagement.AllowView("1", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Hethong/Doimatkhau/Index" class="nav-link @(ViewData["Name"]== "doimatkhau" ?" active":"")">
-                                                <i class="far fa-share-square nav-icon"></i>
-                                                <p>Đổi mật khẩu</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("1", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Hethong/Doimatkhau/Index" class="nav-link @(ViewData["Name"]== "doimatkhau" ?" active":"")">
-                                                <i class="far fa-share-square nav-icon"></i>
-                                                <p>Đổi mật khẩu</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("10", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Hethong/PhongBan/Index" class="nav-link @(ViewData["Name"]== "phongban" ?" active":"")">
-                                                <i class="far fa-id-card nav-icon"></i>
-                                                <p>Phòng ban</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("11", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Hethong/Nhanvien/Index" class="nav-link @(ViewData["Name"]== "nhanvien" ?" active":"")">
-                                                <i class="far fa-id-badge nav-icon"></i>
-                                                <p>Nhân viên</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView(NhomNhanVien.IndexModel.PermNhomNhanVien, Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Hethong/NhomNhanVien/Index" class="nav-link @(ViewData["Name"]== "nhomnhanvien" ?" active":"")">
-                                                <i class="fa fa-users nav-icon"></i>
-                                                <p>Nhóm nhân viên</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("19", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Hethong/TaiKhoan/Index" class="nav-link @(ViewData["Name"]== "taikhoan" ?" active":"")">
-                                                <i class="far fa-user nav-icon"></i>
-                                                <p>Tài khoản</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("2", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Hethong/NhomQuyen/Index" class="nav-link @(ViewData["Name"]== "nhomquyen" ?" active":"")">
-                                                <i class="far fa-address-book nav-icon"></i>
-                                                <p>Nhóm quyền</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("3", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Hethong/PhanQuyen/Index" class="nav-link @(ViewData["Name"]== "phanquyen" ?" active":"")">
-                                                <i class="far fa-sun nav-icon"></i>
-                                                <p>Phân quyền</p>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        <li class="nav-item @(ViewData["Group"] == "hethong" ? " menu-open" : "")">
+                            <a asp-area="" asp-page="" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Hệ thống
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if (cls_UserManagement.AllowView("1", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Hethong/Doimatkhau/Index" class="nav-link @(ViewData["Name"] == "doimatkhau" ? " active" : "")">
+                                            <i class="far fa-share-square nav-icon"></i>
+                                            <p>Đổi mật khẩu</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("1", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Hethong/Doimatkhau/Index" class="nav-link @(ViewData["Name"] == "doimatkhau" ? " active" : "")">
+                                            <i class="far fa-share-square nav-icon"></i>
+                                            <p>Đổi mật khẩu</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("10", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Hethong/PhongBan/Index" class="nav-link @(ViewData["Name"] == "phongban" ? " active" : "")">
+                                            <i class="far fa-id-card nav-icon"></i>
+                                            <p>Phòng ban</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("11", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Hethong/Nhanvien/Index" class="nav-link @(ViewData["Name"] == "nhanvien" ? " active" : "")">
+                                            <i class="far fa-id-badge nav-icon"></i>
+                                            <p>Nhân viên</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView(NhomNhanVien.IndexModel.PermNhomNhanVien, Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Hethong/NhomNhanVien/Index" class="nav-link @(ViewData["Name"] == "nhomnhanvien" ? " active" : "")">
+                                            <i class="fa fa-users nav-icon"></i>
+                                            <p>Nhóm nhân viên</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("19", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Hethong/TaiKhoan/Index" class="nav-link @(ViewData["Name"] == "taikhoan" ? " active" : "")">
+                                            <i class="far fa-user nav-icon"></i>
+                                            <p>Tài khoản</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("2", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Hethong/NhomQuyen/Index" class="nav-link @(ViewData["Name"] == "nhomquyen" ? " active" : "")">
+                                            <i class="far fa-address-book nav-icon"></i>
+                                            <p>Nhóm quyền</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("3", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Hethong/PhanQuyen/Index" class="nav-link @(ViewData["Name"] == "phanquyen" ? " active" : "")">
+                                            <i class="far fa-sun nav-icon"></i>
+                                            <p>Phân quyền</p>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
 
-                            <li class="nav-item @(ViewData["Group"]== "caidat" ?" menu-open":"")">
-                                <a asp-area="" asp-page="" class="nav-link">
-                                    <i class="nav-icon fas fa-th"></i>
-                                    <p>
-                                        Cài đặt
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    @if (cls_UserManagement.AllowView("4", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/CuaHang/Index" class="nav-link @(ViewData["Name"]== "cuahang" ?" active":"")">
-                                                <i class="nav-icon fas fa-columns"></i>
-                                                <p>Cửa hàng</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("4", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Kho/Index" class="nav-link @(ViewData["Name"]== "kho" ?" active":"")">
-                                                <i class="nav-icon fas fa-columns"></i>
-                                                <p>Kho</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("4", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Quay/Index" class="nav-link @(ViewData["Name"]== "quay" ?" active":"")">
-                                                <i class="nav-icon fas fa-columns"></i>
-                                                <p>Quầy</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("8", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Bep/Index" class="nav-link @(ViewData["Name"]== "bep" ?" active":"")">
-                                                <i class="nav-icon far fa-bell"></i>
-                                                <p>Bếp</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("7", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Donvitinh/Index" class="nav-link @(ViewData["Name"]== "donvitinh" ?" active":"")">
-                                                <i class="fa fa-window-maximize nav-icon"></i>
-                                                <p>Đơn vị tính</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("6", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Nganhhang/Index" class="nav-link @(ViewData["Name"]== "nganhhang" ?" active":"")">
-                                                <i class="nav-icon fas fa-tree"></i>
-                                                <p>Ngành hàng</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("6", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Nhomhang/Index" class="nav-link @(ViewData["Name"]== "nhomhang" ?" active":"")">
-                                                <i class="nav-icon fas fa-tree"></i>
-                                                <p>Nhóm hàng</p>
-                                            </a>
-                                        </li>
+                        <li class="nav-item @(ViewData["Group"] == "caidat" ? " menu-open" : "")">
+                            <a asp-area="" asp-page="" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Cài đặt
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if (cls_UserManagement.AllowView("4", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/CuaHang/Index" class="nav-link @(ViewData["Name"] == "cuahang" ? " active" : "")">
+                                            <i class="nav-icon fas fa-columns"></i>
+                                            <p>Cửa hàng</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("4", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Kho/Index" class="nav-link @(ViewData["Name"] == "kho" ? " active" : "")">
+                                            <i class="nav-icon fas fa-columns"></i>
+                                            <p>Kho</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("4", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Quay/Index" class="nav-link @(ViewData["Name"] == "quay" ? " active" : "")">
+                                            <i class="nav-icon fas fa-columns"></i>
+                                            <p>Quầy</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("8", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Bep/Index" class="nav-link @(ViewData["Name"] == "bep" ? " active" : "")">
+                                            <i class="nav-icon far fa-bell"></i>
+                                            <p>Bếp</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("7", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Donvitinh/Index" class="nav-link @(ViewData["Name"] == "donvitinh" ? " active" : "")">
+                                            <i class="fa fa-window-maximize nav-icon"></i>
+                                            <p>Đơn vị tính</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("6", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Nganhhang/Index" class="nav-link @(ViewData["Name"] == "nganhhang" ? " active" : "")">
+                                            <i class="nav-icon fas fa-tree"></i>
+                                            <p>Ngành hàng</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("6", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Nhomhang/Index" class="nav-link @(ViewData["Name"] == "nhomhang" ? " active" : "")">
+                                            <i class="nav-icon fas fa-tree"></i>
+                                            <p>Nhóm hàng</p>
+                                        </a>
+                                    </li>
 
-                                    }
-                                    @if (cls_UserManagement.AllowView("6", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Hanghoa/Index" class="nav-link @(ViewData["Name"]== "hanghoa" ?" active":"")">
-                                                <i class="nav-icon fas fa-tree"></i>
-                                                <p>Hàng hóa</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("9", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Nhacungcap/Index" class="nav-link @(ViewData["Name"]== "nhacungcap" ?" active":"")">
-                                                <i class="far fa-handshake nav-icon"></i>
-                                                <p>Nhà cung cấp - Khách hàng</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("9", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Loaidaily/Index" class="nav-link @(ViewData["Name"]== "loaidaily" ?" active":"")">
-                                                <i class="far fa-handshake nav-icon"></i>
-                                                <p>Loại đại lý</p>
-                                            </a>
-                                        </li>
+                                }
+                                @if (cls_UserManagement.AllowView("6", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Hanghoa/Index" class="nav-link @(ViewData["Name"] == "hanghoa" ? " active" : "")">
+                                            <i class="nav-icon fas fa-tree"></i>
+                                            <p>Hàng hóa</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("9", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Nhacungcap/Index" class="nav-link @(ViewData["Name"] == "nhacungcap" ? " active" : "")">
+                                            <i class="far fa-handshake nav-icon"></i>
+                                            <p>Nhà cung cấp - Khách hàng</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("9", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Loaidaily/Index" class="nav-link @(ViewData["Name"] == "loaidaily" ? " active" : "")">
+                                            <i class="far fa-handshake nav-icon"></i>
+                                            <p>Loại đại lý</p>
+                                        </a>
+                                    </li>
 
-                                    }
-                                    @if (cls_UserManagement.AllowView("9", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/Capdodaily/Index" class="nav-link @(ViewData["Name"]== "capdodaily" ?" active":"")">
-                                                <i class="far fa-handshake nav-icon"></i>
-                                                <p>Cấp độ đại lý</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120801", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/KhachHangFina/Index" class="nav-link @(ViewData["Name"]== "finakhachhang" ?" active":"")">
-                                                <i class="nav-icon far fa-user-circle"></i>
-                                                <p>Khách hàng</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120802", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Caidat/TaiXeFina/Index" class="nav-link @(ViewData["Name"]== "finataixe" ?" active":"")">
-                                                <i class="nav-icon fa fa-car" aria-hidden="true"></i>
-                                                <p>Tài xế</p>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
+                                }
+                                @if (cls_UserManagement.AllowView("9", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/Capdodaily/Index" class="nav-link @(ViewData["Name"] == "capdodaily" ? " active" : "")">
+                                            <i class="far fa-handshake nav-icon"></i>
+                                            <p>Cấp độ đại lý</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120801", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/KhachHangFina/Index" class="nav-link @(ViewData["Name"] == "finakhachhang" ? " active" : "")">
+                                            <i class="nav-icon far fa-user-circle"></i>
+                                            <p>Khách hàng</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120802", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Caidat/TaiXeFina/Index" class="nav-link @(ViewData["Name"] == "finataixe" ? " active" : "")">
+                                            <i class="nav-icon fa fa-car" aria-hidden="true"></i>
+                                            <p>Tài xế</p>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
 
-                            <li class="nav-item @(ViewData["Group"]== "cauhinh" ?" menu-open":"")">
-                                <a asp-area="" asp-page="" class="nav-link">
-                                    <i class="nav-icon fas fa-copy"></i>
-                                    <p>
-                                        Cấu hình
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    @if (cls_UserManagement.AllowView("35", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Cauhinh/CauhinhBaocao/Index" class="nav-link @(ViewData["Name"]== "cauhinhbaocao" ?" active":"")">
-                                                <i class="nav-icon fas fa-plus-square"></i>
-                                                <p>Cấu hình báo cáo</p>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                                <ul class="nav nav-treeview">
-                                    @if (cls_UserManagement.AllowView("35", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Cauhinh/Cauhinhkhohanghoa/Index" class="nav-link @(ViewData["Name"]== "cauhinhkhohanghoa" ?" active":"")">
-                                                <i class="nav-icon fas fa-plus-square"></i>
-                                                <p>Cấu hình Kho - Hàng hóa</p>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
+                        <li class="nav-item @(ViewData["Group"] == "cauhinh" ? " menu-open" : "")">
+                            <a asp-area="" asp-page="" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Cấu hình
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if (cls_UserManagement.AllowView("35", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Cauhinh/CauhinhBaocao/Index" class="nav-link @(ViewData["Name"] == "cauhinhbaocao" ? " active" : "")">
+                                            <i class="nav-icon fas fa-plus-square"></i>
+                                            <p>Cấu hình báo cáo</p>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                @if (cls_UserManagement.AllowView("35", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Cauhinh/Cauhinhkhohanghoa/Index" class="nav-link @(ViewData["Name"] == "cauhinhkhohanghoa" ? " active" : "")">
+                                            <i class="nav-icon fas fa-plus-square"></i>
+                                            <p>Cấu hình Kho - Hàng hóa</p>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
 
-                            <li class="nav-item @(ViewData["Group"]== "nghiepvu" ?"menu-open":"")">
-                                <a asp-area="" asp-page="" class="nav-link">
-                                    <i class="nav-icon fas fa-edit"></i>
-                                    <p>
-                                        Nghiệp vụ
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    @if (cls_UserManagement.AllowView("14102301", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/PhieuDatHangFina/Index" class="nav-link @(ViewData["Name"]== "PhieuDatHang" ?" active":"")">
-                                                <i class="nav-icon far fa-file"></i>
-                                                <p>Đặt hàng online</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("14102302", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/DuyetPhieuDatHangFina/Index" class="nav-link @(ViewData["Name"]== "duyetdondathang" ?" active":"")">
-                                                <i class="nav-icon fa fa-check"></i>
-                                                <p>Duyệt đơn đặt hàng</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("14102310", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/PhieuDatXeFina/Index" class="nav-link @(ViewData["Name"]== "PhieuDatXe" ?" active":"")">
-                                                <i class="nav-icon far fa-file-audio"></i>
-                                                <p>Đặt xe online</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("14102311", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/DuyetPhieuDatXeFina/Index" class="nav-link @(ViewData["Name"]== "finaduyetdatxe" ?" active":"")">
-                                                <i class="nav-icon fa fa-check"></i>
-                                                <p>Duyệt đơn đặt xe</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("14102304", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/ThanhToanCongNoFina/Index" class="nav-link @(ViewData["Name"]== "finathanhtoancongno" ?" active":"")">
-                                                <i class="nav-icon far fa-file-excel"></i>
-                                                <p>Thanh toán công nợ</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("14102305", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/DuyetCongNoFina/Index" class="nav-link @(ViewData["Name"]== "finaduyetthanhtoancongno" ?" active":"")">
-                                                <i class="nav-icon fa fa-check"></i>
-                                                <p>Duyệt công nợ</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView(DangKyKhuonMatZk.IndexModel.Perm_DangKyKhuonMatZk, Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/DangKyKhuonMatZk/Index" class="nav-link @(ViewData["Name"]== "dangkykhuonmatzk" ?" active":"")">
-                                                <i class="nav-icon fa fa-user-plus"></i>
-                                                <p>Đăng ký khuôn mặt</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("2025081601", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/dangkykhuonmatzk_v2/Index" class="nav-link @(ViewData["Name"]== "dangkykhuonmatzk_v2" ?" active":"")">
-                                                <i class="nav-icon fa fa-user-plus"></i>
-                                                <p>Thông tin khách hàng đã đăng ký khuôn mặt</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowAdd("2025081601", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/dangkykhuonmatzk_v2/create" class="nav-link @(ViewData["Name"]== "dangkykhuonmatzk_v2_create" ?" active":"")">
-                                                <i class="nav-icon fa fa-user-plus"></i>
-                                                <p>Đăng ký khuôn mặt - V2</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("2023112201", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/Khaibaosoluongthucte/Index" class="nav-link @(ViewData["Name"]== "bangkhaisoluongtrentau" ?" active":"")">
-                                                <i class="far fa-credit-card nav-icon"></i>
-                                                <p>Khai báo số lượng thực tế trên tàu</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("2023121301", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/KhaibaosoluongthucteQC/Index" class="nav-link @(ViewData["Name"]== "bangkhaisoluongtrentau" ?" active":"")">
-                                                <i class="far fa-credit-card nav-icon"></i>
-                                                <p>Khai báo số lượng thực tế trên tàu</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("24030608", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Nghiepvu/Khaibaonhienlieu/Index" class="nav-link @(ViewData["Name"]== "bangkhainhienlieu" ?" active":"")">
-                                                <i class="far fa-address-card nav-icon"></i>
-                                                <p>Khai báo nhiên liệu thực tế</p>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
+                        <li class="nav-item @(ViewData["Group"] == "nghiepvu" ? "menu-open" : "")">
+                            <a asp-area="" asp-page="" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Nghiệp vụ
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if (cls_UserManagement.AllowView("14102301", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/PhieuDatHangFina/Index" class="nav-link @(ViewData["Name"] == "PhieuDatHang" ? " active" : "")">
+                                            <i class="nav-icon far fa-file"></i>
+                                            <p>Đặt hàng online</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("14102302", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/DuyetPhieuDatHangFina/Index" class="nav-link @(ViewData["Name"] == "duyetdondathang" ? " active" : "")">
+                                            <i class="nav-icon fa fa-check"></i>
+                                            <p>Duyệt đơn đặt hàng</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("14102310", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/PhieuDatXeFina/Index" class="nav-link @(ViewData["Name"] == "PhieuDatXe" ? " active" : "")">
+                                            <i class="nav-icon far fa-file-audio"></i>
+                                            <p>Đặt xe online</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("14102311", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/DuyetPhieuDatXeFina/Index" class="nav-link @(ViewData["Name"] == "finaduyetdatxe" ? " active" : "")">
+                                            <i class="nav-icon fa fa-check"></i>
+                                            <p>Duyệt đơn đặt xe</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("14102304", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/ThanhToanCongNoFina/Index" class="nav-link @(ViewData["Name"] == "finathanhtoancongno" ? " active" : "")">
+                                            <i class="nav-icon far fa-file-excel"></i>
+                                            <p>Thanh toán công nợ</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("14102305", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/DuyetCongNoFina/Index" class="nav-link @(ViewData["Name"] == "finaduyetthanhtoancongno" ? " active" : "")">
+                                            <i class="nav-icon fa fa-check"></i>
+                                            <p>Duyệt công nợ</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView(DangKyKhuonMatZk.IndexModel.Perm_DangKyKhuonMatZk, Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/DangKyKhuonMatZk/Index" class="nav-link @(ViewData["Name"] == "dangkykhuonmatzk" ? " active" : "")">
+                                            <i class="nav-icon fa fa-user-plus"></i>
+                                            <p>Đăng ký khuôn mặt</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("2025081601", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/dangkykhuonmatzk_v2/Index" class="nav-link @(ViewData["Name"] == "dangkykhuonmatzk_v2" || ViewData["Name"] == "dangkykhuonmatzk_v2_create" ? " active" : "")">
+                                            <i class="nav-icon fa fa-user-plus"></i>
+                                            <p>Đăng ký khuôn mặt</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("2023112201", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/Khaibaosoluongthucte/Index" class="nav-link @(ViewData["Name"] == "bangkhaisoluongtrentau" ? " active" : "")">
+                                            <i class="far fa-credit-card nav-icon"></i>
+                                            <p>Khai báo số lượng thực tế trên tàu</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("2023121301", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/KhaibaosoluongthucteQC/Index" class="nav-link @(ViewData["Name"] == "bangkhaisoluongtrentau" ? " active" : "")">
+                                            <i class="far fa-credit-card nav-icon"></i>
+                                            <p>Khai báo số lượng thực tế trên tàu</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("24030608", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/Khaibaonhienlieu/Index" class="nav-link @(ViewData["Name"] == "bangkhainhienlieu" ? " active" : "")">
+                                            <i class="far fa-address-card nav-icon"></i>
+                                            <p>Khai báo nhiên liệu thực tế</p>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
 
-                            <li class="nav-item @(ViewData["Group"]== "baocao" ?" menu-open":"")">
-                                <a asp-area="" asp-page="" class="nav-link">
-                                    <i class="nav-icon fas fa-chart-pie"></i>
-                                    <p>
-                                        Báo cáo
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    @if (cls_UserManagement.AllowView("48", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DSHanghoa/Index" class="nav-link @(ViewData["Name"]== "danhsachhanghoa" ?" active":"")">
-                                                <i class="far fa-list-alt nav-icon"></i>
-                                                <p>Danh sách hàng hóa</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("28", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DSHoaDon/Index" class="nav-link @(ViewData["Name"]== "dshoadon" ?" active":"")">
-                                                <i class="fas fa-copy nav-icon"></i>
-                                                <p>Danh sách hóa đơn</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("29", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/BCBanHang/Index" class="nav-link @(ViewData["Name"]== "bcbanhang" ?" active":"")">
-                                                <i class="fas fa-copy nav-icon"></i>
-                                                <p>Báo cáo bán hàng</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("25050601", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/BCBanHangDaiLy/Index" class="nav-link @(ViewData["Name"]== "bcbanhangdaily" ?" active":"")">
-                                                <i class="fas fa-copy nav-icon"></i>
-                                                <p>Báo cáo bán hàng đại lý</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120901", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DSKhachhang/Index" class="nav-link @(ViewData["Name"]== "danhsachkhachhang" ?" active":"")">
-                                                <i class="far fa-list-alt nav-icon"></i>
-                                                <p>Danh sách khách hàng</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120901", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DSTaiXeFina/Index" class="nav-link @(ViewData["Name"]== "danhsachtaixe" ?" active":"")">
-                                                <i class="far fa-list-alt nav-icon"></i>
-                                                <p>Danh sách tài xế</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120902", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DSDondathangFina/Index" class="nav-link @(ViewData["Name"]== "danhsachdonhangfina" ?" active":"")">
-                                                <i class="far fa-list-alt nav-icon"></i>
-                                                <p>Danh sách đơn đặt hàng</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120903", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DSDondatxeFina/Index" class="nav-link @(ViewData["Name"]== "danhsachdonxefina" ?" active":"")">
-                                                <i class="far fa-list-alt nav-icon"></i>
-                                                <p>Danh sách đơn đặt xe</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120904", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DSPhieuthanhtoanFina/Index" class="nav-link @(ViewData["Name"]== "danhsachpieuthanhtoanfina" ?" active":"")">
-                                                <i class="far fa-list-alt nav-icon"></i>
-                                                <p>Danh sách phiếu thanh toán</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120905", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DoanhSoFina/Index" class="nav-link @(ViewData["Name"]== "doanhsofina" ?" active":"")">
-                                                <i class="fa fa-cart-arrow-down nav-icon"></i>
-                                                <p>Doanh số</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("23120906", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/BangLuongFina/Index" class="nav-link @(ViewData["Name"]== "bangluongfina" ?" active":"")">
-                                                <i class="far fa-id-card nav-icon"></i>
-                                                <p>Bảng lương</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("28", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/DashboardDoanhThu/Index" class="nav-link @(ViewData["Name"]== "dashboarddoanhthu" ?" active":"")">
-                                                <i class="fas fa-copy nav-icon"></i>
-                                                <p>Dashboard doanh thu</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("25030701", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/BCDoanhSoNhanVien/Index" class="nav-link @(ViewData["Name"]== "BCDoanhSoNhanVien" ?" active":"")">
-                                                <i class="far fa-id-card nav-icon"></i>
-                                                <p>Doanh số nhân viên</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("38", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/BCBanVeBanTungChuyen/Index" class="nav-link @(ViewData["Name"]== "BCBanVeBanTungChuyen" ?" active":"")">
-                                                <i class="far fa-id-card nav-icon"></i>
-                                                <p>Báo cáo bán vé bán từng chuyến</p>
-                                            </a>
-                                        </li>
-                                    }
-                                    @if (cls_UserManagement.AllowView("38", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
-                                    {
-                                        <li class="nav-item">
-                                            <a asp-area="" asp-page="/Baocao/BCBanVeBanTrongNgay/Index" class="nav-link @(ViewData["Name"]== "BCBanVeBanTrongNgay" ?" active":"")">
-                                                <i class="far fa-id-card nav-icon"></i>
-                                                <p>Báo cáo bán vé trong ngày</p>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
+                        <li class="nav-item @(ViewData["Group"] == "baocao" ? " menu-open" : "")">
+                            <a asp-area="" asp-page="" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Báo cáo
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if (cls_UserManagement.AllowView("48", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DSHanghoa/Index" class="nav-link @(ViewData["Name"] == "danhsachhanghoa" ? " active" : "")">
+                                            <i class="far fa-list-alt nav-icon"></i>
+                                            <p>Danh sách hàng hóa</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("28", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DSHoaDon/Index" class="nav-link @(ViewData["Name"] == "dshoadon" ? " active" : "")">
+                                            <i class="fas fa-copy nav-icon"></i>
+                                            <p>Danh sách hóa đơn</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("29", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/BCBanHang/Index" class="nav-link @(ViewData["Name"] == "bcbanhang" ? " active" : "")">
+                                            <i class="fas fa-copy nav-icon"></i>
+                                            <p>Báo cáo bán hàng</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("25050601", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/BCBanHangDaiLy/Index" class="nav-link @(ViewData["Name"] == "bcbanhangdaily" ? " active" : "")">
+                                            <i class="fas fa-copy nav-icon"></i>
+                                            <p>Báo cáo bán hàng đại lý</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120901", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DSKhachhang/Index" class="nav-link @(ViewData["Name"] == "danhsachkhachhang" ? " active" : "")">
+                                            <i class="far fa-list-alt nav-icon"></i>
+                                            <p>Danh sách khách hàng</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120901", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DSTaiXeFina/Index" class="nav-link @(ViewData["Name"] == "danhsachtaixe" ? " active" : "")">
+                                            <i class="far fa-list-alt nav-icon"></i>
+                                            <p>Danh sách tài xế</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120902", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DSDondathangFina/Index" class="nav-link @(ViewData["Name"] == "danhsachdonhangfina" ? " active" : "")">
+                                            <i class="far fa-list-alt nav-icon"></i>
+                                            <p>Danh sách đơn đặt hàng</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120903", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DSDondatxeFina/Index" class="nav-link @(ViewData["Name"] == "danhsachdonxefina" ? " active" : "")">
+                                            <i class="far fa-list-alt nav-icon"></i>
+                                            <p>Danh sách đơn đặt xe</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120904", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DSPhieuthanhtoanFina/Index" class="nav-link @(ViewData["Name"] == "danhsachpieuthanhtoanfina" ? " active" : "")">
+                                            <i class="far fa-list-alt nav-icon"></i>
+                                            <p>Danh sách phiếu thanh toán</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120905", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DoanhSoFina/Index" class="nav-link @(ViewData["Name"] == "doanhsofina" ? " active" : "")">
+                                            <i class="fa fa-cart-arrow-down nav-icon"></i>
+                                            <p>Doanh số</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("23120906", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/BangLuongFina/Index" class="nav-link @(ViewData["Name"] == "bangluongfina" ? " active" : "")">
+                                            <i class="far fa-id-card nav-icon"></i>
+                                            <p>Bảng lương</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("28", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/DashboardDoanhThu/Index" class="nav-link @(ViewData["Name"] == "dashboarddoanhthu" ? " active" : "")">
+                                            <i class="fas fa-copy nav-icon"></i>
+                                            <p>Dashboard doanh thu</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("25030701", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/BCDoanhSoNhanVien/Index" class="nav-link @(ViewData["Name"] == "BCDoanhSoNhanVien" ? " active" : "")">
+                                            <i class="far fa-id-card nav-icon"></i>
+                                            <p>Doanh số nhân viên</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("38", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/BCBanVeBanTungChuyen/Index" class="nav-link @(ViewData["Name"] == "BCBanVeBanTungChuyen" ? " active" : "")">
+                                            <i class="far fa-id-card nav-icon"></i>
+                                            <p>Báo cáo bán vé bán từng chuyến</p>
+                                        </a>
+                                    </li>
+                                }
+                                @if (cls_UserManagement.AllowView("38", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Baocao/BCBanVeBanTrongNgay/Index" class="nav-link @(ViewData["Name"] == "BCBanVeBanTrongNgay" ? " active" : "")">
+                                            <i class="far fa-id-card nav-icon"></i>
+                                            <p>Báo cáo bán vé trong ngày</p>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
 
-                            <li class="nav-item">
-                                <a href="https://help.kingpos.vn/" target="_blank" class="nav-link">
-                                    <i class="fa fa-info-circle nav-icon"></i>
-                                    <p>Trợ giúp</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <!-- /.sidebar-menu -->
-                }
+                        <li class="nav-item">
+                            <a href="https://help.kingpos.vn/" target="_blank" class="nav-link">
+                                <i class="fa fa-info-circle nav-icon"></i>
+                                <p>Trợ giúp</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
 
             </div>
             <!-- /.sidebar -->

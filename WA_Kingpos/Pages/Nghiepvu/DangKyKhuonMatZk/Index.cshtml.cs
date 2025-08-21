@@ -10,7 +10,7 @@ namespace WA_Kingpos.Pages.DangKyKhuonMatZk
     [Authorize]
     public class IndexModel : PageModel
     {
-        public const string Perm_DangKyKhuonMatZk = "202002131";
+        public const string Perm_DangKyKhuonMatZk = "2025081602";
 
         public List<clsKhachHangDangKyFace> listitem = new();
         public bool bThem { get; set; }

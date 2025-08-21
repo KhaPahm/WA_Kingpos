@@ -8,14 +8,33 @@
 
 
 @section Styles {
-<link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
 }
 
 <div class="row">
     <div class="col-12">
-        <div class="card card-primary mt-2">
+        <div class="align-items-end">
+            <div class="d-flex justify-content-end">
+                <div class="custom-control custom-radio d-inline-block m-1 align-self-end">
+                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios" onchange="HideOrUnhide()">
+                    <label class="custom-control-label" for="defaultUnchecked">Xem dưới dạng lưới</label>
+                </div>
+
+                <div class="custom-control custom-radio d-inline-block m-1 align-self-end">
+                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" onchange="HideOrUnhide()" checked>
+                    <label class="custom-control-label" for="defaultChecked">Xem dưới dạng thẻ</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="GridView" class="card card-primary mt-2">
             <div class="card-header">
                 <h3 class="card-title">@ViewData["Title"]</h3>
+                @* <label class="switch">
+                    <input type="checkbox" id="toggleSwitch">
+                    <span class="slider"></span>
+                </label> *@
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -58,10 +77,10 @@
                                     <td class="align-middle" style="white-space: nowrap; min-width:130px">@item.EMAIL</td>
                                     <td class="align-middle" style="white-space: nowrap; min-width:150px">@item.NGAYTAO.ToString("dd/MM/yyyy HH:mm")</td>
                                     <td class="align-middle" style="white-space: nowrap; min-width:130px">@item.TENNHANVIEN</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:150px">
+                                    <td class="align-middle">
                                         @* <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.MA_KH">Xem</a> *@
                                         @* <button type="button" class="btn btn-info btn-sm btn-view" data-url="@Url.Page("_KS_KhachHang", new { id = item.MA_KH })">Xem</button> *@ @* data-toggle="modal" data-target="#myModal" *@
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+                                        <div>
                                             <a asp-page="./_KS_KhachHang"
                                             asp-route-id="@item.MA_KH"
                                             asp-route-mode="view"
@@ -98,90 +117,137 @@
                     <a class="btn btn-primary btn-open-modal" role="button" asp-page="./_KS_KhachHang" asp-route-mode="create">Thêm mới</a>
                 }
             </div>
-
-
-            <!-- Bootstrap modal -->
-            <div class="modal fade" id="customerModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg modal-dialog-scrollable" " role="document">
-                    <div class="modal-content">
-                        <div class="modal-header py-2">
-                            <h5 class="modal-title" id="modalTitle">Thông tin khách hàng</h5>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body"><!-- Will load via AJAX --></div>
-                        <div class="modal-footer py-2">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button type="button" class="btn btn-primary d-none" id="btnSave">Lưu</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal" tabindex="-1" id="confirmDeleteModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Xác nhận xóa khách hàng</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Bạn có chắc muốn xóa khách hàng? </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger" id="btn-confirm-delete">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            @* <!-- Camera Modal -->
-            <div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header py-2">
-                            <h5 class="modal-title">Chụp ảnh</h5>
-                            <button type="button" class="close" aria-label="Đóng" id="btnCloseCamera" onclick="closeCameraModalClick()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body text-center d-flex justify-content-center">
-                            <video id="cameraVideo" autoplay playsinline width="300" height="300" style="max-width:100%; border:1px solid #ccc;"></video>
-                            <canvas id="cameraCanvas" width="300" height="300" style="display:none;"></canvas>
-                        </div>
-
-                        <div class="modal-footer py-2 d-flex justify-content-center">
-                            <button type="button" class="btn btn-outline-danger btn-md align-self-center" id="btnCancelCamera" onclick="closeCameraModalClick()">
-                                Hủy
-                            </button>
-
-                            <button type="button" class=" btn btn-outline-info btn-lg rounded-circle" id="btnTakePhoto" onclick="takePhotoClick()">
-                                <i class="fa fa-camera"></i>
-                            </button>
-
-                            <button type="button" class="btn btn-outline-secondary btn-md align-self-center" id="btnSwitchCamera" onclick="switchCameraClick()">
-                                Xoay
-                            </button>
-
-                            <button type="button" class="btn btn-outline-secondary d-none" id="btnRetake" onclick="reTakePhotoClick()">Chụp lại</button>
-                            <button type="button" class="btn btn-success d-none" id="btnUsePhoto" onclick="usePhotoClick()">Dùng ảnh này</button>
-                        </div>
-                    </div>
-                </div>
-            </div> *@
-
-
             <!-- /.card-footer -->
+        </div>
+
+        <div id="CardView" class="card card-primary mt-2">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var item in Model.listitem)
+                    {
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-footer p-0">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Mã khách hàng: <span class="float-right text-info">@item.MA_KH</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Tên khách hàng: <span class="float-right text-info">@item.TEN</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Ngày sinh: <span class="float-right text-info">@item.NGAYSINH</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Giới tính: <span class="float-right text-info">@item.GIOITINH</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Điện thoại: <span class="float-right text-info">@item.DIENTHOAI</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                CCCD: <span class="float-right text-info">@item.CCCD</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Quốc tịch: <span class="float-right text-info">@item.QUOCTICH</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Email: <span class="float-right text-info">@item.EMAIL</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Địa chỉ: <span class="float-right text-info">@item.DIACHI</span>
+                                            </a>
+                                        </li>
+                                        <li class="d-flex justify-content-center nav-item pt-1 pb-1">
+                                            <a asp-page="./_KS_KhachHang"
+                                               asp-route-id="@item.MA_KH"
+                                               asp-route-mode="view"
+                                               class="btn btn-info btn-sm btn-open-modal mx-1">
+                                                Xem
+                                            </a>
+                                            @if (Model.bSua)
+                                            {
+                                                <a asp-page="./_KS_KhachHang"
+                                                    asp-route-id="@item.MA_KH"
+                                                    asp-route-mode="edit"
+                                                   class="btn btn-warning btn-sm btn-open-modal mx-1">
+                                                    Sửa
+                                                </a>
+                                            }
+
+                                            @if (Model.bXoa)
+                                            {
+                                                <button type="button" class="btn btn-danger btn-sm btn-delete-customer mx-1" role="button" onclick="showDeleteCustomer(@item.MA_KH)" data="@item.MA_KH">Xóa</button>
+                                            }
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
         <!-- /.card -->
     </div>
     <!-- /.col -->
 </div>
 <!-- /.row -->
+<!-- Bootstrap modal -->
+<div class="modal fade" id="customerModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" " role="document">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <h5 class="modal-title" id="modalTitle">Thông tin khách hàng</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body"><!-- Will load via AJAX --></div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary d-none" id="btnSave">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="confirmDeleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận xóa khách hàng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc muốn xóa khách hàng? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-danger" id="btn-confirm-delete">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <script src="/lib/face-api/face-api.min.js"></script>

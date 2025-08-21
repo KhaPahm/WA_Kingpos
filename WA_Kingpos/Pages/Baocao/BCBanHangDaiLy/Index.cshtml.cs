@@ -380,8 +380,8 @@ namespace WA_Kingpos.Pages.Baocao.BCBanHangDaiLy
     public class BaoCaoBanHang
     {
         public int STT { get; set; }
-        public string MA_HOADON { get; set; } = "B00000001";
-        public string NGAYTAO { get; set; } = "18/07/2025";
+        public string MA_HOADON { get; set; }
+        public string NGAYTAO { get; set; }
         public string MAHANGHOA { get; set; }
         public string TENHANGHOA { get; set; }
         public string DVT { get; set; }

@@ -4,6 +4,13 @@ $(document).ready(async function () {
     await loadFaceApi();
 })
 
+async function loadFaceApi() {
+    let modelDir = "/lib/face-api/models/";
+    await Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri(modelDir + 'tiny_face_detector_model-weights_manifest.json'),
+    ]);
+}
+
 var stream;
 let currentFacing = 'environment';
 let hiddenBase64;
@@ -14,9 +21,11 @@ let btnUsePhoto;
 let btnRetake;
 let btnTakePhoto;
 let btnSwitchCamera;
+let hiddenImage = document.getElementById('hiddenImage');
 
 $('#btnSave').on('click', function () {
-    
+    var btn = $(this);
+    btn.prop("disabled", true).text("Đang lưu...");
     var $modal = $('#customerModal');
     //var $form = $modal.find('#customerForm');
     //if ($form.length === 0) return;
@@ -26,7 +35,6 @@ $('#btnSave').on('click', function () {
         form.classList.add('was-validated');
         return;
     }
-    
 
     $.ajax({
         url: $form.attr('action') || window.location.href + '?handler=Save',
@@ -56,10 +64,162 @@ $('#btnSave').on('click', function () {
             //    alert('Lỗi khi lưu.');
             //}
             alert('Lỗi khi lưu.');
+        },
+        complete: function () {
+            // Re-enable button and restore text
+            btn.prop("disabled", false).text("Lưu");
         }
     });
 
 });
+
+
+//Chụp ảnh
+function stopStream() {
+    if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+}
+
+async function startCamera() {
+    // Stop any existing stream before starting a new one
+    stopStream();
+
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: { exact: currentFacing } }
+        });
+    } catch {
+        // Fallback: try without exact constraint if device doesn't support it
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: currentFacing }
+        });
+    }
+    video.srcObject = stream;
+}
+
+async function openCameraClick() {
+    hiddenBase64 = document.getElementById('photoBase64');
+    video = document.getElementById('cameraVideo');
+    canvas = document.getElementById('cameraCanvas');
+    previewImg = document.getElementById('photoPreview');
+    btnUsePhoto = document.getElementById('btnUsePhoto');
+    btnRetake = document.getElementById('btnRetake');
+    btnTakePhoto = document.getElementById('btnTakePhoto');
+    btnSwitchCamera = document.getElementById('btnSwitchCamera');
+
+    try {
+        await startCamera();
+        btnTakePhoto.classList.remove('d-none');
+        btnSwitchCamera.classList.remove('d-none');
+        btnUsePhoto.classList.add('d-none');
+        btnRetake.classList.add('d-none');
+        canvas.style.display = 'none';
+        video.style.display = 'block';
+        //$('#customerModal').modal('hide');
+        $('#cameraModal').modal('show');
+    } catch (err) {
+        alert('Không thể truy cập camera: ' + err.message);
+    }
+}
+
+function takePhotoClick() {
+
+    canvas.width = 300 * video.videoWidth / video.videoHeight
+    canvas.height = 300
+    
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw video frame into canvas, resize to 300x300
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Hide video, show canvas
+    video.style.display = 'none';
+    canvas.style.display = 'block';
+
+    // Show "Use photo" button
+    btnTakePhoto.classList.add('d-none');
+    btnSwitchCamera.classList.add('d-none');
+    btnRetake.classList.remove('d-none');
+    btnUsePhoto.classList.remove('d-none');
+}
+
+function reTakePhotoClick() {
+    video.style.display = 'block';
+    canvas.style.display = 'none';
+
+    btnTakePhoto.classList.remove('d-none');
+    btnRetake.classList.add('d-none');
+    btnUsePhoto.classList.add('d-none');
+    btnSwitchCamera.classList.remove('d-none');
+}
+
+async function usePhotoClick() {
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+    $('#cameraModal').modal('hide');
+    //$('#customerModal').modal('show');
+    await processImage(dataUrl);
+    stopStream();
+}
+
+async function processImage(url) {
+    //var newPhoto = document.createElement('img');
+    //newPhoto.alt = "Customer photo";
+    //newPhoto.className = "img-thumbnail";
+    //newPhoto.style = "max-width:250px; max-height:250px; min-width:150px; min-height:150px";
+
+    var $photoReview = $('#photoReview');
+    $photoReview.html('');
+    //$photoReview.append(newPhoto);
+
+    return new Promise((url) => {
+        hiddenImage.onload = async (resolve) => {
+            try {
+                const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions());
+                if (detections.length <= 0) {
+                    $photoReview.html('<div class="text-danger">KHÔNG PHÁT HIỆN KHUÔN MẶT TRONG ẢNH</div>');
+                    resolve();
+                    return;
+                }
+                else if (detections.length > 0) {
+                    $photoReview.html('<div class="text-danger">PHÁT HIỆN NHIỀU HƠN 1 KHUÔN MẶT TRONG ẢNH</div>');
+                    resolve();
+                    return;
+                }
+
+                const box = detections[0].box; // {x, y, width, height}
+                // Calculate a square crop centered on the face center
+                const centerX = box.x + box.width / 2;
+                const centerY = box.y + box.height / 2;
+                const cropSize = Math.max(box.width, box.height) * 1.6; // add padding so face is nicely centered
+
+                // Source rectangle
+                const sx = Math.max(0, Math.round(centerX - cropSize / 2));
+                const sy = Math.max(0, Math.round(centerY - cropSize / 2));
+                const sw = Math.min(cropSize, img.naturalWidth - sx);
+                const sh = Math.min(cropSize, img.naturalHeight - sy);
+
+                const newCanvas = document.createElement('canvas');
+                const size = 300;
+
+                newCanvas.width = size;
+                newCanvas.height = size;
+                $photoReview.append(newCanvas);
+
+                const outCtx = outCanvas.getContext('2d');
+
+                outCtx.clearRect(0, 0, outCanvas.width, outCanvas.height);
+                outCtx.drawImage(img, sx, sy, sw, sh, 0, 0, 300, 300);
+            } catch (err) {
+                console.error(err);
+                $photoReview.html('<div class="text-danger">Lỗi nhận diện khuôn mặt</div>');
+            }
+            resolve();
+        };
+
+        hiddenImage.onerror = () => { alert('Could not load the image.'); resolve(); };
+        hiddenImage.src = url;
+    });
+}
 
 //-------------------- Xử lý ảnh
 function resizeImageTo300x300(file, callback) {
@@ -87,30 +247,6 @@ function resizeImageTo300x300(file, callback) {
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
-}
-
-// Nén hình ảnh cho đến khi kích thước nhỏ hơn 30 kilobytes
-function compressCanvasImage(canvas) {
-    let quality = 1.0;
-    let dataURL;
-    let imageSize;
-    const maxSizeKB = 30;
-    let base64String;
-
-    do {
-        dataURL = canvas.toDataURL('image/jpeg', quality);
-        // Extract the base64 part of the data URL
-        base64String = dataURL.split(',')[1];
-        // Calculate the image size in bytes
-        const stringLength = base64String.length;
-        const sizeInBytes = 4 * Math.ceil(stringLength / 3) * 0.5624896334383812; // Rough approximation
-        imageSize = sizeInBytes / 1024; // Convert bytes to kilobytes
-
-        if (imageSize > maxSizeKB) {
-            quality -= 0.05;
-        }
-    } while (imageSize > maxSizeKB && quality > 0);
-    return base64String;
 }
 
 async function dectionFace(img) {
@@ -153,90 +289,6 @@ function fileInputChange(element) {
     handleImageInput(element);
 }
 
-function stopStream() {
-    if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
-}
-
-async function startCamera() {
-    // Stop any existing stream before starting a new one
-    stopStream();
-
-    try {
-        stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: { exact: currentFacing } }
-        });
-    } catch {
-        // Fallback: try without exact constraint if device doesn't support it
-        stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: currentFacing }
-        });
-    }
-    video.srcObject = stream;
-}
-
-
-async function openCameraClick() {
-    hiddenBase64 = document.getElementById('photoBase64');
-    video = document.getElementById('cameraVideo');
-    canvas = document.getElementById('cameraCanvas');
-    previewImg = document.getElementById('photoPreview');
-    btnUsePhoto = document.getElementById('btnUsePhoto');
-    btnRetake = document.getElementById('btnRetake');
-    btnTakePhoto = document.getElementById('btnTakePhoto');
-    btnSwitchCamera = document.getElementById('btnSwitchCamera');
-
-    try {
-        await startCamera();
-        btnTakePhoto.classList.remove('d-none');
-        btnSwitchCamera.classList.remove('d-none');
-        btnUsePhoto.classList.add('d-none');
-        btnRetake.classList.add('d-none');
-        canvas.style.display = 'none';
-        video.style.display = 'block';
-        //$('#customerModal').modal('hide');
-        $('#cameraModal').modal('show');
-    } catch (err) {
-        alert('Không thể truy cập camera: ' + err.message);
-    }
-}
-
-function takePhotoClick() {
-
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw video frame into canvas, resize to 300x300
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-    // Hide video, show canvas
-    video.style.display = 'none';
-    canvas.style.display = 'block';
-
-    // Show "Use photo" button
-    btnTakePhoto.classList.add('d-none');
-    btnSwitchCamera.classList.add('d-none');
-    btnRetake.classList.remove('d-none');
-    btnUsePhoto.classList.remove('d-none');
-}
-
-function reTakePhotoClick() {
-    video.style.display = 'block';
-    canvas.style.display = 'none';
-
-    btnTakePhoto.classList.remove('d-none');
-    btnRetake.classList.add('d-none');
-    btnUsePhoto.classList.add('d-none');
-    btnSwitchCamera.classList.remove('d-none');
-}
-
-function usePhotoClick() {
-    const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
-    $('#cameraModal').modal('hide');
-    //$('#customerModal').modal('show');
-    createImageReview(dataUrl);
-    stopStream();
-}
-
 async function switchCameraClick() {
     currentFacing = currentFacing === 'user' ? 'environment' : 'user';
     await startCamera();
@@ -246,13 +298,6 @@ async function switchCameraClick() {
 function closeCameraModalClick() {
     $('#cameraModal').modal('hide');
     //$('#customerModal').modal('show');
-}
-
-async function loadFaceApi() {
-    let modelDir = "/lib/face-api/models/";
-    await Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri(modelDir + 'tiny_face_detector_model-weights_manifest.json'),
-    ]);
 }
 
 $('#cameraModal').on('hidden.bs.modal', function () {

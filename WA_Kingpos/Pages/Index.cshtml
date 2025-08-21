@@ -107,6 +107,7 @@
                             </div>
                         }
                         @if (
+                       cls_UserManagement.AllowAdd("2025081601", HttpContext.Session.GetString("Permission")) ||
                        cls_UserManagement.AllowAdd("23120801", HttpContext.Session.GetString("Permission")) ||
                        cls_UserManagement.AllowAdd("23120802", HttpContext.Session.GetString("Permission")) ||
                        cls_UserManagement.AllowAdd("14102301", HttpContext.Session.GetString("Permission")) ||
@@ -161,6 +162,17 @@
                                             <a class="btn btn-primary btn-block" role="button" asp-page="/Nghiepvu/DuyetCongNoFina/Index">Duyệt công nợ</a>
                                             <br>
                                         }
+                                         @if (cls_UserManagement.AllowAdd("2025081601", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Nghiepvu/DangKyKhuonMatZk_V2/Create">Đăng ký khuôn mặt</a>
+                                            <br>
+                                        }
+                                        @if (cls_UserManagement.AllowView("2025081601", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
+                                        {
+                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Nghiepvu/DangKyKhuonMatZk_V2/Index">Danh sách khách hàng đã đăng ký khuôn mặt</a>
+                                            <br>
+                                        }
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -212,27 +224,6 @@
                                         @if (cls_UserManagement.AllowAdd("25030701", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
                                         {
                                             <a class="btn btn-success btn-block" role="button" asp-page="/Baocao/BCDoanhSoNhanVien/Index">Doanh số nhân viên</a>
-                                            <br>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        }
-
-                        @if (cls_UserManagement.AllowView("2025081601", HttpContext.Session.GetString("Permission")))
-                        {
-                            <div class="col-md-3">
-                                <div class="card card-warning card-outline">
-                                    <div class="card-body box-profile">
-                                        <h3 class="profile-username text-center">Nghiệp vụ</h3>
-                                        @if (cls_UserManagement.AllowView("2025081601", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                        {
-                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Nghiepvu/DangKyKhuonMatZk_V2/Index">Thông tin khách hàng đã đăng ký khuôn mặt</a>
-                                            <br>
-                                        }
-                                        @if (cls_UserManagement.AllowAdd("2025081601", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "nhahang")
-                                        {
-                                            <a class="btn btn-primary btn-block" role="button" asp-page="/Nghiepvu/DangKyKhuonMatZk_V2/Create">Đăng ký khuôn mặt - V2</a>
                                             <br>
                                         }
                                     </div>
