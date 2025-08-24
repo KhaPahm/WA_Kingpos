@@ -31,7 +31,9 @@ namespace WA_Kingpos.Models
         public DateTime TUNGAY { get; set; } = DateTime.Now.Date;
         public DateTime DENNGAY { get; set; } = DateTime.Now.Date;
         public string CONG { get; set; } = ""; //Danh sách cổng
-
+        public string CONG_NAME { get; set; } = "";
+        public bool CanEdit { get; set; } = false;
+        public bool CanDelete { get; set; } = false;
         public List<int> GetCongSelected()
         {
             if(string.IsNullOrEmpty(CONG))

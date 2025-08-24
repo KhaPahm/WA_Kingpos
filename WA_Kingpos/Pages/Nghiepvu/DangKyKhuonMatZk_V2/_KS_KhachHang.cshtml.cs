@@ -91,6 +91,7 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
                     $"{cls_Main.SQLString(KS_KhachHang.TUNGAY.ToString("dd/MM/yyyy HH:mm:ss"))}, " +
                     $"{cls_Main.SQLString(KS_KhachHang.DENNGAY.ToString("dd/MM/yyyy HH:mm:ss"))}, " +
                     $"{cls_Main.SQLString(SelectedCongIdsString)})";
+
             }
             else if (string.Equals(Mode, "edit", StringComparison.OrdinalIgnoreCase))
             {

@@ -1,0 +1,49 @@
+﻿@model WA_Kingpos.Models.cls_KS_KhachHang;
+
+
+<tr>
+    <td class="align-middle" style="white-space: nowrap; min-width:70px">@Model.MA_KH</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:200px">@Model.TEN</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:100px">@Model.NGAYSINH</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:80px">@Model.GIOITINH</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:200px">@Model.DIACHI</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:100px">@Model.DIENTHOAI</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:100px">@Model.CCCD</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:100px">@Model.QUOCTICH</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:130px">@Model.EMAIL</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:150px">@Model.NGAYTAO.ToString("dd/MM/yyyy HH:mm")</td>
+    <td class="align-middle" style="white-space: nowrap; min-width:130px">@Model.TENNHANVIEN</td>
+    <td class="align-middle" style="white-space: wrap; min-width:150px;">
+        @foreach (var cong in Model.CONG_NAME.Split(","))
+        {
+            <span class="badge badge-pill badge-success">@cong</span>
+        }
+    </td>
+    <td class="align-middle">
+        @* <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@Model.MA_KH">Xem</a> *@
+        @* <button type="button" class="btn btn-info btn-sm btn-view" data-url="@Url.Page("_KS_KhachHang", new { id = item.MA_KH })">Xem</button> *@ @* data-toggle="modal" data-target="#myModal" *@
+        <div>
+            <a asp-page="./_KS_KhachHang"
+               asp-route-id="@Model.MA_KH"
+               asp-route-mode="view"
+               class="btn btn-info btn-sm btn-open-modal">
+                Xem
+            </a>
+            @if (Model.CanEdit)
+            {
+                <a asp-page="./_KS_KhachHang"
+                   asp-route-id="@Model.MA_KH"
+                   asp-route-mode="edit"
+                   class="btn btn-warning btn-sm btn-open-modal">
+                    Sửa
+                </a>
+            }
+
+            @if (Model.CanDelete)
+            {
+                <button type="button" class="btn btn-danger btn-sm btn-delete-customer" role="button" onclick="showDeleteCustomer(@Model.MA_KH)" data="@Model.MA_KH">Xóa</button>
+            }
+        </div>
+
+    </td>
+</tr>

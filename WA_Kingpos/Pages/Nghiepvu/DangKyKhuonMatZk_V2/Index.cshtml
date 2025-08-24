@@ -59,52 +59,14 @@
                                 <th>Email</th>
                                 <th>Ngày tạo</th>
                                 <th>Nhân viên tạo</th>
+                                <th>Cổng sử dụng</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model.listitem)
                             {
-                                <tr>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:70px">@item.MA_KH</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:200px">@item.TEN</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:100px">@item.NGAYSINH</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:80px">@item.GIOITINH</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:200px">@item.DIACHI</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:100px">@item.DIENTHOAI</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:100px">@item.CCCD</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:100px">@item.QUOCTICH</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:130px">@item.EMAIL</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:150px">@item.NGAYTAO.ToString("dd/MM/yyyy HH:mm")</td>
-                                    <td class="align-middle" style="white-space: nowrap; min-width:130px">@item.TENNHANVIEN</td>
-                                    <td class="align-middle">
-                                        @* <a class="btn btn-info btn-sm" role="button" asp-page="./View" asp-route-id="@item.MA_KH">Xem</a> *@
-                                        @* <button type="button" class="btn btn-info btn-sm btn-view" data-url="@Url.Page("_KS_KhachHang", new { id = item.MA_KH })">Xem</button> *@ @* data-toggle="modal" data-target="#myModal" *@
-                                        <div>
-                                            <a asp-page="./_KS_KhachHang"
-                                            asp-route-id="@item.MA_KH"
-                                            asp-route-mode="view"
-                                            class="btn btn-info btn-sm btn-open-modal">
-                                                Xem
-                                            </a>
-                                            @if (Model.bSua)
-                                            {
-                                                <a asp-page="./_KS_KhachHang"
-                                                   asp-route-id="@item.MA_KH"
-                                                   asp-route-mode="edit"
-                                                   class="btn btn-warning btn-sm btn-open-modal">
-                                                    Sửa
-                                                </a>
-                                            }
-                                            
-                                            @if (Model.bXoa)
-                                            {
-                                                <button type="button" class="btn btn-danger btn-sm btn-delete-customer" role="button" onclick="showDeleteCustomer(@item.MA_KH)" data="@item.MA_KH">Xóa</button>
-                                            }
-                                        </div>
-                                        
-                                    </td>
-                                </tr>
+								@await Html.PartialAsync("_KS_KhachHang_Item", item)
                             }
                         </tbody>
                     </table>
@@ -177,6 +139,19 @@
                                                 Địa chỉ: <span class="float-right text-info">@item.DIACHI</span>
                                             </a>
                                         </li>
+
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                Cổng sử dụng:
+                                                <div class="float-right text-info">
+                                                    @foreach (var cong in item.CONG_NAME.Split(","))
+                                                    {
+                                                        <span class="badge badge-pill badge-success">@cong</span>
+                                                    }
+                                                </div>
+                                            </a>
+                                        </li>
+
                                         <li class="d-flex justify-content-center nav-item pt-1 pb-1">
                                             <a asp-page="./_KS_KhachHang"
                                                asp-route-id="@item.MA_KH"

@@ -73,7 +73,7 @@ namespace WA_Kingpos.Pages.DangKyKhuonMatZk_V2
 
             string sConnectionString_live = cls_ConnectDB.GetConnect("0");
             //  AND IS_ADD_FACE = 0 IS_ADD = 1 
-            string sSQL = $"EXEC SP_GET_DS_KS_KHACHHANG";
+            string sSQL = $"EXEC SP_GET_DS_KS_KHACHHANG @CanEdit = {bSua}, @CanDelete ={bXoa}";
             DataTable dt = cls_Main.ReturnDataTable_NoLock(sSQL, sConnectionString_live);
             listitem = dt.ToList<cls_KS_KhachHang>();
         }

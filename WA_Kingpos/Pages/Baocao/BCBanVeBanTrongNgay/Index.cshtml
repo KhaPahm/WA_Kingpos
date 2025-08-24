@@ -26,8 +26,8 @@
                             <div class="form-group">
                                 <label asp-for="sTungay">Ngày</label>
                                 <div class="input-group date input-datepicker" data-target-input="nearest">
-                                    <input type="text" asp-for="sTungay" class=" form-control" id="sTungay" onchange="updateDanhSachChuyen()">
-                                    <div class="input-group-append" asp-validation-for="sTungay">
+                                    <input type="text" asp-for="sTungay" class=" form-control">
+                                    <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -199,15 +199,3 @@
     <!-- /.col -->
 </div>
 <!-- /.row -->
-
-
-<script>
-
-    async function updateDanhSachChuyen() {
-        console.log("ABC");
-        const selectedDate = document.getElementById('sTungay').value;
-        const response = await fetch(`/Baocao/BCBanVeBanTrongNgay?handler=DSChuyen&sTungay=${selectedDate}`);
-        const tauList = await response.json();
-		console.log(tauList);
-    }
-</script>  
