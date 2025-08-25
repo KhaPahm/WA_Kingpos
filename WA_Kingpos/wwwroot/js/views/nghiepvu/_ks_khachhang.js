@@ -2,6 +2,7 @@
 
 $(document).ready(async function () {
     await loadFaceApi();
+    
 })
 
 async function loadFaceApi() {
@@ -41,33 +42,61 @@ $('#btnSave').on('click', function () {
         url: $form.attr('action') || window.location.href + '?handler=Save',
         method: 'POST',
         data: $form.serialize(),
-        success: function (json) {
-            if (json && json.ok) {
+        success: function (res) {
+            console.log(typeof res)
+            console.log(res.views.grid)
+            if (res && res.ok) {
+                const updatedRowHtml = res.text();
+                console.log("updatedRowHtml: ", updatedRowHtml);
                 if ($modal.length != 0) {
                     $modal.modal('hide');
                 }
                 alert("Lưu thành công!");
-                // Optional: reload the list or update row inline
                 location.reload();
             } else {
-                if ($modal.length != 0) {
-                    $modal.find('.modal-body').html(json);
+                const id = $('#KS_KhachHang_MA_KH').val()
+                const ten = $('#KS_KhachHang_TEN').val()
+
+                if ($.fn.dataTable.isDataTable('#tablefull')) {
+                    const dt = $('#tablefull').DataTable();
+                    const row = dt.row(`#ks-khachhang-row-${id}`)
+
+                    if (!row.node()) return;
+
+                    // Add the new row as a jQuery object (single <tr>)
+                    const $newRow = $(res.trim());
+                    const cells = $newRow.find('td').map(function () { return $(this).html(); }).get();
+
+                    row.data(cells).draw(false)
+
+                    $(row.node()).attr('id', `ks-khachhang-row-${id}`);
+
+                    // Adjust widths and responsive breakpoints
+                    dt.columns.adjust().responsive?.recalc();
+
+                    if (typeof showToast == 'function') {
+                        showToast(`Lưu thông tin khách hàng <strong>${ten}</strong> thành công`, "Thông báo", "success");
+                    }
+                    else {
+                        alert(`Lưu thông tin khách hàng ${ten} thành công`)
+                    }
+                    $modal.modal('hide');
                 }
-                // If server returned HTML (validation errors), replace body
+                else {
+                    location.reload(); 
+                }
             }
         },
-        error: function (xhr) {
-            // If validation failed and Page() returned HTML, xhr.responseText is HTML
-            var ct = xhr.getResponseHeader('Content-Type') || '';
-            //if (ct.indexOf('text/html') >= 0) {
-            //    $modal.find('.modal-body').html(xhr.responseText);
-            //} else {
-            //    alert('Lỗi khi lưu.');
-            //}
-            alert('Lỗi khi lưu.');
+        error: function (err) {
+            console.error("Kha log: ", err)
+            if (typeof showToast == 'function') {
+                showToast("Lỗi khi lưu", "Thông báo", "error");
+            }
+            else {
+                alert("Lỗi khi lưu")
+            }
         },
         complete: function () {
-            // Re-enable button and restore text
             btn.prop("disabled", false).text("Lưu");
         }
     });

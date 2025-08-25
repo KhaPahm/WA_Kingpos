@@ -4,7 +4,7 @@
     ViewData["Title"] = "Danh sách khách hàng đăng ký khuôn mặt";
     ViewData["Name"] = "dangkykhuonmatzk_v2";
 }
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
 @section Styles {
@@ -59,14 +59,14 @@
                                 <th>Email</th>
                                 <th>Ngày tạo</th>
                                 <th>Nhân viên tạo</th>
-                                <th>Cổng sử dụng</th>
+                                <th style="overflow-wrap: anywhere; word-break: break-word; white-space: normal;">Cổng sử dụng</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tb-body-ks-khachhang">
                             @foreach (var item in Model.listitem)
                             {
-								@await Html.PartialAsync("_KS_KhachHang_Item", item)
+								@await Html.PartialAsync("_KS_KhachHang_Row", item)
                             }
                         </tbody>
                     </table>
@@ -223,6 +223,7 @@
         </div>
     </div>
 </div>
+
 
 @section Scripts {
     <script src="/lib/face-api/face-api.min.js"></script>

@@ -1,7 +1,9 @@
 ﻿using System.Data;
 using System.Globalization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using WA_Kingpos.Data;
 using WA_Kingpos.Models;
 
@@ -112,8 +114,27 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
             }
 
             string sConnectionString_live = cls_ConnectDB.GetConnect("0");
-            cls_Main.ExecuteSQL(sSql, sConnectionString_live);
-
+            //bool excueResult = cls_Main.ExecuteSQL(sSql, sConnectionString_live);
+            bool excueResult = false;
+            if (excueResult == false)
+                return BadRequest("Lỗi khi lưu dữ liệu. Vui lòng thử lại sau.");
+            else {
+                string sSQL = $"EXEC SP_GET_DS_KS_KHACHHANG @MaKH = " + Id.ToString();
+                DataTable dt = cls_Main.ReturnDataTable_NoLock(sSQL, sConnectionString_live);
+                if (dt.Rows.Count > 0)
+                {
+                    cls_KS_KhachHang KH_result = dt.ToList<cls_KS_KhachHang>().FirstOrDefault();
+                    KH_result.CanEdit = cls_UserManagement.AllowEdit("2025081601", HttpContext.Session.GetString("Permission"));
+                    KH_result.CanDelete = cls_UserManagement.AllowDelete("2025081601", HttpContext.Session.GetString("Permission"));
+                    return new JsonResult(
+                        new { 
+                                ok = true, 
+                                views = new {
+                                    grid = Partial("_KS_KhachHang_Row", KH_result) // Trả về PartialView với dữ liệu đã cập nhật
+                                } 
+                            }); 
+                }
+            }
             return new JsonResult(new { ok = true });
         }
 
@@ -123,8 +144,10 @@ namespace WA_Kingpos.Pages.Nghiepvu.DangKyKhuonMatZk_V2
             string sSql = $"UPDATE KS_KHACHHANG SET TRANGTHAI = 0 WHERE MA_KH = {id}";
             string sConnectionString_live = cls_ConnectDB.GetConnect("0");
             cls_Main.ExecuteSQL(sSql, sConnectionString_live);
-
             return new JsonResult(new { ok = true });
         }
+
+        private PartialViewResult Partial(string name, cls_KS_KhachHang model)   
+            => new PartialViewResult { ViewName = name, ViewData = new ViewDataDictionary<cls_KS_KhachHang>(ViewData, model) };
     }
 }
