@@ -1,0 +1,142 @@
+﻿@page
+@model WA_Kingpos.Pages.Baocao.BCSoatVeTheoCong.IndexModel
+@{
+    ViewData["Title"] = "Báo Cáo Xoát Vé Theo Cổng";
+    ViewData["Name"] = "bcsoatvetheocong";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["AlertMessage"] != null)
+                    {
+                        <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                            @TempData["AlertMessage"]
+                        </div>
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-5">
+                            <div class="form-group">
+                                <label>Từ ngày - Đến ngày</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" asp-for="sTungay" class="form-control float-right" id="reservationtime">
+                                    @* <input type="text" class="form-control float-right" id="reservation"> *@
+                                </div>
+                                <span asp-validation-for="sTungay" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-5">
+                            <div class="form-group">
+                                <label id="dynamicLabel" for="comboBox">Lựa chọn:</label>
+                                <div class="input-group">
+                                    <select id="comboBox" asp-for="sCombo" class="form-control">
+                                    </select>
+                                </div>
+                                <span asp-validation-for="sCombo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-5">
+                            <div class="form-group">
+                                <label id="dynamicLabel" for="comboBox">Lựa chọn:</label>
+                                <div class="input-group">
+                                    <select id="comboBox" asp-for="sCombo" class="form-control">
+                                    </select>
+                                </div>
+                                <span asp-validation-for="sCombo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem báo cáo</button>
+                        <button type="submit" name="submitButton" value="print" class="btn btn-dark">Xuất PDF</button>
+                        <button type="submit" name="submitButton" value="excel" class="btn btn-success">Xuất Excel</button>
+                    </div>
+
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center ; vertical-align:middle">STT</th>
+                            <th style="text-align:center ; vertical-align:middle">Thời gian</th>
+                            <th style="text-align:center ; vertical-align:middle">Loại thẻ</th>
+                            <th style="text-align:center ; vertical-align:middle">Mã thẻ QrCode</th>
+                            <th style="text-align:center ; vertical-align:middle">Loại vé</th>
+                            <th style="text-align:center ; vertical-align:middle">Ngày bán</th>
+                            <th style="text-align:center ; vertical-align:middle">Trạng thái</th>
+                            <th style="text-align:center ; vertical-align:middle">Tên cổng</th>
+                            <th style="text-align:center ; vertical-align:middle">Nhân viên</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listHD)
+                        {
+                            <tr>
+                                <td>@item.STT</td>
+                                <td>@item.DATE_CREATED.ToString("dd/MM/yyyy")</td>
+                                <td>@item.LOAITHE</td>
+                                <td>@item.CARDNO</td>
+                                <td>@item.LOAIVE</td>
+                                <td>@item.GIOORDER.ToString("dd/MM/yyyy")</td>
+                                <td>@item.CHOQUA</td>
+                                <td>@item.TEN_BEP</td>
+                                <td>@item.TENNHANVIEN</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<style>
+    .form-group1 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px; /* Optional: Adjust spacing between elements */
+    }
+</style>
+<script>
+    var ListNhanvien = @Html.Raw(Json.Serialize(Model.ListNhanvien));
+    function loadCombobox() {
+
+        let data = [];
+
+        console.log(ListNhanvien);
+        document.getElementById('dynamicLabel').textContent = "Chọn nhân viên";
+        data = ListNhanvien;
+
+        // Add new options to the combobox
+        data.forEach(item => {
+            const newOption = document.createElement("option");
+            newOption.value = item.MA;
+            newOption.textContent = item.TEN;
+            newOption.innerHTML = `<span class="id-column">${item.MA}</span> - <span></span><span class="name-column">${item.TEN}</span>`;
+            comboBox.add(newOption);
+        });
+    }
+
+    loadCombobox();
+</script>

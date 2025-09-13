@@ -86,98 +86,11 @@
             <div class="card-header">
                 <h3 class="card-title">@ViewData["Title"]</h3>
             </div>
-            <div class="card-body">
-                <div class="row">
+            <div class="card-body" id="ks-khachhang-card">
+                <div id="card-ks-khachhang-container" class="row">
                     @foreach (var item in Model.listitem)
                     {
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-footer p-0">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Mã khách hàng: <span class="float-right text-info">@item.MA_KH</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Tên khách hàng: <span class="float-right text-info">@item.TEN</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Ngày sinh: <span class="float-right text-info">@item.NGAYSINH</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Giới tính: <span class="float-right text-info">@item.GIOITINH</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Điện thoại: <span class="float-right text-info">@item.DIENTHOAI</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                CCCD: <span class="float-right text-info">@item.CCCD</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Quốc tịch: <span class="float-right text-info">@item.QUOCTICH</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Email: <span class="float-right text-info">@item.EMAIL</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Địa chỉ: <span class="float-right text-info">@item.DIACHI</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                Cổng sử dụng:
-                                                <div class="float-right text-info">
-                                                    @foreach (var cong in item.CONG_NAME.Split(","))
-                                                    {
-                                                        <span class="badge badge-pill badge-success">@cong</span>
-                                                    }
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li class="d-flex justify-content-center nav-item pt-1 pb-1">
-                                            <a asp-page="./_KS_KhachHang"
-                                               asp-route-id="@item.MA_KH"
-                                               asp-route-mode="view"
-                                               class="btn btn-info btn-sm btn-open-modal mx-1">
-                                                Xem
-                                            </a>
-                                            @if (Model.bSua)
-                                            {
-                                                <a asp-page="./_KS_KhachHang"
-                                                    asp-route-id="@item.MA_KH"
-                                                    asp-route-mode="edit"
-                                                   class="btn btn-warning btn-sm btn-open-modal mx-1">
-                                                    Sửa
-                                                </a>
-                                            }
-
-                                            @if (Model.bXoa)
-                                            {
-                                                <button type="button" class="btn btn-danger btn-sm btn-delete-customer mx-1" role="button" onclick="showDeleteCustomer(@item.MA_KH)" data="@item.MA_KH">Xóa</button>
-                                            }
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @await Html.PartialAsync("_KS_KhachHang_Card", item)
                     }
                 </div>
             </div>

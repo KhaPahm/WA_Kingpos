@@ -1,0 +1,257 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.KhaiBaoNhienLieuQuocChanh.IndexModel
+@{
+    ViewData["Title"] = "Khai báo nhiên liệu thực tế";
+    ViewData["Name"] = "bangkhainhienlieu";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">THÔNG TIN TÀU</h5>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <label asp-for="sTungay">Ngày</label>
+                                <div class="input-group date" id="sTungayPicker" data-target-input="nearest">
+                                    <input type="text" asp-for="sTungay"
+                                           class="form-control datetimepicker-input"
+                                           id="sTungay"
+                                           data-target="#sTungayPicker" />
+                                    <div class="input-group-append" data-target="#sTungayPicker" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="sTungay" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="TAU">Tàu</label>
+                                <select asp-for="TAU" id="TAU" class="form-control select2bs4" style="width: 100%;">
+                                    <option value="" selected disabled hidden>Chọn tàu...</option>
+                                    @foreach (var item in Model.listitem)
+                                    {
+                                        <option value="@item.ID">@item.NAME</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="TAU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SOLUONG">Số chuyến</label>
+                                <input asp-for="SOLUONG" id="SOLUONG" type="text" class="form-control" />
+                                <span asp-validation-for="SOLUONG" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DAUTON">Dầu tồn trong két</label>
+                                <input asp-for="DAUTON" type="number" class="form-control" oninput="sumTONGDAU(this); sumTONCUOI()" />
+                                <span asp-validation-for="DAUTON" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DAUTHEM">Dầu cấp thêm</label>
+                                <input asp-for="DAUTHEM" type="number" class="form-control" oninput="sumTONGDAU(this); sumTONCUOI()" />
+                                <span asp-validation-for="DAUTHEM" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TONGDAU">Tổng dầu</label>
+                                <input asp-for="TONGDAU" type="text" class="form-control" readonly oninput="sumTONCUOI(this)" />
+                                <span asp-validation-for="TONGDAU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TONGTIEUTHU">Tổng tiêu thụ</label>
+                                <input asp-for="TONGTIEUTHU" type="text" class="form-control" oninput="sumTONCUOI(this)" />
+                                <span asp-validation-for="TONGTIEUTHU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TIEUTHUMAYCHINH">Tổng tiêu thụ máy chính</label>
+                                <input asp-for="TIEUTHUMAYCHINH" type="text" class="form-control" />
+                                <span asp-validation-for="TIEUTHUMAYCHINH" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TIEUTHUTUNGCHUYEN">Tiêu thụ từng chuyến</label>
+                                <input asp-for="TIEUTHUTUNGCHUYEN" type="text" class="form-control" />
+                                <span asp-validation-for="TIEUTHUTUNGCHUYEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TRADAU">Trả dầu</label>
+                                <input asp-for="TRADAU" type="text" class="form-control" oninput="sumTONCUOI(this)" />
+                                <span asp-validation-for="TRADAU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TONCUOI">Tồn cuối</label>
+                                <input asp-for="TONCUOI" type="text" class="form-control" readonly />
+                                <span asp-validation-for="TONCUOI" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="GHICHU">Ghi chú</label>
+                                <input asp-for="GHICHU" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+
+                        <button type="submit" name="submitButton" value="btn2Create" class="btn btn-success">Lưu Khai Báo</button>
+                        <button type="submit" name="submitButton" value="btn1List" class="btn btn-info">Danh sách phiếu đã tạo</button>
+
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+<script>
+    (function () {
+        // helper: lấy element theo name hoặc id
+        function getEl(nameOrId) {
+            return document.querySelector('[name="' + nameOrId + '"],#' + nameOrId);
+        }
+
+        // helper: đọc số từ input, bỏ dấu ngăn nghìn (. hoặc , và khoảng trắng)
+        function getNumber(nameOrId) {
+            var el = getEl(nameOrId);
+            if (!el) return 0;
+            var raw = (el.value || '').toString();
+            // loại bỏ mọi ký tự không phải số hoặc dấu trừ
+            raw = raw.replace(/[^\d\-]/g, '');
+            return parseFloat(raw) || 0;
+        }
+
+        // helper: gán giá trị (dưới dạng số, không format) vào input
+        function setValue(nameOrId, val) {
+            var el = getEl(nameOrId);
+            if (!el) return;
+            el.value = val;
+        }
+
+        // Tính tổng dầu = DAUTON + DAUTHEM
+        window.sumTONGDAU = function () {
+            var dauton = getNumber('DAUTON');
+            var dauthem = getNumber('DAUTHEM');
+            var tong = dauton + dauthem;
+            setValue('TONGDAU', tong);
+            // cập nhật các phụ thuộc
+            //calcCONLAI();
+            //calcDAUTON();
+        };
+
+        // Tính tồn cuối = TONGDAU - TONGTIEUTHU - TRADAU
+        window.sumTONCUOI = function () {
+            var tongdau = getNumber('TONGDAU');
+            var tongtieuthu = getNumber('TONGTIEUTHU');
+            var tradau = getNumber('TRADAU');
+            var toncuoi = tongdau - tongtieuthu - tradau;
+            setValue('TONCUOI', toncuoi);
+            // nếu cần cập nhật hiển thị khác, gọi ở đây
+        };
+
+
+        // tự bind sự kiện input cho các ô chính (an toàn hơn than inline)
+        function bindEvents() {
+            ['DAUTON', 'DAUTHEM'].forEach(function (name) {
+                var el = getEl(name);
+                if (el) el.addEventListener('input', function () {
+                    sumTONGDAU(); // sẽ gọi tiếp calc...
+                    sumTONCUOI();
+                });
+            });
+
+            ['TONGTIEUTHU', 'TRADAU'].forEach(function (name) {
+                var el = getEl(name);
+                if (el) el.addEventListener('input', function () {
+                    sumTONCUOI();
+                    //calcDAUTON();
+                });
+            });
+
+            // nếu bạn muốn cập nhật khi trang load
+            window.addEventListener('load', function () {
+                sumTONGDAU();
+                sumTONCUOI();
+            });
+        }
+
+        // debug: hiển thị lỗi console nếu element không tìm thấy
+        function debugCheck() {
+            ['DAUTON', 'DAUTHEM', 'TONGDAU', 'TONGTIEUTHU', 'TRADAU', 'TONCUOI'].forEach(function (name) {
+                if (!getEl(name)) console.warn('Element not found:', name);
+            });
+        }
+
+        // khởi tạo
+        bindEvents();
+        debugCheck();    
+    })();
+</script>
+
+@section Scripts {
+    <script>
+
+
+        $(function () {
+            console.log("Khởi tạo datetimepicker...");
+
+            $('#sTungayPicker').datetimepicker({
+                format: 'L',     // auto theo locale
+                locale: 'vi'
+            });
+
+            $('#sTungayPicker').on("change.datetimepicker", function () {
+                const val = $('#sTungay').val();
+                console.log("Ngày chọn:", val);
+
+                if (!val) return;
+                $("#SOLUONG").val(0);
+                $.get("?handler=TauTheoNgay", { ngay: val })
+                    .done(function (res) {
+                        let $selectTau = $("#TAU");
+                        $selectTau.empty().append('<option value="">Chọn tàu...</option>');
+                        res.forEach(item => {
+                            $selectTau.append(`<option value="${item.ID}">${item.NAME}</option>`);
+                        });
+                    });
+            });
+        });
+
+
+        $(function () {
+            $("#TAU").on("change", function () {
+                let idTau = $(this).val();
+                if (!idTau) return;
+
+                $.get("?handler=SoLuongChuyenTau", { idTau: idTau })
+                    .done(function (res) {
+                        console.log("Số chuyến:", res);
+                        $("#SOLUONG").val(res);
+                    })
+                    .fail(function () {
+                        alert("Lỗi khi lấy số chuyến tàu");
+                    });
+            });
+        });
+     </script>
+}
+
+
+
+
+
+
+

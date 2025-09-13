@@ -1,18 +1,18 @@
 ﻿@model WA_Kingpos.Models.cls_KS_KhachHang;
 
 <tr id="ks-khachhang-row-@Model.MA_KH">
-    <td class="align-middle" style="white-space: nowrap; min-width:70px">@Model.MA_KH</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:200px">@Model.TEN</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:100px">@Model.NGAYSINH</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:80px">@Model.GIOITINH</td>
-    <td class="align-middle" style="white-space: normal; min-width:200px; max-width:300px">@Model.DIACHI</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:100px">@Model.DIENTHOAI</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:100px">@Model.CCCD</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:100px">@Model.QUOCTICH</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:130px">@Model.EMAIL</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:150px">@Model.NGAYTAO.ToString("dd/MM/yyyy HH:mm")</td>
-    <td class="align-middle" style="white-space: nowrap; min-width:130px">@Model.TENNHANVIEN</td>
-    <td class="align-middle" style="white-space: normal; min-width:150px">
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:70px">@Model.MA_KH</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:200px">@Model.TEN</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:100px">@Model.NGAYSINH</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:80px">@Model.GIOITINH</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: normal; min-width:200px; max-width:300px">@Model.DIACHI</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:100px">@Model.DIENTHOAI</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:100px">@Model.CCCD</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:100px">@Model.QUOCTICH</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:130px">@Model.EMAIL</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:150px">@Model.NGAYTAO.ToString("dd/MM/yyyy HH:mm")</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: nowrap; min-width:130px">@Model.TENNHANVIEN</td>
+    <td class="@(Model.HAS_PHOTO ? "align-middle" : "align-middle text-danger")" style="white-space: normal; min-width:150px">
         @foreach (var cong in Model.CONG_NAME.Split(","))
         {
             <span class="badge badge-pill badge-success">@cong</span>

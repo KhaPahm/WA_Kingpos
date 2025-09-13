@@ -1,0 +1,264 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.KhaiBaoNhienLieuQuocChanh.EditModel
+@{
+    ViewData["Title"] = "Bảng khai nguyên liệu";
+    ViewData["Name"] = "bangkhainhienlieu";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">Cập nhật khai báo sử dụng nguyên liệu</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="TAU">Tàu: @Model.name</label>
+                            </div>
+                            <div class="form-group" hidden>
+                                <label asp-for="TAU">Tàu: </label>
+                                <input asp-for="TAU" type="text" class="form-control" readonly />
+                                <span asp-validation-for="TAU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SOLUONG">Số chuyến</label>
+                                <input asp-for="SOLUONG" type="text" class="form-control"  />
+                                <span asp-validation-for="SOLUONG" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DAUTON">Dầu tồn trong két</label>
+                                <input asp-for="DAUTON" type="number" class="form-control" oninput="sumTONGDAU(this); sumTONCUOI()" />
+                                <span asp-validation-for="DAUTON" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DAUTHEM">Dầu cấp thêm</label>
+                                <input asp-for="DAUTHEM" type="number" class="form-control" oninput="sumTONGDAU(this); sumTONCUOI()" />
+                                <span asp-validation-for="DAUTHEM" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TONGDAU">Tổng dầu</label>
+                                <input asp-for="TONGDAU" type="text" class="form-control" readonly oninput="sumTONCUOI(this) />
+                                <span asp-validation-for="TONGDAU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TONGTIEUTHU">Tổng tiêu thụ</label>
+                                <input asp-for="TONGTIEUTHU" type="text" class="form-control" oninput="sumTONCUOI(this) />
+                                <span asp-validation-for="TONGTIEUTHU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TIEUTHUMAYCHINH">Tổng tiêu thụ máy chính</label>
+                                <input asp-for="TIEUTHUMAYCHINH" type="text" class="form-control" />
+                                <span asp-validation-for="TIEUTHUMAYCHINH" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TIEUTHUTUNGCHUYEN">Tiêu thụ từng chuyến</label>
+                                <input asp-for="TIEUTHUTUNGCHUYEN" type="text" class="form-control" />
+                                <span asp-validation-for="TIEUTHUTUNGCHUYEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TRADAU">Trả dầu</label>
+                                <input asp-for="TRADAU" type="text" class="form-control" oninput="sumTONCUOI(this) />
+                                <span asp-validation-for="TRADAU" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TONCUOI">Tồn cuối</label>
+                                <input asp-for="TONCUOI" type="text" class="form-control" readonly />
+                                <span asp-validation-for="TONCUOI" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="GHICHU">Ghi chú</label>
+                                <input asp-for="GHICHU" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="btn1ReLoad" class="btn btn-success" hidden>ReLoad</button>
+                        <button type="submit" name="submitButton" value="btn2Create" class="btn btn-success">Lưu Khai Báo</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+<script>
+    (function () {
+        // helper: lấy element theo name hoặc id
+        function getEl(nameOrId) {
+            return document.querySelector('[name="' + nameOrId + '"],#' + nameOrId);
+        }
+
+        // helper: đọc số từ input, bỏ dấu ngăn nghìn (. hoặc , và khoảng trắng)
+        function getNumber(nameOrId) {
+            var el = getEl(nameOrId);
+            if (!el) return 0;
+            var raw = (el.value || '').toString();
+            // loại bỏ mọi ký tự không phải số hoặc dấu trừ
+            raw = raw.replace(/[^\d\-]/g, '');
+            return parseFloat(raw) || 0;
+        }
+
+        // helper: gán giá trị (dưới dạng số, không format) vào input
+        function setValue(nameOrId, val) {
+            var el = getEl(nameOrId);
+            if (!el) return;
+            el.value = val;
+        }
+
+        // Tính tổng dầu = DAUTON + DAUTHEM
+        window.sumTONGDAU = function () {
+            var dauton = getNumber('DAUTON');
+            var dauthem = getNumber('DAUTHEM');
+            var tong = dauton + dauthem;
+            setValue('TONGDAU', tong);
+            // cập nhật các phụ thuộc
+            //calcCONLAI();
+            //calcDAUTON();
+        };
+
+        // Tính tồn cuối = TONGDAU - TONGTIEUTHU - TRADAU
+        window.sumTONCUOI = function () {
+            var tongdau = getNumber('TONGDAU');
+            var tongtieuthu = getNumber('TONGTIEUTHU');
+            var tradau = getNumber('TRADAU');
+            var toncuoi = tongdau - tongtieuthu - tradau;
+            setValue('TONCUOI', toncuoi);
+            // nếu cần cập nhật hiển thị khác, gọi ở đây
+        };
+
+
+        // tự bind sự kiện input cho các ô chính (an toàn hơn than inline)
+        function bindEvents() {
+            ['DAUTON', 'DAUTHEM'].forEach(function (name) {
+                var el = getEl(name);
+                if (el) el.addEventListener('input', function () {
+                    sumTONGDAU(); // sẽ gọi tiếp calc...
+                    sumTONCUOI();
+                });
+            });
+
+            ['TONGTIEUTHU', 'TRADAU'].forEach(function (name) {
+                var el = getEl(name);
+                if (el) el.addEventListener('input', function () {
+                    sumTONCUOI();
+                    //calcDAUTON();
+                });
+            });
+
+            // nếu bạn muốn cập nhật khi trang load
+            window.addEventListener('load', function () {
+                sumTONGDAU();
+                sumTONCUOI();
+            });
+        }
+
+        // debug: hiển thị lỗi console nếu element không tìm thấy
+        function debugCheck() {
+            ['DAUTON', 'DAUTHEM', 'TONGDAU', 'TONGTIEUTHU', 'TRADAU', 'TONCUOI'].forEach(function (name) {
+                if (!getEl(name)) console.warn('Element not found:', name);
+            });
+        }
+
+        // khởi tạo
+        bindEvents();
+        debugCheck();
+
+    })();
+</script>
+@* <script>
+
+    window.onload = function () {
+        onChangeTONGTIEUTHU();
+    };
+    // tính tổng dầu gồm số tồn + dầu thêm mới
+    function sumTONGDAU(input) {
+        var DAUTON = document.getElementById('DAUTON');
+        var DAUTHEM = document.getElementById('DAUTHEM');
+        var TONGDAU = document.getElementById('TONGDAU');
+
+        var firstValue = parseFloat(DAUTON.value) || 0;
+        var secondValue = parseFloat(DAUTHEM.value) || 0;
+        var sum = firstValue + secondValue;
+        TONGDAU.value = sum;
+        calcCONLAI();
+        calcDAUTON();
+    }
+
+    function onChangeTONGTIEUTHU(input, index) {
+        var SUM_TONGTIEUTHU = sumTONGTIEUTHU();
+        // tính tổng tiêu thụ
+        var txt_SUM_TONGTIEUTHU = document.getElementById('SUM_TONGTIEUTHU');
+        txt_SUM_TONGTIEUTHU.textContent = "" + SUM_TONGTIEUTHU;
+        calcCONLAI();
+        calcDAUTON();
+    }
+
+
+    // tính tổng tiêu thụ của tất cả các chuyến trong ngày
+    // có truyền maxRow thì chỉ SUM đến dòng index maxRow
+    function sumTONGTIEUTHU(maxRow) {
+        //alert(input.name);
+        // Get all input elements with a name matching the pattern LIST_ITEM[i].TONGTIEUTHU
+        var inputs = document.querySelectorAll('input[name^="LIST_ITEM["][name$="].TONGTIEUTHU"]');
+
+        var sum = 0;
+
+        // Loop through each input and sum up their values
+        if (maxRow === null || maxRow === undefined) {
+            inputs.forEach(function (input) {
+                sum += parseInt(input.value) || 0;
+            });
+        } else {
+            for (var i = 0; i <= maxRow; i++) {
+                var element = inputs[i];
+                sum += parseInt(element.value) || 0;
+            }
+        }
+        return sum;
+    }
+
+    // tính lại dầu tồn lũy tiến trừ dần theo từng chuyến mỗi khi thay đổi tổng tiêu thụ
+    function calcDAUTON() {
+        var TONGDAU = document.getElementById('TONGDAU');
+        var TONGDAU_value = parseFloat(TONGDAU.value) || 0;
+        // Get all input elements with a name matching the pattern LIST_ITEM[i].DAUTON
+        var inputs = document.querySelectorAll('input[name^="LIST_ITEM["][name$="].DAUTON"]');
+        for (var i = 0; i < inputs.length; i++) {
+            var DAUTON = inputs[i];
+            // tính số tồn trừ dần theo từng chuyến
+            var sumUntilIndex = sumTONGTIEUTHU(i);
+            DAUTON.value = TONGDAU_value - sumUntilIndex;
+        }
+
+    }
+
+    // dầu còn lại là TONGDAU trừ đi tổng đã tiêu thụ trên các chuyến
+    function calcCONLAI() {
+        var SUM_TONGTIEUTHU = document.getElementById('SUM_TONGTIEUTHU');
+        var TONGDAU = document.getElementById('TONGDAU');
+        var SUM_CONLAI = document.getElementById('SUM_CONLAI');
+
+        var firstValue = parseFloat(TONGDAU.value) || 0;
+        var secondValue = parseFloat(SUM_TONGTIEUTHU.textContent) || 0;
+        var conlai = firstValue - secondValue;
+        SUM_CONLAI.textContent = "" + conlai;
+    }
+
+
+</script> *@

@@ -87,6 +87,8 @@ builder.Services.Configure<IISServerOptions>(options =>
     options.MaxRequestBodySize = MaxRequestBodySize;
 });
 
+builder.Services.AddRazorPages();
+
 
 var app = builder.Build();
 

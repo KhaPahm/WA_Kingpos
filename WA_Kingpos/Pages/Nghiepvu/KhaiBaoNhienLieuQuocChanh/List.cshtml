@@ -1,0 +1,91 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.KhaiBaoNhienLieuQuocChanh.ListModel
+@{
+    ViewData["Title"] = "Bảng khai nguyên liệu";
+    ViewData["Name"] = "bangkhainhienlieu";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            
+            <div class="card-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Từ ngày - Đến ngày</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" asp-for="sTungayDat" class="form-control float-right" id="reservation">
+                                    @* <input type="text" class="form-control float-right" id="reservation"> *@
+                                </div>
+                                @* <span asp-validation-for="sTungayDat" class="text-danger"></span> *@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="submitButton" value="view" class="btn btn-primary">Xem</button>
+                    </div>
+                </form>
+                <table id="tablefull" class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>                                                     
+                            <th>Tàu</th>
+                            <th>Ngày</th>
+                            <th>Tồn đầu</th>
+                            <th>Nhận</th>
+                            <th>Tổng tiêu thụ</th>
+                            <th>Tổng tiêu thụ của máy chính</th>
+                            <th>Số chuyến hoạt động</th>
+                            <th>Tiêu thụ từng chyến</th>
+                            <th>Trả dầu</th>
+                            <th>Ghi chú</th>
+                            <th>Tồn cuối</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.lstDoiTuong)
+                        {
+                            <tr>
+                                <td>@item.NAME</td>
+                                <td>@item.NGAY</td>
+                                <td>@item.DAUTON</td>
+                                <td>@item.CAPTHEM</td>
+                                <td>@item.TIEUTHU</td>
+                                <td>@item.TIEUTHUMAYCHINH</td>
+                                <td>@item.SOCHUYEN</td>
+                                <td>@item.TIEUTHUTUNGCHUYEN</td>
+                                <td>@item.TRADAU</td>
+                                <td>@item.GHICHU</td>
+                                <td>@item.CONLAI</td>                               
+                                <td>
+                                  
+                                        <a class="btn btn-warning btn-sm" role="button" asp-page="./Edit" asp-route-id="@item.ID">Sửa</a>                                                                    
+                                        <a class="btn btn-danger btn-sm" role="button" asp-page="./Delete" asp-route-id="@item.ID">Xóa</a>
+                                    
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">                
+                    <a class="btn btn-primary" role="button" asp-page="./Index">Tạo phiếu mới</a>                                
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>

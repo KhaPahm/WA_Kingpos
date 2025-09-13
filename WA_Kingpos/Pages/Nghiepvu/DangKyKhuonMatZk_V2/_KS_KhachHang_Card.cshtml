@@ -1,0 +1,90 @@
+﻿@model WA_Kingpos.Models.cls_KS_KhachHang;
+
+<div class="col-md-6 col-lg-4" id="ks-khachhang-card-@Model.MA_KH">
+    <div class="card">
+        <div class="card-footer p-0">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Mã khách hàng: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.MA_KH</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Tên khách hàng: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.TEN</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Ngày sinh: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.NGAYSINH</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Giới tính: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.GIOITINH</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Điện thoại: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.DIENTHOAI</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        CCCD: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.CCCD</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Quốc tịch: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.QUOCTICH</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Email: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.EMAIL</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Địa chỉ: <span class="@(Model.HAS_PHOTO ? "float-right text-info" : "float-right text-info text-danger")">@Model.DIACHI</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Cổng sử dụng:
+                        <div class="float-right text-info">
+                            @foreach (var cong in Model.CONG_NAME.Split(","))
+                            {
+                                <span class="badge badge-pill badge-success">@cong</span>
+                            }
+                        </div>
+                    </a>
+                </li>
+
+                <li class="d-flex justify-content-center nav-item pt-1 pb-1">
+                    <a asp-page="./_KS_KhachHang"
+                       asp-route-id="@Model.MA_KH"
+                       asp-route-mode="view"
+                       class="btn btn-info btn-sm btn-open-modal mx-1">
+                        Xem
+                    </a>
+                    @if (Model.CanEdit)
+                    {
+                        <a asp-page="./_KS_KhachHang"
+                           asp-route-id="@Model.MA_KH"
+                           asp-route-mode="edit"
+                           class="btn btn-warning btn-sm btn-open-modal mx-1">
+                            Sửa
+                        </a>
+                    }
+
+                    @if (Model.CanDelete)
+                    {
+                        <button type="button" class="btn btn-danger btn-sm btn-delete-customer mx-1" role="button" onclick="showDeleteCustomer(@Model.MA_KH)" data="@Model.MA_KH">Xóa</button>
+                    }
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -42,8 +42,7 @@
     <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+ 
     <!-- iCheck -->
     <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -72,6 +71,9 @@
     <!-- dropzonejs -->
     <link rel="stylesheet" href="~/plugins/dropzone/min/dropzone.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap-multiselect/dist/css/bootstrap-multiselect.min.css" type="text/css">
+    <link rel="stylesheet" href="~/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+
+
     <style>
         /* Dùng để set width bảng lưới dữ liệu luôn là 100%, kể cả khi chỉ có ít cột */
         table.dataTable {
@@ -512,6 +514,15 @@
                                         </a>
                                     </li>
                                 }
+                                @if (cls_UserManagement.AllowView("2023121302", Context.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                {
+                                    <li class="nav-item">
+                                        <a asp-area="" asp-page="/Nghiepvu/KhaiBaoNhienLieuQuocChanh/Index" class="nav-link @(ViewData["Name"]== "bangkhainhienlieu" ?" active":"")">
+                                            <i class="far fa-address-card nav-icon"></i>
+                                            <p>Khai báo nhiên liệu thực tế</p>
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </li>
 
@@ -689,7 +700,7 @@
             <!-- /.content -->
 
             <!-- Toast container -->
-            <div class="toast-container position-fixed top-0 p-3" style="z-index: 2000; right: 0; top: 0;">
+            <div class="toast-container position-fixed p-3" style="z-index: 5; right: 0; bottom: 0;">
                 <div id="appToast" class="toast align-items-center text-white border-0"
                      role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000" style="min-width: 250px; max-width: 300px; background-color: #fff !important;">
                     <div class="toast-header">
@@ -732,8 +743,8 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <!-- my js file -->
-    <script src="~/js/site.js"></script>
+ @*    <!-- my js file -->
+    <script src="~/js/site.js"></script> *@
     <!-- Bootstrap 4 -->
     <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Select2 -->
@@ -742,6 +753,7 @@
     <script src="~/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
     <!-- InputMask -->
     <script src="~/plugins/moment/moment.min.js"></script>
+    <script src="~/plugins/moment/locale/vi.js"></script>
     <script src="~/plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- ChartJS -->
     <script src="~/plugins/chart.js/Chart.min.js"></script>
@@ -758,6 +770,8 @@
     <script src="~/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- Bootstrap Switch -->
     <script src="~/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
     <!-- BS-Stepper -->
@@ -768,6 +782,8 @@
     <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+       <!-- my js file -->
+    <script src="~/js/site.js"></script>
     <!-- AdminLTE App -->
     <script src="~/dist/js/adminlte.js"></script>
     <!-- DataTables  & Plugins -->
@@ -784,8 +800,12 @@
     <script src="~/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="~/lib/bootstrap-multiselect/dist/js/bootstrap-multiselect.min.js" asp-append-version="true"></script>
+    <script src="~/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.vi.min.js"></script>
+ 
+    
 
-    @await RenderSectionAsync("Scripts", required: false)
+    @* @await RenderSectionAsync("Scripts", required: false) *@
     <!-- Page specific script for table -->
     <script>
         const dataTableInstances = {};
@@ -999,6 +1019,7 @@
             }, function (start, end) {
                 if ($('.input-datepicker > input').length) {
                     console.log("Kha test")
+                    console.log("start", start)
                     $('.input-datepicker > input').val(start.format('DD/MM/YYYY'));
                 }
                 // Tự động gửi biểu mẫu
@@ -1164,5 +1185,6 @@
     {
         <script src="~/js/index.js"></script>
     }
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

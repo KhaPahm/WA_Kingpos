@@ -279,6 +279,11 @@
                                             <a class="btn btn-success btn-block" role="button" asp-page="/Nghiepvu/Khaibaonhienlieu/Index">Khai báo nhiên liệu thực tế</a>
                                             <br>
                                         }
+                                        @if (cls_UserManagement.AllowAdd("2023121302", HttpContext.Session.GetString("Permission")) && cls_AppSettings.GetValue["Config:RunMode"].ToString() == "vetau")
+                                        {
+                                            <a class="btn btn-success btn-block" role="button" asp-page="/Nghiepvu/KhaibaonhienlieuQuocChanh/Index">Khai báo nhiên liệu thực tế</a>
+                                            <br>
+                                        }
                                     </div>
                                 </div>
                             </div>

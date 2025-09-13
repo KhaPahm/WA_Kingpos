@@ -34,6 +34,7 @@ namespace WA_Kingpos.Models
         public string CONG_NAME { get; set; } = "";
         public bool CanEdit { get; set; } = false;
         public bool CanDelete { get; set; } = false;
+        public bool HAS_PHOTO { get; set; } = false;
         public List<int> GetCongSelected()
         {
             if(string.IsNullOrEmpty(CONG))

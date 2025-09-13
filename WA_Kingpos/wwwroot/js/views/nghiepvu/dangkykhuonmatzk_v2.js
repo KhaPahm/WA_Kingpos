@@ -35,13 +35,24 @@ function deleteCustomer(id) {
         data: { id },                 // form-encoded binds to int id
         success: function (json) {
             if (json && json.ok) {
-                
-                alert("Lưu thành công!");
-                // Optional: reload the list or update row inline
-                location.reload();
+                const dt = $('#tablefull').DataTable();
+                $(`#ks-khachhang-row-${id}`).remove();
+                dt.row(`#ks-khachhang-row-${id}`).remove();
+                dt.columns.adjust().responsive?.recalc();
+                $(`#ks-khachhang-card-${id}`).remove();
+
+
+                if (typeof showToast == 'function') {
+                    showToast(`Xóa dữ liệu khách hàng thành công`, "Thông báo", "success");
+                    var $modal = $('#confirmDeleteModal');
+                    $modal.modal('hide');
+                }
+                else {
+                    alert(` dữ liệu khách hàng thành công`)
+                    location.reload();
+                }
             } else {
-                
-                // If server returned HTML (validation errors), replace body
+                location.reload();
             }
         },
         error: xhr => console.log('Lỗi')

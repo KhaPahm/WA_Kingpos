@@ -43,9 +43,8 @@ $('#btnSave').on('click', function () {
         method: 'POST',
         data: $form.serialize(),
         success: function (res) {
-            console.log(typeof res)
-            console.log(res.views.grid)
-            if (res && res.ok) {
+            
+            if (res && res.ok && !res.views) {
                 const updatedRowHtml = res.text();
                 console.log("updatedRowHtml: ", updatedRowHtml);
                 if ($modal.length != 0) {
@@ -59,20 +58,36 @@ $('#btnSave').on('click', function () {
 
                 if ($.fn.dataTable.isDataTable('#tablefull')) {
                     const dt = $('#tablefull').DataTable();
-                    const row = dt.row(`#ks-khachhang-row-${id}`)
+                    if (id.toString() !== '0') {
+                        //Update thông tin trong bảng
+                        const row = dt.row(`#ks-khachhang-row-${id}`)
 
-                    if (!row.node()) return;
+                        if (!row.node()) return;
 
-                    // Add the new row as a jQuery object (single <tr>)
-                    const $newRow = $(res.trim());
-                    const cells = $newRow.find('td').map(function () { return $(this).html(); }).get();
+                        // Add the new row as a jQuery object (single <tr>)
+                        const $newRow = $(res.views.row.trim());
+                        const cells = $newRow.find('td').map(function () { return $(this).html(); }).get();
 
-                    row.data(cells).draw(false)
+                        row.data(cells).draw(false)
 
-                    $(row.node()).attr('id', `ks-khachhang-row-${id}`);
+                        $(row.node()).attr('id', `ks-khachhang-row-${id}`);
 
-                    // Adjust widths and responsive breakpoints
-                    dt.columns.adjust().responsive?.recalc();
+                        // Adjust widths and responsive breakpoints
+                        dt.columns.adjust().responsive?.recalc();
+
+                        //Update thông tin card
+                        const card = $(`#ks-khachhang-card-${id}`)
+                        if (card && res.views.card) {
+                            card.replaceWith(res.views.card.trim());
+                        }
+                    } else {
+                        const $newRow = $(res.views.row.trim());
+                        //$('#tb-body-ks-khachhang').prepend($newRow);
+                        dt.row.add($newRow).draw(false);
+                        dt.order([0, 'desc']).draw(false);
+                        const $newCard = $(res.views.card.trim());
+                        $('#card-ks-khachhang-container').prepend($newCard);
+                    }
 
                     if (typeof showToast == 'function') {
                         showToast(`Lưu thông tin khách hàng <strong>${ten}</strong> thành công`, "Thông báo", "success");

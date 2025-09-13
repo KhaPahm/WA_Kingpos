@@ -1,0 +1,83 @@
+﻿@page
+@model WA_Kingpos.Pages.Nghiepvu.KhaiBaoNhienLieuQuocChanh.ViewModel
+@{
+    ViewData["Title"] = "Khai báo thành công";
+    ViewData["Name"] = "bangkhainhienlieu";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["Title"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th><br /></th>
+                            <td><h4>THÔNG TIN TÀU</h4></td>
+                        </tr>
+                        <tr>
+                            <th>Tàu :</th>
+                            <td>@Model.DT.NAME</td>
+                        </tr>
+                        <tr>
+                            <th>Số chuyến :</th>
+                            <td>@Model.DT.SOCHUYEN</td>
+                        </tr>
+                        <tr>
+                            <th>Dầu tồn :</th>
+                            <td>@Model.DT.DAUTON</td>
+                        </tr>
+                        <tr>
+                            <th>Dầu thêm :</th>
+                            <td>@Model.DT.CAPTHEM</td>
+                        </tr>
+                        <tr>
+                            <th>Tổng dầu :</th>
+                            <td>@Model.DT.TONGDAU</td>
+                        </tr>
+                        <tr>
+                            <th>Tổng tiêu thụ :</th>
+                            <td>@(Model.DT.TIEUTHU)</td>
+                        </tr>
+                        <tr>
+                            <th>Tổng tiêu thụ máy chính :</th>
+                            <td>@(Model.DT.TIEUTHUMAYCHINH)</td>
+                        </tr>
+                        <tr>
+                            <th>Tiêu thụ từng chuyến :</th>
+                            <td>@(Model.DT.TIEUTHUTUNGCHUYEN)</td>
+                        </tr>
+                        <tr>
+                            <th>Trả dầu :</th>
+                            <td>@(Model.DT.TRADAU)</td>
+                        </tr>
+                        <tr>
+                            <th>Ghi chú :</th>
+                            <td>@(Model.DT.GHICHU)</td>
+                        </tr>
+                        <tr>
+                            <th>Tồn cuối :</th>
+                            <td>@(Model.DT.CONLAI)</td>
+                        </tr>
+                        
+                        
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" asp-page="Index">Khai báo khác</a>
+                <a class="btn btn-warning" role="button" asp-page="Edit" asp-route-id="@Model.DT.ID">Chỉnh sửa khai báo</a>
+                <a class="btn btn-danger" role="button" asp-page="Delete" asp-route-id="@Model.DT.ID">Hủy khai báo</a>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
